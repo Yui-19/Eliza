@@ -29,7 +29,7 @@ plugin_category = "utils"
     command=("alive", plugin_category),
     info={
         "header": "To check bot's alive status",
-        "options": "To show media in this command you need to set ALIVE_PIC with media link , get this by replying the media by .tgm",
+        "options": "To show media in this command you need to set ALIVE_PIC with media link get this by replying the media by .tgm",
         "usage": [
             "{tr}alive",
         ],
@@ -70,7 +70,7 @@ async def amireallyalive(event):
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(
                 catevent,
-                f"**Media value error**\nChange the link by `.setdv`\n\n**Can't get media from this link :-**__ `{PIC}`",
+                f"Media value error\n\nChange the link by `.setdv`\n\nCan't get media from this link :-__ `{PIC}`",
             )
     else:
         await edit_or_reply(
@@ -93,7 +93,7 @@ temp = """{ALIVE_TEXT}
     command=("ialive", plugin_category),
     info={
         "header": "To check bot's alive status via inline mode",
-        "options": "To show media in this command you need to set ALIVE_PIC with media link , get this by replying the media by .tgm",
+        "options": "To show media in this command you need to set ALIVE_PIC with media link get this by replying the media by .tgm",
         "usage": [
             "{tr}ialive",
         ],
@@ -108,7 +108,7 @@ async def amireallyalive(event):
     cat_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
     cat_caption += f"**{EMOJI} Catuserbot Version :** `{catversion}`\n"
     cat_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
-    cat_caption += f"**{EMOJI} Master:** {mention}\n"
+    cat_caption += f"**{EMOJI} Master :** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, cat_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
