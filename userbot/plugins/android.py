@@ -41,20 +41,20 @@ async def kakashi(event):
     pattern="device(?: |$)(\S*)",
     command=("device", plugin_category),
     info={
-        "header": "To get android device name / model from its codename",
+        "header": "To get android device name or model from its codename",
         "usage": "{tr}device <codename>",
         "examples": "{tr}device whyred",
     },
 )
 async def device_info(event):
-    "get android device name from its codename"
+    "Get android device name from its codename"
     textx = await event.get_reply_message()
     codename = event.pattern_match.group(1)
     if not codename:
         if textx:
             codename = textx.text
         else:
-            return await edit_delete(event, "`Usage: .device <codename> / <model>`")
+            return await edit_delete(event, "`Usage : .device <codename>/<model>`")
     data = json.loads(
         get(
             "https://raw.githubusercontent.com/androidtrackers/"
@@ -63,12 +63,12 @@ async def device_info(event):
     )
     results = data.get(codename)
     if results:
-        reply = f"**Search results for {codename}**:\n\n"
+        reply = f"**Search results for {codename}** :\n\n"
         for item in results:
             reply += (
-                f"**Brand**: {item['brand']}\n"
-                f"**Name**: {item['name']}\n"
-                f"**Model**: {item['model']}\n\n"
+                f"**Brand** : {item['brand']}\n"
+                f"**Name** : {item['name']}\n"
+                f"**Model** : {item['model']}\n\n"
             )
     else:
         reply = f"`Couldn't find info about {codename}!`\n"
@@ -95,7 +95,7 @@ async def codename_info(event):
         brand = textx.text.split(" ")[0]
         device = " ".join(textx.text.split(" ")[1:])
     else:
-        return await edit_delete(event, "`Usage: .codename <brand> <device>`")
+        return await edit_delete(event, "`Usage : .codename <brand> <device>`")
 
     data = json.loads(
         get(
@@ -118,9 +118,9 @@ async def codename_info(event):
             results = results[:8]
         for item in results:
             reply += (
-                f"**Device**: {item['device']}\n"
-                f"**Name**: {item['name']}\n"
-                f"**Model**: {item['model']}\n\n"
+                f"**Device** : {item['device']}\n"
+                f"**Name** : {item['name']}\n"
+                f"**Model** : {item['model']}\n\n"
             )
     else:
         reply = f"`Couldn't find {device} codename`\n"
@@ -131,7 +131,7 @@ async def codename_info(event):
     pattern="specs(?: |)([\S]*)(?: |)([\s\S]*)",
     command=("specs", plugin_category),
     info={
-        "header": "To Get info about android device",
+        "header": "To get info about android device",
         "usage": "{tr}specs",
         "examples": "{tr}specs xiaomi redmi note 5 pro",
     },
@@ -212,7 +212,7 @@ async def twrp(event):
     elif textx:
         device = textx.text.split(" ")[0]
     else:
-        return await edit_delete(event, "`Usage: .twrp <codename>`")
+        return await edit_delete(event, "`Usage : .twrp <codename>`")
     url = get(f"https://dl.twrp.me/{device}/")
     if url.status_code == 404:
         reply = f"`Couldn't find twrp downloads for {device}!`\n"
@@ -224,8 +224,8 @@ async def twrp(event):
     size = page.find("span", {"class": "filesize"}).text
     date = page.find("em").text.strip()
     reply = (
-        f"**Latest TWRP for {device}:**\n"
-        f"[{dl_file}]({dl_link}) - __{size}__\n"
-        f"**Updated:** __{date}__\n"
+        f"**Latest twrp for {device} :**\n"
+        f"[{dl_file}]({dl_link}) - {size}\n"
+        f"**Updated :** {date}\n"
     )
     await edit_or_reply(event, reply)
