@@ -39,7 +39,7 @@ jikan = Jikan()
 anilistapiurl = "https://graphql.anilist.co"
 
 headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36"
+    "User agent": "Mozilla 5.0 ( Windows NT 10.0 ; Win64 ; x64 ) Applewebkit 537.36 ( KHTML like gecko ) Chrome 88.0.4324.104 Safari 537.36"
 }
 
 ppath = os.path.join(os.getcwd(), "temp", "anilistuser.jpg")
@@ -52,7 +52,7 @@ plugin_category = "extra"
     pattern="aq$",
     command=("aq", plugin_category),
     info={
-        "header": "Get random Anime quotes.",
+        "header": "Get random anime quotes",
         "usage": "{tr}aq",
         "examples": "{tr}aq",
     },
@@ -64,7 +64,7 @@ async def anime_quote(event):
     quote = data["quote"]
     await edit_or_reply(
         event,
-        f"• <b>Anime</b> (アニメ) <b>:</b>\n ➥ <i>{anime}</i>\n\n• <b>Character:</b> (キャラクター) <b>:</b>\n ➥ <i>{character}</i>\n\n• <b>Quote:</b> (言っている) <b>:</b>\n ➥ <i>{quote}</i>",
+        f"• <b>Anime</b> (アニメ) <b>:</b>\n ➥ <i>{anime}</i>\n\n• <b>Character :</b> (キャラクター) <b>:</b>\n ➥ <i>{character}</i>\n\n• <b>Quote :</b> (言っている) <b>:</b>\n ➥ <i>{quote}</i>",
         parse_mode="html",
     )
 
@@ -79,7 +79,7 @@ async def anime_quote(event):
     },
 )
 async def anilist_usersearch(event):
-    "Search user profiles of anilist."
+    "Search user profiles of anilist"
     search_query = event.pattern_match.group(1)
     reply_to = await reply_id(event)
     reply = await event.get_reply_message()
@@ -87,12 +87,12 @@ async def anilist_usersearch(event):
         if reply and reply.text:
             search_query = reply.text
         else:
-            return await edit_delete(event, "__Whom should I search__")
+            return await edit_delete(event, "Whom should I search ?")
     catevent = await edit_or_reply(event, "`Searching user profile in anilist...`")
     searchresult = await anilist_user(search_query)
     if len(searchresult) == 1:
         return await edit_or_reply(
-            catevent, f"**Error while searching user profile:**\n{searchresult[0]}"
+            catevent, f"**Error while searching user profile :**\n{searchresult[0]}"
         )
     downloader = SmartDL(searchresult[1], ppath, progress_bar=False)
     downloader.start(blocking=False)
@@ -112,7 +112,7 @@ async def anilist_usersearch(event):
     pattern="mal(?:\s|$)([\s\S]*)",
     command=("mal", plugin_category),
     info={
-        "header": "Search profiles of mal.",
+        "header": "Search profiles of mal",
         "usage": "{tr}mal <username>",
         "examples": "{tr}mal infinity20998",
     },
@@ -125,11 +125,11 @@ async def user(event):
     if not search_query and reply and reply.text:
         search_query = reply.text
     elif not search_query:
-        return await edit_delete(event, "__Whom should I search__")
+        return await edit_delete(event, "Whom should I search ?")
     try:
         user = jikan.user(search_query)
     except APIException:
-        return await edit_delete(event, "__No user found with given username__", 5)
+        return await edit_delete(event, "No user found with given username", 5)
     date_format = "%Y-%m-%d"
     img = user["image_url"] or "https://telegra.ph//file/9b4205e1b1cc68a4ffd5e.jpg"
     try:
@@ -154,21 +154,21 @@ async def user(event):
     caption = ""
     caption += textwrap.dedent(
         f"""
-    **Username:** [{user['username']}]({user['url']})
-    **Gender:** `{user['gender']}`
-    **MAL ID:** `{user['user_id']}`
-    **Birthday:** `{user_birthday_formatted}`
-    **Joined:** `{user_joined_date_formatted}`
-    **Last Online:** `{user_last_online_formatted}`
+    **Username :** [{user['username']}]({user['url']})
+    **Gender :** `{user['gender']}`
+    **Mal id :** `{user['user_id']}`
+    **Birthday :** `{user_birthday_formatted}`
+    **Joined :** `{user_joined_date_formatted}`
+    **Last online :** `{user_last_online_formatted}`
     
-    **Days wasted watching Anime:** `{user['anime_stats']['days_watched']}`
-    **No of completed Animes:** `{user['anime_stats']['completed']}`
-    **Total No of episodes Watched:** `{user['anime_stats']['episodes_watched']}`
-    **Days wasted reading Manga:** `{user['manga_stats']['days_read']}`
+    **Days wasted watching anime :** `{user['anime_stats']['days_watched']}`
+    **No of completed animes :** `{user['anime_stats']['completed']}`
+    **Total no of episodes watched :** `{user['anime_stats']['episodes_watched']}`
+    **Days wasted reading manga :** `{user['manga_stats']['days_read']}`
     """
     )
 
-    caption += f"**About:** __{about_string}__"
+    caption += f"**About :** __{about_string}__"
     await event.client.send_file(
         event.chat_id, file=img, caption=caption, reply_to=replyto
     )
@@ -188,21 +188,21 @@ async def anilist(event):
     "Get airing date & time of any anime"
     search = event.pattern_match.group(1)
     if not search:
-        return await edit_delete(event, "__Which anime results should I fetch__")
+        return await edit_delete(event, "Which anime results should I fetch ?")
     variables = {"search": search}
     response = requests.post(
         anilistapiurl, json={"query": airing_query, "variables": variables}
     ).json()["data"]["Media"]
     if response is None:
-        return await edit_delete(event, "__Unable to find the anime__")
-    ms_g = f"**Name**: **{response['title']['romaji']}**(`{response['title']['native']}`)\n**ID**: `{response['id']}`"
+        return await edit_delete(event, "Unable to find the anime")
+    ms_g = f"**Name** : **{response['title']['romaji']}**(`{response['title']['native']}`)\n**Id** : `{response['id']}`"
     if response["nextAiringEpisode"]:
         airing_time = response["nextAiringEpisode"]["timeUntilAiring"]
         airing_time_final = time_formatter(airing_time)
         airing_at = response["nextAiringEpisode"]["airingAt"]
-        ms_g += f"\n**Episode**: `{response['nextAiringEpisode']['episode']}`\n**Airing In**: `{airing_time_final}`\n**Time: **`{datetime.fromtimestamp(airing_at)}`"
+        ms_g += f"\n**Episode** : `{response['nextAiringEpisode']['episode']}`\n**Airing in**: `{airing_time_final}`\n**Time :**`{datetime.fromtimestamp(airing_at)}`"
     else:
-        ms_g += f"\n**Episode**:{response['episodes']}\n**Status**: `N/A`"
+        ms_g += f"\n**Episode** :{response['episodes']}\n**Status** : `Na`"
     await edit_or_reply(event, ms_g)
 
 
@@ -217,11 +217,11 @@ async def anilist(event):
     },
 )
 async def anilist(event):
-    "Get info on any anime."
+    "Get info on any anime"
     input_str = event.pattern_match.group(1)
     if not input_str:
         return await edit_delete(
-            event, "__What should I search ? Give me something to search__"
+            event, "What should I search ? Give me something to search"
         )
     event = await edit_or_reply(event, "`Searching...`")
     result = await callAPI(input_str)
@@ -239,7 +239,7 @@ async def anilist(event):
     },
 )
 async def get_manga(event):
-    "searches for manga."
+    "searches for manga"
     reply_to = await reply_id(event)
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
@@ -248,9 +248,9 @@ async def get_manga(event):
             input_str = reply.text
         else:
             return await edit_delete(
-                event, "__What should I search ? Give me something to search__"
+                event, "What should I search ? Give me something to search"
             )
-    catevent = await edit_or_reply(event, "`Searching Manga..`")
+    catevent = await edit_or_reply(event, "`Searching manga..`")
     jikan = jikanpy.jikan.Jikan()
     search_result = jikan.search("manga", input_str)
     first_mal_id = search_result["results"][0]["mal_id"]
@@ -277,7 +277,7 @@ async def get_manga(event):
     },
 )
 async def get_anime(event):
-    "to get list of filler episodes."
+    "to get list of filler episodes"
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     if not input_str:
@@ -285,7 +285,7 @@ async def get_anime(event):
             input_str = reply.text
         else:
             return await edit_delete(
-                event, "__What should i search ? Gib me Something to Search__"
+                event, "What should i search ? Give me something to search"
             )
     anime = re.findall(r"-n\d+", input_str)
     try:
@@ -305,14 +305,14 @@ async def get_anime(event):
         response = await get_filler_episodes(result[list(result.keys())[0]])
         msg = ""
         msg += f"**Fillers for anime** `{list(result.keys())[0]}`**"
-        msg += "\n\n• Manga Canon episodes:**`\n"
+        msg += "\n\n• Manga canon episodes :**`\n"
         msg += str(response.get("total_ep"))
-        msg += "\n\n`**• Mixed/Canon fillers:**`\n"
+        msg += "\n\n`**• Mixed canon fillers :**`\n"
         msg += str(response.get("mixed_ep"))
-        msg += "\n\n`**• Fillers:**\n`"
+        msg += "\n\n`**• Fillers :**\n`"
         msg += str(response.get("filler_episodes"))
         if response.get("anime_canon_episodes") is not None:
-            msg += "\n\n`**• Anime Canon episodes:**\n`"
+            msg += "\n\n`**• Anime canon episodes :**\n`"
             msg += str(response.get("anime_canon_episodes"))
         msg += "`"
         return await edit_or_reply(event, msg)
@@ -330,14 +330,14 @@ async def get_anime(event):
         return await edit_or_reply(event, msg)
     msg = ""
     msg += f"**Fillers for anime** `{list(result.keys())[anime-1]}`**"
-    msg += "\n\n• Manga Canon episodes:**`\n"
+    msg += "\n\n• Manga canon episodes :**`\n"
     msg += str(response.get("total_ep"))
-    msg += "\n\n`**• Mixed/Canon fillers:**`\n"
+    msg += "\n\n`**• Mixed canon fillers :**`\n"
     msg += str(response.get("mixed_ep"))
-    msg += "\n\n`**• Fillers:**\n`"
+    msg += "\n\n`**• Fillers :**\n`"
     msg += str(response.get("filler_episodes"))
     if response.get("anime_canon_episodes") is not None:
-        msg += "\n\n`**• Anime Canon episodes:**\n`"
+        msg += "\n\n`**• Anime canon episodes :**\n`"
         msg += str(response.get("anime_canon_episodes"))
     msg += "`"
     await edit_or_reply(event, msg)
@@ -353,7 +353,7 @@ async def get_anime(event):
     },
 )
 async def get_anime(event):
-    "searches for anime."
+    "searches for anime"
     reply_to = await reply_id(event)
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
@@ -362,7 +362,7 @@ async def get_anime(event):
             input_str = reply.text
         else:
             return await edit_delete(
-                event, "__What should I search ? Give me something to search__"
+                event, "What should I search ? Give me something to search"
             )
     catevent = await edit_or_reply(event, "`Searching anime..`")
     jikan = jikanpy.jikan.Jikan()
@@ -404,7 +404,7 @@ async def get_anime(event):
     },
 )
 async def character(event):
-    "Character information."
+    "Character information"
     reply_to = await reply_id(event)
     search_query = event.pattern_match.group(1)
     reply = await event.get_reply_message()
@@ -413,9 +413,9 @@ async def character(event):
             search_query = reply.text
         else:
             return await edit_delete(
-                event, "__What should I search ? Give me something to search__"
+                event, "What should I search ? Give me something to search"
             )
-    catevent = await edit_or_reply(event, "`Searching Character...`")
+    catevent = await edit_or_reply(event, "`Searching character...`")
     try:
         search_result = jikan.search("character", search_query)
     except APIException:
@@ -440,7 +440,7 @@ async def character(event):
     for entity in character:
         if character[entity] is None:
             character[entity] = "Unknown"
-    caption += f"\n**Extracted Character Data**\n\n{about_string}"
+    caption += f"\n**Extracted Character data**\n\n{about_string}"
     caption += f" [Read More]({mal_url})..."
     await catevent.delete()
     await event.client.send_file(
@@ -469,7 +469,7 @@ async def character(event):
     },
 )
 async def anime_download(event):  # sourcery no-metrics
-    "Anime download links."
+    "Anime download links"
     search_query = event.pattern_match.group(2)
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
@@ -477,7 +477,7 @@ async def anime_download(event):  # sourcery no-metrics
         search_query = reply.text
     elif not search_query:
         return await edit_delete(
-            event, "__What should i search ? Gib me Something to Search__"
+            event, "What should I search ? Give me something to search"
         )
     catevent = await edit_or_reply(event, "`Searching anime...`")
     search_query = search_query.replace(" ", "+")
@@ -487,7 +487,7 @@ async def anime_download(event):  # sourcery no-metrics
         soup = bs4.BeautifulSoup(html_text, "html.parser")
         search_result = soup.find_all("h2", {"class": "post-title"})
         if search_result:
-            result = f"<a href={search_url}>Click Here For More Results</a> <b>of</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKaizoku</code>: \n\n"
+            result = f"<a href={search_url}>Click Here for more results</a> <b>of</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKaizoku</code>:\n\n"
             for entry in search_result:
                 post_link = "https://animekaizoku.com/" + entry.a["href"]
                 post_name = html.escape(entry.text)
@@ -499,7 +499,7 @@ async def anime_download(event):  # sourcery no-metrics
         html_text = requests.get(search_url, headers=headers).text
         soup = bs4.BeautifulSoup(html_text, "html.parser")
         search_result = soup.find_all("h2", {"class": "title"})
-        result = f"<a href={search_url}>Click Here For More Results</a> <b>of</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKayo</code>: \n\n"
+        result = f"<a href={search_url}>Click here for more results</a> <b>of</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKayo</code>:\n\n"
         if search_result:
             for entry in search_result:
                 if entry.text.strip() == "Nothing Found":
@@ -515,11 +515,11 @@ async def anime_download(event):  # sourcery no-metrics
         html_text = requests.get(search_url, headers=headers).text
         soup = bs4.BeautifulSoup(html_text, "html.parser")
         search_result = soup.find_all("h1", {"class": "elementor-post__title"})
-        result = f"<a href={search_url}>Click Here For More Results</a> <b>of</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>indianime</code>: \n\n"
+        result = f"<a href={search_url}>Click Here for more results</a> <b>of</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>indianime</code>:\n\n"
         if search_result:
             for entry in search_result:
                 if entry.text.strip() == "Nothing Found":
-                    result = f"<b>No result found for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>Indianime</code>.\n<b>You can request anime <a href='https://indianime.com/request-anime'>here</a></b>"
+                    result = f"<b>No result found for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>Indianime</code>\n<b>You can request anime <a href='https://indianime.com/request-anime'>here</a></b>"
                     break
                 post_link = entry.a["href"]
                 post_name = html.escape(entry.text.strip())
@@ -533,7 +533,7 @@ async def anime_download(event):  # sourcery no-metrics
     pattern="upcoming$",
     command=("upcoming", plugin_category),
     info={
-        "header": "Shows you upcoming anime's.",
+        "header": "Shows you upcoming anime's",
         "usage": "{tr}upcoming",
     },
 )
@@ -588,22 +588,22 @@ async def aschedule_fetch(event):
     },
 )
 async def whatanime(event):
-    "Reverse search of anime."
+    "Reverse search of anime"
     reply = await event.get_reply_message()
     if not reply:
         return await edit_delete(
-            event, "__Reply to media to reverse search that anime__"
+            event, "Reply to media to reverse search that anime"
         )
     mediatype = media_type(reply)
     if mediatype not in ["Photo", "Video", "Gif", "Sticker"]:
         return await edit_delete(
             event,
-            f"__Reply to proper media that is expecting photo / video / gif / sticker not {mediatype}__",
+            f"Reply to proper media that is expecting photo or video or gif or sticker not {mediatype}",
         )
     output = await _cattools.media_to_pic(event, reply)
     if output[1] is None:
         return await edit_delete(
-            output[0], "__Unable to extract image from the replied message__"
+            output[0], "Unable to extract image from the replied message"
         )
     file = memory_file("anime.jpg", output[1])
     try:
@@ -612,7 +612,7 @@ async def whatanime(event):
         try:
             response = upload_file(output[1])
         except exceptions.TelegraphException as exc:
-            return await edit_delete(output[0], f"**Error :**\n__{exc}__")
+            return await edit_delete(output[0], f"**Error :**\n __{exc}__")
     cat = f"https://telegra.ph{response[0]}"
     await output[0].edit("`Searching for result..`")
     async with aiohttp.ClientSession() as session:
@@ -623,29 +623,29 @@ async def whatanime(event):
         framecount = resp0["frameCount"]
         error = resp0["error"]
         if error != "":
-            return await edit_delete(output[0], f"**Error:**\n__{error}__")
+            return await edit_delete(output[0], f"**Error :**\n__{error}__")
         js0 = resp0["result"]
         if not js0:
             return await output[0].edit("`No results found`")
         js0 = js0[0]
         text = (
-            f'**Titile Romaji : **`{html.escape(js0["anilist"]["title"]["romaji"])}`\n'
+            f'**Titile romaji : **`{html.escape(js0["anilist"]["title"]["romaji"])}`\n'
         )
         text += (
-            f'**Titile Native :** `{html.escape(js0["anilist"]["title"]["native"])}`\n'
+            f'**Titile native :** `{html.escape(js0["anilist"]["title"]["native"])}`\n'
         )
         text += (
-            f'**Titile English :** `{html.escape(js0["anilist"]["title"]["english"])}`\n'
+            f'**Titile english :** `{html.escape(js0["anilist"]["title"]["english"])}`\n'
             if js0["anilist"]["title"]["english"] is not None
             else ""
         )
-        text += f'**Is Adult :** __{js0["anilist"]["isAdult"]}__\n'
-        #         text += f'**File name :** __{js0["filename"]}__\n'
-        text += f'**Episode :** __{html.escape(str(js0["episode"]))}__\n'
-        text += f'**From :** __{readable_time(js0["from"])}__\n'
-        text += f'**To :** __{readable_time(js0["to"])}__\n'
+        text += f'**Is adult :** {js0["anilist"]["isAdult"]}\n'
+        #         text += f'**File name :** {js0["filename"]}\n'
+        text += f'**Episode :** {html.escape(str(js0["episode"]))}\n'
+        text += f'**From :** {readable_time(js0["from"])}\n'
+        text += f'**To :** {readable_time(js0["to"])}\n'
         percent = round(js0["similarity"] * 100, 2)
-        text += f"**Similarity :** __{percent}%__\n"
+        text += f"**Similarity :** {percent}%\n"
         result = (
             f"**Searched {framecount} frames and found this as best result :**\n\n"
             + text
