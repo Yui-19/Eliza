@@ -55,7 +55,7 @@ async def _(event):  # sourcery no-metrics
     input_str = event.pattern_match.group(1)
     peer_id = event.chat_id
     if not event.is_group:
-        return await edit_delete(event, "`Idiot ! This is not a group to lock things `")
+        return await edit_delete(event, "`Idiot ! This is not a group to lock things`")
     chat_per = (await event.get_chat()).default_banned_rights
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     if input_str in (("bots", "commands", "email", "forward", "url")):
@@ -148,7 +148,7 @@ async def _(event):  # sourcery no-metrics
             if changeinfo:
                 return await edit_delete(
                     event,
-                    "`This group is already locked with Changing group info by users`",
+                    "`This group is already locked with changing group info by users`",
                 )
             changeinfo = True
             locktype = "chat info"
@@ -171,7 +171,7 @@ async def _(event):  # sourcery no-metrics
             )
 
         else:
-            return await edit_or_reply(event, "`I can't lock nothing !`")
+            return await edit_or_reply(event, "`I can't lock nothing`")
         try:
             cat = Get(cat)
             await event.client(cat)
@@ -197,7 +197,7 @@ async def _(event):  # sourcery no-metrics
                     peer=peer_id, banned_rights=lock_rights
                 )
             )
-            await edit_or_reply(event, f"`Locked {locktype} for this chat !`")
+            await edit_or_reply(event, f"`Locked {locktype} for this chat`")
         except BaseException as e:
             await edit_delete(
                 event,
@@ -336,7 +336,7 @@ async def _(event):  # sourcery no-metrics
             if not changeinfo:
                 return await edit_delete(
                     event,
-                    "`This group is already unlocked with Changing grup info by users`",
+                    "`This group is already unlocked with changing grup info by users`",
                 )
             changeinfo = False
             locktype = "chat info"
@@ -359,7 +359,7 @@ async def _(event):  # sourcery no-metrics
             )
 
         else:
-            return await edit_or_reply(event, "`I can't unlock nothing !`")
+            return await edit_or_reply(event, "`I can't unlock nothing`")
         try:
             cat = Get(cat)
             await event.client(cat)
@@ -385,7 +385,7 @@ async def _(event):  # sourcery no-metrics
                     peer=peer_id, banned_rights=unlock_rights
                 )
             )
-            await edit_or_reply(event, f"`Unlocked {locktype} for this chat !`")
+            await edit_or_reply(event, f"`Unlocked {locktype} for this chat`")
         except BaseException as e:
             return await edit_delete(
                 event,
@@ -411,45 +411,45 @@ async def _(event):  # sourcery no-metrics
         res = "There are no database settings in this chat"
     else:
         res = "Following are the database permissions in this chat : \n"
-        ubots = "❌" if current_db_locks.bots else "✅"
-        ucommands = "❌" if current_db_locks.commands else "✅"
-        uemail = "❌" if current_db_locks.email else "✅"
-        uforward = "❌" if current_db_locks.forward else "✅"
-        uurl = "❌" if current_db_locks.url else "✅"
-        res += f"👉🏻 `bots`: `{ubots}`\n"
-        res += f"👉🏻 `commands`: `{ucommands}`\n"
-        res += f"👉🏻 `email`: `{uemail}`\n"
-        res += f"👉🏻 `forward`: `{uforward}`\n"
-        res += f"👉🏻 `url`: `{uurl}`\n"
+        ubots = "❌" if current_db_locks.bots else "Yes"
+        ucommands = "❌" if current_db_locks.commands else "Yes"
+        uemail = "❌" if current_db_locks.email else "Yes"
+        uforward = "❌" if current_db_locks.forward else "Yes"
+        uurl = "❌" if current_db_locks.url else "Yes"
+        res += f"`Bots` : `{ubots}`\n"
+        res += f"`Commands` : `{ucommands}`\n"
+        res += f"`Email` : `{uemail}`\n"
+        res += f"`Forward` : `{uforward}`\n"
+        res += f"`Url` : `{uurl}`\n"
     current_chat = await event.get_chat()
     try:
         chat_per = current_chat.default_banned_rights
     except AttributeError as e:
         logger.info(str(e))
     else:
-        umsg = "❌" if chat_per.send_messages else "✅"
-        umedia = "❌" if chat_per.send_media else "✅"
-        usticker = "❌" if chat_per.send_stickers else "✅"
-        ugif = "❌" if chat_per.send_gifs else "✅"
-        ugamee = "❌" if chat_per.send_games else "✅"
-        uainline = "❌" if chat_per.send_inline else "✅"
-        uembed_link = "❌" if chat_per.embed_links else "✅"
-        ugpoll = "❌" if chat_per.send_polls else "✅"
-        uadduser = "❌" if chat_per.invite_users else "✅"
-        ucpin = "❌" if chat_per.pin_messages else "✅"
-        uchangeinfo = "❌" if chat_per.change_info else "✅"
+        umsg = "❌" if chat_per.send_messages else "Yes"
+        umedia = "❌" if chat_per.send_media else "Yes"
+        usticker = "❌" if chat_per.send_stickers else "Yes"
+        ugif = "❌" if chat_per.send_gifs else "Yes"
+        ugamee = "❌" if chat_per.send_games else "Yes"
+        uainline = "❌" if chat_per.send_inline else "Yes"
+        uembed_link = "❌" if chat_per.embed_links else "Yes"
+        ugpoll = "❌" if chat_per.send_polls else "Yes"
+        uadduser = "❌" if chat_per.invite_users else "Yes"
+        ucpin = "❌" if chat_per.pin_messages else "Yes"
+        uchangeinfo = "❌" if chat_per.change_info else "Yes"
         res += "\nThis are current permissions of this chat: \n"
-        res += f"👉🏻 `msg`: `{umsg}`\n"
-        res += f"👉🏻 `media`: `{umedia}`\n"
-        res += f"👉🏻 `sticker`: `{usticker}`\n"
-        res += f"👉🏻 `gif`: `{ugif}`\n"
-        res += f"👉🏻 `preview`: `{uembed_link}`\n"
-        res += f"👉🏻 `gamee`: `{ugamee}`\n"
-        res += f"👉🏻 `ainline`: `{uainline}`\n"
-        res += f"👉🏻 `gpoll`: `{ugpoll}`\n"
-        res += f"👉🏻 `adduser`: `{uadduser}`\n"
-        res += f"👉🏻 `cpin`: `{ucpin}`\n"
-        res += f"👉🏻 `changeinfo`: `{uchangeinfo}`\n"
+        res += f"`Msg` : `{umsg}`\n"
+        res += f"`Media` : `{umedia}`\n"
+        res += f"`Sticker` : `{usticker}`\n"
+        res += f"`Gif` : `{ugif}`\n"
+        res += f"`Preview` : `{uembed_link}`\n"
+        res += f"`Game` : `{ugamee}`\n"
+        res += f"`Ainline` : `{uainline}`\n"
+        res += f"`Gpoll`: `{ugpoll}`\n"
+        res += f"`Adduser` : `{uadduser}`\n"
+        res += f"`Cpin` : `{ucpin}`\n"
+        res += f"`Changeinfo` : `{uchangeinfo}`\n"
     await edit_or_reply(event, res)
 
 
@@ -486,7 +486,7 @@ async def _(event):  # sourcery no-metrics
     result = await event.client.get_permissions(peer_id, reply.from_id)
     admincheck = await is_admin(event.client, peer_id, reply.from_id)
     if admincheck:
-        return await edit_delete(event, "`This user is admin you cant play with him`")
+        return await edit_delete(event, "`This user is admin you can't play with him or her`")
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     msg = chat_per.send_messages
     media = chat_per.send_media
@@ -639,12 +639,12 @@ async def _(event):  # sourcery no-metrics
         if changeinfo:
             return await edit_delete(
                 event,
-                "`This group is already locked with Changing group info by users`",
+                "`This group is already locked with changing group info by users`",
             )
         if uchangeinfo:
             return await edit_delete(
                 event,
-                "`This user is already locked with Changing group info by users`",
+                "`This user is already locked with changing group info by users`",
             )
         uchangeinfo = True
         locktype = "chat info"
@@ -667,7 +667,7 @@ async def _(event):  # sourcery no-metrics
         )
 
     else:
-        return await edit_or_reply(event, "`I can't lock nothing !`")
+        return await edit_or_reply(event, "`I can't lock nothing`")
     try:
         cat = Get(cat)
         await event.client(cat)
@@ -689,7 +689,7 @@ async def _(event):  # sourcery no-metrics
     )
     try:
         await event.client(EditBannedRequest(peer_id, reply.from_id, lock_rights))
-        await edit_or_reply(event, f"`Locked {locktype} for this user !`")
+        await edit_or_reply(event, f"`Locked {locktype} for this user`")
     except BaseException as e:
         await edit_delete(
             event,
@@ -732,7 +732,7 @@ async def _(event):  # sourcery no-metrics
     result = await event.client.get_permissions(peer_id, reply.from_id)
     admincheck = await is_admin(event.client, peer_id, reply.from_id)
     if admincheck:
-        return await edit_delete(event, "`This user is admin you cant play with him`")
+        return await edit_delete(event, "`This user is admin you cant play with him or her`")
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     msg = chat_per.send_messages
     media = chat_per.send_media
@@ -877,7 +877,7 @@ async def _(event):  # sourcery no-metrics
         if changeinfo:
             return await edit_delete(
                 event,
-                "`This group is locked with Changing group info by users`",
+                "`This group is locked with changing group info by users`",
             )
         if not uchangeinfo:
             return await edit_delete(
@@ -916,7 +916,7 @@ async def _(event):  # sourcery no-metrics
         )
 
     else:
-        return await edit_or_reply(event, "`I can't lock nothing !`")
+        return await edit_or_reply(event, "`I can't lock nothing`")
     try:
         cat = Get(cat)
         await event.client(cat)
@@ -938,7 +938,7 @@ async def _(event):  # sourcery no-metrics
     )
     try:
         await event.client(EditBannedRequest(peer_id, reply.from_id, lock_rights))
-        await edit_or_reply(event, f"`Unlocked {locktype} for this user !!`")
+        await edit_or_reply(event, f"`Unlocked {locktype} for this user`")
     except BaseException as e:
         await edit_delete(
             event,
@@ -966,14 +966,14 @@ async def _(event):  # sourcery no-metrics
     result = await event.client.get_permissions(peer_id, user.id)
     output = ""
     if admincheck:
-        c_info = "✅" if result.participant.admin_rights.change_info else "❌"
-        del_me = "✅" if result.participant.admin_rights.delete_messages else "❌"
-        ban = "✅" if result.participant.admin_rights.ban_users else "❌"
-        invite_u = "✅" if result.participant.admin_rights.invite_users else "❌"
-        pin = "✅" if result.participant.admin_rights.pin_messages else "❌"
-        add_a = "✅" if result.participant.admin_rights.add_admins else "❌"
-        call = "✅" if result.participant.admin_rights.manage_call else "❌"
-        output += f"**Admin rights of **{_format.mentionuser(user.first_name ,user.id)} **in {get_display_name(await event.get_chat())} chat are **\n"
+        c_info = "Yes" if result.participant.admin_rights.change_info else "❌"
+        del_me = "Yes" if result.participant.admin_rights.delete_messages else "❌"
+        ban = "Yes" if result.participant.admin_rights.ban_users else "❌"
+        invite_u = "Yes" if result.participant.admin_rights.invite_users else "❌"
+        pin = "Yes" if result.participant.admin_rights.pin_messages else "❌"
+        add_a = "Yes" if result.participant.admin_rights.add_admins else "❌"
+        call = "Yes" if result.participant.admin_rights.manage_call else "❌"
+        output += f"**Admin rights of **{_format.mentionuser(user.first_name ,user.id)} **in {get_display_name(await event.get_chat())} chat are **\n\n"
         output += f"Change info : {c_info}\n"
         output += f"Delete messages : {del_me}\n"
         output += f"Ban users : {ban}\n"
@@ -984,30 +984,30 @@ async def _(event):  # sourcery no-metrics
     else:
         chat_per = (await event.get_chat()).default_banned_rights
         try:
-            umsg = "❌" if result.participant.banned_rights.send_messages else "✅"
-            umedia = "❌" if result.participant.banned_rights.send_media else "✅"
-            usticker = "❌" if result.participant.banned_rights.send_stickers else "✅"
-            ugif = "❌" if result.participant.banned_rights.send_gifs else "✅"
-            ugamee = "❌" if result.participant.banned_rights.send_games else "✅"
-            uainline = "❌" if result.participant.banned_rights.send_inline else "✅"
-            uembed_link = "❌" if result.participant.banned_rights.embed_links else "✅"
-            ugpoll = "❌" if result.participant.banned_rights.send_polls else "✅"
-            uadduser = "❌" if result.participant.banned_rights.invite_users else "✅"
-            ucpin = "❌" if result.participant.banned_rights.pin_messages else "✅"
-            uchangeinfo = "❌" if result.participant.banned_rights.change_info else "✅"
+            umsg = "❌" if result.participant.banned_rights.send_messages else "Yes"
+            umedia = "❌" if result.participant.banned_rights.send_media else "Yes"
+            usticker = "❌" if result.participant.banned_rights.send_stickers else "Yes"
+            ugif = "❌" if result.participant.banned_rights.send_gifs else "Yes"
+            ugamee = "❌" if result.participant.banned_rights.send_games else "Yes"
+            uainline = "❌" if result.participant.banned_rights.send_inline else "Yes"
+            uembed_link = "❌" if result.participant.banned_rights.embed_links else "Yes"
+            ugpoll = "❌" if result.participant.banned_rights.send_polls else "Yes"
+            uadduser = "❌" if result.participant.banned_rights.invite_users else "Yes"
+            ucpin = "❌" if result.participant.banned_rights.pin_messages else "Yes"
+            uchangeinfo = "❌" if result.participant.banned_rights.change_info else "Yes"
         except AttributeError:
-            umsg = "❌" if chat_per.send_messages else "✅"
-            umedia = "❌" if chat_per.send_media else "✅"
-            usticker = "❌" if chat_per.send_stickers else "✅"
-            ugif = "❌" if chat_per.send_gifs else "✅"
-            ugamee = "❌" if chat_per.send_games else "✅"
-            uainline = "❌" if chat_per.send_inline else "✅"
-            uembed_link = "❌" if chat_per.embed_links else "✅"
-            ugpoll = "❌" if chat_per.send_polls else "✅"
-            uadduser = "❌" if chat_per.invite_users else "✅"
-            ucpin = "❌" if chat_per.pin_messages else "✅"
-            uchangeinfo = "❌" if chat_per.change_info else "✅"
-        output += f"{_format.mentionuser(user.first_name ,user.id)} **permissions in {get_display_name(await event.get_chat())} chat are **\n"
+            umsg = "❌" if chat_per.send_messages else "Yes"
+            umedia = "❌" if chat_per.send_media else "Yes"
+            usticker = "❌" if chat_per.send_stickers else "Yes"
+            ugif = "❌" if chat_per.send_gifs else "Yes"
+            ugamee = "❌" if chat_per.send_games else "Yes"
+            uainline = "❌" if chat_per.send_inline else "Yes"
+            uembed_link = "❌" if chat_per.embed_links else "Yes"
+            ugpoll = "❌" if chat_per.send_polls else "Yes"
+            uadduser = "❌" if chat_per.invite_users else "Yes"
+            ucpin = "❌" if chat_per.pin_messages else "Yes"
+            uchangeinfo = "❌" if chat_per.change_info else "Yes"
+        output += f"{_format.mentionuser(user.first_name ,user.id)} **permissions in {get_display_name(await event.get_chat())} chat are **\n\n"
         output += f"Send messages : {umsg}\n"
         output += f"Send media : {umedia}\n"
         output += f"Send stickers : {usticker}\n"
@@ -1043,7 +1043,7 @@ async def check_incoming_messages(event):  # sourcery no-metrics
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have admin permission here \n`{}`".format(str(e))
+                    "I don't seem to have admin permission here\n`{}`".format(str(e))
                 )
                 update_lock(peer_id, "commands", False)
     if is_locked(peer_id, "forward") and event.fwd_from:
@@ -1051,7 +1051,7 @@ async def check_incoming_messages(event):  # sourcery no-metrics
             await event.delete()
         except Exception as e:
             await event.reply(
-                "I don't seem to have admin permission here \n`{}`".format(str(e))
+                "I don't seem to have admin permission here\n`{}`".format(str(e))
             )
             update_lock(peer_id, "forward", False)
     if is_locked(peer_id, "email"):
@@ -1066,7 +1066,7 @@ async def check_incoming_messages(event):  # sourcery no-metrics
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have admin permission here \n`{}`".format(str(e))
+                    "I don't seem to have admin permission here\n`{}`".format(str(e))
                 )
                 update_lock(peer_id, "email", False)
     if is_locked(peer_id, "url"):
@@ -1083,7 +1083,7 @@ async def check_incoming_messages(event):  # sourcery no-metrics
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have admin permission here \n`{}`".format(str(e))
+                    "I don't seem to have admin permission here\n`{}`".format(str(e))
                 )
                 update_lock(peer_id, "url", False)
 
@@ -1118,7 +1118,7 @@ async def _(event):
                     )
                 except Exception as e:
                     await event.reply(
-                        "I don't seem to have admin permission here \n`{}`".format(
+                        "I don't seem to have admin permission here\n`{}`".format(
                             str(e)
                         )
                     )
@@ -1126,7 +1126,7 @@ async def _(event):
                     break
         if BOTLOG and is_ban_able:
             ban_reason_msg = await event.reply(
-                "!warn [user](tg://user?id={}) Please do not add bots to this chat".format(
+                "!warn [user](tg://user?id={}) please do not add bots to this chat".format(
                     users_added_by
                 )
             )
