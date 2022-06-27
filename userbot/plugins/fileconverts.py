@@ -1,4 +1,3 @@
-# by @mrconfused (@sandy1709)
 import asyncio
 import base64
 import io
@@ -83,7 +82,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
     try:
         outframes = await spin_frames(image, w, h, outframes)
     except Exception as e:
-        return await edit_delete(output[0], f"**Error**\n__{e}__")
+        return await edit_delete(output[0], f"**Error**\n{e}")
     output = io.BytesIO()
     output.name = "Output.gif"
     outframes[0].save(output, save_all=True, append_images=outframes[1:], duration=1)
@@ -150,7 +149,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
     command=("circle", plugin_category),
     info={
         "header": "To make circular video note or sticker",
-        "description": "Circular video note supports atmost 60 sec so give appropariate video",
+        "description": "Circular video note supports atmost 60 seconds so give appropariate video",
         "usage": "{tr}circle <reply to video/sticker/image>",
     },
 )
@@ -165,7 +164,7 @@ async def video_catfile(event):  # sourcery no-metrics
     if mediatype == "Round Video":
         return await edit_delete(
             event,
-            "Do you think I am a dumb person ? 😏 the replied media is already in round format , recheck",
+            "Do you think I am a dumb person ? The replied media is already in round format , recheck",
         )
     if mediatype not in ["Photo", "Audio", "Voice", "Gif", "Sticker", "Video"]:
         return await edit_delete(event, "```Supported media not found...```")
@@ -303,7 +302,7 @@ async def video_catfile(event):  # sourcery no-metrics
     command=("stoi", plugin_category),
     info={
         "header": "Reply this command to a sticker to get image",
-        "description": "This also converts every media to image that is if video then extracts image from that video.if audio then extracts thumb",
+        "description": "This also converts every media to image that is if video then extracts image from that video if audio then extracts thumb",
         "usage": "{tr}stoi",
     },
 )
@@ -332,7 +331,7 @@ async def _(event):
     command=("itos", plugin_category),
     info={
         "header": "Reply this command to image to get sticker",
-        "description": "This also converts every media to sticker that is if video then extracts image from that video. if audio then extracts thumb",
+        "description": "This also converts every media to sticker that is if video then extracts image from that video if audio then extracts thumb",
         "usage": "{tr}itos",
     },
 )
@@ -369,7 +368,7 @@ async def get(event):
     "text to file conversion"
     name = event.text[5:]
     if name is None:
-        await edit_or_reply(event, "reply to text message as `.ttf <file name>`")
+        await edit_or_reply(event, "Reply to text message as `.ttf <file name>`")
         return
     m = await event.get_reply_message()
     if m.text:
@@ -379,7 +378,7 @@ async def get(event):
         await event.client.send_file(event.chat_id, name, force_document=True)
         os.remove(name)
     else:
-        await edit_or_reply(event, "reply to text message as `.ttf <file name>`")
+        await edit_or_reply(event, "Reply to text message as `.ttf <file name>`")
 
 
 @catub.cat_cmd(
@@ -398,7 +397,7 @@ async def get(event):
     mediatype = media_type(reply)
     if mediatype != "Document":
         return await edit_delete(
-            event, "It seems this is not writable file , reply to writable file"
+            event, "It seems this is not writable file\n\nReply to writable file"
         )
     file_loc = await reply.download_media()
     file_content = ""
@@ -417,14 +416,14 @@ async def get(event):
         except Exception as e:
             if os.path.exists(file_loc):
                 os.remove(file_loc)
-            return await edit_delete(event, f"**Error :**\n__{e}__")
+            return await edit_delete(event, f"**Error :**\n{e}")
     await edit_or_reply(
         event,
         file_content,
         parse_mode=parse_pre,
         aslink=True,
         noformat=True,
-        linktext="**Telegram allows only 4096 charcters in a single message but replied file has much more ! So pasting it to pastebin\n\nlink :**",
+        linktext="**Telegram allows only 4096 charcters in a single message but replied file has much more ! So pasting it to pastebin\n\nLink :**",
     )
     if os.path.exists(file_loc):
         os.remove(file_loc)
@@ -475,7 +474,7 @@ async def on_file_to_photo(event):
     pattern="gif(?:\s|$)([\s\S]*)",
     command=("gif", plugin_category),
     info={
-        "header": "Converts Given animated sticker to gif",
+        "header": "Converts given animated sticker to gif",
         "usage": "{tr}gif quality ; fps ( frames per second )",
     },
 )
@@ -499,7 +498,7 @@ async def _(event):  # sourcery no-metrics
             except ValueError:
                 return await edit_delete(
                     event,
-                    "wrong syntax ! Syntax is `.gif quality ; fps ( frames per second )`",
+                    "Wrong syntax ! Syntax is `.gif quality ; fps ( frames per second )`",
                 )
             if 0 < loc[0] < 721:
                 quality = loc[0].strip()
@@ -515,7 +514,7 @@ async def _(event):  # sourcery no-metrics
             except ValueError:
                 return await edit_delete(
                     event,
-                    "wrong syntax ! Syntax is `.gif quality ; fps ( frames per second )`",
+                    "Wrong syntax ! Syntax is `.gif quality ; fps ( frames per second )`",
                 )
             if 0 < loc[0] < 721:
                 quality = loc[0].strip()
@@ -529,7 +528,7 @@ async def _(event):  # sourcery no-metrics
         return await edit_or_reply(event, "`Stupid ! This is not animated sticker`")
     catevent = await edit_or_reply(
         event,
-        "Converting this sticker to gif..\n\n This may takes upto few mins..",
+        "Converting this sticker to gif..\n\nThis may takes upto few minutes..",
         parse_mode=_format.parse_pre,
     )
     try:
@@ -721,7 +720,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
         elif args == "i":
             outframes = await invert_frames(image, w, h, outframes)
     except Exception as e:
-        return await edit_delete(catevent, f"**Error :**\n__{e}__")
+        return await edit_delete(catevent, f"**Error :**\n{e}")
     output = io.BytesIO()
     output.name = "Output.gif"
     outframes[0].save(output, save_all=True, append_images=outframes[1:], duration=0.7)
