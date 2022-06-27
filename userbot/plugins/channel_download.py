@@ -20,7 +20,7 @@ plugin_category = "tools"
     command=("getc", plugin_category),
     info={
         "header": "To download channel media files",
-        "description": "Pass username and no of latest messages to check to command \
+        "description": "Pass username and number of latest messages to check to command\
              so the bot will download media files from that latest no of messages to server ",
         "usage": "{tr}getc count channel_username",
         "examples": "{tr}getc 10 @catuserbot17",
@@ -44,7 +44,7 @@ async def get_media(event):
             await event.client.download_media(msg, tempdir)
             i += 1
             await event.edit(
-                f"Downloading media from this channel\n **Downloaded : **`{i}`"
+                f"Downloading media from this channel\n\n**Downloaded : **`{i}`"
             )
     ps = subprocess.Popen(("ls", tempdir), stdout=subprocess.PIPE)
     output = subprocess.check_output(("wc", "-l"), stdin=ps.stdout)
@@ -62,8 +62,8 @@ async def get_media(event):
     command=("geta", plugin_category),
     info={
         "header": "To download channel all media files",
-        "description": "pass username to command so the bot will download all media files from that latest no of messages to server ",
-        "note": "There is limit of 3000 messages for this process to prevent api limits , that is will download all media files from latest 3000 messages",
+        "description": "Pass username to command so the bot will download all media files from that latest no of messages to server ",
+        "note": "There is limit of 3000 messages for this process to prevent api limits that is will download all media files from latest 3000 messages",
         "usage": "{tr}geta channel_username",
         "examples": "{tr}geta @catuserbot17",
     },
@@ -84,7 +84,7 @@ async def get_media(event):
             await event.client.download_media(msg, tempdir)
             i += 1
             await event.edit(
-                f"Downloading media from this channel\n **Downloaded : **`{i}`"
+                f"Downloading media from this channel\n\n**Downloaded : **`{i}`"
             )
     ps = subprocess.Popen(("ls", tempdir), stdout=subprocess.PIPE)
     output = subprocess.check_output(("wc", "-l"), stdin=ps.stdout)
