@@ -73,11 +73,11 @@ async def truth_dare_task(event):
     try:
         task = await get_task(taskmode, category)
         if taskmode == "truth":
-            await catevent.edit(f"**The truth task for you is**\n`{task}`")
+            await catevent.edit(f"**The truth task for you is**\n\n`{task}`")
         else:
-            await catevent.edit(f"**The dare task for you is**\n`{task}`")
+            await catevent.edit(f"**The dare task for you is**\n\n`{task}`")
     except Exception as e:
-        await edit_delete(catevent, f"**Error while getting task**\n`{e}`", 7)
+        await edit_delete(catevent, f"**Error while getting task**\n\n`{e}`", 7)
 
 
 @catub.cat_cmd(
@@ -149,7 +149,7 @@ async def igame(event):
     else:
         await edit_or_reply(
             event,
-            f"**Game code `{input_str}` is selected for game :-** __{game[input_str]}__",
+            f"**Game code `{input_str}` is selected for game :-** {game[input_str]}",
         )
         await asyncio.sleep(1)
         bot = "@inlinegamesbot"
