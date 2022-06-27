@@ -1,4 +1,3 @@
-# ported from paperplaneextended by avinashreddy3108 for media support
 import re
 
 from telethon.utils import get_display_name
@@ -112,10 +111,10 @@ async def add_new_filter(event):
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"#FILTER\
-            \nCHAT ID: {event.chat_id}\
-            \nTRIGGER: {keyword}\
-            \n\nThe following message is saved as the filter's reply data for the chat , please don't delete it",
+                f"FILTER\
+            \n\nCHAT ID : {event.chat_id}\
+            \n\nTRIGGER : {keyword}\
+            \n\nThe following message is saved as the filter's reply data for the chat please don't delete it",
             )
             msg_o = await event.client.forward_messages(
                 entity=BOTLOG_CHATID,
@@ -159,7 +158,7 @@ async def on_snip_list(event):
     for filt in filters:
         if OUT_STR == "There are no filters in this chat":
             OUT_STR = "Active filters in this chat :\n"
-        OUT_STR += "👉🏻 `{}`\n".format(filt.keyword)
+        OUT_STR += "`{}`\n".format(filt.keyword)
     await edit_or_reply(
         event,
         OUT_STR,
