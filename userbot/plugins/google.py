@@ -1,4 +1,3 @@
-# reverse search and google search  plugin for cat
 import io
 import os
 import re
@@ -19,8 +18,8 @@ from ..helpers.functions import deEmojify
 from ..helpers.utils import reply_id
 
 opener = urllib.request.build_opener()
-useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36"
-opener.addheaders = [("User-agent", useragent)]
+useragent = "Mozilla 5.0 ( Windows NT 10.0 ; Win64 ; x64 ) Applewebkit 537.36 ( KHTML like gecko ) Chrome 88.0.4324.104 Safari 537.36"
+opener.addheaders = [("User agent", useragent)]
 
 plugin_category = "tools"
 
@@ -82,7 +81,7 @@ async def scam(results, lim):
 )
 async def gsearch(q_event):
     "Google search command"
-    catevent = await edit_or_reply(q_event, "`searching...`")
+    catevent = await edit_or_reply(q_event, "`Searching...`")
     match = q_event.pattern_match.group(1)
     page = re.findall(r"-p\d+", match)
     lim = re.findall(r"-l\d+", match)
@@ -125,7 +124,7 @@ async def gsearch(q_event):
             title = gresults["titles"][i]
             link = gresults["links"][i]
             desc = gresults["descriptions"][i]
-            msg += f"👉🏻 [{title}]({link})\n`{desc}`\n\n"
+            msg += f"[{title}]({link})\n`{desc}`\n\n"
         except IndexError:
             break
     await edit_or_reply(
@@ -133,12 +132,12 @@ async def gsearch(q_event):
         "**Search query :**\n`" + match + "`\n\n**Results :**\n" + msg,
         link_preview=False,
         aslink=True,
-        linktext=f"**The search results for the query **__{match}__ **are** :",
+        linktext=f"**The search results for the query ** {match} **are** :",
     )
     if BOTLOG:
         await q_event.client.send_message(
             BOTLOG_CHATID,
-            "Google Search query `" + match + "` was executed successfully",
+            "Google search query `" + match + "` was executed successfully",
         )
 
 
@@ -186,7 +185,7 @@ async def _(event):
             the_location = google_rs_response.headers.get("Location")
         await catevent.edit("Found google result pouring some soup on it !")
         headers = {
-            "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0"
+            "User agent": "Mozilla 5.0 ( X11 ; Ubuntu ; Linux x86_64 ; rv:84.0 ) Gecko 20100101 Firefox 84.0"
         }
         response = requests.get(the_location, headers=headers)
         soup = BeautifulSoup(response.text, "html.parser")
@@ -206,9 +205,9 @@ async def _(event):
         end = datetime.now()
         ms = (end - start).seconds
         OUTPUT_STR = """{img_size}
-<b>Possible Related Search : </b> <a href="{prs_url}">{prs_text}</a> 
-<b>More Info : </b> Open this <a href="{the_location}">Link</a> 
-<i>fetched in {ms} seconds</i>""".format(
+<b>Possible related search : </b> <a href="{prs_url}">{prs_text}</a> 
+<b>More info : </b> Open this <a href="{the_location}">Link</a> 
+<i>Fetched in {ms} seconds</i>""".format(
             **locals()
         )
     else:
@@ -302,7 +301,7 @@ async def google_search(event):
     reply_to_id = await reply_id(event)
     if not input_str:
         return await edit_delete(
-            event, "What should i search? Give search query plox"
+            event, "What should I search ? Give search query plox"
         )
     input_str = deEmojify(input_str).strip()
     if len(input_str) > 195 or len(input_str) < 1:
