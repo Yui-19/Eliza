@@ -21,7 +21,7 @@ plugin_category = "fun"
     command=("glitch", plugin_category),
     info={
         "header": "Glitches the given image",
-        "description": "Glitches the given mediafile ( gif , stickers , image, videos ) to a sticker / image and glitch range is from 1 to 8\
+        "description": "Glitches the given mediafile ( gif , stickers , image , videos ) to a sticker or image and glitch range is from 1 to 8\
                     If nothing is mentioned then by default it is 2",
         "options": {
             "glitch": "To output result as gif",
