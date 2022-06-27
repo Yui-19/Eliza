@@ -1,4 +1,4 @@
-# By @sakku_cute
+# By @Yui
 from userbot import catub
 
 from ..core.managers import edit_delete
