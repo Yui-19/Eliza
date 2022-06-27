@@ -44,13 +44,13 @@ plugin_category = "utils"
 )
 async def _(event):
     "To get list of admins"
-    mentions = "**Admins in this group** : \n"
+    mentions = "**Admins in this group** :\n"
     reply_message = await reply_id(event)
     input_str = event.pattern_match.group(1)
     to_write_chat = await event.get_input_chat()
     chat = None
     if input_str:
-        mentions = f"Admins in {input_str} group : \n"
+        mentions = f"Admins in {input_str} group :\n"
         try:
             chat = await event.client.get_entity(input_str)
         except Exception as e:
@@ -64,7 +64,7 @@ async def _(event):
             chat, filter=ChannelParticipantsAdmins
         ):
             if not x.deleted and isinstance(x.participant, ChannelParticipantCreator):
-                mentions += "\n 👑 [{}](tg://user?id={}) `{}`".format(
+                mentions += "\n👑 [{}](tg://user?id={}) `{}`".format(
                     x.first_name, x.id, x.id
                 )
         mentions += "\n"
@@ -74,7 +74,7 @@ async def _(event):
             if x.deleted:
                 mentions += "\n `{}`".format(x.id)
             elif isinstance(x.participant, ChannelParticipantAdmin):
-                mentions += "\n ⚜️ [{}](tg://user?id={}) `{}`".format(
+                mentions += "\n👑 [{}](tg://user?id={}) `{}`".format(
                     x.first_name, x.id, x.id
                 )
     except Exception as e:
@@ -98,12 +98,12 @@ async def _(event):
 )
 async def _(event):
     "To get list of bots"
-    mentions = "**Bots in this Group** : \n"
+    mentions = "**Bots in this group** : \n"
     input_str = event.pattern_match.group(1)
     if not input_str:
         chat = await event.get_input_chat()
     else:
-        mentions = "Bots in {} Group: \n".format(input_str)
+        mentions = "Bots in {} group :\n".format(input_str)
         try:
             chat = await event.client.get_entity(input_str)
         except Exception as e:
@@ -113,11 +113,11 @@ async def _(event):
             chat, filter=ChannelParticipantsBots
         ):
             if isinstance(x.participant, ChannelParticipantAdmin):
-                mentions += "\n ⚜️ [{}](tg://user?id={}) `{}`".format(
+                mentions += "\n👑 [{}](tg://user?id={}) `{}`".format(
                     x.first_name, x.id, x.id
                 )
             else:
-                mentions += "\n [{}](tg://user?id={}) `{}`".format(
+                mentions += "\n👑 [{}](tg://user?id={}) `{}`".format(
                     x.first_name, x.id, x.id
                 )
     except Exception as e:
@@ -140,11 +140,11 @@ async def _(event):
 )
 async def get_users(show):
     "To get list of users"
-    mentions = "**Users in this group** : \n"
+    mentions = "**Users in this group** :\n"
     await reply_id(show)
     input_str = show.pattern_match.group(1)
     if input_str:
-        mentions = "Users in {} group : \n".format(input_str)
+        mentions = "Users in {} group :\n".format(input_str)
         try:
             chat = await show.client.get_entity(input_str)
         except Exception as e:
@@ -178,7 +178,7 @@ async def get_users(show):
     pattern="chatinfo(?:\s|$)([\s\S]*)",
     command=("chatinfo", plugin_category),
     info={
-        "header": "To get Group details",
+        "header": "To get group details",
         "description": "Shows you the total information of the required chat",
         "usage": [
             "{tr}chatinfo <username/userid>",
@@ -226,11 +226,11 @@ async def get_chatinfo(event, catevent):
         try:
             chat_info = await event.client(GetFullChannelRequest(chat))
         except ChannelInvalidError:
-            await catevent.edit("`Invalid channel / group`")
+            await catevent.edit("`Invalid channel or group`")
             return None
         except ChannelPrivateError:
             await catevent.edit(
-                "`This is a private channel / group or I am banned from there`"
+                "`This is a private channel or group or I am banned from there`"
             )
             return None
         except ChannelPublicGroupNaError:
@@ -279,7 +279,7 @@ async def fetch_info(chat, event):  # sourcery no-metrics
     creator_firstname = (
         msg_info.users[0].first_name
         if creator_valid and msg_info.users[0].first_name is not None
-        else "Deleted Account"
+        else "Deleted account"
     )
     creator_username = (
         msg_info.users[0].username
@@ -388,7 +388,7 @@ async def fetch_info(chat, event):  # sourcery no-metrics
             bots += 1
 
     caption = "<b>CHAT INFO :</b>\n"
-    caption += f"ID : <code>{chat_obj_info.id}</code>\n"
+    caption += f"Id : <code>{chat_obj_info.id}</code>\n"
     if chat_title is not None:
         caption += f"{chat_type} Name : {chat_title}\n"
     if former_title is not None:  # Meant is the very first title
@@ -452,7 +452,7 @@ async def fetch_info(chat, event):  # sourcery no-metrics
         else:
             caption += "\n"
     if hasattr(chat_obj_info, "scam") and chat_obj_info.scam:
-        caption += "Scam: <b>Yes</b>\n\n"
+        caption += "Scam : <b>Yes</b>\n\n"
     if hasattr(chat_obj_info, "verified"):
         caption += f"Verified by telegram : {verified}\n\n"
     if description:
