@@ -1,5 +1,3 @@
-"""command: .hack & .thack """
-# thx to @r4v4n4
 import asyncio
 
 from userbot import catub
@@ -17,7 +15,7 @@ plugin_category = "fun"
     info={
         "header": "Fun hack animation",
         "description": "Reply to user to show hack animation",
-        "note": "This is just for fun ! Not real hacking",
+        "note": "This is just for fun",
         "usage": "{tr}hack",
     },
 )
@@ -28,13 +26,13 @@ async def _(event):
         idd = reply_message.sender_id
         if idd == 1035034432:
             await edit_or_reply(
-                event, "This is my master\n\nI can't hack my master's account"
+                event, "This is my mistress\n\nI can't hack my mistress's account"
             )
         else:
             event = await edit_or_reply(event, "Hacking..")
             animation_chars = [
                 "`Connecting to hacked private server...`",
-                "`target selected`",
+                "`Target selected`",
                 "`Hacking... 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
                 "`Hacking... 4%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
                 "`Hacking... 8%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
@@ -43,7 +41,7 @@ async def _(event):
                 "`Hacking... 52%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
                 "`Hacking... 84%\n█████████████████████▒▒▒▒ `",
                 "`Hacking... 100%\n█████████HACKED███████████ `",
-                f"`Targeted account hacked...\n\nPay 1000$ to` {ALIVE_NAME} `to Remove this hack...`",
+                f"`Targeted account hacked...\n\nPay 1000$ to` {ALIVE_NAME} `to remove this hack...`",
             ]
             animation_interval = 3
             animation_ttl = range(11)
@@ -53,7 +51,7 @@ async def _(event):
     else:
         await edit_or_reply(
             event,
-            "No user is defined\n\n Can't hack account",
+            "No user is defined\n\nCan't hack account",
             parse_mode=_format.parse_pre,
         )
 
@@ -62,9 +60,9 @@ async def _(event):
     pattern="thack$",
     command=("thack", plugin_category),
     info={
-        "header": "Fun Telegram hack animation",
+        "header": "Fun telegram hack animation",
         "description": "Reply to user to show telegram hack animation",
-        "note": "This is just for fun ! Not real hacking",
+        "note": "This is just for fun",
         "usage": "{tr}thack",
     },
 )
@@ -84,7 +82,7 @@ async def _(event):
         "`Hacking... 52%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `\n\n\n  TERMINAL:\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)\nCollecting Data Package\n  Downloading Telegram-Data-Sniffer-7.1.1-py2.py3-none-any.whl (82 kB)\nBuilding wheel for Tg-Bruteforcing (setup.py): finished with status 'done'\nCreated wheel for telegram: filename=Telegram-Data-Sniffer-0.0.1-py3-none-any.whl size=1306 sha256=cb224caad7fe01a6649188c62303cd4697c1869fa12d280570bb6ac6a88e6b7e\n  Stored in directory: /app/.cache/pip/wheels/a2/9f/b5/650dd4d533f0a17ca30cc11120b176643d27e0e1f5c9876b5b",
         "`Hacking... 84%\n█████████████████████▒▒▒▒ `\n\n\n  TERMINAL:\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)\nCollecting Data Package\n  Downloading Telegram-Data-Sniffer-7.1.1-py2.py3-none-any.whl (82 kB)\nBuilding wheel for Tg-Bruteforcing (setup.py): finished with status 'done'\nCreated wheel for telegram: filename=Telegram-Data-Sniffer-0.0.1-py3-none-any.whl size=1306 sha256=cb224caad7fe01a6649188c62303cd4697c1869fa12d280570bb6ac6a88e6b7e\n  Stored in directory: /app/.cache/pip/wheels/a2/9f/b5/650dd4d533f0a17ca30cc11120b176643d27e0e1f5c9876b5b\n\n **Successfully Hacked Telegram Server Database**",
         "`Hacking... 100%\n█████████HACKED███████████ `\n\n\n  TERMINAL:\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)\nCollecting Data Package\n  Downloading Telegram-Data-Sniffer-7.1.1-py2.py3-none-any.whl (82 kB)\nBuilding wheel for Tg-Bruteforcing (setup.py): finished with status 'done'\nCreated wheel for telegram: filename=Telegram-Data-Sniffer-0.0.1-py3-none-any.whl size=1306 sha256=cb224caad7fe01a6649188c62303cd4697c1869fa12d280570bb6ac6a88e6b7e\n  Stored in directory: /app/.cache/pip/wheels/a2/9f/b5/650dd4d533f0a17ca30cc11120b176643d27e0e1f5c9876b5b\n\n **Successfully Hacked Telegram Server Database**\n\n\n🔹Output: Generating.....",
-        f"`Targeted account hacked...\n\nPay 10000$ To` {ALIVE_NAME}`To remove this hack`\n\n\n  TERMINAL :\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)\nCollecting Data Package\n  Downloading Telegram-Data-Sniffer-7.1.1-py2.py3-none-any.whl (82 kB)\nBuilding wheel for Tg-Bruteforcing ( setup.py ): finished with status 'done'\nCreated wheel for telegram : filename=Telegram-Data-Sniffer-0.0.1-py3-none-any.whl size=1306 sha256=cb224caad7fe01a6649188c62303cd4697c1869fa12d280570bb6ac6a88e6b7e\n  Stored in directory : /app/.cache/pip/wheels/a2/9f/b5/650dd4d533f0a17ca30cc11120b176643d27e0e1f5c9876b5b\n\n **Successfully Hacked Telegram Server Database**\n\n\n🔹**Output :** Successful",
+        f"`Targeted account hacked...\n\nPay 10000$ to`{ALIVE_NAME}`to remove this hack`\n\n\nTERMINAL :\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)\nCollecting Data Package\n  Downloading Telegram-Data-Sniffer-7.1.1-py2.py3-none-any.whl (82 kB)\nBuilding wheel for Tg-Bruteforcing ( setup.py ): finished with status 'done'\nCreated wheel for telegram : filename=Telegram-Data-Sniffer-0.0.1-py3-none-any.whl size=1306 sha256=cb224caad7fe01a6649188c62303cd4697c1869fa12d280570bb6ac6a88e6b7e\n  Stored in directory : /app/.cache/pip/wheels/a2/9f/b5/650dd4d533f0a17ca30cc11120b176643d27e0e1f5c9876b5b\n\n **Successfully Hacked Telegram Server Database**\n\n\n🔹**Output :** Successful",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -97,12 +95,12 @@ async def _(event):
     info={
         "header": "Fun whatsapp hack animation",
         "description": "Reply to user to show whatsapp hack animation",
-        "note": "This is just for fun ! Not real hacking",
+        "note": "This is just for fun",
         "usage": "{tr}wahack",
     },
 )
 async def _(event):
-    "Fun Whatsapp hack animation"
+    "Fun whatsapp hack animation"
     animation_interval = 2
     animation_ttl = range(15)
     event = await edit_or_reply(event, "Wahack..")
@@ -121,7 +119,7 @@ async def _(event):
         "Hacking... 93.50%\n[█████████████████░░░]\n`Decryption successful !`\nEta : 0m , 03s",
         "Hacking... 100%\n[████████████████████]\n`Scanning file...`\nEta : 0m , 00s",
         "Hacking complete !\nUploading file...",
-        "Targeted account hacked...!\n\n File has been successfully uploaded to my server !\nWhatsapp database :\n`./DOWNLOADS/msgstore.db.crypt12`",
+        "Targeted account hacked...!\n\nFile has been successfully uploaded to my server\nWhatsapp database :\n`./DOWNLOADS/msgstore.db.crypt12`",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
