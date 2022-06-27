@@ -1,4 +1,3 @@
-# by @mrconfused (@sandy1709)
 import io
 import os
 from io import BytesIO
@@ -125,7 +124,7 @@ async def irotate(event):
     if mediatype == "Sticker" and reply.document.mime_type == "application/i-tgsticker":
         return await edit_delete(
             event,
-            "Reply to photo or sticker to rotate it with given angle ! Animated sticker is not supported",
+            "Reply to photo or sticker to rotate it with given angle\n\nAnimated sticker is not supported",
         )
     args = event.pattern_match.group(1)
     catevent = await edit_or_reply(event, "Rotating the replied media...")
@@ -152,7 +151,7 @@ async def irotate(event):
     pattern="iresize(?:\s|$)([\s\S]*)$",
     command=("iresize", plugin_category),
     info={
-        "header": "To resize the replied image / sticker",
+        "header": "To resize the replied image or sticker",
         "usage": [
             "{tr}iresize <dimension> will send square image of that dimension",
             "{tr}iresize <width> <height> will send square image of that dimension",
@@ -161,7 +160,7 @@ async def irotate(event):
     },
 )
 async def iresize(event):
-    "To resize the replied image / sticker"
+    "To resize the replied image or sticker"
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
     if not reply or not mediatype or mediatype not in ["Photo", "Sticker"]:
@@ -169,7 +168,7 @@ async def iresize(event):
     if mediatype == "Sticker" and reply.document.mime_type == "application/i-tgsticker":
         return await edit_delete(
             event,
-            "Reply to photo or sticker to resize it ! Animated sticker is not supported",
+            "Reply to photo or sticker to resize it\n\nAnimated sticker is not supported",
         )
     args = (event.pattern_match.group(1)).split()
     catevent = await edit_or_reply(event, "Resizeing the replied media...")
@@ -185,16 +184,16 @@ async def iresize(event):
         try:
             nw, nh = int(args[0]), int(args[0])
         except ValueError:
-            return await edit_delete(catevent, "**Error :**\nInvalid dimension")
+            return await edit_delete(catevent, "**Error :**\n\nInvalid dimension")
     else:
         try:
             nw = int(args[0])
         except ValueError:
-            return await edit_delete(catevent, "**Error :**\nInvalid width")
+            return await edit_delete(catevent, "**Error :**\n\nInvalid width")
         try:
             nh = int(args[1])
         except ValueError:
-            return await edit_delete(catevent, "**Error:**\nInvalid height")
+            return await edit_delete(catevent, "**Error:**\n\nInvalid height")
     try:
         image = image.resize((nw, nh))
     except Exception as e:
@@ -269,7 +268,7 @@ async def pic_gifcmd(event):
     if mediatype == "Sticker" and reply.document.mime_type == "application/i-tgsticker":
         return await edit_delete(
             event,
-            "Reply to photo or sticker to make it doted image ! Animated sticker is not supported",
+            "Reply to photo or sticker to make it doted image\n\nAnimated sticker is not supported",
         )
     args = event.pattern_match.group(1)
     if args:
