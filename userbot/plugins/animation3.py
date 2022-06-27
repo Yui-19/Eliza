@@ -53,7 +53,7 @@ async def _(event):
 async def _(event):
     "animation command"
     event = await edit_or_reply(event, "`Raining...`")
-    deq = deque(list("🌬☁️🌩🌨🌧🌦🌥⛅🌤"))
+    deq = deque(list("Rain rain go away ☔"))
     for _ in range(48):
         await asyncio.sleep(0.3)
         await event.edit("".join(deq))
@@ -74,7 +74,7 @@ async def _(event):
     animation_ttl = range(12)
     event = await edit_or_reply(event, "`Deploying...`")
     animation_chars = [
-        "**Heroku connecting to latest github build **",
+        "**Heroku connecting to latest github build**",
         f"**Build started by user** {mention}",
         f"**Deploy** `535a74f0` **by user** {mention}",
         "**Restarting heroku server...**",
@@ -83,8 +83,8 @@ async def _(event):
         "**Process exited with** `status 143`",
         "**Starting process with command** `python3 -m userbot`",
         "**State changed from starting to up**",
-        "INFO : Userbot : Logged in as 557667062",
-        "INFO : Userbot : Successfully loaded all plugins",
+        "Info : Userbot : Logged in as 557667062",
+        "Info : Userbot : Successfully loaded all plugins",
         "**Build succeeded**",
     ]
     for i in animation_ttl:
@@ -97,8 +97,8 @@ async def _(event):
     command=("dump", plugin_category),
     info={
         "header": "Fun animation try yourself to know more",
-        "usage": "{tr}dump <any three emoji's(optional)>",
-        "examples": ["{tr}dump", "{tr}dump 🍰🍎🐓"],
+        "usage": "{tr}dump <any three emoji's( optional )>",
+        "examples": ["{tr}dump", "{tr}dump 🍰🍸🍮"],
     },
 )
 async def _(event):
@@ -109,8 +109,8 @@ async def _(event):
             return await edit_delete(event, "`Input length must be 3 or empty`")
         inp = " ".join(obj)
     except IndexError:
-        inp = "🥞 🎂 🍫"
-    event = await edit_or_reply(event, "`droping....`")
+        inp = "🥞 🥪 🥚"
+    event = await edit_or_reply(event, "`Dropping....`")
     u, t, g, o, s, n = inp.split(), "🗑", "<(^_^ <)", "(> ^_^)>", "⠀ ", "\n"
     h = [(u[0], u[1], u[2]), (u[0], u[1], ""), (u[0], "", "")]
     for something in reversed(
@@ -162,7 +162,7 @@ async def _(event):
         "⬛⬆️↗️\n⬅️🔄➡️\n↙️⬇️↘️",
         "↖️⬆️↗️\n⬅️🔄➡️\n↙️⬇️↘️",
     ]
-    event = await edit_or_reply(event, "fleaveme....")
+    event = await edit_or_reply(event, "Fleaveme....")
     await asyncio.sleep(2)
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -181,42 +181,42 @@ async def _(event):
     "animation command"
     animation_interval = 0.5
     animation_ttl = range(70)
-    event = await edit_or_reply(event, "loveu")
+    event = await edit_or_reply(event, "Love you...")
     animation_chars = [
-        "😀",
-        "👩‍🎨",
+        "🤩",
+        "😉",
         "😁",
-        "😂",
         "🤣",
-        "😃",
+        "😝",
+        "😑",
         "😄",
         "😅",
         "😊",
-        "☺",
+        "☺️",
         "🙂",
-        "🤔",
+        "🙃",
         "🤨",
-        "😐",
-        "😑",
+        "🤪",
+        "🥲",
         "😶",
         "😣",
         "😥",
-        "😮",
-        "🤐",
-        "😯",
+        "😲",
+        "😇",
+        "🥰",
         "😴",
-        "😔",
-        "😕",
-        "☹",
-        "🙁",
+        "😒",
+        "🙄",
         "😖",
-        "😞",
-        "😟",
-        "😢",
-        "😭",
-        "🤯",
+        "😵‍💫",
+        "😠",
+        "🤒",
+        "😳",
+        "😪",
+        "🤫",
+        "🤧",
         "💔",
-        "❤",
+        "🥺",
         "I love you ❤",
     ]
     for i in animation_ttl:
@@ -235,20 +235,20 @@ async def _(event):
 async def _(event):
     "animation command"
     event = await edit_or_reply(event, "Wait for plane...")
-    await event.edit("✈-------------")
-    await event.edit("-✈------------")
-    await event.edit("--✈-----------")
-    await event.edit("---✈----------")
-    await event.edit("----✈---------")
-    await event.edit("-----✈--------")
-    await event.edit("------✈-------")
-    await event.edit("-------✈------")
-    await event.edit("--------✈-----")
-    await event.edit("---------✈----")
-    await event.edit("----------✈---")
-    await event.edit("-----------✈--")
-    await event.edit("------------✈-")
-    await event.edit("-------------✈")
+    await event.edit("✈")
+    await event.edit(" ✈")
+    await event.edit("  ✈")
+    await event.edit("   ✈")
+    await event.edit("    ✈")
+    await event.edit("     ✈")
+    await event.edit("      ✈")
+    await event.edit("       ✈")
+    await event.edit("        ✈")
+    await event.edit("         ✈")
+    await event.edit("          ✈")
+    await event.edit("           ✈")
+    await event.edit("            ✈")
+    await event.edit("             ✈")
     await asyncio.sleep(3)
 
 
