@@ -34,7 +34,7 @@ tired_response = [
     pattern="addai$",
     command=("addai", plugin_category),
     info={
-        "header": "To add ai chatbot to replied account.",
+        "header": "To add ai chatbot to replied account",
         "usage": "{tr}addai <reply>",
     },
 )
@@ -129,7 +129,7 @@ async def delete_chatbot(event):
         lecho = get_users(event.chat_id)
         if len(lecho) == 0:
             return await edit_delete(
-                event, "You havent enabled ai atleast for one user in this chat"
+                event, "You haven't enabled ai atleast for one user in this chat"
             )
         try:
             remove_users(event.chat_id)
@@ -143,7 +143,7 @@ async def delete_chatbot(event):
     pattern="listai( -a)?$",
     command=("listai", plugin_category),
     info={
-        "header": "shows the list of users for whom you enabled ai",
+        "header": "Shows the list of users for whom you enabled ai",
         "flags": {
             "a": "To list ai enabled users in all chats",
         },
@@ -174,9 +174,9 @@ async def list_chatbot(event):  # sourcery no-metrics
                         f"☞ [{echos.user_name}](tg://user?id={echos.user_id})\n"
                     )
             elif echos.user_username:
-                group_chats += f"☞ [{echos.user_name}](https://t.me/{echos.user_username}) in chat {echos.chat_name} of chat id `{echos.chat_id}`\n"
+                group_chats += f"[{echos.user_name}](https://t.me/{echos.user_username}) in chat {echos.chat_name} of chat id `{echos.chat_id}`\n"
             else:
-                group_chats += f"☞ [{echos.user_name}](tg://user?id={echos.user_id}) in chat {echos.chat_name} of chat id `{echos.chat_id}`\n"
+                group_chats += f"[{echos.user_name}](tg://user?id={echos.user_id}) in chat {echos.chat_name} of chat id `{echos.chat_id}`\n"
 
         if private_chats != "":
             output_str += "**Private chats**\n" + private_chats + "\n\n"
@@ -191,13 +191,13 @@ async def list_chatbot(event):  # sourcery no-metrics
         for echos in lsts:
             if echos.user_username:
                 private_chats += (
-                    f"☞ [{echos.user_name}](https://t.me/{echos.user_username})\n"
+                    f"[{echos.user_name}](https://t.me/{echos.user_username})\n"
                 )
             else:
                 private_chats += (
-                    f"☞ [{echos.user_name}](tg://user?id={echos.user_id})\n"
+                    f"[{echos.user_name}](tg://user?id={echos.user_id})\n"
                 )
-        output_str = "**Ai enabled users in this chat are :**\n" + private_chats
+        output_str = "**Ai enabled users in this chat are :**\n\n" + private_chats
     await edit_or_reply(event, output_str)
 
 
@@ -210,7 +210,7 @@ async def ai_reply(event):
             response = await rs_client.get_ai_response(
                 message=event.message.text,
                 server="primary",
-                master="CatUserbot",
+                master="Cat userbot",
                 bot=master_name,
                 uid=event.client.uid,
                 language=AI_LANG,
