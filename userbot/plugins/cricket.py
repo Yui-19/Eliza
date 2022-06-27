@@ -31,7 +31,7 @@ async def _(event):
             respond = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("Unblock @cricbuzz_bot & try again")
+            await catevent.edit("Unblock @cricbuzz_bot and try again")
             return
         if respond.text.startswith("I can't find that"):
             await catevent.edit("Sorry I can't find it")
