@@ -1,8 +1,3 @@
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# Original file can be found at https://github.com/TeamUltroid/Ultroid/blob/main/plugins/calculator.py
-# Ported to cat userbot by @realnub. If you remove these three lines then you are a pure 100% gay, real idiot and you will die in hell for sure.
-
-
 import re
 
 from telethon import Button
@@ -168,4 +163,4 @@ async def _(e):
     tultd = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
     lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
     lst.append([Button.inline("=", data="calc=")])
-    await e.edit("**𝙎𝙀𝙓𝙔 𝘾𝘼𝙏 𝘾𝘼𝙇𝘾𝙐𝙇𝘼𝙏𝙊𝙍**", buttons=lst)
+    await e.edit("𝘾𝘼𝙏 𝘾𝘼𝙇𝘾𝙐𝙇𝘼𝙏𝙊𝙍", buttons=lst)
