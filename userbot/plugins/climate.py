@@ -115,16 +115,16 @@ async def get_weather(event):  # sourcery no-metrics
     mph = str(wind * 2.237).split(".")
     await edit_or_reply(
         event,
-        f"🌡**Temperature :** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n"
-        + f"🥰**Human feeling :** `{celsius(feel)}°C | {fahrenheit(feel)}°F`\n"
-        + f"🥶**Min temp :** `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n"
-        + f"🥵**Max temp :** `{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F`\n"
-        + f"🌫️**Humidity :** `{humidity}%`\n"
-        + f"🕯️**Pressure :** `{pressure} hPa`\n"
-        + f"🍃**Wind :** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n"
-        + f"🌥️**Cloud :** `{cloud} %`\n"
-        + f"🌄**Sunrise :** `{sun(sunrise,ctimezone)}`\n"
-        + f"🌅**Sunset :** `{sun(sunset,ctimezone)}`\n\n\n"
+        f"🤒 **Temperature :** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n\n"
+        + f"🥰 **Human feeling :** `{celsius(feel)}°C | {fahrenheit(feel)}°F`\n\n"
+        + f"🥶 **Min temp :** `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n\n"
+        + f"🥵 **Max temp :** `{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F`\n\n"
+        + f"⚡ **Humidity :** `{humidity}%`\n\n"
+        + f"💉 **Pressure :** `{pressure} hPa`\n\n"
+        + f"🍃 **Wind :** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n\n"
+        + f"👻 **Cloud :** `{cloud} %`\n\n"
+        + f"🌞 **Sunrise :** `{sun(sunrise,ctimezone)}`\n\n"
+        + f"🌝 **Sunset :** `{sun(sunset,ctimezone)}`\n\n\n"
         + f"**{desc}**\n"
         + f"`{cityname}, {fullc_n}`\n"
         + f"`{time}`\n",
@@ -136,7 +136,7 @@ async def get_weather(event):  # sourcery no-metrics
     command=("setcity", plugin_category),
     info={
         "header": "To set default city for climate command",
-        "description": "Sets your default city so you can just use .weather or .climate when ever you neededwithout typing city name each time",
+        "description": "Sets your default city so you can just use .weather or .climate when ever you needed without typing city name each time",
         "note": "For functioning of this plugin you need to set OPEN_WEATHER_MAP_APPID var you can  get value from https://openweathermap.org/",
         "usage": [
             "{tr}climate",
@@ -145,7 +145,7 @@ async def get_weather(event):  # sourcery no-metrics
     },
 )
 async def set_default_city(event):
-    "To set default city for climate / weather command"
+    "To set default city for climate or weather command"
     if not Config.OPEN_WEATHER_MAP_APPID:
         return await edit_or_reply(
             event, "`Get an api key from` https://openweathermap.org/ `first`"
@@ -166,7 +166,7 @@ async def set_default_city(event):
             try:
                 countrycode = timezone_countries[f"{country}"]
             except KeyError:
-                return await edit_or_reply(event, "`Invalid country.`")
+                return await edit_or_reply(event, "`Invalid country`")
             CITY = newcity[0].strip() + "," + countrycode.strip()
     url = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={Config.OPEN_WEATHER_MAP_APPID}"
     request = requests.get(url)
