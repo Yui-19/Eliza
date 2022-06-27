@@ -15,7 +15,7 @@ LOGS = logging.getLogger(__name__)
     command=("id", plugin_category),
     info={
         "header": "To get id of the group or user",
-        "description": "If given input then shows id of that given chat / channel / user else if you reply to user then shows id of the replied user \
+        "description": "If given input then shows id of that given chat or channel or user else if you reply to user then shows id of the replied user\
     along with current chat id and if not replied to user or given input then just show id of the chat where you used the command",
         "usage": "{tr}id <reply/username>",
     },
@@ -37,7 +37,7 @@ async def _(event):
             try:
                 if p.title:
                     return await edit_or_reply(
-                        event, f"The id of the chat/channel `{p.title}` is `{p.id}`"
+                        event, f"The id of the chat or channel `{p.title}` is `{p.id}`"
                     )
             except Exception as e:
                 LOGS.info(str(e))
@@ -48,13 +48,13 @@ async def _(event):
             bot_api_file_id = pack_bot_file_id(r_msg.media)
             await edit_or_reply(
                 event,
-                f"**Current chat id : **`{event.chat_id}`\n**From user id : **`{r_msg.sender_id}`\n**Media file id : **`{bot_api_file_id}`",
+                f"**Current chat id : **`{event.chat_id}`\n\n**From user id : **`{r_msg.sender_id}`\n\n**Media file id : **`{bot_api_file_id}`",
             )
 
         else:
             await edit_or_reply(
                 event,
-                f"**Current chat id : **`{event.chat_id}`\n**From user id : **`{r_msg.sender_id}`",
+                f"**Current chat id : **`{event.chat_id}`\n\n**From user id : **`{r_msg.sender_id}`",
             )
 
     else:
