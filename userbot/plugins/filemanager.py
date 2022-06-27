@@ -61,35 +61,35 @@ async def lst(event):  # sourcery no-metrics
                 elif str(contents).endswith(
                     (".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico")
                 ):
-                    files += "🖼" + f"`{contents}`\n"
+                    files += "🗞️" + f"`{contents}`\n"
                 else:
-                    files += "📄" + f"`{contents}`\n"
+                    files += "📃" + f"`{contents}`\n"
             else:
-                folders += f"📁`{contents}`\n"
-        msg = msg + folders + files if files or folders else msg + "__empty path__"
+                folders += f"📜 `{contents}`\n"
+        msg = msg + folders + files if files or folders else msg + "empty path"
     else:
         size = os.stat(path).st_size
         msg = "The details of given file :\n"
         if str(path).endswith((".mp3", ".flac", ".wav", ".m4a")):
-            mode = "🎵"
+            mode = "🎙️"
         if str(path).endswith((".opus")):
-            mode = "🎙"
+            mode = "🥁"
         elif str(path).endswith((".mkv", ".mp4", ".webm", ".avi", ".mov", ".flv")):
-            mode = "🎞"
+            mode = "📹"
         elif str(path).endswith((".zip", ".tar", ".tar.gz", ".rar")):
-            mode = "🗜"
+            mode = "🗞️"
         elif str(path).endswith((".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico")):
-            mode = "🖼"
+            mode = "📃"
         else:
-            mode = "📄"
+            mode = "📜"
         time.ctime(os.path.getctime(path))
         time2 = time.ctime(os.path.getmtime(path))
         time3 = time.ctime(os.path.getatime(path))
-        msg += f"**Location :** `{path}`\n"
-        msg += f"**Icon :** `{mode}`\n"
-        msg += f"**Size :** `{humanbytes(size)}`\n"
-        msg += f"**Last modified time:** `{time2}`\n"
-        msg += f"**Last cccessed time:** `{time3}`"
+        msg += f"**Location :** `{path}`\n\n"
+        msg += f"**Icon :** `{mode}`\n\n"
+        msg += f"**Size :** `{humanbytes(size)}`\n\n"
+        msg += f"**Last modified time :** `{time2}`\n\n"
+        msg += f"**Last cccessed time :** `{time3}`"
     if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
             out_file.name = "ls.txt"
@@ -111,7 +111,7 @@ async def lst(event):  # sourcery no-metrics
     info={
         "header": "To delete a file or folder from the server",
         "usage": "{tr}rem <path>",
-        "examples": "{tr}rem Dockerfile",
+        "examples": "{tr}rem dockerfile",
     },
 )
 async def lst(event):
@@ -210,7 +210,7 @@ async def _(event):
         )
         return
     mone = await edit_or_reply(
-        event, "copying the file ...", parse_mode=_format.parse_pre
+        event, "copying the file...", parse_mode=_format.parse_pre
     )
     await asyncio.sleep(2)
     try:
@@ -236,7 +236,7 @@ async def _(event):
     if not input_str:
         return await edit_delete(
             event,
-            "What and where should I move the file or folder",
+            "What and where should I move the file or folder ?",
             parse_mode=_format.parse_pre,
         )
     loc = input_str.split(";")
