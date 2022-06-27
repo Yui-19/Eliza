@@ -15,7 +15,7 @@ plugin_category = "fun"
             "{tr}fq message <reply to a person>"
         ],
         "examples": [
-            "{tr}fq @missrose_bot Hey",
+            "{tr}fq @missrose_bot hey",
             "{tr}fq Hey <reply to rose>"
         ],
         "Notes": [
