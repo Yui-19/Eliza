@@ -20,18 +20,18 @@ plugin_category = "utils"
     pattern="collage(?:\s|$)([\s\S]*)",
     command=("collage", plugin_category),
     info={
-        "header": "To create collage from still images extracted from video/gif.",
-        "description": "Shows you the grid image of images extracted from video/gif. you can customize the Grid size by giving integer between 1 to 9 to cmd by default it is 3",
+        "header": "To create collage from still images extracted from video or gif",
+        "description": "Shows you the grid image of images extracted from video or gif ! You can customize the grid size by giving integer between 1 to 9 to cmd by default it is 3",
         "usage": "{tr}collage <1-9>",
     },
 )
 async def collage(event):
-    "To create collage from still images extracted from video/gif."
+    "To create collage from still images extracted from video or gif"
     catinput = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     catid = await reply_id(event)
     event = await edit_or_reply(
-        event, "```collaging this may take several minutes too..... 😁```"
+        event, "```Collaging this may take several minutes too...```"
     )
     if not (reply and (reply.media)):
         await event.edit("`Media not found...`")
@@ -46,13 +46,13 @@ async def collage(event):
     if catinput:
         if not catinput.isdigit():
             os.remove(catsticker)
-            await event.edit("`You input is invalid, check help`")
+            await event.edit("`You input is invalid , check help`")
             return
         catinput = int(catinput)
         if not 0 < catinput < 10:
             os.remove(catsticker)
             await event.edit(
-                "`Why too big grid you cant see images, use size of grid between 1 to 9`"
+                "`Why too big grid you cant see images , use size of grid between 1 to 9`"
             )
             return
     else:
@@ -73,7 +73,7 @@ async def collage(event):
             if files and os.path.exists(files):
                 os.remove(files)
         return await edit_delete(
-            event, "`media is not supported or try with smaller grid size`", 5
+            event, "`Media is not supported or try with smaller grid size`", 5
         )
 
     await event.client.send_file(
