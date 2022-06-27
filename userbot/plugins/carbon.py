@@ -27,7 +27,7 @@ CARBONLANG = "auto"
 )
 async def carbon_api(event):
     """A wrapper for carbon.now.sh"""
-    await event.edit("`Processing.. .. .. ..`")
+    await event.edit("`Processing...`")
     CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
     textx = await event.get_reply_message()
     pcode = event.text
@@ -37,7 +37,7 @@ async def carbon_api(event):
         pcode = str(textx.message)
     pcode = deEmojify(pcode)
     code = quote_plus(pcode)
-    cat = await edit_or_reply(event, "`Carbonizing.. .. .. ..\n25%`")
+    cat = await edit_or_reply(event, "`Carbonizing...\n\n25%`")
     url = CARBON.format(code=code, lang=CARBONLANG)
     chrome_options = Options()
     chrome_options.add_argument("--Headless")
@@ -52,7 +52,7 @@ async def carbon_api(event):
         executable_path=Config.CHROME_DRIVER, options=chrome_options
     )
     driver.get(url)
-    await cat.edit("`Be patient...\n50%`")
+    await cat.edit("`Be patient...\n\n50%`")
     download_path = "./"
     driver.command_executor._commands["send_command"] = (
         "POST",
@@ -65,10 +65,10 @@ async def carbon_api(event):
     driver.execute("send_command", params)
     driver.find_element_by_xpath("//button[contains(text(),'Export')]").click()
 
-    await cat.edit("`Processing..\n75%`")
+    await cat.edit("`Processing..\n\n75%`")
 
     await asyncio.sleep(2)
-    await cat.edit("`Done danaa done\n100%`")
+    await cat.edit("`Done danaa done\n\n100%`")
     file = "./carbon.png"
     await cat.edit("`Uploading..`")
     await event.client.send_file(
@@ -88,7 +88,7 @@ async def carbon_api(event):
     pattern="krb(?:\s|$)([\s\S]*)",
     command=("krb", plugin_category),
     info={
-        "header": "Carbon generators for given text , each time gives  random style ! You can also use patcicular style by using semicolon after text and name",
+        "header": "Carbon generators for given text , each time gives random style ! You can also use patcicular style by using semicolon after text and name",
         "usage": [
             "{tr}krb <text>",
             "{tr}krb <reply to text>",
@@ -98,7 +98,7 @@ async def carbon_api(event):
 )
 async def carbon_api(event):
     """A wrapper for carbon.now.sh"""
-    cat = await edit_or_reply(event, "`Processing.. .. .. ..`")
+    cat = await edit_or_reply(event, "`Processing...`")
     CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
     textx = await event.get_reply_message()
     pcode = event.text
@@ -116,7 +116,7 @@ async def carbon_api(event):
     skeme = skeme.strip()
     pcode = deEmojify(pcode)
     code = quote_plus(pcode)
-    await cat.edit("`Making carbon...`\n`25%`")
+    await cat.edit("`Making carbon...`\n\n`25%`")
     url = CARBON.format(code=code, lang=CARBONLANG)
     chrome_options = Options()
     chrome_options.add_argument("--Headless")
@@ -131,7 +131,7 @@ async def carbon_api(event):
         executable_path=Config.CHROME_DRIVER, options=chrome_options
     )
     driver.get(url)
-    await cat.edit("`Be patient...\n50%`")
+    await cat.edit("`Be patient...\n\n50%`")
     download_path = "./"
     driver.command_executor._commands["send_command"] = (
         "POST",
@@ -164,13 +164,13 @@ async def carbon_api(event):
     color_name = driver.find_element_by_xpath(
         "/html/body/div[1]/main/div[3]/div[2]/div[1]/div[1]/div/span[2]/input"
     ).get_attribute("value")
-    await cat.edit("`Done danaa done\n100%`")
+    await cat.edit("`Done danaa done\n\n100%`")
     file = "./carbon.png"
     await cat.edit("`Uploading..`")
     await event.client.send_file(
         event.chat_id,
         file,
-        caption=f"`Here's your carbon !` \n**Colour scheme : **`{color_name}`",
+        caption=f"`Here's your carbon`\n\n**Colour scheme : **`{color_name}`",
         force_document=True,
         reply_to=event.message.reply_to_msg_id,
     )
@@ -234,7 +234,7 @@ async def carbon_api(event):
     await asyncio.sleep(1)
     await cat.edit("🔳🔳🔳🔳🔳")
     file = "./carbon.png"
-    await cat.edit("Carbon1 completed , uploading carbon")
+    await cat.edit("Carbon 1 completed , uploading carbon")
     await event.client.send_file(
         event.chat_id,
         file,
@@ -299,11 +299,11 @@ async def carbon_api(event):
     await asyncio.sleep(1)
     await cat.edit("🔘🔘🔘🔘🔘")
     file = "./carbon.png"
-    await cat.edit("Carbon2 completed , uploading carbon")
+    await cat.edit("Carbon 2 completed , uploading carbon")
     await event.client.send_file(
         event.chat_id,
         file,
-        caption="Here's your carbon2",
+        caption="Here's your carbon 2",
         force_document=True,
         reply_to=event.message.reply_to_msg_id,
     )
@@ -317,7 +317,7 @@ async def carbon_api(event):
     pattern="kar3(?:\s|$)([\s\S]*)",
     command=("kar3", plugin_category),
     info={
-        "header": "Carbon generators for given text ( Fixed style )",
+        "header": "Carbon generators for given text ( fixed style )",
         "usage": [
             "{tr}kar3 <text>",
             "{tr}kar3 <reply to text>",
@@ -368,11 +368,11 @@ async def carbon_api(event):
     await asyncio.sleep(1)
     await cat.edit("🔵🔵🔵🔵🔵")
     file = "./carbon.png"
-    await cat.edit("Carbon3 completed , uploading carbon")
+    await cat.edit("Carbon 3 completed , uploading carbon")
     await event.client.send_file(
         event.chat_id,
         file,
-        caption="Here's your carbon3",
+        caption="Here's your carbon 3",
         force_document=True,
         reply_to=event.message.reply_to_msg_id,
     )
@@ -438,7 +438,7 @@ async def carbon_api(event):
     await event.client.send_file(
         event.chat_id,
         file,
-        caption="Here's your carbon4 ",
+        caption="Here's your carbon 4 ",
         force_document=True,
         reply_to=event.message.reply_to_msg_id,
     )
@@ -540,7 +540,7 @@ async def carbon_api(event):
     await event.client.send_file(
         event.chat_id,
         file,
-        caption="Here's your carbonrgb",
+        caption="Here's your carbon rgb",
         force_document=True,
         reply_to=event.message.reply_to_msg_id,
     )
