@@ -1,4 +1,4 @@
-# By @sakku
+# By @Yui
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import catub
@@ -33,4 +33,4 @@ async def _(event):
             )
             await event.delete()
         except YouBlockedUserError:
-            await event.edit("**Error :**\nUnblock @SpamBot and try again")
+            await event.edit("**Error :**\n\nUnblock @SpamBot and try again")
