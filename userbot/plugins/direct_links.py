@@ -166,7 +166,7 @@ def yandex_disk(url: str) -> str:
         name = dl_url.split("filename=")[1].split("&disposition")[0]
         reply += f"[{name}]({dl_url})\n"
     except KeyError:
-        reply += "`Error : File not found / download limit reached`\n"
+        reply += "`Error : File not found or download limit reached`\n"
         return reply
     return reply
 
@@ -262,12 +262,12 @@ def sourceforge(url: str) -> str:
 
 
 def osdn(url: str) -> str:
-    """OSDN direct links generator"""
+    """Osdn direct links generator"""
     osdn_link = "https://osdn.net"
     try:
         link = re.findall(r"\bhttps?://.*osdn\.net\S+", url)[0]
     except IndexError:
-        reply = "`No OSDN links found`\n"
+        reply = "`No osdn links found`\n"
         return reply
     page = BeautifulSoup(requests.get(link, allow_redirects=True).content, "lxml")
     info = page.find("a", {"class": "mirror_link"})
@@ -302,11 +302,11 @@ def github(url: str) -> str:
 
 
 def androidfilehost(url: str) -> str:
-    """AFH direct links generator"""
+    """Afh direct links generator"""
     try:
         link = re.findall(r"\bhttps?://.*androidfilehost.*fid.*\S+", url)[0]
     except IndexError:
-        reply = "`No AFH links found`\n"
+        reply = "`No Afh links found`\n"
         return reply
     fid = re.findall(r"\?fid=([\s\S]*)", link)[0]
     session = requests.Session()
