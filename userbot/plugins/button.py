@@ -21,8 +21,8 @@ BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>
     command=("cbutton", plugin_category),
     info={
         "header": "To create button posts",
-        "note": f"For working of this you need your bot ({Config.TG_BOT_USERNAME}) in the group / channel \
-        where you are using and markdown is default to html",
+        "note": f"For working of this you need your bot ({Config.TG_BOT_USERNAME}) in the group or channel\
+         where you are using and markdown is default to html",
         "options": "If you button to be in same row as other button then follow this <buttonurl:link:same> in second button",
         "usage": [
             "{tr}cbutton <text> [Name on button]<buttonurl:link you want to open>",
