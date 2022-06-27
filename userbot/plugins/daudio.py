@@ -1,4 +1,4 @@
-# Made by @yuki
+# Made by @Yui
 import os
 from random import choice
 
@@ -47,7 +47,7 @@ async def kill_mp3(event):
         )
     else:
         os.system(f'ffmpeg -i {file} -filter_complex "vibrato=f={pawer}" {ded_file}')
-    await event.edit("`Conversion done ! Uploading audio`")
+    await event.edit("`Conversion done\n\nUploading audio`")
     await event.client.send_file(
         event.chat_id,
         file=ded_file,
