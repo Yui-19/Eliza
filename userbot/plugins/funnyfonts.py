@@ -129,7 +129,7 @@ async def copypasta(cp_e):
     },
 )
 async def weebify(event):
-    "chages given text into some funny way"
+    "Chages given text into some funny way"
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
