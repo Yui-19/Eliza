@@ -14,7 +14,7 @@ plugin_category = "utils"
     command=("lmg", plugin_category),
     info={
         "header": "Searches the given query in google and shows you the link of that query",
-        "usage": "{tr}lmg <Query>",
+        "usage": "{tr}lmg <query>",
     },
 )
 async def _(event):
@@ -28,7 +28,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **google** that for you :\n👉🏻 [{input_str}]({response_api.rstrip()})\n`Thank me later 😉` "
+            f"Let me **google** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -39,7 +39,7 @@ async def _(event):
     command=("lmy", plugin_category),
     info={
         "header": "Searches the given query in youtube and shows you the link of that query",
-        "usage": "{tr}lmy <Query>",
+        "usage": "{tr}lmy <query>",
     },
 )
 async def _(event):
@@ -47,11 +47,11 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     sample_url = f"https://da.gd/s?url=https://www.youtube.com/results?search_query={input_str.replace(' ', '+')}"
     response_api = requests.get(sample_url).text
-    event = await edit_or_reply(event, "`Searching.....`")
+    event = await edit_or_reply(event, "`Searching...`")
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **youtube** that for you :\n👉🏻 [{input_str}]({response_api.rstrip()})\n`Thank me later 😉` "
+            f"Let me **youtube** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -62,7 +62,7 @@ async def _(event):
     command=("ddg", plugin_category),
     info={
         "header": "Searches the given query in duck buck go and shows you the link of that query",
-        "usage": "{tr}ddg <Query>",
+        "usage": "{tr}ddg <query>",
     },
 )
 async def _(event):
@@ -74,7 +74,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **duckduckgo** that for you :\n👉🏻 [{input_str}]({response_api.rstrip()})\n`Thank me later 😉` "
+            f"Let me **duckduckgo** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -99,7 +99,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **altnews** that for you :\n👉🏻 [{input_str}]({response_api.rstrip()})\n`Thank me later 😉` "
+            f"Let me **altnews** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -122,7 +122,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **var** that for you:\n👉🏻 [{input_str}]({response_api.rstrip()})\n`Thank me later 😉` "
+            f"Let me **var** that for you:\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -145,7 +145,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **log** that for you :\n👉🏻 [{input_str}]({response_api.rstrip()})\n`Thank me later 😉` "
+            f"Let me **log** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -156,7 +156,7 @@ async def _(event):
     command=("dyno", plugin_category),
     info={
         "header": "Searches the given app name in heroku and shows you dyno page link of that app",
-        "usage": "{tr}dyno <Query>",
+        "usage": "{tr}dyno <query>",
     },
 )
 async def _(event):
@@ -173,9 +173,9 @@ async def _(event):
     if response_api:
         await event.edit(
             f"Let me **dyno** that for you :\
-                \n🤣 [{input_str}]({response_api.rstrip()})\
-                \n🤣 [Billings]({respons_api.rstrip()})\
-                \n`Thank me later 😉`"
+                \n\n🤣 [{input_str}]({response_api.rstrip()})\
+                \n\n🤣 [Billings]({respons_api.rstrip()})\
+                \n\n`Thank me later 😉`"
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -186,7 +186,7 @@ async def _(event):
     command=("lmkp", plugin_category),
     info={
         "header": "Searches the given query in indian kanoon and shows you the link of that query",
-        "usage": "{tr}lmkp <Query>",
+        "usage": "{tr}lmkp <query>",
     },
 )
 async def _(event):
@@ -198,7 +198,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **Indiankanoon.com : Place** that for you :\n👉🏻 [{input_str}]({response_api.rstrip()})\n`Thank me later 😉` "
+            f"Let me **Indiankanoon.com:place** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -209,7 +209,7 @@ async def _(event):
     command=("gem", plugin_category),
     info={
         "header": "Searches the given query in government e marketplace and shows you the link of that query",
-        "usage": "{tr}gem <Query>",
+        "usage": "{tr}gem <query>",
     },
 )
 async def _(event):
@@ -221,7 +221,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **gem.gov.in** that for you :\n👉🏻 [{input_str}]({response_api.rstrip()})\n`Thank me later 😉` "
+            f"Let me **gem.gov.in** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -232,7 +232,7 @@ async def _(event):
     command=("archive", plugin_category),
     info={
         "header": "Searches the given query in web archive and shows you the link of that query",
-        "usage": "{tr}archive <Query>",
+        "usage": "{tr}archive <query>",
     },
 )
 async def _(event):
@@ -244,7 +244,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me run your link on wayback machine that for you :\n👉🏻 [{input_str}]({response_api.rstrip()})\n`Thank me later 😉` "
+            f"Let me run your link on wayback machine that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
