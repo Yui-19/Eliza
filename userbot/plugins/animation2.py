@@ -17,7 +17,7 @@ plugin_category = "fun"
 async def _(event):
     "animation command"
     event = await edit_or_reply(event, "Think")
-    deq = deque(list("🤔🧐🤔🧐🤔🧐"))
+    deq = deque(list("🧐😵‍💫🧐😵‍💫🧐😵‍💫"))
     for _ in range(48):
         await asyncio.sleep(0.2)
         await event.edit("".join(deq))
