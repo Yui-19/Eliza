@@ -1,4 +1,4 @@
-# Inline ping by @yuki
+# Inline ping by @Yui
 import re
 from datetime import datetime
 
@@ -35,6 +35,6 @@ async def ping(event):
     life = await event.client.send_message(BOTLOG_CHATID, "Just for ping")
     await life.delete()
     end = datetime.now()
-    ms = str((end - start).microseconds / 1000)
+    ms = str((end - start).microseconds/1000)
     ping_data = f" ꧁𝐏𝐢𝐧𝐠꧂ {ms}ms"
     await event.answer(ping_data, cache_time=0, alert=True)
