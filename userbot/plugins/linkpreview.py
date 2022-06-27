@@ -37,7 +37,7 @@ async def _(event):
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await catevent.edit(
-                "`RIP Check your blacklist boss and unblock @chotamreaderbot`"
+                "`Rest in peace\n\nCheck your blacklist boss and unblock @chotamreaderbot`"
             )
             return
         if response.text.startswith(""):
