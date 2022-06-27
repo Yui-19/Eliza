@@ -1,6 +1,6 @@
 """
-Fetch App Details from Playstore.
-.app <app_name> to fetch app details.
+Fetch app details from playstore
+.app <app_name> to fetch app details
   © [cHAuHaN](http://t.me/amnd33p)
 """
 
@@ -24,7 +24,7 @@ plugin_category = "utils"
 async def app_search(event):
     "To search any app in playstore"
     app_name = event.pattern_match.group(1)
-    event = await edit_or_reply(event, "`Searching ... !`")
+    event = await edit_or_reply(event, "`Searching...!`")
     try:
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
@@ -72,7 +72,7 @@ async def app_search(event):
         )
         app_details += "\n<code>Rating :</code> " + app_rating.replace(
             "Rated ", "⭐"
-        ).replace(" out of ", "/").replace("Stars", "", 1).replace(
+        ).replace(" out of ","/").replace("Stars", "", 1).replace(
             "Stars", "⭐"
         ).replace(
             "five", "5"
@@ -85,6 +85,6 @@ async def app_search(event):
         app_details += f"\n\n====> {ALIVE_NAME} <===="
         await event.edit(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
-        await event.edit("No result found in search , please enter **valid app name**")
+        await event.edit("No result found in search please enter valid app name")
     except Exception as err:
         await event.edit("Exception occured :- " + str(err))
