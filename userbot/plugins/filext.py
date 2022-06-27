@@ -29,7 +29,7 @@ async def _(event):
         ext_details = soup.find_all("td", {"colspan": "3"})[-1].text
         await edit_or_reply(
             event,
-            f"**File extension** : `{input_str}`\n**Description** : `{ext_details}`",
+            f"**File extension** : `{input_str}`\n\n**Description** : `{ext_details}`",
         )
     else:
         await edit_or_reply(
