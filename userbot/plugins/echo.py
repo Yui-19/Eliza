@@ -105,7 +105,7 @@ async def echo(event):
     },
 )
 async def echo(event):
-    "To delete echo in this chat."
+    "To delete echo in this chat"
     input_str = event.pattern_match.group(1)
     if input_str:
         lecho = get_all_echos()
@@ -141,7 +141,7 @@ async def echo(event):
     pattern="listecho( -a)?$",
     command=("listecho", plugin_category),
     info={
-        "header": "shows the list of users for whom you enabled echo",
+        "header": "Shows the list of users for whom you enabled echo",
         "flags": {
             "a": "To list echoed users in all chats",
         },
@@ -165,16 +165,16 @@ async def echo(event):  # sourcery no-metrics
             if echos.chat_type == "Personal":
                 if echos.user_username:
                     private_chats += (
-                        f"☞ [{echos.user_name}](https://t.me/{echos.user_username})\n"
+                        f"[{echos.user_name}](https://t.me/{echos.user_username})\n"
                     )
                 else:
                     private_chats += (
-                        f"☞ [{echos.user_name}](tg://user?id={echos.user_id})\n"
+                        f"[{echos.user_name}](tg://user?id={echos.user_id})\n"
                     )
             elif echos.user_username:
-                group_chats += f"☞ [{echos.user_name}](https://t.me/{echos.user_username}) in chat {echos.chat_name} of chat id `{echos.chat_id}`\n"
+                group_chats += f"[{echos.user_name}](https://t.me/{echos.user_username}) in chat {echos.chat_name} of chat id `{echos.chat_id}`\n"
             else:
-                group_chats += f"☞ [{echos.user_name}](tg://user?id={echos.user_id}) in chat {echos.chat_name} of chat id `{echos.chat_id}`\n"
+                group_chats += f"[{echos.user_name}](tg://user?id={echos.user_id}) in chat {echos.chat_name} of chat id `{echos.chat_id}`\n"
 
         if private_chats != "":
             output_str += "**Private chats**\n" + private_chats + "\n\n"
@@ -190,11 +190,11 @@ async def echo(event):  # sourcery no-metrics
         for echos in lsts:
             if echos.user_username:
                 private_chats += (
-                    f"☞ [{echos.user_name}](https://t.me/{echos.user_username})\n"
+                    f"[{echos.user_name}](https://t.me/{echos.user_username})\n"
                 )
             else:
                 private_chats += (
-                    f"☞ [{echos.user_name}](tg://user?id={echos.user_id})\n"
+                    f"[{echos.user_name}](tg://user?id={echos.user_id})\n"
                 )
         output_str = "**Echo enabled users in this chat are :**\n" + private_chats
 
