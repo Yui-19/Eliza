@@ -23,7 +23,7 @@ plugin_category = "utils"
     command=("live", plugin_category),
     info={
         "header": "To check bot's alive status",
-        "options": "It gives random alive pic , for that you need to set `ALIVE_CHANNEL` ( in dv or heroku ) with the channel's id or username`(with @)`",
+        "options": "It gives random alive pic for that you need to set `ALIVE_CHANNEL` ( in dv or heroku ) with the channel's id or username`( with @ )`",
         "usage": [
             "{tr}live",
         ],
@@ -34,7 +34,7 @@ async def amireallyalive(event):
     start = datetime.now()
     await edit_or_reply(event, "`Checking...`")
     end = datetime.now()
-    ms = (end - start).microseconds / 1000
+    ms = (end - start).microseconds/1000
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
     _, check_sgnirts = check_data_base_heal_th()
@@ -69,7 +69,7 @@ async def amireallyalive(event):
         dbhealth=check_sgnirts,
         ping=ms,
     )
-    # Auto pic by the gawd Lee @TheLoneEssence
+    # Auto pic by the lee @TheLoneEssence
     if ALIVE_CHANNEL:
         done = False
         while done == False:
