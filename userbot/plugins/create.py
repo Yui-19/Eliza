@@ -28,9 +28,9 @@ async def _(event):
     type_of_group = event.pattern_match.group(1)
     group_name = event.pattern_match.group(2)
     if type_of_group == "c":
-        descript = "This is a test channel created using catuserbot"
+        descript = "This is a test channel created using cat userbot"
     else:
-        descript = "This is a test group created using catuserbot"
+        descript = "This is a test group created using cat userbot"
     if type_of_group == "g":
         try:
             result = await event.client(
@@ -85,4 +85,4 @@ async def _(event):
         else:
             await edit_delete(event, f"**Error :**\n{answer[1]}")
     else:
-        await edit_delete(event, "Read `.help create` to know how to use me")
+        await edit_delete(event, "Read `.help create` to know how to use me ?")
