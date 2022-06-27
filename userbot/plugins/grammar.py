@@ -32,7 +32,7 @@ async def grammer(event):
             event, "Reply to a message to correct grammar in that message", 7
         )
 
-    await edit_or_reply(event, "Checking for grammer...")
+    await edit_or_reply(event, "Checking for grammar...")
 
     url = "https://orthographe.reverso.net/api/v1/Spelling"
 
@@ -152,7 +152,7 @@ async def plagiarism(event):
 
     if plagiarism != 0:
 
-        result = f"The content is **{plagiarism}% plagiarised**\nYou can use `{tr}rephrase` to rephrase the content to remove plagiarism"
+        result = f"The content is **{plagiarism}% plagiarised**\n\nYou can use `{tr}rephrase` to rephrase the content to remove plagiarism"
 
     else:
 
