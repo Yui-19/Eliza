@@ -72,7 +72,7 @@ async def endecrypt(event):
     if event.pattern_match.group(1) == "en":
         if string:
             result = base64.b64encode(bytes(string, "utf-8")).decode("utf-8")
-            result = f"**Shh ! It's encoded : **\n`{result}`"
+            result = f"**Shh ! It's encoded :**\n`{result}`"
         else:
             reply = await event.get_reply_message()
             if not reply:
@@ -80,7 +80,7 @@ async def endecrypt(event):
             mediatype = media_type(reply)
             if mediatype is None:
                 result = base64.b64encode(bytes(reply.text, "utf-8")).decode("utf-8")
-                result = f"**Shh ! It's encoded : **\n`{result}`"
+                result = f"**Shh ! It's encoded :**\n`{result}`"
             else:
                 catevent = await edit_or_reply(event, "`Encoding...`")
                 c_time = time.time()
@@ -107,4 +107,4 @@ async def endecrypt(event):
             )[2:]
             await edit_or_reply(event, "**Decoded text :**\n`" + lething[:-1] + "`")
         except Exception as e:
-            await edit_delete(event, f"**Error :**\n__{e}__")
+            await edit_delete(event, f"**Error :**\n{e}")
