@@ -11,7 +11,7 @@ plugin_category = "utils"
     pattern="invite ([\s\S]*)",
     command=("invite", plugin_category),
     info={
-        "header": "Add the given user / users to the group where u used the command",
+        "header": "Add the given user or users to the group where you used the command",
         "description": "Adds only mentioned person or bot not all members",
         "usage": "{tr}invite <username(s)/userid(s)>",
         "examples": "{tr}invite @combot @MissRose_bot",
@@ -43,4 +43,4 @@ async def _(event):
             except Exception as e:
                 return await edit_delete(event, f"`{e}`", 5)
 
-    await edit_or_reply(event, f"`{to_add_users} is / are invited successfully`")
+    await edit_or_reply(event, f"`{to_add_users} is or are invited successfully`")
