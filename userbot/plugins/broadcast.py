@@ -44,7 +44,7 @@ async def catbroadcast_add(event):
             msg = await event.client.send_message(BOTLOG_CHATID, reason)
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "The replied message was failed to send to the user , confusion between to whom it should send",
+                "The replied message was failed to send to the user\n\nConfusion between to whom it should send",
                 reply_to=msg.id,
             )
         msglink = await event.clienr.get_msg_link(msg)
@@ -144,14 +144,14 @@ async def catbroadcast_list(event):
             chatinfo = await event.client.get_entity(int(chat))
             try:
                 if chatinfo.broadcast:
-                    resultlist += f" 👉🏻 📢 **Channel** \n  •  **Name : **{chatinfo.title} \n  •  **Id : **`{int(chat)}`\n\n"
+                    resultlist += f"📢 **Channel**\n\n• **Name : **{chatinfo.title}\n\n• **Id : **`{int(chat)}`\n\n"
                 else:
-                    resultlist += f" 👉🏻 👩🏻‍❤️‍👩🏻 **Group** \n  •  **Name : **{chatinfo.title} \n  •  **Id : **`{int(chat)}`\n\n"
+                    resultlist += f"👩🏻‍❤️‍👩🏻 **Group**\n\n• **Name : **{chatinfo.title}\n\n• **Id : **`{int(chat)}`\n\n"
             except AttributeError:
-                resultlist += f" 👉🏻 😶 **User** \n  •  **Name : **{chatinfo.first_name} \n  •  **Id : **`{int(chat)}`\n\n"
+                resultlist += f"👻 **User**\n\n• **Name : **{chatinfo.first_name}\n\n• **Id : **`{int(chat)}`\n\n"
         except Exception:
-            errorlist += f" 👉🏻 This id {int(chat)} in database probably you may left the chat / channel or may be invalid id\
-                            \n\nRemove this id from the database by using this command `.frmfrom {keyword} {int(chat)}` \n\n"
+            errorlist += f"This id {int(chat)} in database probably you may left the chat or channel or may be invalid id\
+                            \n\nRemove this id from the database by using this command `.frmfrom {keyword} {int(chat)}`\n\n"
     finaloutput = resultlist + errorlist
     await edit_or_reply(catevent, finaloutput)
 
@@ -169,7 +169,7 @@ async def catbroadcast_list(event):
     if sql.num_broadcastlist_chats() == 0:
         return await edit_delete(
             event,
-            "You haven't created at least one category ! Check info for more help",
+            "You haven't created at least one category\n\nCheck info for more help",
             parse_mode=_format.parse_pre,
         )
     chats = sql.get_broadcastlist_chats()
@@ -211,7 +211,7 @@ async def catbroadcast_send(event):
     if no_of_chats == 0:
         return await edit_delete(
             event,
-            f"There is no category with name {keyword} ! Check '.listall'",
+            f"There is no category with name {keyword}\n\nCheck '.listall'",
             parse_mode=_format.parse_pre,
         )
     chats = sql.get_chat_broadcastlist(keyword)
@@ -276,7 +276,7 @@ async def catbroadcast_send(event):
     if no_of_chats == 0:
         return await edit_delete(
             event,
-            f"There is no category with name {keyword} ! Check '.listall'",
+            f"There is no category with name {keyword}\n\nCheck '.listall'",
             parse_mode=_format.parse_pre,
         )
     chats = sql.get_chat_broadcastlist(keyword)
@@ -362,7 +362,7 @@ async def catbroadcast_remove(event):
     command=("frmfrom", plugin_category),
     info={
         "header": " To force remove the given chat from a category",
-        "description": "Suppose if you are muted or group / channel is deleted you cant send message there so you can use this cmd to the chat from that category",
+        "description": "Suppose if you are muted or group or channel is deleted you cant send message there so you can use this command to the chat from that category",
         "usage": "{tr}frmfrom <category name> <chatid>",
         "examples": "{tr}frmfrom test -100123456",
     },
