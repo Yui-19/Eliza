@@ -210,7 +210,7 @@ async def _(dyno):
 
 
 def prettyjson(obj, indent=2, maxlinelength=80):
-    """Renders JSON content with indentation and line splits or concatenations to fit maxlinelength
+    """Renders json content with indentation and line splits or concatenations to fit maxlinelength
     only dicts , lists and basic types are supported"""
     items, _ = getsubitems(
         obj,
