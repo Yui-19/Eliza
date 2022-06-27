@@ -34,14 +34,14 @@ async def _(event):
     curruser = catuser.username or "catuserbot"
     uid = os.geteuid()
     if uid == 0:
-        cresult = f"```{curruser}:~#``` ```{cmd}```\n```{result}```"
+        cresult = f"```{curruser}:~ #``` ```{cmd}```\n```{result}```"
     else:
-        cresult = f"```{curruser}:~$``` ```{cmd}```\n```{result}```"
+        cresult = f"```{curruser}:~ $``` ```{cmd}```\n```{result}```"
     await edit_or_reply(
         catevent,
         text=cresult,
         aslink=True,
-        linktext=f"**•  Exec : **\n```{cmd}``` \n\n**•  Result : **\n",
+        linktext=f"**•  Exec : **\n```{cmd}``` \n\n**• Result : **\n",
     )
     if BOTLOG:
         await event.client.send_message(
@@ -60,7 +60,7 @@ async def _(event):
     },
 )
 async def _(event):
-    "To execute python script/statements in a subprocess"
+    "To execute python script or statements in a subprocess"
     cmd = "".join(event.message.message.split(maxsplit=1)[1:])
     if not cmd:
         return await edit_delete(event, "`What should I run ?`")
@@ -93,18 +93,18 @@ async def _(event):
     else:
         evaluation = "Success"
     final_output = (
-        f"**•  Eval : **\n```{cmd}``` \n\n**•  Result : **\n```{evaluation}``` \n"
+        f"**• Eval : **\n```{cmd}``` \n\n**• Result : **\n```{evaluation}``` \n"
     )
     await edit_or_reply(
         catevent,
         text=final_output,
         aslink=True,
-        linktext=f"**•  Eval : **\n```{cmd}``` \n\n**•  Result : **\n",
+        linktext=f"**• Eval : **\n```{cmd}``` \n\n**• Result : **\n",
     )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            "eval command " + cmd + " was executed sucessfully",
+            "Eval command " + cmd + " was executed sucessfully",
         )
 
 
