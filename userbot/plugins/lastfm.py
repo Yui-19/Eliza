@@ -1,7 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.d (the "License");
-# you may not use this file except in compliance with the License.from asyncio import sleep
 from asyncio import sleep
 from os import environ
 from re import sub
@@ -118,7 +114,7 @@ async def get_curr_track(lfmbio):  # sourcery no-metrics
                 try:
                     if BOTLOG and LASTFM_.LastLog:
                         await catub.send_message(
-                            BOTLOG_CHATID, f"Attempted to change bio to\n{lfmbio}"
+                            BOTLOG_CHATID, f"Attempted to change bio to\n\n{lfmbio}"
                         )
                     await catub(UpdateProfileRequest(about=lfmbio))
                 except AboutTooLongError:
@@ -129,7 +125,7 @@ async def get_curr_track(lfmbio):  # sourcery no-metrics
                 await catub(UpdateProfileRequest(about=DEFAULT_BIO))
                 if BOTLOG and LASTFM_.LastLog:
                     await catub.send_message(
-                        BOTLOG_CHATID, f"Reset bio back to\n{DEFAULT_BIO}"
+                        BOTLOG_CHATID, f"Reset bio back to\n\n{DEFAULT_BIO}"
                     )
         except AttributeError:
             try:
@@ -138,12 +134,12 @@ async def get_curr_track(lfmbio):  # sourcery no-metrics
                     await catub(UpdateProfileRequest(about=DEFAULT_BIO))
                     if BOTLOG and LASTFM_.LastLog:
                         await catub.send_message(
-                            BOTLOG_CHATID, f"Reset bio back to\n{DEFAULT_BIO}"
+                            BOTLOG_CHATID, f"Reset bio back to\n\n{DEFAULT_BIO}"
                         )
             except FloodWaitError as err:
                 if BOTLOG and LASTFM_.LastLog:
                     await catub.send_message(
-                        BOTLOG_CHATID, f"Error changing bio :\n{err}"
+                        BOTLOG_CHATID, f"Error changing bio :\n\n{err}"
                     )
         except (
             FloodWaitError,
@@ -152,7 +148,7 @@ async def get_curr_track(lfmbio):  # sourcery no-metrics
             AboutTooLongError,
         ) as err:
             if BOTLOG and LASTFM_.LastLog:
-                await catub.send_message(BOTLOG_CHATID, f"Error changing bio :\n{err}")
+                await catub.send_message(BOTLOG_CHATID, f"Error changing bio :\n\n{err}")
         await sleep(2)
     LASTFM_.RUNNING = False
 
@@ -167,7 +163,7 @@ async def get_curr_track(lfmbio):  # sourcery no-metrics
     },
 )
 async def last_fm(lastFM):
-    ".lastfm command , fetch scrobble data from last.fm"
+    ".lastfm command fetch scrobble data from last.fm"
     await lastFM.edit("Processing...")
     preview = None
     playing = User(LASTFM_USERNAME, lastfm).get_now_playing()
