@@ -1,4 +1,4 @@
-#By @sakku_cute
+# By @Yui
 
 from telethon.errors.rpcerrorlist import (UserIdInvalidError,
                                             MessageTooLongError)
@@ -116,9 +116,9 @@ async def gben(userbot):
           except:
              pass
     else:
-        await dark.edit(f"Reply to a user you dumbo !")
+        await dark.edit(f"Reply to a user you stupid kid")
     return await dark.edit(
-        f"Globally promoted {user.first_name}\n on chats : {i} "
+        f"Globally promoted {user.first_name}\n\n On chats : {i} "
     )
 @catub.cat_cmd(
     pattern="gdemote$",
@@ -176,7 +176,7 @@ async def gben(userbot):
           except:
              pass
     else:
-        await dark.edit(f"Reply to a user you dumbo !")
+        await dark.edit(f"Reply to a user you stupid kid")
     return await dark.edit(
-        f"Globally demoted {user.first_name}\n on chats : {i} "
+        f"Globally demoted {user.first_name}\n\nOn chats : {i} "
     )
