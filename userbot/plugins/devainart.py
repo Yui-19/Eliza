@@ -1,4 +1,4 @@
-# By @yuki
+# By @Yui
 
 import random
 import re
@@ -17,7 +17,7 @@ plugin_category = "fun"
     pattern="devian ?(.*)",
     command=("devian", plugin_category),
     info={
-        "header": "Devian-art image search",
+        "header": "Devian art image search",
         "description": "It will search and send you the image from devian art",
         "usage": [
             "{tr}devian <search query> ; <no of pics>",
@@ -53,9 +53,9 @@ async def downakd(e):
         num += 1
         out.append(img)
     if len(out) == 0:
-        return await xd.edit("`No results found !`")
+        return await xd.edit("`No results found`")
     await e.client.send_file(
-        e.chat_id, out, caption=f"Uploaded {len(res)} Images\n", album=True
+        e.chat_id, out, caption=f"Uploaded {len(res)} images\n", album=True
     )
     await xd.delete()
 
