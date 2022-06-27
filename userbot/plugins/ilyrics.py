@@ -1,5 +1,5 @@
-# Made by @yuki
-# Edited by @yuki
+# Made by @Yui
+# Edited by @Yui
 from userbot import catub
 
 from ..core.managers import edit_delete
@@ -12,7 +12,7 @@ plugin_category = "extra"
     pattern="ilyrics ?(.*)",
     command=("ilyrics", plugin_category),
     info={
-        "header": "Sends lyrics [inline] of a song along with spotify & youtube links\nAdd artist name if you getting different lyrics\nYou can also type a line of a song to search",
+        "header": "Sends lyrics [inline] of a song along with spotify & youtube links\n\nAdd artist name if you getting different lyrics\n\nYou can also type a line of a song to search",
         "usage": [
             "{tr}ilyrics <song name>",
             "{tr}ilyrics <song name - artist>",
@@ -27,7 +27,7 @@ async def GayIfUChangeCredit(event):
     song = event.pattern_match.group(1)
     reply_to_id = await reply_id(event)
     if not song:
-        return await edit_delete(event, "`Give me a song you baka !`", 15)
+        return await edit_delete(event, "`Give me a song stupid kid`", 15)
     await event.delete()
     results = await event.client.inline_query(bot, song)
     await results[0].click(event.chat_id, reply_to=reply_to_id)
