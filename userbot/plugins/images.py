@@ -1,4 +1,3 @@
-# image search for catuserbot
 import os
 import shutil
 
@@ -18,7 +17,7 @@ plugin_category = "misc"
     command=("img", plugin_category),
     info={
         "header": "Google image search",
-        "description": "To search images in google ! By default it will send 3 images , you can get more images ( upto 10 only by changing limit value as shown in usage and examples )",
+        "description": "To search images in google ! By default it will send 3 images you can get more images ( upto 10 only by changing limit value as shown in usage and examples )",
         "usage": ["{tr}img <1-10> <query>", "{tr}img <query>"],
         "examples": [
             "{tr}img 10 catuserbot",
