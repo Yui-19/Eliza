@@ -21,7 +21,7 @@ LOGS = logging.getLogger(__name__)
     info={
         "header": "To enable and disable chats blacklist",
         "description": "If you turn this on , then your userbot won't work on the chats stored\
-         in database by addblkchat command ! If you turn it off even though you added chats to database\
+         in database by addblackchat command ! If you turn it off even though you added chats to database\
          userbot won't stop working in that chat",
         "usage": "{tr}chatblacklist <on/off>",
     },
@@ -32,12 +32,12 @@ async def chat_blacklist(event):
     blkchats = blacklist_chats_list()
     if input_str == "on":
         if gvarstatus("blacklist_chats") is not None:
-            return await edit_delete(event, "__Already it was turned on__")
+            return await edit_delete(event, "Already it was turned on")
         addgvar("blacklist_chats", "true")
-        text = "__From now on , your cat userbot doesn't work in the chats stored in database__"
+        text = "From now on , your cat userbot doesn't work in the chats stored in database"
         if len(blkchats) != 0:
             text += (
-                "**Bot is reloading to apply the changes , please wait for a minute**"
+                "**Bot is reloading to apply the changes please wait for a minute**"
             )
             msg = await edit_or_reply(
                 event,
@@ -51,10 +51,10 @@ async def chat_blacklist(event):
         )
     if gvarstatus("blacklist_chats") is not None:
         delgvar("blacklist_chats")
-        text = "__Your cat userbot is as free as a bird ! It works in every chat__"
+        text = "Your cat userbot is as free as a bird ! It works in every chat"
         if len(blkchats) != 0:
             text += (
-                "**Bot is reloading to apply the changes , please wait for a minute**"
+                "**Bot is reloading to apply the changes please wait for a minute**"
             )
             msg = await edit_or_reply(
                 event,
@@ -75,7 +75,7 @@ async def chat_blacklist(event):
     info={
         "header": "To add chats to blacklist",
         "description": "To add the chats to database so your bot doesn't work in\
-         those chats either give chatids as input or do this command in the chat\
+         those chats either give chat ids as input or do this command in the chat\
          which you want to add to db",
         "usage": [
             "{tr}addblkchat <chat ids>",
@@ -84,7 +84,7 @@ async def chat_blacklist(event):
     },
 )
 async def add_blacklist_chat(event):
-    "To add chats to blacklist."
+    "To add chats to blacklist"
     input_str = event.pattern_match.group(2)
     errors = ""
     result = ""
@@ -143,7 +143,7 @@ async def add_blacklist_chat(event):
     if errors != "":
         output += f"**Error :**\n{errors}\n"
     if result != "":
-        output += "**Bot is reloading to apply the changes , please wait for a minute**"
+        output += "**Bot is reloading to apply the changes please wait for a minute**"
     msg = await edit_or_reply(event, output)
     await event.client.reload(msg)
 
@@ -207,7 +207,7 @@ async def add_blacklist_chat(event):
     if errors != "":
         output += f"**Error :**\n{errors}\n"
     if result != "":
-        output += "**Bot is reloading to apply the changes , please wait for a minute**"
+        output += "**Bot is reloading to apply the changes please wait for a minute**"
     msg = await edit_or_reply(event, output)
     await event.client.reload(msg)
 
@@ -236,8 +236,8 @@ async def add_blacklist_chat(event):
         )
     result = "**The list of blacklisted chats are :**\n\n"
     for chat in blkchats:
-        result += f"☞ {blacklistchats[str(chat)]['chat_name']}\n"
-        result += f"**Chat Id :** `{chat}`\n"
+        result += f"{blacklistchats[str(chat)]['chat_name']}\n"
+        result += f"**Chat id :** `{chat}`\n"
         username = blacklistchats[str(chat)]["chat_username"] or "Private group"
         result += f"**Username :** {username}\n"
         result += f"Added on {blacklistchats[str(chat)]['date']}\n\n"
