@@ -89,7 +89,7 @@ async def vapor(event):
     elif textx:
         message = textx.text
     else:
-        await edit_or_reply(event, "`𝔾𝕚𝕧𝕖 𝕤𝕠𝕞𝕖𝕥𝕙𝕚𝕟𝕘 𝕥𝕠 𝕞𝕠𝕔𝕜 !`")
+        await edit_or_reply(event, "`𝔾𝕚𝕧𝕖 𝕤𝕠𝕞𝕖𝕥𝕙𝕚𝕟𝕘 𝕥𝕠 𝕞𝕠𝕔𝕜`")
         return
 
     for charac in message:
@@ -122,7 +122,7 @@ async def stylish_generator(event):
         get = await event.get_reply_message()
         args = get.text
     if not args:
-        await edit_or_reply(event, "What I am supposed to change give text")
+        await edit_or_reply(event, "What I am supposed to change give text ?")
         return
     string = "  ".join(args).lower()
     for normaltextcharacter in string:
@@ -184,7 +184,7 @@ async def stylish_generator(event):
         get = await event.get_reply_message()
         args = get.text
     if not args:
-        await edit_or_reply(event, "What I am supposed to change give text")
+        await edit_or_reply(event, "What I am supposed to change give text ?")
         return
     string = "  ".join(args).lower()
     for normaltextcharacter in string:
@@ -417,7 +417,7 @@ async def spongemocktext(mock):
     elif textx:
         message = textx.text
     else:
-        await edit_or_reply(mock, "`𝔾𝕚𝕧𝕖 𝕤𝕠𝕞𝕖𝕥𝕙𝕚𝕟𝕘 𝕥𝕠 𝕞𝕠𝕔𝕜 !`")
+        await edit_or_reply(mock, "`𝔾𝕚𝕧𝕖 𝕤𝕠𝕞𝕖𝕥𝕙𝕚𝕟𝕘 𝕥𝕠 𝕞𝕠𝕔𝕜`")
         return
 
     for charac in message:
