@@ -1,5 +1,3 @@
-#  Copyright (C) 2020  sandeep.n(π.$)
-# credits to @mrconfused (@sandy1709)
 import asyncio
 import os
 import re
@@ -28,7 +26,7 @@ plugin_category = "fun"
     info={
         "header": "Fake google search meme",
         "usage": "{tr}fakegs search query ; what you mean text",
-        "examples": "{tr}fakegs catuserbot ; One of the popular userbot",
+        "examples": "{tr}fakegs catuserbot ; one of the popular userbot",
     },
 )
 async def nekobot(cat):
@@ -204,7 +202,7 @@ async def nekobot(cat):
         else:
             return await edit_delete(
                 cat,
-                "What should I tweet ? Give some text and format must be like `.tweet username ; your text` ",
+                "What should I tweet ? Give some text and format must be like `.tweet username ; your text`",
                 5,
             )
     if ";" in text:
