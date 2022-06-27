@@ -1,4 +1,4 @@
-# By @yuki
+# By @Yui
 
 from userbot import catub
 from ..core.managers import edit_or_reply
@@ -25,6 +25,6 @@ async def anim(delete):
         time.sleep(2)
         deletei = await accdlt.edit(f"Deleting telegram account of the user in few seconds...")
         time.sleep(4)
-        await deletei.edit(f"Congratulations your telegram account has been deleted\n\nReason : Toxic , pm spammer , scammer , adding spambots , illegal , crimes against girls , blackmailer , ban evasion , raid participant etc\n\nRest in peace kid 😤")
+        await deletei.edit(f"Congratulations your telegram account has been deleted\n\nReason : Toxic , pm spammer , scammer , adding spambots , illegal , crimes against girls , blackmailer , ban evasion , raid participant etc\n\nRest in peace kid")
     else:
       await edit_or_reply(f"Seems like something's wrong")
