@@ -98,8 +98,8 @@ async def bad(event):  # sourcery no-metrics
             if BOTLOG_CHATID:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    f"#SET_DATAVAR\
-                    \n**{vname}** is updated newly in database as below",
+                    f"SET DATAVAR\
+                    \n\n**{vname}** is updated newly in database as below",
                 )
                 await event.client.send_message(BOTLOG_CHATID, vinfo, silent=True)
             await edit_delete(
@@ -115,8 +115,8 @@ async def bad(event):  # sourcery no-metrics
             if BOTLOG_CHATID:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    f"#DEL_DATAVAR\
-                    \n**{vname}** is deleted from database",
+                    f"DEL DATAVAR\
+                    \n\n**{vname}** is deleted from database",
                 )
             await edit_delete(
                 event,
@@ -187,8 +187,8 @@ async def custom_catuserbot(event):
     if BOTLOG_CHATID:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"#SET_DATAVAR\
-                    \n**{input_str}** is updated newly in database as below",
+            f"SET DATAVAR\
+                    \n\n**{input_str}** is updated newly in database as below",
         )
         await event.client.send_message(BOTLOG_CHATID, text, silent=True)
 
@@ -237,6 +237,6 @@ async def custom_catuserbot(event):
     if BOTLOG_CHATID:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"#DEL_DATAVAR\
-                    \n**{input_str}** is deleted from database",
+            f"DEL DATAVAR\
+                    \n\n**{input_str}** is deleted from database",
         )
