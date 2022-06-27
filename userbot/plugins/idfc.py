@@ -1,4 +1,4 @@
-# By @yuki
+# By @Yui
 
 from userbot import catub
 from ..core.managers import edit_or_reply
@@ -21,10 +21,10 @@ async def anim(fucking):
     a = 1
 
     if a == 1 :
-        idfc = await edit_or_reply(fucking, "Err 🤞🏻...")
-        time.sleep(3)
-        fucki = await idfc.edit(f"Err ✌🏻...")
-        time.sleep(9)
+        idfc = await edit_or_reply(fucking, "Lol... 🤣")
+        time.sleep(2)
+        fucki = await idfc.edit(f"Imao... 🤧")
+        time.sleep(7)
         await fucki.edit(f"I don't fucking care 🥰")
     else:
       await edit_or_reply(f"Seems like something's wrong")
