@@ -16,7 +16,7 @@ plugin_category = "fun"
     pattern="emoji(?:\s|$)([\s\S]*)",
     command=("emoji", plugin_category),
     info={
-        "header": "Converts your text to big emoji text , with some default emojis",
+        "header": "Converts your text to big emoji text with some default emojis",
         "usage": "{tr}emoji <text>",
         "examples": ["{tr}emoji catuserbot"],
     },
@@ -49,7 +49,7 @@ async def itachi(event):
     info={
         "header": "Converts your text to big emoji text, with your custom emoji",
         "usage": "{tr}cmoji <emoji> <text>",
-        "examples": ["{tr}cmoji 😺 catuserbot"],
+        "examples": ["{tr}cmoji ⚡ catuserbot"],
     },
 )
 async def itachi(event):
@@ -66,7 +66,7 @@ async def itachi(event):
         emoji, arg = args.split(" ", 1)
     except Exception:
         arg = args
-        emoji = "😺"
+        emoji = "⚡"
     result = ""
     for a in arg:
         a = a.lower()
