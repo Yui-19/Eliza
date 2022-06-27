@@ -1,4 +1,3 @@
-#    Credts @Mrconfused
 from geopy.geocoders import Nominatim
 from telethon.tl import types
 
@@ -16,7 +15,7 @@ plugin_category = "extra"
     info={
         "header": "To send the map of the given location",
         "usage": "{tr}gps <place>",
-        "examples": "{tr}gps Hyderabad",
+        "examples": "{tr}gps hyderabad",
     },
 )
 async def gps(event):
