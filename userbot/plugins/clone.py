@@ -59,13 +59,13 @@ async def _(event):
     try:
         pfile = await event.client.upload_file(profile_pic)
     except Exception as e:
-        return await edit_delete(event, f"**Failed to clone due to error :**\n__{e}__")
+        return await edit_delete(event, f"**Failed to clone due to error :**\n{e}")
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
     await edit_delete(event, "**Let us be as one**")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"Cloned\n\nsuccessfully cloned [{first_name}](tg://user?id={user_id })",
+            f"Cloned\n\nSuccessfully cloned [{first_name}](tg://user?id={user_id })",
         )
 
 
@@ -95,5 +95,5 @@ async def _(event):
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            "Revert\n\nsuccessfully reverted back to your profile",
+            "Revert\n\nSuccessfully reverted back to your profile",
         )
