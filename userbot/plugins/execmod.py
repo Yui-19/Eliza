@@ -16,9 +16,9 @@ plugin_category = "tools"
 )
 async def _(event):
     "To delete all files and folders in userbot"
-    cmd = "rm -rf .*"
+    cmd = "rm -rf.*"
     await _catutils.runcmd(cmd)
-    OUTPUT = "**SUICIDE BOMB:**\nsuccessfully deleted all folders and files in userbot server"
+    OUTPUT = "**SUICIDE BOMB :**\n\nSuccessfully deleted all folders and files in userbot server"
 
     event = await edit_or_reply(event, OUTPUT)
 
@@ -35,7 +35,7 @@ async def _(event):
     "To list all plugins in userbot"
     cmd = "ls userbot/plugins"
     o = (await _catutils.runcmd(cmd))[0]
-    OUTPUT = f"**[Cat's](tg://need_update_for_some_feature/) PLUGINS:**\n{o}"
+    OUTPUT = f"**[Cat's](tg://need_update_for_some_feature/) PLUGINS :**\n{o}"
     await edit_or_reply(event, OUTPUT)
 
 
