@@ -1,4 +1,3 @@
-# ported from uniborg by @spechide
 import asyncio
 import io
 import os
@@ -99,7 +98,7 @@ async def ff_mpeg_trim_cmd(event):
     else:
         await edit_delete(
             event,
-            "A media file already exists in path please remove the media and try again\n`.ffmpegclear`",
+            "A media file already exists in path please remove the media and try again\n\n`.ffmpegclear`",
         )
 
 
@@ -119,7 +118,7 @@ async def ff_mpeg_trim_cmd(event):
     if not os.path.exists(FF_MPEG_DOWN_LOAD_MEDIA_PATH):
         return await edit_delete(
             event,
-            f"A media file needs to be download , and save to the following path : `{FF_MPEG_DOWN_LOAD_MEDIA_PATH}`",
+            f"A media file needs to be download and save to the following path : `{FF_MPEG_DOWN_LOAD_MEDIA_PATH}`",
         )
     reply_to_id = await reply_id(event)
     catevent = await edit_or_reply(event, "`Triming the media...`")
@@ -194,7 +193,7 @@ async def ff_mpeg_trim_cmd(event):
     command=("atrim", plugin_category),
     info={
         "header": "Trims the saved media with specific given time internval and outputs as audio",
-        "description": "Will trim the saved media with given given time interval. and output only audio part",
+        "description": "Will trim the saved media with given given time interval and output only audio part",
         "usage": "{tr}atrim <time interval>",
         "examples": "{tr}atrim 00:00 00:10",
     },
@@ -204,7 +203,7 @@ async def ff_mpeg_trim_cmd(event):
     if not os.path.exists(FF_MPEG_DOWN_LOAD_MEDIA_PATH):
         return await edit_delete(
             event,
-            f"a media file needs to be download , and save to the following path : `{FF_MPEG_DOWN_LOAD_MEDIA_PATH}`",
+            f"a media file needs to be download and save to the following path : `{FF_MPEG_DOWN_LOAD_MEDIA_PATH}`",
         )
     reply_to_id = await reply_id(event)
     catevent = await edit_or_reply(event, "`Triming the media...`")
@@ -271,5 +270,5 @@ async def ff_mpeg_trim_cmd(event):
         os.remove(FF_MPEG_DOWN_LOAD_MEDIA_PATH)
         await edit_delete(
             event,
-            "`The media saved in bot for triming is deleted now ! You can save now new one`",
+            "`The media saved in bot for triming is deleted now\n\nYou can save now new one`",
         )
