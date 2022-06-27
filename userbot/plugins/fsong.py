@@ -1,4 +1,4 @@
-#By @deepaiims
+# By @Yui
 from ..helpers.utils import reply_id
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from ..core.managers import edit_delete, edit_or_reply
