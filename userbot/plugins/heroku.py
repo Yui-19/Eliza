@@ -1,10 +1,3 @@
-# Heroku manager for your catuserbot
-
-# CC- @refundisillegal\nSyntax:-\n.get var NAME\n.del var NAME\n.set var NAME
-
-# Copyright (C) 2020 Adek Maulana.
-# All rights reserved.
-
 import asyncio
 import math
 import os
@@ -71,7 +64,7 @@ async def variable(var):  # sourcery no-metrics
                     "**Config vars** :" f"\n\n`{variable}` = `{heroku_var[variable]}`\n"
                 )
             await cat.edit(
-                "**Config vars** :" f"\n\n__Error:\n-> `{variable}` don't exists"
+                "**Config vars** :" f"\n\nError:\n\n-> `{variable}` don't exists"
             )
         except IndexError:
             configs = prettyjson(heroku_var.to_dict(), indent=2)
@@ -98,10 +91,10 @@ async def variable(var):  # sourcery no-metrics
             return await cat.edit("`.set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await cat.edit(f"`{variable}` **Successfully changed to  ->  **`{value}`")
+            await cat.edit(f"`{variable}`Successfully changed to -> `{value}`")
         else:
             await cat.edit(
-                f"`{variable}`**  Successfully added with value`  ->  **{value}`"
+                f"`{variable}`Successfully added with value` -> {value}`"
             )
         heroku_var[variable] = value
     elif exe == "del":
@@ -109,12 +102,12 @@ async def variable(var):  # sourcery no-metrics
         try:
             variable = var.pattern_match.group(2).split()[0]
         except IndexError:
-            return await cat.edit("`Please specify Config vars you want to delete`")
+            return await cat.edit("`Please specify config vars you want to delete`")
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-            return await cat.edit(f"`{variable}`**  does not exist**")
+            return await cat.edit(f"`{variable}`**does not exist**")
 
-        await cat.edit(f"`{variable}`  **Successfully deleted**")
+        await cat.edit(f"`{variable}`**Successfully deleted**")
         del heroku_var[variable]
 
 
@@ -128,7 +121,7 @@ async def variable(var):  # sourcery no-metrics
 )
 async def dyno_usage(dyno):
     """
-    Get your account Dyno Usage
+    Get your account dyno usage
     """
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
         return await edit_delete(
@@ -177,8 +170,8 @@ async def dyno_usage(dyno):
     AppMinutes = math.floor(AppQuotaUsed % 60)
     await asyncio.sleep(1.5)
     return await dyno.edit(
-        "**Dyno Usage**:\n\n"
-        f" -> `Dyno usage for`  **{Config.HEROKU_APP_NAME}**:\n"
+        "**Dyno usage**:\n\n"
+        f" -> `Dyno usage for` **{Config.HEROKU_APP_NAME}**:\n"
         f"     •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
         f"**|**  [`{AppPercentage}`**%**]"
         "\n\n"
@@ -208,7 +201,7 @@ async def _(dyno):
         app = Heroku.app(HEROKU_APP_NAME)
     except BaseException:
         return await dyno.reply(
-            " Please make sure your Heroku api key , your app name are configured correctly in the heroku"
+            "Please make sure your Heroku api key , your app name are configured correctly in the heroku"
         )
     data = app.get_log()
     await edit_or_reply(
@@ -217,8 +210,8 @@ async def _(dyno):
 
 
 def prettyjson(obj, indent=2, maxlinelength=80):
-    """Renders JSON content with indentation and line splits / concatenations to fit maxlinelength
-    Only dicts , lists and basic types are supported"""
+    """Renders JSON content with indentation and line splits or concatenations to fit maxlinelength
+    only dicts , lists and basic types are supported"""
     items, _ = getsubitems(
         obj,
         itemkey="",
