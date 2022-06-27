@@ -35,8 +35,8 @@ async def source(e):
     "Source code link of userbot"
     await edit_or_reply(
         e,
-        "Click [here](https://github.com/TgCatUB/catuserbot) to open this bot source code\
-        \n\nClick [here](https://github.com/Mr-confused/nekopack) to open supported link for heroku",
+        "Click [here](https://github.com/Yui-19/Eliza) to open this bot source code\
+        \n\nClick [here](https://github.com/Yui-19/Eliza) to open supported link for heroku",
     )
 
 
@@ -76,17 +76,17 @@ async def _(event):
                         break
             REPLY = "**Github info for** `{username}`\
                 \n\n👻 **Name :** [{name}]({html_url})\
-                \n\n🔧 **Type :** `{type}`\
+                \n\n💰 **Type :** `{type}`\
                 \n\n🏦 **Company :** `{company}`\
                 \n\n🔭 **Blog** : {blog}\
                 \n\n📍 **Location** : `{location}`\
                 \n\n📜 **Bio** : __{bio}__\
                 \n\n💖 **Followers** : `{followers}`\
-                \n\n💘 **Following** : `{following}`\
-                \n\n📊 **Public Repos** : `{public_repos}`\
-                \n\n📃 **Public Gists** : `{public_gists}`\
-                \n\n🔗 **Profile Created** : `{created_at}`\
-                \n\n✏️ **Profile Updated** : `{updated_at}`".format(
+                \n\n💜 **Following** : `{following}`\
+                \n\n🏯 **Public repos** : `{public_repos}`\
+                \n\n📃 **Public gists** : `{public_gists}`\
+                \n\n🖋️ **Profile created** : `{created_at}`\
+                \n\n💙 **Profile updated** : `{updated_at}`".format(
                 username=username, **result
             )
 
@@ -146,7 +146,7 @@ async def download(event):
         await mone.edit(
             "Downloaded to `{}` in {} seconds".format(downloaded_file_name, ms)
         )
-        await mone.edit("Committing to Github...")
+        await mone.edit("Committing to github...")
         await git_commit(downloaded_file_name, mone)
 
 
@@ -178,7 +178,7 @@ async def git_commit(file_name, mone):
             ccess = Config.GIT_REPO_NAME
             ccess = ccess.strip()
             await mone.edit(
-                f"`Commited on your github repo`\n\n[Your PLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)"
+                f"`Commited on your github repo`\n\n[Your plugins](https://github.com/{ccess}/tree/master/userbot/plugins/)"
             )
         except BaseException:
             LOGS.info("Cannot create plugin")
