@@ -49,7 +49,7 @@ async def _(event):
             entity=event.chat_id,
             message=f"""**Err automatic anti flooder**
 [User](tg://user?id={event.message.sender_id}) has been automatically restricted
-because he reached the defined flood limit""",
+because the user has reached the defined flood limit""",
             reply_to=event.message.id,
         )
 
