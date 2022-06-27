@@ -15,7 +15,7 @@ plugin_category = "tools"
 )
 async def _(event):
     "To find the chain length of a message"
-    await event.edit("`Counting.. .. .. ..`")
+    await event.edit("`Counting...`")
     count = -1
     message = event.message
     while message:
@@ -28,4 +28,4 @@ async def _(event):
             )
         message = reply
         count += 1
-    await event.edit(f"Chain length: `{count}`")
+    await event.edit(f"Chain length : `{count}`")
