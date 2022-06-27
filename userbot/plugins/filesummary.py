@@ -1,4 +1,3 @@
-# file summary plugin for catuserbot  by @mrconfused
 import time
 
 from prettytable import PrettyTable
@@ -107,7 +106,7 @@ async def _(event):  # sourcery no-metrics
             ]
         )
         if media_dict[mediax]["count"] != 0:
-            largest += f"  •  <b><a href='{media_dict[mediax]['max_file_link']}'>{mediax}</a>  : </b><code>{humanbytes(media_dict[mediax]['max_size'])}</code>\n"
+            largest += f"• <b><a href='{media_dict[mediax]['max_file_link']}'>{mediax}</a>:</b><code>{humanbytes(media_dict[mediax]['max_size'])}</code>\n"
     endtime = int(time.monotonic())
     if endtime - starttime >= 120:
         runtime = str(round(((endtime - starttime) / 60), 2)) + " minutes"
@@ -125,7 +124,7 @@ async def _(event):  # sourcery no-metrics
                     \n</code>"
     line = "<code>+--------------------+-----------+</code>\n"
     result = f"<b>Group : {link}</b>\n\n"
-    result += f"<code>Total Messages: {msg_count}</code>\n"
+    result += f"<code>Total messages : {msg_count}</code>\n"
     result += "<b>File summary : </b>\n"
     result += f"<code>{x}</code>\n"
     result += f"{largest}"
@@ -144,7 +143,7 @@ async def _(event):  # sourcery no-metrics
     },
 )
 async def _(event):  # sourcery no-metrics
-    "Shows you the complete media/file summary of the that user in that group"
+    "Shows you the complete media or file summary of the that user in that group"
     reply = await event.get_reply_message()
     input_str = event.pattern_match.group(1)
     if reply and input_str:
@@ -234,7 +233,7 @@ async def _(event):  # sourcery no-metrics
             ]
         )
         if media_dict[mediax]["count"] != 0:
-            largest += f"  •  <b><a href='{media_dict[mediax]['max_file_link']}'>{mediax}</a>  : </b><code>{humanbytes(media_dict[mediax]['max_size'])}</code>\n"
+            largest += f"  •  <b><a href='{media_dict[mediax]['max_file_link']}'>{mediax}</a>:</b><code>{humanbytes(media_dict[mediax]['max_size'])}</code>\n"
     endtime = int(time.monotonic())
     if endtime - starttime >= 120:
         runtime = str(round(((endtime - starttime) / 60), 2)) + " minutes"
