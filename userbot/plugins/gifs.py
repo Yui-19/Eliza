@@ -1,5 +1,3 @@
-# Created by @Jisan7509
-
 import random
 
 import requests
