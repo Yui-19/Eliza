@@ -1,5 +1,5 @@
-# Template by @yuki
-# Modified by @yuki
+# Template by @Yui
+# Modified by @Yui
 from userbot import catub
 
 from ..core.managers import edit_delete
@@ -67,9 +67,3 @@ async def hideit02(event):
     await event.delete()
     results = await event.client.inline_query(bot, hidetxt)
     await results[1].click(event.chat_id, reply_to=reply_to_id)
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-D
