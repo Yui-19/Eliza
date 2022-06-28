@@ -18,7 +18,7 @@ plugin_category = "utils"
     },
 )
 async def _(event):
-    "To get domain name system(dns) of the given link"
+    "To get domain name system ( dns ) of the given link"
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     reply = await event.get_reply_message()
     if not input_str and reply:
@@ -35,7 +35,7 @@ async def _(event):
         return await edit_delete(event, "`The given link is not supported`", 5)
     sample_url = f"https://da.gd/dns/{input_str}"
     if response_api := requests.get(sample_url).text:
-        await edit_or_reply(event, f"DNS records of {input_str} are \n{response_api}")
+        await edit_or_reply(event, f"Dns records of {input_str} are\n{response_api}")
     else:
         await edit_or_reply(
             event, f"I can't seem to find `{input_str}` on the internet"
@@ -72,7 +72,7 @@ async def _(event):
     sample_url = f"https://da.gd/s?url={input_str}"
     if response_api := requests.get(sample_url).text:
         await edit_or_reply(
-            event, f"Generated {response_api} for {input_str}.", link_preview=False
+            event, f"Generated {response_api} for {input_str}", link_preview=False
         )
     else:
         await edit_or_reply(event, "`Something is wrong , please try again later`")
@@ -109,7 +109,7 @@ async def _(event):
     if str(r.status_code).startswith("3"):
         await edit_or_reply(
             event,
-            f"Input url : {input_str}\nRe-directed url : {r.headers['Location']}",
+            f"Input url : {input_str}\n\nRedirected url : {r.headers['Location']}",
             link_preview=False,
         )
     else:
