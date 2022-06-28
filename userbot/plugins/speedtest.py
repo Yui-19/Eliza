@@ -1,6 +1,6 @@
-"""Check your internet speed powered by speedtest.net
-Syntax: .speedtest
-Available Options: image, file, text"""
+"""check your internet speed powered by speedtest.net
+syntax : .speedtest
+available options : image , file , text"""
 
 from time import time
 
@@ -76,11 +76,11 @@ async def _(event):
             await catevent.edit(
                 """`Speedtest completed in {} seconds`
 
-`Download : {} (or) {} mb/s`
-`Upload : {} (or) {} mb/s`
+`Download : {} (or) {} mbs`
+`Upload : {} (or) {} mbs`
 `Ping : {} ms`
 `Internet service provider : {}`
-`ISP rating : {}`""".format(
+`Isp rating : {}`""".format(
                     ms,
                     convert_from_bytes(download_speed),
                     round(download_speed / 8e6, 2),
@@ -104,11 +104,11 @@ async def _(event):
     except Exception as exc:
         await catevent.edit(
             """**Speedtest** completed in {} seconds
-Download : {} (or) {} mb/s
-Upload : {} (or) {} mb/s
+Download : {} (or) {} mbs
+Upload : {} (or) {} mbs
 Ping : {} ms
 
-With the following ERRORS
+With the following errors
 {}""".format(
                 ms,
                 convert_from_bytes(download_speed),
