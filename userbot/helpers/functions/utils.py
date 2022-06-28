@@ -82,12 +82,12 @@ async def extract_time(cat, time_val):
         else:
             # how even...?
             await cat.edit(
-                f"Invalid time type specified ! Expected s ,  m , h , d or w but got : {time_val[-1]}"
+                f"Invalid time type specified\n\nExpected s ,  m , h , d or w but got : {time_val[-1]}"
             )
             return None
         return bantime
     await cat.edit(
-        f"Invalid time type specified ! Expected s ,  m , h , d or w but got : {time_val[-1]}"
+        f"Invalid time type specified\n\nExpected s ,  m , h , d or w but got : {time_val[-1]}"
     )
     return None
 
