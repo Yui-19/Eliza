@@ -23,7 +23,7 @@ async def age_verification_true(event: CallbackQuery):
     await event.answer("Yes I'm 18+", alert=False)
     buttons = [
         Button.inline(
-            text="Unsure or change of decision ❔",
+            text="Unsure or change of decision",
             data="chg_of_decision_",
         )
     ]
@@ -54,7 +54,7 @@ async def age_verification_false(event: CallbackQuery):
     ]
     try:
         await event.edit(
-            text="Go away kid !",
+            text="Go away kid",
             file="https://telegra.ph/file/1140f16a883d35224e6a1.jpg",
             buttons=buttons,
         )
@@ -79,7 +79,7 @@ async def chg_of_decision_(event: CallbackQuery):
     ]
     try:
         await event.edit(
-            text="**ARE YOU OLD ENOUGH FOR THIS ?**",
+            text="ARE YOU OLD ENOUGH FOR THIS ?",
             file="https://telegra.ph/file/238f2c55930640e0e8c56.jpg",
             buttons=buttons,
         )
