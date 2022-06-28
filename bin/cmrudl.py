@@ -120,7 +120,7 @@ class Main(object):
         return r
 
     def request_data(self, url):
-        res = self.request(url, {"User-Agent": ""})
+        res = self.request(url, {"User agent": ""})
         code = res.getcode()
         headers = res.info()
         body = res.read()
@@ -145,7 +145,7 @@ class Main(object):
         # Open the output file, append mode if continue.
         with open(dest, "ab" if cont else "wb") as fp:
             status = 200
-            headers = {"User-Agent": ""}
+            headers = {"User agent": ""}
 
             # Get the file size if continue.
             offset = fp.tell() if cont else 0
@@ -247,7 +247,7 @@ class Main(object):
         parsed = self.parse_storage(html)
         cloud_settings = parsed["cloudSettings"]
         if not cloud_settings:
-            raise Exception("The cloudSettings object was not found")
+            raise Exception("The cloud settings object was not found")
 
         weblink_get = cloud_settings["dispatcher"]["weblink_get"]
         weblink_get_len = len(weblink_get)
