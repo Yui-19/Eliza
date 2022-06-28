@@ -1,4 +1,3 @@
-# inspired from uniborg Quotes plugin
 import random
 
 from userbot import catub
