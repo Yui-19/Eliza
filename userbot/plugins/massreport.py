@@ -1,4 +1,4 @@
-# By @yuki
+# By @Yui
 
 from userbot import catub
 from ..core.managers import edit_or_reply
