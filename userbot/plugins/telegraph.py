@@ -34,7 +34,7 @@ def resize_image(image):
     command=("telegraph", plugin_category),
     info={
         "header": "To get telegraph link",
-        "description": "Reply to text message to paste that text on telegraph you can also pass input along with command \
+        "description": "Reply to text message to paste that text on telegraph you can also pass input along with command\
             so that to customize title of that telegraph and reply to media file to get sharable link of that media ( atmost 5mb is supported )",
         "options" : {
             "m or media": "To get telegraph link of replied sticker or image or video or gif",
@@ -54,7 +54,7 @@ async def _(event):
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"Created new telegraph account {auth_url} for the current session \n**Do not give this url to anyone , even if they say they are from telegram**",
+            f"Created new telegraph account {auth_url} for the current session\n\n**Do not give this url to anyone even if they say they are from telegram**",
         )
     optional_title = event.pattern_match.group(5)
     if not event.reply_to_msg_id:
@@ -83,7 +83,7 @@ async def _(event):
             os.remove(downloaded_file_name)
             await catevent.edit(
                 f"**➥ Uploaded to :-**[telegraph](https://telegra.ph{media_urls[0]})\
-                 \n**➥ Uploaded in {ms} seconds.**\
+                 \n**➥ Uploaded in {ms} seconds**\
                  \n**➥ Uploaded by :-** {mention}",
                 link_preview=True,
             )
@@ -121,7 +121,7 @@ async def _(event):
         cat = f"https://telegra.ph/{response['path']}"
         await catevent.edit(
             f"**➥ Uploaded to :-** [telegraph]({cat})\
-                 \n**➥ Uploaded in {ms} seconds.**\
+                 \n**➥ Uploaded in {ms} seconds**\
                  \n**➥ Uploaded by :-** {mention}",
             link_preview=True,
         )
