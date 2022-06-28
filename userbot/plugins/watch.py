@@ -1,7 +1,3 @@
-# Uniborg Plugin for getting list of sites where you can watch a particular Movie or TV-Show
-# Author: Sumanjay (https://github.com/cyberboysumanjay) (@cyberboysumanjay)
-# All rights reserved.
-
 import os
 
 # imported from uniborg
@@ -20,7 +16,7 @@ plugin_category = "utils"
 moviepath = os.path.join(os.getcwd(), "temp", "moviethumb.jpg")
 
 justwatchapi.__dict__["HEADER"] = {
-    "User-agent" : "JustWatch client (github.com/dawoudt/JustWatchAPI)"
+    "User agent" : "Just watch client (github.com/dawoudt/JustWatchAPI)"
 }
 
 
@@ -38,7 +34,7 @@ def get_stream_data(query):
         "title": movie["title"],
         "movie_thumb": (
             "https://images.justwatch.com"
-            + movie["poster"].replace("{profile}", "")
+            + movie["poster"].replace("{profile}","")
             + "s592"
         ),
     }
@@ -127,9 +123,9 @@ async def _(event):
 
     output_ = f"**Movie :**\n`{title}`\n**Release date :**\n`{release_date}`"
     if imdb_score:
-        output_ = f"{output_}\n**IMDB : **{imdb_score}"
+        output_ = f"{output_}\n**Imdb : **{imdb_score}"
     if tmdb_score:
-        output_ = f"{output_}\n**TMDB : **{tmdb_score}"
+        output_ = f"{output_}\n**Tmdb : **{tmdb_score}"
 
     output_ = output_ + "\n\n**Available on :**\n"
     for provider, link in stream_providers.items():
