@@ -67,7 +67,7 @@ async def subprocess_run(megadl, cmd):
     command=("mega", plugin_category),
     info={
         "header": "Downloads mega files from it links",
-        "description": "Pass mega link to command so that it will download to bot server , for uploading to tg , check .help -c upload ! Folder is not supported currently and only mega file links are supported",
+        "description": "Pass mega link to command so that it will download to bot server for uploading to tg , check .help -c upload ! Folder is not supported currently and only mega file links are supported",
         "usage": "{tr}mega <mega.nz link>",
     },
 )
@@ -90,7 +90,7 @@ async def mega_downloader(megadl):  # sourcery no-metrics
         if "file" in link:
             link = link.replace("#", "!").replace("file/", "#!")
         elif "folder" in link or "#F" in link or "#N" in link:
-            await catevent.edit("`folder download support are removed...`")
+            await catevent.edit("`Folder download support are removed...`")
             return
     except IndexError:
         await catevent.edit("`Mega.nz link not found...`")
@@ -100,7 +100,7 @@ async def mega_downloader(megadl):  # sourcery no-metrics
     try:
         data = json.loads(result[0])
     except json.JSONDecodeError:
-        await catevent.edit("**JSON decode error** : `Failed to extract link...`")
+        await catevent.edit("**Json decode error** : `Failed to extract link...`")
         return None
     except (IndexError, TypeError):
         return
@@ -122,7 +122,7 @@ async def mega_downloader(megadl):  # sourcery no-metrics
     try:
         downloader.start(blocking=False)
     except HTTPError as e:
-        await catevent.edit(f"**HTTP error** : `{str(e)}`")
+        await catevent.edit(f"**Http error** : `{str(e)}`")
         return None
     start = time.time()
     while not downloader.isFinished():
@@ -185,7 +185,7 @@ async def mega_downloader(megadl):  # sourcery no-metrics
             return None
     else:
         await megadl.edit(
-            "`Failed to download , " "check heroku logs for more details`"
+            "`Failed to download check heroku logs for more details`"
         )
         for e in downloader.get_errors():
             LOGS.info(str(e))
