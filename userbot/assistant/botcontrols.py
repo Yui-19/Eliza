@@ -53,7 +53,7 @@ async def bot_help(event):
 async def bot_broadcast(event):
     replied = await event.get_reply_message()
     if not replied:
-        return await event.reply("Reply to a message for broadcasting first !")
+        return await event.reply("Reply to a message for broadcasting first")
     start_ = datetime.now()
     br_cast = await replied.reply("Broadcasting...")
     blocked_users = []
@@ -67,7 +67,7 @@ async def bot_broadcast(event):
     for user in users:
         try:
             await event.client.send_message(
-                int(user.user_id), "You received a **new** Broadcast"
+                int(user.user_id), "You received a new broadcast"
             )
             await event.client.send_message(int(user.user_id), replied)
             await asyncio.sleep(0.8)
@@ -79,7 +79,7 @@ async def bot_broadcast(event):
             LOGS.error(str(e))
             if BOTLOG:
                 await event.client.send_message(
-                    BOTLOG_CHATID, f"**Error while broadcasting**\n`{e}`"
+                    BOTLOG_CHATID, f"Error while broadcasting\n`{e}`"
                 )
 
         else:
@@ -92,16 +92,16 @@ async def bot_broadcast(event):
                             total=bot_users_count,
                             current=count + len(blocked_users),
                         )
-                        + f"\n\n• ✔️ **Success** :  `{count}`\n"
-                        + f"• ✖️ **Failed** :  `{len(blocked_users)}`"
+                        + f"\n\n• **Success** :  `{count}`\n\n"
+                        + f"• **Failed** :  `{len(blocked_users)}`"
                     )
                     await br_cast.edit(prog_)
                 except FloodWaitError as e:
                     await asyncio.sleep(e.seconds)
     end_ = datetime.now()
-    b_info = f"Successfully broadcasted message to ➜  <b>{count} users.</b>"
+    b_info = f"Successfully broadcasted message to ➜ <b>{count} users.</b>"
     if blocked_users:
-        b_info += f"\n<b>{len(blocked_users)} users</b> blocked your bot recently , so have been removed"
+        b_info += f"\n<b>{len(blocked_users)} users</b> blocked your bot recently so have been removed"
     b_info += (
         f"\n<code>Process took : {time_formatter((end_ - start_).seconds)}</code>"
     )
@@ -124,7 +124,7 @@ async def ban_starters(event):
         return await edit_delete(event, "`No one started your bot yet`")
     msg = "**The list of users who started your bot are :\n\n**"
     for user in ulist:
-        msg += f"• 👤 {_format.mentionuser(user.first_name , user.user_id)}\n**Id :** `{user.user_id}`\n**Username :** @{user.username}\n**Date : **{user.date}\n\n"
+        msg += f"• {_format.mentionuser(user.first_name , user.user_id)}\n\n**Id :** `{user.user_id}`\n\n**Username :** @{user.username}\n\n**Date : **{user.date}\n\n"
     await edit_or_reply(event, msg)
 
 
@@ -146,14 +146,14 @@ async def ban_botpms(event):
     except Exception as e:
         return await event.reply(f"**Error:**\n`{e}`")
     if user_id == Config.OWNER_ID:
-        return await event.reply("I can't ban you master")
+        return await event.reply("I can't ban you mistress")
     if check := check_is_black_list(user.id):
         return await event.client.send_message(
             event.chat_id,
-            f"Already_banned\
-            \nUser already exists in my banned users list\
-            \n**Reason for bot ban :** `{check.reason}`\
-            \n**Date :** `{check.date}`.",
+            f"Already banned\
+            \n\nUser already exists in my banned users list\
+            \n\n**Reason for bot ban :** `{check.reason}`\
+            \n\n**Date :** `{check.date}`.",
         )
     msg = await ban_user_from_bot(user, reason, reply_to)
     await event.reply(msg)
@@ -176,8 +176,8 @@ async def ban_botpms(event):
     if not check:
         return await event.client.send_message(
             event.chat_id,
-            f"User_Not_Banned\
-            \n{_format.mentionuser(user.first_name , user.id)} doesn't exist in my banned users list",
+            f"User not banned\
+            \n\n{_format.mentionuser(user.first_name , user.id)} doesn't exist in my banned users list",
         )
     msg = await unban_user_from_bot(user, reason, reply_to)
     await event.reply(msg)
@@ -199,7 +199,7 @@ async def ban_starters(event):
         return await edit_delete(event, "`No one is banned in your bot yet`")
     msg = "**The list of users who are banned in your bot are :\n\n**"
     for user in ulist:
-        msg += f"• {_format.mentionuser(user.first_name , user.chat_id)}\n**Id :** `{user.chat_id}`\n**Username :** @{user.username}\n**Date : **{user.date}\n**Reason :** {user.reason}\n\n"
+        msg += f"• {_format.mentionuser(user.first_name , user.chat_id)}\n\n**Id :** `{user.chat_id}`\n\n**Username :** @{user.username}\n\n**Date : **{user.date}\n\n**Reason :** {user.reason}\n\n"
     await edit_or_reply(event, msg)
 
 
