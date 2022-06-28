@@ -1,4 +1,3 @@
-# pm and tagged messages logger for catuserbot by @mrconfused (@sandy1709)
 import asyncio
 
 from userbot import catub
@@ -43,19 +42,19 @@ async def monito_p_m_s(event):  # sourcery no-metrics
                     if LOG_CHATS_.COUNT > 1:
                         await LOG_CHATS_.NEWPM.edit(
                             LOG_CHATS_.NEWPM.text.replace(
-                                "new message", f"{LOG_CHATS_.COUNT} messages"
+                                "New message", f"{LOG_CHATS_.COUNT} messages"
                             )
                         )
                     else:
                         await LOG_CHATS_.NEWPM.edit(
                             LOG_CHATS_.NEWPM.text.replace(
-                                "new message", f"{LOG_CHATS_.COUNT} message"
+                                "New message", f"{LOG_CHATS_.COUNT} message"
                             )
                         )
                     LOG_CHATS_.COUNT = 0
                 LOG_CHATS_.NEWPM = await event.client.send_message(
                     Config.PM_LOGGER_GROUP_ID,
-                    f"👤{_format.mentionuser(sender.first_name , sender.id)} has sent a new message \nId : `{chat.id}`",
+                    f"👤{_format.mentionuser(sender.first_name , sender.id)} has sent a new message\n\nId : `{chat.id}`",
                 )
             try:
                 if event.message:
@@ -87,10 +86,10 @@ async def log_tagged_messages(event):
     except Exception as e:
         LOGS.info(str(e))
     messaget = media_type(event)
-    resalt = f"TAGS \n<b>Group : </b><code>{hmm.title}</code>"
+    resalt = f"TAGS\n\n<b>Group : </b><code>{hmm.title}</code>"
     if full is not None:
         resalt += (
-            f"\n<b>From : </b> 👤{_format.htmlmentionuser(full.first_name , full.id)}"
+            f"\n<b>From : </b> {_format.htmlmentionuser(full.first_name , full.id)}"
         )
     if messaget is not None:
         resalt += f"\n<b>Message type : </b><code>{messaget}</code>"
@@ -124,7 +123,7 @@ async def log(log_text):
             reply_msg = await log_text.get_reply_message()
             await reply_msg.forward_to(BOTLOG_CHATID)
         elif log_text.pattern_match.group(1):
-            user = f"#LOG / Chat ID: {log_text.chat_id}\n\n"
+            user = f"LOG OR Chat ID : {log_text.chat_id}\n\n"
             textx = user + log_text.pattern_match.group(1)
             await log_text.client.send_message(BOTLOG_CHATID, textx)
         else:
@@ -132,7 +131,7 @@ async def log(log_text):
             return
         await log_text.edit("`Logged successfully`")
     else:
-        await log_text.edit("`This feature requires logging to be enabled !`")
+        await log_text.edit("`This feature requires logging to be enabled`")
     await asyncio.sleep(2)
     await log_text.delete()
 
