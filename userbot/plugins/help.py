@@ -13,12 +13,13 @@ plugin_category = "tools"
 
 hemojis = {
     "admin": "👮🏻‍♀️",
-    "bot": "💖",
+    "bot": "🗡️",
     "fun": "🪄",
-    "misc": "🔮",
-    "tools": "🕸️",
-    "utils": "🍻",
-    "extra": "🕯️",
+    "misc": "🤣",
+    "tools": "🎯",
+    "utils": "💫",
+    "extra": "🥲",
+    "useless": "🥰",
 }
 
 
@@ -129,7 +130,7 @@ async def cmdlist():
     pattern="help ?(-c|-p|-t)? ?([\s\S]*)?",
     command=("help", plugin_category),
     info={
-        "header": "To get guide for catuserbot",
+        "header": "To get guide for cat userbot",
         "description": "To get information or guide for the command or plugin",
         "note": "If command name and plugin name is same then you get guide for plugin so by using this flag you get command guide",
         "flags": {
@@ -236,10 +237,10 @@ async def _(event):
               \n**Current dc :** {result.this_dc}\
               \n**Nearest dc :** {result.nearest_dc}\
               \n\n**List of telegram data centres :**\
-              \n**Dc 1 : **Miami FL , USA\
-              \n**Dc 2 :** Amsterdam , NL\
-              \n**Dc 3 :** Miami FL , USA\
-              \n**Dc 4 :** Amsterdam , NL\
-              \n**Dc 5 : **Singapore , SG\
+              \n**Dc 1 : **Miami FL USA\
+              \n**Dc 2 :** Amsterdam NL\
+              \n**Dc 3 :** Miami FL USA\
+              \n**Dc 4 :** Amsterdam NL\
+              \n**Dc 5 : **Singapore SG\
                 "
     await edit_or_reply(event, result)
