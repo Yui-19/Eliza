@@ -1,5 +1,3 @@
-# credits to @mrconfused and @sandy1709
-
 import os
 
 from telegraph import exceptions, upload_file
@@ -155,7 +153,7 @@ async def catbot(catmemes):
     },
 )
 async def catbot(catmemes):
-    "replied Image will be face of other image"
+    "Replied Image will be face of other image"
     replied = await catmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
