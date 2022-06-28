@@ -69,7 +69,7 @@ async def startupmessage():
         if BOTLOG:
             Config.CATUBLOGO = await catub.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://telegra.ph/file/4e3ba8e8f7e535d5a2abe.jpg",
+                "https://telegra.ph/file/e5f368529684937bf9a61.jpg",
                 caption="**Your cat userbot has been started successfully**",
                 buttons=[(Button.url("Support", "https://t.me/catuserbot"),)],
             )
@@ -87,7 +87,7 @@ async def startupmessage():
         if msg_details:
             await catub.check_testcases()
             message = await catub.get_messages(msg_details[0], ids=msg_details[1])
-            text = message.text + "\n\n**Okay bot is back and alive**"
+            text = message.text + "\n\nOkay bot is back and alive"
             await catub.edit_message(msg_details[0], msg_details[1], text)
             if gvarstatus("restartupdate") is not None:
                 await catub.send_message(
@@ -176,14 +176,14 @@ async def load_plugins(folder, extfolder=None):
                     failure.append(shortname)
                 os.remove(Path(f"{plugin_path}/{shortname}.py"))
                 LOGS.info(
-                    f"Unable to load {shortname} because of error {e}\nBase folder {plugin_path}"
+                    f"Unable to load {shortname} because of error {e}\n\nBase folder {plugin_path}"
                 )
     if extfolder:
         if not failure:
             failure.append("None")
         await catub.tgbot.send_message(
             BOTLOG_CHATID,
-            f'Your external repo plugins have imported \n**No of imported plugins :** `{success}`\n**Failed plugins to import :** `{", ".join(failure)}`',
+            f'Your external repo plugins have imported\n\nNo of imported plugins : `{success}`\n\nFailed plugins to import : `{", ".join(failure)}`',
         )
 
 
@@ -218,7 +218,7 @@ async def verifyLoggerGroup():
                 + str(e)
             )
     else:
-        descript = "Don't delete this group or change to group ( If you change group all your previous snips , welcome will be lost )"
+        descript = "Don't delete this group or change to group if you change group all your previous snips & welcomes will be lost"
         _, groupid = await create_supergroup(
             "Cat userbot botlog group", catub, Config.TG_BOT_USERNAME, descript
         )
@@ -264,7 +264,7 @@ async def install_externalrepo(repo, branch, cfolder):
     else:
         repourl = CATREPO
         gcmd = f"git clone {CATREPO} {cfolder}"
-        errtext = f"The link({CATREPO}) you provided for `EXTERNAL_REPO` in vars is invalid , please recheck that link"
+        errtext = f"The link({CATREPO}) you provided for `EXTERNAL_REPO` in vars is invalid please recheck that link"
     response = urllib.request.urlopen(repourl)
     if response.code != 200:
         LOGS.error(errtext)
