@@ -15,7 +15,7 @@ headers = {
 
 async def p_paste(message, extension=None):
     """
-    To Paste the given message/text/code to paste.pelkum.dev
+    To paste the given message or text or code to paste.pelkum.dev
     """
     siteurl = "https://pasty.lus.pm/api/v1/pastes"
     data = {"content": message}
@@ -35,7 +35,7 @@ async def p_paste(message, extension=None):
 
             await catub.send_message(
                 Config.BOTLOG_CHATID,
-                f"**You have created a new paste in pasty bin.** Link to pasty is [here]({purl}). You can delete that paste by using this token `{response['deletionToken']}`",
+                f"**You have created a new paste in pasty bin**\n\nLink to pasty is [here]({purl})\n\nYou can delete that paste by using this token `{response['deletionToken']}`",
             )
         except Exception as e:
             LOGS.info(str(e))
@@ -49,7 +49,7 @@ async def p_paste(message, extension=None):
 
 async def s_paste(message, extension="txt"):
     """
-    To Paste the given message/text/code to spaceb.in
+    To paste the given message or text or code to spaceb.in
     """
     siteurl = "https://spaceb.in/api/v1/documents/"
     try:
@@ -67,12 +67,12 @@ async def s_paste(message, extension="txt"):
             "raw": f"{siteurl}{response['payload']['id']}/raw",
             "bin": "Spacebin",
         }
-    return {"error": "Unable to reach spacebin."}
+    return {"error": "Unable to reach spacebin"}
 
 
 def spaste(message, extension="txt"):
     """
-    To Paste the given message/text/code to spaceb.in
+    To paste the given message or text or code to spaceb.in
     """
     siteurl = "https://spaceb.in/api/v1/documents/"
     try:
@@ -90,12 +90,12 @@ def spaste(message, extension="txt"):
             "raw": f"{siteurl}{response['payload']['id']}/raw",
             "bin": "Spacebin",
         }
-    return {"error": "Unable to reach spacebin."}
+    return {"error": "Unable to reach spacebin"}
 
 
 async def n_paste(message, extension=None):
     """
-    To Paste the given message/text/code to nekobin
+    To paste the given message or text or code to nekobin
     """
     siteurl = "https://nekobin.com/api/documents"
     data = {"content": message}
@@ -115,12 +115,12 @@ async def n_paste(message, extension=None):
             "raw": f"nekobin.com/raw/{response['result']['key']}",
             "bin": "Neko",
         }
-    return {"error": "Unable to reach nekobin."}
+    return {"error": "Unable to reach nekobin"}
 
 
 async def d_paste(message, extension=None):
     """
-    To Paste the given message/text/code to dogbin
+    To paste the given message or text or code to dogbin
     """
     siteurl = "http://catbin.up.railway.app/documents"
     data = {"content": message}
@@ -140,7 +140,7 @@ async def d_paste(message, extension=None):
             "raw": f"http://catbin.up.railway.app/raw/{response['key']}",
             "bin": "Dog",
         }
-    return {"error": "Unable to reach dogbin."}
+    return {"error": "Unable to reach dogbin"}
 
 
 async def pastetext(text_to_print, pastetype=None, extension=None):
