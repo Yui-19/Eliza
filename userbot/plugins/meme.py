@@ -216,7 +216,7 @@ async def give(event):
     sleepValue = 0.5
     lp = giveVar[6:]
     if not lp:
-        lp = " 🍭"
+        lp = "🥺"
     event = await edit_or_reply(event, lp + "        ")
     await asyncio.sleep(sleepValue)
     await event.edit(lp + lp + "       ")
@@ -263,7 +263,7 @@ async def give(event):
     },
 )
 async def _(event):
-    "Shouts Admin Animation command"
+    "Shouts admin animation command"
     animation_ttl = range(13)
     event = await edit_or_reply(event, "sadmin")
     animation_chars = [
