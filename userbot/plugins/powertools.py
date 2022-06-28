@@ -28,12 +28,12 @@ plugin_category = "tools"
     disable_errors=True,
 )
 async def _(event):
-    "Restarts the bot !"
+    "Restarts the bot"
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "RESTART \n" "Bot restarted")
     sandy = await edit_or_reply(
         event,
-        "Restarted ! `.ping` me or `.help` to check if I am online , actually it takes 1-2 min for restarting",
+        "Restarted\n\n`.ping` me or `.help` to check if I am online actually it takes 1-2 min for restarting",
     )
     try:
         ulist = get_collectionlist_items()
@@ -66,7 +66,7 @@ async def _(event):
 async def _(event):
     "Shutdowns the bot"
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "SHUTDOWN \n" "Bot shut down")
+        await event.client.send_message(BOTLOG_CHATID, "SHUT DOWN\n\nBot shut down")
     await edit_or_reply(event, "`Turning off bot now... Manually turn me on later`")
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
@@ -93,9 +93,9 @@ async def _(event):
             BOTLOG_CHATID,
             "You put the bot to sleep for " + str(counter) + " seconds",
         )
-    event = await edit_or_reply(event, f"`okay , let me sleep for {counter} seconds`")
+    event = await edit_or_reply(event, f"`Okay let me sleep for {counter} seconds`")
     sleep(counter)
-    await event.edit("`Okay , I'm awake now`")
+    await event.edit("`Okay I'm awake now`")
 
 
 @catub.cat_cmd(
@@ -103,7 +103,7 @@ async def _(event):
     command=("notify", plugin_category),
     info={
         "header": "To update the your chat after restart or reload",
-        "description": "Will send the ping cmd as reply to the previous last msg of ( restart / reload / update cmds )",
+        "description": "Will send the ping cmd as reply to the previous last message of ( restart or reload or update commands )",
         "usage": [
             "{tr}notify <on/off>",
         ],
