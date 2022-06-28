@@ -1,4 +1,4 @@
-# By @yuki
+# By @Yui
 
 import asyncio
 import os
@@ -20,7 +20,7 @@ plugin_category = "extra"
     info={
         "header": "Make the replied sticker small",
         "usage": [
-            "{tr}tiny <Reply to a sticker>",
+            "{tr}tiny <reply to a sticker>",
         ],
     },
 )
