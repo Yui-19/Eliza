@@ -30,21 +30,21 @@ async def _(event):
     if num_warns >= limit:
         sql.reset_warns(reply_message.sender_id, event.chat_id)
         if soft_warn:
-            logger.info("TODO : kick user")
-            reply = "{} warnings , [user](tg://user?id={}) has to been kicked !".format(
+            logger.info("To do : kick user")
+            reply = "{} warnings [user](tg://user?id={}) has to been kicked".format(
                 limit, reply_message.sender_id
             )
         else:
             logger.info("TODO : ban user")
-            reply = "{} warnings , [user](tg://user?id={}) has to been banned !".format(
+            reply = "{} warnings [user](tg://user?id={}) has to been banned".format(
                 limit, reply_message.sender_id
             )
     else:
-        reply = "[user](tg://user?id={}) has {}/{} warnings... watch out !".format(
+        reply = "[user](tg://user?id={}) has {}/{} warnings... Watch out".format(
             reply_message.sender_id, num_warns, limit
         )
         if warn_reason:
-            reply += "\nReason for last warn :\n{}".format(html.escape(warn_reason))
+            reply += "\n\nReason for last warn :\n{}".format(html.escape(warn_reason))
     await edit_or_reply(event, reply)
 
 
@@ -63,18 +63,18 @@ async def _(event):
         return await edit_delete(event, "Reply to user to get his warns")
     result = sql.get_warns(reply_message.sender_id, event.chat_id)
     if not result or result[0] == 0:
-        return await edit_or_reply(event, "This user hasn't got any warnings !")
+        return await edit_or_reply(event, "This user hasn't got any warnings")
     num_warns, reasons = result
     limit, soft_warn = sql.get_warn_setting(event.chat_id)
     if not reasons:
         return await edit_or_reply(
             event,
-            "This user has {} / {} warning , but no reasons for any of them".format(
+            "This user has {}/{} warnings but no reasons for any of them".format(
                 num_warns, limit
             ),
         )
 
-    text = "This user has {}/{} warnings , for the following reasons :".format(
+    text = "This user has {}/{} warnings for the following reasons :".format(
         num_warns, limit
     )
     text += "\r\n"
