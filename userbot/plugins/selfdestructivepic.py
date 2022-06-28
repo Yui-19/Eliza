@@ -1,4 +1,4 @@
-# By @yuki
+# By @Yui and @Deep
 
 from userbot import catub
 
@@ -26,7 +26,7 @@ async def sakshi(event):
         event.chat_id,
         pic,
         caption=f"""
-  Imao ! Your pic is saved successfully
+  Imao\n\nYour pic is saved successfully
   """,
     )
     await event.delete()
