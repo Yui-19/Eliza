@@ -76,7 +76,7 @@ async def labstack(event):
     try:
         t_response = subprocess.check_output(command_to_exec, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as exc:
-        LOGS.info("Status : FAIL", exc.returncode, exc.output)
+        LOGS.info("Status : Fail", exc.returncode, exc.output)
         return await editor.edit(exc.output.decode("UTF-8"))
     else:
         LOGS.info(t_response)
@@ -84,7 +84,7 @@ async def labstack(event):
             r2json["code"]
         )
     await editor.edit(
-        t_response_arry + "\nMax Days:" + str(max_days), link_preview=False
+        t_response_arry + "\nMax days :" + str(max_days), link_preview=False
     )
 
 
