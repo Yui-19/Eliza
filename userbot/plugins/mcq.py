@@ -1,4 +1,4 @@
-# By @yuki
+# By @Yui
 import random
 
 from userbot import catub
@@ -13,7 +13,7 @@ plugin_category = "utils"
     pattern="mcq ?(.*)",
     command=("mcq", plugin_category),
     info={
-        "header": "Chooses a random values in the given options , give a space to add multiple option",
+        "header": "Chooses a random values in the given options give a space to add multiple option",
         "usage": [
             "{tr}mcq <options>",
             "{tr}mcq a b c d",
