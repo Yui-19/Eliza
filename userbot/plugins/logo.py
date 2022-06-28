@@ -1,8 +1,3 @@
-"""
-Created by @Jisan7509
-#catuserbot
-"""
-
 import asyncio
 import os
 import re
@@ -52,8 +47,8 @@ plugin_category = "extra"
             "{tr}slogo <text>",
         ],
         "examples": [
-            "{tr}logo Cat",
-            "{tr}slogo Cat",
+            "{tr}logo cat",
+            "{tr}slogo cat",
         ],
     },
 )
@@ -65,7 +60,7 @@ async def very(event):
     if not text and reply:
         text = reply.text
     if not text:
-        return await edit_delete(event, "**Give me text to make logo**")
+        return await edit_delete(event, "**Give me a text to make logo**")
     reply_to_id = await reply_id(event)
     catevent = await edit_or_reply(event, "`Processing...`")
     LOGO_FONT_SIZE = gvarstatus("LOGO_FONT_SIZE") or 220
@@ -138,13 +133,13 @@ async def very(event):
     command=("lbg", plugin_category),
     info={
         "header": "Change the background of logo",
-        "description": "To change the background on which logo will created , in **bg** there few built-in backgrounds",
+        "description": "To change the background on which logo will created , in bg there few built-in backgrounds",
         "flags": {
             "c": "Custom background for logo , can set by giving a telegraph link or reply to media",
         },
         "usage": [
             "{tr}lbg <background color code>",
-            "{tr}clbg <telegraph link / reply to media>",
+            "{tr}clbg <telegraph link or reply to media>",
         ],
         "examples": [
             "{tr}lbg red",
@@ -179,7 +174,7 @@ async def bad(event):
             )
         if not input_str.startswith("https://t"):
             return await edit_delete(
-                event, "Give a valid telegraph picture link , or reply to a media"
+                event, "Give a valid telegraph picture link or reply to a media"
             )
         addgvar("LOGO_BACKGROUND", input_str)
         return await edit_delete(
@@ -204,7 +199,7 @@ async def bad(event):
     command=("lf", plugin_category),
     info={
         "header": "Change text style for logo",
-        "description": "Customise logo font, font size , font position like text height or width",
+        "description": "Customise logo font , font size , font position like text height or width",
         "flags": {
             "c": "To change color of logo font",
             "s": "To change size of logo font",
@@ -315,7 +310,7 @@ async def pussy(event):
             else:
                 await edit_delete(
                     event,
-                    f"**Font size is between 0 - 1000 , you can't set limit to :** `{input_str}`",
+                    f"**Font size is between 0-1000 , you can't set limit to :** `{input_str}`",
                 )
         elif cmd == "w":
             input_str = float(input_str)
@@ -327,7 +322,7 @@ async def pussy(event):
             else:
                 await edit_delete(
                     event,
-                    f"**Font width is between 0 - 100 , you can't set limit to {input_str}",
+                    f"**Font width is between 0-100 , you can't set limit to {input_str}",
                 )
         elif cmd == "h":
             input_str = float(input_str)
@@ -339,7 +334,7 @@ async def pussy(event):
             else:
                 await edit_delete(
                     event,
-                    f"**Font height is between 0 - 100 , you can't set limit to {input_str}",
+                    f"**Font height is between 0-100 , you can't set limit to {input_str}",
                 )
         elif cmd == "sw":
             input_str = int(input_str)
@@ -351,7 +346,7 @@ async def pussy(event):
             else:
                 await edit_delete(
                     event,
-                    f"**Font stroke width size is between 0 - 100 , You can't set limit to :** `{input_str}`",
+                    f"**Font stroke width size is between 0-100 , You can't set limit to :** `{input_str}`",
                 )
 
 
@@ -416,6 +411,6 @@ async def cat(event):
     else:
         await edit_delete(
             event,
-            f"**Give correct vars name :**\nCorrect Vars code list is :\n\n1. `lbg` : **LOGO_BACKGROUND**\n2. `lfc` : **LOGO_FONT_COLOR**\n3. `lf` : **LOGO_FONT**\n4. `lfs` : **LOGO_FONT_SIZE**\n5. `lfh` : **LOGO_FONT_HEIGHT**\n6. `lfw` : **LOGO_FONT_WIDTH**",
+            f"**Give correct vars name :**\n\nCorrect vars code list is :\n\n1. `lbg` : **LOGO_BACKGROUND**\n2. `lfc` : **LOGO_FONT_COLOR**\n3. `lf` : **LOGO_FONT**\n4. `lfs` : **LOGO_FONT_SIZE**\n5. `lfh` : **LOGO_FONT_HEIGHT**\n6. `lfw` : **LOGO_FONT_WIDTH**",
             time=60,
         )
