@@ -1,8 +1,6 @@
 # ======================================================================================================================================
 
-# pping -> ping with pic
-
-# ported to CatUB 3.0.0 by t.me/sakku_cute
+# By @Yui
 import os
 from datetime import datetime
 
@@ -32,7 +30,7 @@ PING_TEXT = (
     command=("pping", plugin_category),
     info={
         "header": "Check how long it takes to ping your userbot",
-        "option": "To show media in this cmd you need to set PING_PIC with media link , get this by replying the media by .tgm",
+        "option": "To show media in this cmd you need to set PING_PIC with media link get this by replying the media by .tgm",
         "usage": [
             "{tr}pping",
         ],
@@ -53,11 +51,11 @@ async def _(event):
     end = datetime.now()
    
 
-    ms = (end - start).microseconds / 1000
+    ms = (end - start).microseconds/1000
 
     if PING_PIC:
 
-        caption = f"<b><i>{PING_TEXT}<i><b>\n\n<b><i>➤  Pong !</b></i>\n⚡ {ms} <b><i>ms<b/></i>\n<b><i>🔥 Boss : {hmention}</b></i>"
+        caption = f"<b><i>{PING_TEXT}<i><b>\n\n<b><i>➤ Pong !</b></i>\n⚡ {ms} <b><i>ms<b/></i>\n<b><i>➤ Boss : {hmention}</b></i>"
 
         await event.client.send_file(
             event.chat_id,
