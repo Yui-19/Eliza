@@ -61,11 +61,11 @@ async def ytsearch(query, limit):
     for v in videolinks.result()["result"]:
         textresult = f"[{v['title']}](https://www.youtube.com/watch?v={v['id']})\n"
         try:
-            textresult += f"**Description : **`{v['descriptionSnippet'][-1]['text']}`\n"
+            textresult += f"**Description :**`{v['descriptionSnippet'][-1]['text']}`\n"
         except Exception:
-            textresult += "**Description : **`None`\n"
-        textresult += f"**Duration : **{v['duration']}  **Views : **{v['viewCount']['short']}\n"
-        result += f"☞ {textresult}\n"
+            textresult += "**Description :**`None`\n"
+        textresult += f"**Duration : **{v['duration']}\n\n**Views : **{v['viewCount']['short']}\n"
+        result += f"{textresult}\n"
     return result
 
 
@@ -217,7 +217,7 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
         vid_data = {"formats": []}
     buttons = [
         [
-            Button.inline("💫 BEST - 📹 MKV", data=f"ytdl_download_{vid}_mkv_v"),
+            Button.inline("BEST-MKV", data=f"ytdl_download_{vid}_mkv_v"),
             Button.inline(
                 "💫 BEST - 📹 WebM/MP4",
                 data=f"ytdl_download_{vid}_mp4_v",
@@ -253,13 +253,13 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
             frmt_size = humanbytes(frmt_dict.get(frmt_id)) or "N/A"
             video_btns.append(
                 Button.inline(
-                    f"📹 {frmt} ({frmt_size})",
+                    f"{frmt} ({frmt_size})",
                     data=f"ytdl_download_{vid}_{frmt_id}_v",
                 )
             )
     buttons += sublists(video_btns, width=2)
     buttons += [
-        [Button.inline("💫 BEST - 🎶 320Kbps - MP3", data=f"ytdl_download_{vid}_mp3_a")]
+        [Button.inline("BEST-320Kbps-MP3", data=f"ytdl_download_{vid}_mp3_a")]
     ]
     buttons += sublists(
         [
