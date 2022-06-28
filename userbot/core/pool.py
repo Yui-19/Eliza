@@ -12,12 +12,12 @@ _LOG_STR = "<<<!  ||||  %s  ||||  !>>>"
 
 
 def submit_thread(func: Callable[[Any], Any], *args: Any, **kwargs: Any) -> Future:
-    """submit thread to thread pool"""
+    """Submit thread to thread pool"""
     return _EXECUTOR.submit(func, *args, **kwargs)
 
 
 def run_in_thread(func: Callable[[Any], Any]) -> Callable[[Any], Any]:
-    """run in a thread"""
+    """Run in a thread"""
 
     @wraps(func)
     async def wrapper(*args: Any, **kwargs: Any) -> Any:
@@ -34,8 +34,8 @@ def _get() -> ThreadPoolExecutor:
 def _stop():
     _EXECUTOR.shutdown()
     # pylint: disable=protected-access
-    _LOG.info(_LOG_STR, f"Stopped Pool : {_EXECUTOR._max_workers} Workers")
+    _LOG.info(_LOG_STR, f"Stopped pool : {_EXECUTOR._max_workers} Workers")
 
 
 # pylint: disable=protected-access
-_LOG.info(_LOG_STR, f"Started Pool : {_EXECUTOR._max_workers} Workers")
+_LOG.info(_LOG_STR, f"Started pool : {_EXECUTOR._max_workers} Workers")
