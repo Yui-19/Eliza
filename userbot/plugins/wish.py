@@ -1,4 +1,4 @@
-# Made by @yuki
+# Made by @Yui
 
 import random
 
@@ -20,7 +20,7 @@ async def LEGENDBOT(event):
     LEGENDX = event.pattern_match.group(1)
     PROBOY = random.randint(0, 100)
     if LEGENDX:
-        reslt = f"""🦋 ʏᴏᴜʀ ᴡɪꜱʜ ʜᴀꜱ ʙᴇᴇɴ ᴄᴀꜱᴛᴇᴅ 🦋\n\n\n 𝕐𝕠𝕦𝕣 𝕨𝕚𝕤𝕙 ➪ **`{LEGENDX}`** 
+        reslt = f"""🦋 ʏᴏᴜʀ ᴡɪꜱʜ ʜᴀꜱ ʙᴇᴇɴ ᴄᴀꜱᴛᴇᴅ 🦋\n\n\n𝕐𝕠𝕦𝕣 𝕨𝕚𝕤𝕙 ➪ **`{LEGENDX}`** 
               \n\n𝐂𝐇𝐀𝐍𝐂𝐄 𝐎𝐅 𝐒𝐔𝐂𝐂𝐄𝐒𝐒 : **{PROBOY}%**"""
     else:
         if event.is_reply:
