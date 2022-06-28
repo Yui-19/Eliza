@@ -12,12 +12,12 @@ from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 __version__ = "3.1.0"
 __license__ = "GNU Affero General Public License v3.0"
-__author__ = "CatUserBot <https://github.com/TgCatUB/catuserbot>"
-__copyright__ = f"CatUserBot Copyright (C) 2020 - 2021  {__author__}"
+__author__ = "Cat userbot <https://github.com/TgCatUB/catuserbot>"
+__copyright__ = f"Cat userbot copyright (C) 2020-2021 {__author__}"
 
 catub.version = __version__
 catub.tgbot.version = __version__
-LOGS = logging.getLogger("CatUserbot")
+LOGS = logging.getLogger("Cat userbot")
 bot = catub
 
 StartTime = time.time()
@@ -25,7 +25,7 @@ catversion = "3.1.0"
 
 
 def close_connection(*_):
-    print("Clossing userbot connection")
+    print("Closing userbot connection")
     runasync(catub.disconnect())
     sys.exit(143)
 
