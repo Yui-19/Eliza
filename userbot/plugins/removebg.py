@@ -1,4 +1,3 @@
-# ported from uniborg (@spechide)
 import os
 
 import requests
@@ -51,7 +50,7 @@ def ReTrieveURL(input_url):
     info={
         "header": "To remove background of a image or sticker or image link",
         "options": {
-            "rmbg": "to get output as png format",
+            "rmbg": "To get output as png format",
             "srmbg": "To get output as webp format( sticker )",
         },
         "usage": [
