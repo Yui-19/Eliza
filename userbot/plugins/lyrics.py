@@ -1,5 +1,3 @@
-# credits to @mrconfused (@sandy1709)
-
 import re
 
 import lyricsgenius
@@ -24,14 +22,14 @@ GENIUS = Config.GENIUS_API_TOKEN
             "-l": "to get list of search lists",
             "-n": "To get particular song lyrics",
         },
-        "note": "For functioning of this command set the GENIUS_API_TOKEN in heroku , get value from  https://genius.com/developers",
+        "note": "For functioning of this command set the GENIUS_API_TOKEN in heroku get value from https://genius.com/developers",
         "usage": [
             "{tr}lyrics <artist name> - <song name>",
             "{tr}lyrics -l <song name>",
             "{tr}lyrics -n<song number> <song name>",
         ],
         "examples": [
-            "{tr}lyrics Armaan malik - butta bomma",
+            "{tr}lyrics armaan malik - butta bomma",
             "{tr}lyrics -l butta bomma",
             "{tr}lyrics -n2 butta bomma",
         ],
@@ -75,7 +73,7 @@ async def lyrics(event):  # sourcery no-metrics
         except TypeError:
             songs = None
         if songs is None:
-            return await catevent.edit(f"Song **{artist} - {song}** not found!")
+            return await catevent.edit(f"Song **{artist} - {song}** not found")
         result = f"**Search query** : \n`{artist} - {song}`\n\n```{songs.lyrics}```"
     else:
         catevent = await edit_or_reply(event, f"`Searching lyrics for {query}...`")
@@ -83,7 +81,7 @@ async def lyrics(event):  # sourcery no-metrics
         msg = f"**The songs found for the given query :** `{query}`\n\n"
         if len(response["hits"]) == 0:
             return await edit_or_reply(
-                catevent, f"**I can't find lyrics for the given query : **`{query}`"
+                catevent, f"**I can't find lyrics for the given query :**`{query}`"
             )
         for i, an in enumerate(response["hits"], start=1):
             msg += f"{i}. `{an['result']['title']}`\n"
