@@ -73,7 +73,7 @@ def parse_pre(text):
 def yaml_format(obj, indent=0, max_str_len=256, max_byte_len=64):
     # sourcery no-metrics
     """
-    Pretty formats the given object as a YAML string which is returned.
+    Pretty formats the given object as a YAML string which is returned
     (based on TLObject.pretty_format)
     """
     result = []
