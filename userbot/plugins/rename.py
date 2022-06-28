@@ -42,7 +42,7 @@ async def _(event):
     input_str = event.pattern_match.group(2)
     if not event.reply_to_msg_id:
         return await catevent.edit(
-            "**Syntax : **`.rnup file name` as reply to a telegram media"
+            "**Syntax : ** .rnup file name as reply to a telegram media"
         )
     start = datetime.now()
     file_name = input_str
@@ -82,5 +82,5 @@ async def _(event):
     ms_two = (end_two - end).seconds
     await edit_delete(
         catevent,
-        f"`Downloaded file in {ms_one} seconds\n\nAnd uploaded in {ms_two} seconds`",
+        f"`Downloaded file in {ms_one} seconds\n\nUploaded in {ms_two} seconds`",
     )
