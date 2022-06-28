@@ -1,10 +1,3 @@
-"""Get a Image Post from Reddit"""
-# 👍 https://github.com/D3vd for his awesome API
-#
-# Copyright (C) 2020 BY - GitHub.com/code-rgb [TG - @DeletedUser420]
-# All rights reserved.
-
-
 import requests
 
 from userbot import catub
