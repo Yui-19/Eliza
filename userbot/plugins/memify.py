@@ -1,5 +1,3 @@
-# Made by @mrconfused and @sandy1709
-# memify plugin for catuserbot
 import asyncio
 import base64
 import io
@@ -71,7 +69,7 @@ async def maccmd(event):  # sourcery no-metrics
     if mediatype == "Sticker" and reply.document.mime_type == "application/i-tgsticker":
         return await edit_delete(
             event,
-            "Reply to photo or sticker to frame it ! Animated sticker is not supported",
+            "Reply to photo or sticker to frame it\n\nAnimated sticker is not supported",
         )
     catevent = await event.edit("Adding frame for media...")
     args = event.pattern_match.group(1)
@@ -159,7 +157,7 @@ async def memes(event):
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     if not catinput:
         return await edit_delete(
-            event, "`What should I write on that you idiot give text to memify`"
+            event, "`What should I write on that you idiot give text to memify ?`"
         )
     if ";" in catinput:
         top, bottom = catinput.split(";", 1)
@@ -568,7 +566,7 @@ async def memes(event):
     command=("frame", plugin_category),
     info={
         "header": "Make a frame for your media file",
-        "fill": "This defines the pixel fill value or color value to be applied ! The default value is 0 which means the color is black",
+        "fill": "This defines the pixel fill value or color value to be applied the default value is 0 which means the color is black",
         "usage": ["{tr}frame", "{tr}frame range", "{tr}frame range ; fill"],
     },
 )
