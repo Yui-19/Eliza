@@ -1,4 +1,3 @@
-# Userbot module for purging unneeded messages(usually spam or ot).
 import re
 from asyncio import sleep
 
@@ -47,7 +46,7 @@ purgetype = {
     command=("del", plugin_category),
     info={
         "header": "To delete replied message",
-        "description": "Deletes the message you replied to in x(count) seconds if count is not used then deletes immediately",
+        "description": "Deletes the message you replied to in x ( count ) seconds if count is not used then deletes immediately",
         "usage": ["{tr}del <time in seconds>", "{tr}del"],
         "examples": "{tr}del 2",
     },
@@ -64,7 +63,7 @@ async def delete_it(event):
                 await msg_src.delete()
                 if BOTLOG:
                     await event.client.send_message(
-                        BOTLOG_CHATID, "DEL \n`Deletion of message was successful`"
+                        BOTLOG_CHATID, "DELETE\n\n`Deletion of message was successful`"
                     )
             except rpcbaseerrors.BadRequestError:
                 if BOTLOG:
@@ -81,7 +80,7 @@ async def delete_it(event):
                 await event.delete()
                 if BOTLOG:
                     await event.client.send_message(
-                        BOTLOG_CHATID, "DEL \n`Deletion of message was successful`"
+                        BOTLOG_CHATID, "DELETE\n\n`Deletion of message was successful`"
                     )
             except rpcbaseerrors.BadRequestError:
                 await edit_or_reply(event, "`Well , I can't delete a message`")
@@ -94,7 +93,7 @@ async def delete_it(event):
     command=("purgefrom", plugin_category),
     info={
         "header": "To mark the replied message as starting message of purge list",
-        "description": "After using this u must use purgeto command also so that the messages in between this will delete",
+        "description": "After using this you must use purgeto command also so that the messages in between this will delete",
         "usage": "{tr}purgefrom",
     },
 )
@@ -159,7 +158,7 @@ async def purge_to(event):
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "PURGE \n`Purge of " + str(count) + " messages done successfully`",
+                "PURGE\n\n`Purge of " + str(count) + " messages done successfully`",
             )
     except Exception as e:
         await edit_delete(event, f"**Error :**\n`{e}`")
@@ -170,7 +169,7 @@ async def purge_to(event):
     command=("purgeme", plugin_category),
     info={
         "header": "To purge your latest messages",
-        "description": "Deletes x(count) amount of your latest messages",
+        "description": "Deletes x ( count ) amount of your latest messages",
         "usage": "{tr}purgeme <count>",
         "examples": "{tr}purgeme 2",
     },
@@ -188,12 +187,12 @@ async def purgeme(event):
 
     smsg = await event.client.send_message(
         event.chat_id,
-        "**Purge complete!**` Purged " + str(count) + " messages`",
+        "Purge complete\n\nPurged " + str(count) + " messages",
     )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            "PURGEME \n`Purge of " + str(count) + " messages done successfully`",
+            "PURGE ME\n\n`Purge of " + str(count) + " messages done successfully`",
         )
     await sleep(5)
     await smsg.delete()
@@ -205,24 +204,24 @@ async def purgeme(event):
     command=("purge", plugin_category),
     info={
         "header": "To purge messages from the replied message",
-        "description": "•  Deletes the x(count) amount of messages from the replied message\
-        \n•  If you don't use count then deletes all messages from the replied messages\
-        \n•  If you haven't replied to any message and used count then deletes recent x messages\
-        \n•  If you haven't replied to any message or havent mentioned any flag or count then doesnt do anything\
-        \n•  If flag is used then selects that type of messages else will select all types\
-        \n•  You can use multiple flags like -gi 10 ( It will delete 10 images and 10 gifs but not 10 messages of combination images and gifs )\
+        "description": "• Deletes the x ( count ) amount of messages from the replied message\
+        \n• If you don't use count then deletes all messages from the replied messages\
+        \n• If you haven't replied to any message and used count then deletes recent x messages\
+        \n• If you haven't replied to any message or havent mentioned any flag or count then doesnt do anything\
+        \n• If flag is used then selects that type of messages else will select all types\
+        \n• You can use multiple flags like -gi 10 ( it will delete 10 images and 10 gifs but not 10 messages of combination images and gifs )\
         ",
         "flags": {
-            "a": "To delete Voice messages",
+            "a": "To delete voice messages",
             "f": "To delete documents",
             "g": "To delete gif's",
-            "i": "To delete images / photos",
-            "l": "To delete locations / gps",
+            "i": "To delete images or photos",
+            "l": "To delete locations or gps",
             "m": "To delete Audio files ( music files )",
             "r": "To delete Round video messages",
             "t": "To delete stickers and text messages",
-            "u": "To delete url/links",
-            "v": "To delete Video messages",
+            "u": "To delete url or links",
+            "v": "To delete video messages",
             "s": "To search paticular message and delete",
         },
         "usage": [
@@ -274,7 +273,7 @@ async def fastpurger(event):  # sourcery no-metrics
                     elif ty == "s":
                         error += "\n• You can't use s flag along with otherflags"
                     else:
-                        error += f"\n• `{ty}` is Invalid flag"
+                        error += f"\n• `{ty}` is invalid flag"
             else:
                 count += 1
                 async for msg in event.client.iter_messages(
@@ -329,7 +328,7 @@ async def fastpurger(event):  # sourcery no-metrics
             else:
                 error += f"\n• `{ty}` is invalid flag"
         elif input_str:
-            error += f"\n• `.purge {input_str}` is invalid syntax try again by reading `.help -c purge`"
+            error += f"\n• .purge {input_str} is invalid syntax try again by reading .help -c purge"
         elif p_type is not None:
             for ty in p_type:
                 if ty in purgetype:
@@ -376,7 +375,7 @@ async def fastpurger(event):  # sourcery no-metrics
                     error += "\n• You can't use s with other flags or you haven't given search query"
 
                 else:
-                    error += f"\n• `{ty}` is Invalid flag"
+                    error += f"\n• `{ty}` is invalid flag"
         elif p_type == "s":
             try:
                 cont, inputstr = input_str.split(" ")
@@ -406,7 +405,7 @@ async def fastpurger(event):  # sourcery no-metrics
             if msgs:
                 await event.client.delete_messages(chat, msgs)
         else:
-            error += f"\n• `{ty}` is Invalid flag"
+            error += f"\n• `{ty}` is invalid flag"
     elif p_type is not None:
         for ty in p_type:
             if ty in purgetype:
@@ -435,11 +434,11 @@ async def fastpurger(event):  # sourcery no-metrics
         if msgs:
             await event.client.delete_messages(chat, msgs)
     else:
-        error += "\n•  Nothing is specified Recheck the help (`.help -c purge`)"
+        error += "\n• Nothing is specified recheck the help (`.help -c purge`)"
     if msgs:
         await event.client.delete_messages(chat, msgs)
     if count > 0:
-        result += "Fast purge complete !\nPurged `" + str(count) + "` messages"
+        result += "Fast purge complete\n\nPurged `" + str(count) + "` messages"
     if error != "":
         result += f"\n\n**Error :**{error}"
     if result == "":
@@ -448,7 +447,7 @@ async def fastpurger(event):  # sourcery no-metrics
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"#PURGE \n{result}",
+            f"PURGE\n\n{result}",
         )
     await sleep(5)
     await hi.delete()
@@ -459,11 +458,11 @@ async def fastpurger(event):  # sourcery no-metrics
     command=("upurge", plugin_category),
     info={
         "header": "To purge messages from the replied message of replied user",
-        "description": "•  Deletes the x(count) amount of messages from the replied message of replied user\
-        \n•  If you don't use count then deletes all messages from the replied messages of replied user\
-        \n•  Use -a flag to delete all his messages or mention x to delete x recent messages of his\
-        \n•  Use -s flag to delete all his messages which contatins given word\
-        \n•  You cann't use both flags at a time\
+        "description": "• Deletes the x ( count ) amount of messages from the replied message of replied user\
+        \n• If you don't use count then deletes all messages from the replied messages of replied user\
+        \n• Use -a flag to delete all his messages or mention x to delete x recent messages of his\
+        \n• Use -s flag to delete all his messages which contatins given word\
+        \n• You can't use both flags at a time\
         ",
         "flags": {
             "a": "To delete all messages of replied user",
@@ -500,7 +499,7 @@ async def fast_purger(event):  # sourcery no-metrics
     reply = await event.get_reply_message()
     if not reply or reply.sender_id is None:
         return await edit_delete(
-            event, "**Error :**\nThis command works only if you reply to user message"
+            event, "**Error :**\n\nThis command works only if you reply to user message"
         )
     if not flag:
         if input_str and p_type == "s":
@@ -528,7 +527,7 @@ async def fast_purger(event):  # sourcery no-metrics
                     await event.client.delete_messages(chat, msgs)
                     msgs = []
         elif input_str:
-            error += f"\n• `.upurge {input_str}` is invalid syntax try again by reading `.help -c purge`"
+            error += f"\n• .upurge {input_str}` is invalid syntax try again by reading .help -c purge"
         else:
             async for msg in event.client.iter_messages(
                 chat,
@@ -564,7 +563,7 @@ async def fast_purger(event):  # sourcery no-metrics
     if msgs:
         await event.client.delete_messages(chat, msgs)
     if count > 0:
-        result += "__Fast purge completed !\nPurged`" + str(count) + "` messages"
+        result += "Fast purge completed\n\nPurged`" + str(count) + "` messages"
     if error != "":
         result += f"\n\n**Error :**{error}"
     if result == "":
@@ -573,7 +572,7 @@ async def fast_purger(event):  # sourcery no-metrics
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"UPURGE \n{result}",
+            f"UPURGE\n\n{result}",
         )
     await sleep(5)
     await hi.delete()
