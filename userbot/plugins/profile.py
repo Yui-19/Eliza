@@ -20,7 +20,7 @@ plugin_category = "utils"
 # ====================== CONSTANT ===============================
 INVALID_MEDIA = "```The extension of the media entity is invalid```"
 PP_CHANGED = "```Profile picture changed successfully```"
-PP_TOO_SMOL = "```This image is too small, use a bigger image```"
+PP_TOO_SMOL = "```This image is too small use a bigger image```"
 PP_ERROR = "```Failure occured while processing image```"
 BIO_SUCCESS = "```Successfully edited bio```"
 NAME_OK = "```Your name was successfully changed```"
@@ -51,12 +51,12 @@ async def _(event):
     pattern="pname ([\s\S]*)",
     command=("pname", plugin_category),
     info={
-        "header": "To set/change name for this account",
+        "header": "To set or change name for this account",
         "usage": ["{tr}pname firstname ; last name", "{tr}pname firstname"],
     },
 )
 async def _(event):
-    "To set/change name for this account"
+    "To set or change name for this account"
     names = event.pattern_match.group(1)
     first_name = names
     last_name = ""
@@ -98,7 +98,7 @@ async def _(event):
         await catevent.edit(str(e))
     else:
         if photo:
-            await catevent.edit("`Now , uploading to telegram...`")
+            await catevent.edit("`Uploading to telegram...`")
             if photo.endswith((".mp4", ".MP4")):
                 # https://t.me/tgbetachat/324694
                 size = os.stat(photo).st_size
@@ -133,12 +133,12 @@ async def _(event):
     pattern="pusername ([\s\S]*)",
     command=("pusername", plugin_category),
     info={
-        "header": "To set/update username for this account",
+        "header": "To set or update username for this account",
         "usage": "{tr}pusername <new username>",
     },
 )
 async def update_username(event):
-    """For .username command , set a new username in telegram"""
+    """For .username command set a new username in telegram"""
     newusername = event.pattern_match.group(1)
     try:
         await event.client(UpdateUsernameRequest(newusername))
@@ -158,7 +158,7 @@ async def update_username(event):
     },
 )
 async def count(event):
-    """For .count command , get profile stats"""
+    """For .count command get profile stats"""
     u = 0
     g = 0
     c = 0
@@ -186,7 +186,7 @@ async def count(event):
 
     result += f"`Users :`\t**{u}**\n"
     result += f"`Groups :`\t**{g}**\n"
-    result += f"`Super Groups :`\t**{c}**\n"
+    result += f"`Super groups :`\t**{c}**\n"
     result += f"`Channels :`\t**{bc}**\n"
     result += f"`Bots :`\t**{b}**"
 
@@ -203,7 +203,7 @@ async def count(event):
     },
 )
 async def remove_profilepic(delpfp):
-    """For .delpfp command , delete your current profile picture in telegram"""
+    """For .delpfp command delete your current profile picture in telegram"""
     group = delpfp.text[8:]
     if group == "all":
         lim = 0
