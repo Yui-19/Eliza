@@ -52,7 +52,7 @@ async def get_cast(casttype, movie):
                 break
             i += 1
     else:
-        mov_casttype += "Not Data"
+        mov_casttype += "Not data"
     return mov_casttype
 
 
@@ -62,7 +62,7 @@ async def get_moviecollections(movie):
         for i in movie["box office"].keys():
             result += f"\n•  <b>{i}:</b> <code>{movie['box office'][i]}</code>"
     else:
-        result = "<code>No Data</code>"
+        result = "<code>No data</code>"
     return result
 
 
@@ -139,7 +139,7 @@ async def animator(media, mainevent, textevent=None):
     w = file["width"]
     w, h = (-1, 512) if h > w else (512, -1)
     if textevent:
-        await textevent.edit("__🎞Converting into Animated sticker..__")
+        await textevent.edit("Converting into animated sticker...")
     await runcmd(
         f"ffmpeg -to 00:00:02.900 -i '{BadCat}' -vf scale={w}:{h} -c:v libvpx-vp9 -crf 30 -b:v 560k -maxrate 560k -bufsize 256k -an animate.webm"
     )  # pain
