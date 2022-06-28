@@ -1,6 +1,4 @@
-"""Get the info your system. Using .neofetch then .sysd"""
-
-# .spc command is ported from  alfianandaa/ProjectAlf
+"""get the info from your system using .neofetch then .sysd"""
 
 import platform
 import sys
@@ -36,17 +34,17 @@ def get_size(inputbytes, suffix="B"):
 async def psu(event):
     "Shows system specification"
     uname = platform.uname()
-    softw = "**System information**\n"
-    softw += f"`System   : {uname.system}`\n"
-    softw += f"`Release  : {uname.release}`\n"
-    softw += f"`Version  : {uname.version}`\n"
-    softw += f"`Machine  : {uname.machine}`\n"
+    softw = "**System information**\n\n"
+    softw += f"`System  : {uname.system}`\n"
+    softw += f"`Release : {uname.release}`\n"
+    softw += f"`Version : {uname.version}`\n"
+    softw += f"`Machine : {uname.machine}`\n"
     # Boot Time
     boot_time_timestamp = psutil.boot_time()
     bt = datetime.fromtimestamp(boot_time_timestamp)
-    softw += f"`Boot Time : {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}`\n"
+    softw += f"`Boot time : {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}`\n"
     # CPU Cores
-    cpuu = "**CPU Info**\n"
+    cpuu = "**Cpu info**\n"
     cpuu += f"`Physical cores    : {str(psutil.cpu_count(logical=False))}" + "`\n"
     cpuu += f"`Total cores       : {str(psutil.cpu_count(logical=True))}" + "`\n"
     # CPU frequencies
@@ -57,16 +55,16 @@ async def psu(event):
     # CPU usage
     cpuu += "**Cpu usage per core**\n"
     for i, percentage in enumerate(psutil.cpu_percent(percpu=True)):
-        cpuu += f"`Core {i}  : {percentage}%`\n"
+        cpuu += f"`Core {i} : {percentage}%`\n"
     cpuu += "**Total cpu usage**\n"
     cpuu += f"`All core : {psutil.cpu_percent()}%`\n"
     # RAM Usage
     svmem = psutil.virtual_memory()
     memm = "**Memory usage**\n"
-    memm += f"`Total      : {get_size(svmem.total)}`\n"
-    memm += f"`Available  : {get_size(svmem.available)}`\n"
-    memm += f"`Used       : {get_size(svmem.used)}`\n"
-    memm += f"`Percentage : {svmem.percent}%`\n"
+    memm += f"`Total       : {get_size(svmem.total)}`\n"
+    memm += f"`Available   : {get_size(svmem.available)}`\n"
+    memm += f"`Used        : {get_size(svmem.used)}`\n"
+    memm += f"`Percentage  : {svmem.percent}%`\n"
     # Bandwidth Usage
     bw = "**Bandwith usage :**\n"
     bw += f"`Upload        : {get_size(psutil.net_io_counters().bytes_sent)}`\n"
@@ -94,7 +92,7 @@ async def cpu(event):
     cmd = "cat / proc / cpuinfo | grep 'model name'"
     o = (await _catutils.runcmd(cmd))[0]
     await edit_or_reply(
-        event, f"**[Cat's](tg://need_update_for_some_feature/) CPU model :**\n{o}"
+        event, f"**[Cat's](tg://need_update_for_some_feature/) Cpu model :**\n{o}"
     )
 
 
