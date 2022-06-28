@@ -37,7 +37,7 @@ LOGS = logging.getLogger(__name__)
         "description": "To find exchange rates of currencies",
         "usage": "{tr}cur <value> <from currencyid> <to currencyid>",
         "examples": "{tr}cur 10 USD INR",
-        "note": "List of currency ids are [Country & Currency](https://da.gd/j588M) or [Only Currency data](https://da.gd/obZIdk)",
+        "note": "List of currency ids are [country & currency](https://da.gd/j588M) or [only currency data](https://da.gd/obZIdk)",
     },
 )
 async def currency(event):
@@ -45,7 +45,7 @@ async def currency(event):
     if Config.CURRENCY_API is None:
         return await edit_delete(
             event,
-            "You haven't set the api value , set api var `CURRENCY_API` in heroku get value from https://free.currencyconverterapi.com",
+            "You haven't set the api value set api var `CURRENCY_API` in heroku get value from https://free.currencyconverterapi.com",
             link_preview=False,
             time=10,
         )
@@ -84,7 +84,7 @@ async def currency(event):
     except Exception:
         await edit_or_reply(
             event,
-            "It seems you are using different currency value. which doesn't exist on earth",
+            "It seems you are using different currency value which doesn't exist on earth",
         )
 
 
@@ -105,13 +105,13 @@ async def scan(event):
     if not reply_message.media:
         return await edit_or_reply(event, "```Reply to a media message```")
     chat = "@VS_Robot"
-    catevent = await edit_or_reply(event, " `Sliding my tip , of fingers over it`")
+    catevent = await edit_or_reply(event, " `Sliding my tip of fingers over it`")
     async with event.client.conversation(chat) as conv:
         try:
             flag = await conv.send_message("/start")
         except YouBlockedUserError:
             await edit_or_reply(
-                catevent, "**Error :** Trying to unblock & retry , wait a second..."
+                catevent, "**Error :** Trying to unblock and retry wait a second..."
             )
             await catub(unblock("VS_Robot"))
             flag = await conv.send_message("/start")
@@ -230,7 +230,7 @@ async def _(event):
     },
 )
 async def make_qr(makeqr):
-    "make a QR Code containing the given content"
+    "Make a qr code containing the given content"
     input_str = makeqr.pattern_match.group(1)
     message = "SYNTAX : `.makeqr <long text to include>`"
     reply_msg_id = await reply_id(makeqr)
@@ -278,7 +278,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     input_sgra = input_str.split(";")
     if len(input_sgra) != 2:
-        return await edit_delete(event, "**Syntax : **`.cal year ; month `", 5)
+        return await edit_delete(event, "**Syntax :**`.cal year ; month `", 5)
 
     yyyy = input_sgra[0]
     mm = input_sgra[1]
@@ -312,7 +312,7 @@ async def spy(event):
     if API is None:
         return await edit_delete(
             event,
-            "**Get an api key from [Ipdata](https://dashboard.ipdata.co/sign-up.html) & set that in heroku var `IPDATA_API`**",
+            "**Get an api key from [Ipdata](https://dashboard.ipdata.co/sign-up.html) and set that in heroku var `IPDATA_API`**",
             80,
         )
     url = requests.get(f"https://api.ipdata.co/{check}?api-key={API}")
@@ -320,7 +320,7 @@ async def spy(event):
     try:
         return await edit_delete(event, f"**{r['message']}**", 60)
     except KeyError:
-        await edit_or_reply(event, "**Searching... 🔍**")
+        await edit_or_reply(event, "Searching...")
     ip = r["ip"]
     city = r["city"]
     postal = r["postal"]
@@ -357,20 +357,20 @@ async def spy(event):
     except IndexError:
         lang2 = ""
 
-    string = f"✘ <b>Lookup For Ip : {ip}</b> {emoji_flag}\n\n\
-    <b>• City name :</b>  <code>{city}</code>\n\
-    <b>• Region name :</b>  <code>{region}</code> [<code>{region_code}</code>]\n\
-    <b>• Country name :</b>  <code>{country}</code> [<code>{country_code}</code>]\n\
-    <b>• Continent name :</b>  <code>{continent}</code> [<code>{continent_code}</code>]\n\
-    <b>• View on map :  <a href = https://www.google.com/maps/search/?api=1&query={latitude}%2C{longitude}>Google Map</a></b>\n\
-    <b>• Postal code :</b> <code>{postal}</code>\n\
-    <b>• Caller code :</b>  <code>+{calling_code}</code>\n\
-    <b>• Carrier detail :  <a href = https://www.{carriel}>{' '.join(carrier.split()[:2])}</a></b>\n\
-    <b>• Language :</b>  {language1} {lang2}\n\
-    <b>• Currency :</b>  <code>{currency}</code> [<code>{symbol}{currcode}</code>]\n\
-    <b>• Time zone :</b> <code>{time_zone}</code> [<code>{time_z}</code>]\n\
-    <b>• Time :</b> <code>{current_time[11:16]}</code>\n\
-    <b>• Date :</b> <code>{current_time[:10]}</code>\n\
+    string = f"✘ <b>Lookup for ip : {ip}</b> {emoji_flag}\n\n\
+    <b>• City name :</b>  <code>{city}</code>\n\n\
+    <b>• Region name :</b>  <code>{region}</code> [<code>{region_code}</code>]\n\n\
+    <b>• Country name :</b>  <code>{country}</code> [<code>{country_code}</code>]\n\n\
+    <b>• Continent name :</b>  <code>{continent}</code> [<code>{continent_code}</code>]\n\n\
+    <b>• View on map :  <a href = https://www.google.com/maps/search/?api=1&query={latitude}%2C{longitude}>Google Map</a></b>\n\n\
+    <b>• Postal code :</b> <code>{postal}</code>\n\n\
+    <b>• Caller code :</b>  <code>+{calling_code}</code>\n\n\
+    <b>• Carrier detail :  <a href = https://www.{carriel}>{' '.join(carrier.split()[:2])}</a></b>\n\n\
+    <b>• Language :</b>  {language1} {lang2}\n\n\
+    <b>• Currency :</b>  <code>{currency}</code> [<code>{symbol}{currcode}</code>]\n\n\
+    <b>• Time zone :</b> <code>{time_zone}</code> [<code>{time_z}</code>]\n\n\
+    <b>• Time :</b> <code>{current_time[11:16]}</code>\n\n\
+    <b>• Date :</b> <code>{current_time[:10]}</code>\n\n\
     <b>• Time offset :</b> <code>{current_time[-6:]}</code>"
     await edit_or_reply(event, string, parse_mode="html")
 
@@ -379,13 +379,13 @@ async def spy(event):
     pattern="ifsc ([\s\S]*)",
     command=("ifsc", plugin_category),
     info={
-        "header": "to get details of the relevant bank or branch",
+        "header": "To get details of the relevant bank or branch",
         "usage": "{tr}ifsc <ifsc code>",
         "examples": "{tr}ifsc SBIN0016086",
     },
 )
 async def _(event):
-    "to get details of the relevant bank or branch"
+    "To get details of the relevant bank or branch"
     input_str = event.pattern_match.group(1)
     url = "https://ifsc.razorpay.com/{}".format(input_str)
     r = requests.get(url)
@@ -438,12 +438,12 @@ async def _(event):
     pattern="xkcd(?:\s|$)([\s\S]*)",
     command=("xkcd", plugin_category),
     info={
-        "header": "Searches for the query for the relevant XKCD comic",
+        "header": "Searches for the query for the relevant xkcd comic",
         "usage": "{tr}xkcd <query>",
     },
 )
 async def _(event):
-    "Searches for the query for the relevant XKCD comic"
+    "Searches for the query for the relevant xkcd comic"
     catevent = await edit_or_reply(event, "`Processiong...`")
     input_str = event.pattern_match.group(1)
     xkcd_id = None
@@ -474,7 +474,7 @@ async def _(event):
     img = data.get("img")
     data.get("title")
     output_str = """[\u2060]({})**{}**
-[XKCD ]({})
+[Xkcd]({})
 Title : {}
 Alt : {}
 Day : {}
