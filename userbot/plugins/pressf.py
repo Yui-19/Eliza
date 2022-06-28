@@ -1,5 +1,4 @@
-# Made by @sakku
-# Change credit and you gay
+# By @Yui
 from userbot import catub
 
 from ..core.managers import edit_delete
@@ -12,7 +11,7 @@ plugin_category = "extra"
     pattern="pf ?(.*)",
     command=("pf", plugin_category),
     info={
-        "header": "Pay tribute to victim by pressing F(s)",
+        "header": "Pay tribute to victim by pressing f(s)",
         "usage": [
             "{tr}pf <text>",
         ],
