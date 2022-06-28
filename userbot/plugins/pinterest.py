@@ -1,4 +1,4 @@
-# Created by @deepaiims
+# By @Yui
 
 import asyncio
 import os
