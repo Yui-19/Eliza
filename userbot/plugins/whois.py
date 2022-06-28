@@ -1,4 +1,4 @@
-# Userbot module for fetching info about any user on Telegram(including you!).
+# Userbot module for fetching info about any user on telegram ( including you )
 
 import html
 import os
@@ -52,9 +52,9 @@ async def fetch_info(replied_user, event):
         else ("This user has no first name")
     )
     full_name = full_name or first_name
-    username = "@{}".format(username) if username else ("This User has no Username")
-    user_bio = "This User has no About" if not user_bio else user_bio
-    caption = "<b><i>USER INFO from Durov's Database :</i></b>\n\n"
+    username = "@{}".format(username) if username else ("This user has no username")
+    user_bio = "This user has no about" if not user_bio else user_bio
+    caption = "<b><i>User info from durov's database :</i></b>\n\n"
     caption += f"<b>👤 Name :</b> {full_name}\n"
     caption += f"<b>🤵 Username :</b> {username}\n"
     caption += f"<b>🔖 Id :</b> <code>{user_id}</code>\n"
@@ -75,7 +75,7 @@ async def fetch_info(replied_user, event):
     command=("userinfo", plugin_category),
     info={
         "header": "Gets information of an user such as restrictions ban by spamwatch or cas",
-        "description": "That is like whether he banned is spamwatch or cas and small info like groups in common , dc etc",
+        "description": "That is like whether he banned is spamwatch or cas and small info like groups in common dc etc",
         "usage": "{tr}userinfo <username/userid/reply>",
     },
 )
@@ -103,9 +103,9 @@ async def _(event):
         dc_id = "Can't get dc id"
     if spamwatch:
         if ban := spamwatch.get_ban(user_id):
-            sw = f"**Spamwatch banned :** `True` \n       **Reason : **`{ban.reason}`"
+            sw = f"**Spamwatch banned :** `True`\n\n**Reason : **`{ban.reason}`"
         else:
-            sw = "**Spamwatch banned :** `False`"
+            sw = "**Spamwatch banned :**`False`"
     else:
         sw = "**Spamwatch banned :**`Not connected`"
     try:
@@ -116,18 +116,18 @@ async def _(event):
         data = None
     if data:
         if data["ok"]:
-            cas = "**Antispam ( CAS ) banned :** `True`"
+            cas = "**Antispam ( cas ) banned :** `True`"
         else:
-            cas = "**Antispam ( CAS ) banned :** `False`"
+            cas = "**Antispam ( cas ) banned :** `False`"
     else:
-        cas = "**Antispam ( CAS ) banned :** `Couldn't fetch`"
+        cas = "**Antispam ( cas ) banned :** `Couldn't fetch`"
     caption = """**Info of [{}](tg://user?id={}):
-   -🔖ID : **`{}`
-   **-**👥**Groups in common : **`{}`
-   **-**🌏**Data centre number : **`{}`
-   **-**🔏**Restricted by telegram : **`{}`
+   -🌻 Id : **`{}`
+   **-**🎋** Groups in common : **`{}`
+   **-**🌏** Data centre number : **`{}`
+   **-**🔏** Restricted by telegram : **`{}`
    **-**🦅{}
-   **-**👮‍♂️{}
+   **-**👮🏻‍♀️{}
 """.format(
         first_name,
         user_id,
