@@ -139,8 +139,8 @@ def errors_handler(func):
                                   \nWe logged only fact of error and date ,\nWe respect your privacy ,\
                                   \nYou may not report this error if you've\
                                   \Many confidential data here , no one will see your data\
-                                  \n\n--------BEGIN USERBOT TRACEBACK LOG--------\
-                                  \nDate : {date}\nGroup ID: {str(check.chat_id)}\
+                                  \n\nBEGIN USERBOT TRACEBACK LOG\
+                                  \nDate : {date}\nGroup id : {str(check.chat_id)}\
                                   \nSender id : {str(check.sender_id)}\
                                   \n\nEvent trigger :\n{str(check.text)}\
                                   \n\nTraceback info :\n{str(traceback.format_exc())}\
@@ -150,7 +150,7 @@ def errors_handler(func):
                 "date": datetime.datetime.now(),
             }
 
-            ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+            ftext += "\n\nEND USERBOT TRACEBACK LOG"
             command = 'git log --pretty=format:"%an: %s" -5'
             ftext += "\n\n\nLast 5 commits:\n"
             output = (await runcmd(command))[:2]
@@ -162,7 +162,7 @@ def errors_handler(func):
             text += "If you wanna you can report it"
             text += f"- just forward this message {link}\n"
             text += "Nothing is logged except the fact of error and date\n\n"
-            text += f"**Error report : ** [{new['error']}]({pastelink})"
+            text += f"**Error report :** [{new['error']}]({pastelink})"
             await check.client.send_message(
                 Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
             )
