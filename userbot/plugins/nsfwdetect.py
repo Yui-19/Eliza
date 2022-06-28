@@ -1,6 +1,3 @@
-# Copyright (C) 2020 BY - GitHub.com/code-rgb [TG - @deleteduser420]
-# ported to cat by @mrconfused (@sandy1709)
-
 import os
 
 import requests
@@ -31,13 +28,13 @@ async def detect(event):
     reply = await event.get_reply_message()
     if not reply:
         return await edit_delete(
-            event, "`Reply to any image or non animated sticker !`", 5
+            event, "`Reply to any image or non animated sticker`", 5
         )
     catevent = await edit_or_reply(event, "`Downloading the file to check...`")
     media = await event.client.download_media(reply)
     if not media.endswith(("png", "jpg", "webp")):
         return await edit_delete(
-            event, "`Reply to any image or non animated sticker !`", 5
+            event, "`Reply to any image or non animated sticker`", 5
         )
     catevent = await edit_or_reply(event, "`Detecting nsfw limit...`")
     r = requests.post(
