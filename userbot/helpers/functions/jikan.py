@@ -299,7 +299,7 @@ query ($search: String) {
 async def get_anime_schedule(weekid):
     "Get anime schedule"
     dayname = get_weekday(weekid)
-    result = f"✙ **Scheduled animes for {dayname.title()} are : **\n\n"
+    result = f"**Scheduled animes for {dayname.title()} are :**\n\n"
     async with jikanpy.AioJikan() as animesession:
         scheduled_list = (await animesession.schedule(day=dayname)).get(dayname)
         for a_name in scheduled_list:
@@ -359,7 +359,7 @@ async def formatJSON(outData, manga=False):
     msg += f"\n**Popularity** : {jsonData['popularity']}"
     # https://t.me/catuserbot_support/19496
     cat = f"{jsonData['description']}"
-    msg += " __" + re.sub("<br>", "\n", cat) + "__"
+    msg += "__" + re.sub("<br>", "\n", cat) + "__"
     msg = re.sub("<b>", "__**", msg)
     msg = re.sub("</b>", "**__", msg)
     return msg
@@ -368,10 +368,10 @@ async def formatJSON(outData, manga=False):
 def shorten(description, info="anilist.co"):
     msg = ""
     if len(description) > 700:
-        description = f"{description[:200]}....."
-        msg += f"\n**Description**:\n{description} [Read More]({info})"
+        description = f"{description[:200]}..."
+        msg += f"\n**Description** :\n{description} [read more]({info})"
     else:
-        msg += f"\n**Description**: \n   {description}"
+        msg += f"\n**Description** :\n{description}"
     return (
         msg.replace("<br>", "")
         .replace("</br>", "")
@@ -397,12 +397,12 @@ async def anilist_user(input_str):
 **Anilist id :** `{user_data['id']}` 
 **Joined anilist :**`{datetime.fromtimestamp(user_data['createdAt'])}`
 **Last updated :**`{datetime.fromtimestamp(user_data['updatedAt'])}`
-**✙  Anime stats**
+**✙ Anime stats**
 • **Total anime watched :** `{user_data["statistics"]["anime"]['count']}`
 • **Total episode watched : **`{user_data["statistics"]["anime"]['episodesWatched']}`
 • **Total time spent : **`{readable_time(user_data["statistics"]["anime"]['minutesWatched']*60)}`
 • **Average score :** `{user_data["statistics"]["anime"]['meanScore']}`
-**✙  Manga stats**
+**✙ Manga stats**
 • **Total manga read :** `{user_data["statistics"]["manga"]['count']}`
 • **Total chapters read :** `{user_data["statistics"]["manga"]['chaptersRead']}`
 • **Total volumes read : **`{user_data["statistics"]["manga"]['volumesRead']}`
@@ -474,13 +474,13 @@ async def get_anime_manga(search_str, search_type, _user_id):  # sourcery no-met
         )
         res = list(result.keys())
         if "errors" in res:
-            return f"<b>Error</b> : <code>{result['errors'][0]['message']}</code>", None
+            return f"<b>Error</b>:<code>{result['errors'][0]['message']}</code>", None
         result = result["data"]["Media"]
         if result["trailer"]:
             trailer = f'https://www.youtube.com/watch?v={result["trailer"]["id"]}'
-            TRAILER = f"<a href='{trailer}'>🎬 Trailer</a>"
+            TRAILER = f"<a href='{trailer}'>Trailer</a>"
         else:
-            TRAILER = "🎬 <i>No trailer available</i>"
+            TRAILER = "<i>No trailer available</i>"
         studio_string = ", ".join(nodes["name"] for nodes in result["studios"]["nodes"])
     elif search_type == "anime_manga":
         variables = {"search": search_str}
@@ -492,10 +492,10 @@ async def get_anime_manga(search_str, search_type, _user_id):  # sourcery no-met
         )
         res = list(result.keys())
         if "errors" in res:
-            return f"<b>Error</b> : <code>{result['errors'][0]['message']}</code>", None
+            return f"<b>Error</b>:<code>{result['errors'][0]['message']}</code>", None
         result = result["data"]["Media"]
         image = f"https://img.anili.st/media/{result['id']}"
-    caption = f"📺 <a href='{result['siteUrl']}'>{result['title']['romaji']}</a>"
+    caption = f"<a href='{result['siteUrl']}'>{result['title']['romaji']}</a>"
     caption += f" ({result['title']['native']})\n"
     alternative_names = []
     if result["title"]["english"] is not None:
@@ -503,7 +503,7 @@ async def get_anime_manga(search_str, search_type, _user_id):  # sourcery no-met
     alternative_names.extend(result["synonyms"])
     if alternative_names:
         alternative_names_string = ", ".join(alternative_names[:3])
-        caption += f"\n<b>Also known as</b>: <i>{alternative_names_string}</i>"
+        caption += f"\n<b>Also known as</b>:<i>{alternative_names_string}</i>"
     genre_string = ", ".join(result["genres"])
     if result["description"] is not None:
         synopsis = result["description"].split(" ", 60)
@@ -553,13 +553,13 @@ async def get_anime_manga(search_str, search_type, _user_id):  # sourcery no-met
         html_pc += result["description"] or "Unknown"
         html_pc += "<br>"
         if html_char:
-            html_pc += "<h2>Main characters:</h2>"
+            html_pc += "<h2>Main characters :</h2>"
             html_pc += html_char
             html_pc += "<br><br>"
-        html_pc += "<h3>More info:</h3>"
-        html_pc += f"<br><b>Studios:</b> {studios}<br>"
+        html_pc += "<h3>More info :</h3>"
+        html_pc += f"<br><b>Studios :</b> {studios}<br>"
         html_pc += (
-            f"<a href='https://myanimelist.net/anime/{anime_malid}'>View on MAL</a>"
+            f"<a href='https://myanimelist.net/anime/{anime_malid}'>View on mal</a>"
         )
         html_pc += f"<a href='{anilist_animelink}'> View on anilist.co</a>"
         html_pc += f"<img src='{bannerImg}'/>"
@@ -578,8 +578,8 @@ async def get_anime_manga(search_str, search_type, _user_id):  # sourcery no-met
             html_ += "<br>"
             html_ += f"<h3>{character['name']['full']}</h3>"
             html_ += f"<em>{character['name']['native']}</em><br>"
-            html_ += f"<b>Character id</b>: {character['id']}<br>"
-            html_ += f"<h4>About character and role:</h4>{character.get('description', 'N/A')}"
+            html_ += f"<b>Character id</b> : {character['id']}<br>"
+            html_ += f"<h4>About character and role :</h4>{character.get('description', 'N/A')}"
             html_char += f"{html_}<br><br>"
         coverImg = anime_data.get("coverImage")["extraLarge"]
         bannerImg = anime_data.get("bannerImage")
@@ -599,9 +599,9 @@ async def get_anime_manga(search_str, search_type, _user_id):  # sourcery no-met
             html_pc += "<h2>Main characters:</h2>"
             html_pc += html_char
             html_pc += "<br><br>"
-        html_pc += "<h3>More Info:</h3>"
+        html_pc += "<h3>More info :</h3>"
         if result["idMal"]:
-            html_pc += f"<a href='https://myanimelist.net/anime/{result['idMal']}'>View on MAL</a>"
+            html_pc += f"<a href='https://myanimelist.net/anime/{result['idMal']}'>View on mal</a>"
         html_pc += f"<a href='{anilist_animelink}'> View on anilist.co</a>"
         html_pc += f"<img src='{bannerImg}'/>"
         title_h = english or romaji
@@ -626,19 +626,19 @@ async def get_anime_manga(search_str, search_type, _user_id):  # sourcery no-met
                 endaired += "-" + str(result["endDate"]["day"])
         caption += textwrap.dedent(
             f"""
-        ⛺ <b>Type</b>: <i>{result['type'].lower()}</i>
-        🔮 <b>Mal id</b>: <i>{result['idMal']}</i>
-        💥 <b>Al id</b>: <i>{result['id']}</i>
-        📡 <b>Status</b>: <i>{result['status'].lower()}</i>
-        ⏳ <b>Airing started</b>: <i>{aired}</i>
-        ⌛️ <b>Airing ended</b>: <i>{endaired}</i>
-        🎋 <b>Episodes</b>: <i>{result['episodes']}</i>
-        💯 <b>Score</b>: <i>{result['averageScore']}</i>
-        🎎 <b>Popularity</b>: <i>{result['popularity']}</i>
-        🌐 <b>Premiered</b>: <i>{result['season'].lower()}</i>
-        ⏱️ <b>Duration</b>: <i>{result['duration']}</i>
-        🌻 <b>Genres</b>: <i>{genre_string}</i>
-        🎙️ <b>Studios</b>: <i>{studio_string}</i>
+        ⛺ <b>Type</b> : <i>{result['type'].lower()}</i>
+        🎌 <b>Mal id</b> : <i>{result['idMal']}</i>
+        💥 <b>Al id</b> : <i>{result['id']}</i>
+        📡 <b>Status</b> : <i>{result['status'].lower()}</i>
+        🤧 <b>Airing started</b> : <i>{aired}</i>
+        😴 <b>Airing ended</b> : <i>{endaired}</i>
+        🎋 <b>Episodes</b> : <i>{result['episodes']}</i>
+        💯 <b>Score</b> : <i>{result['averageScore']}</i>
+        🎎 <b>Popularity</b> : <i>{result['popularity']}</i>
+        🌐 <b>Premiered</b> : <i>{result['season'].lower()}</i>
+        ⏱️ <b>Duration</b> : <i>{result['duration']}</i>
+        🌻 <b>Genres</b> : <i>{genre_string}</i>
+        🎙️ <b>Studios</b> : <i>{studio_string}</i>
         """
         )
         synopsis_link = await post_to_telegraph(
@@ -657,7 +657,7 @@ async def get_anime_manga(search_str, search_type, _user_id):  # sourcery no-met
         💥 <b>Al id</b>: <i>{result['id']}</i>
         📡 <b>Status</b>: <i>{result['status'].lower()}</i>
         🎋 <b>Volumes</b>: <i>{result['volumes']}</i>
-        📃 <b>Chapters</b>: <i>{result['chapters']}</i>
+        📜 <b>Chapters</b>: <i>{result['chapters']}</i>
         💯 <b>Score</b>: <i>{result['averageScore']}</i>
         🎎 <b>Popularity</b>: <i>{result['popularity']}</i>
         🌻 <b>Genres</b>: <i>{genre_string}</i>
@@ -669,7 +669,7 @@ async def get_anime_manga(search_str, search_type, _user_id):  # sourcery no-met
             + f"<code>{caption}</code>\n"
             + html_pc,
         )
-        caption += f"📖 <a href='{synopsis_link}'><b>Synopsis</b></a> <b>&</b> <a href='{result['siteUrl']}'><b>Read More</b></a>"
+        caption += f"<a href='{synopsis_link}'><b>Synopsis</b></a> <b>&</b> <a href='{result['siteUrl']}'><b>Read more</b></a>"
 
     return caption, image
 
@@ -718,7 +718,7 @@ def is_gif(file):
 
 
 async def search_in_animefiller(query):
-    "To search anime name and get its id"
+    "To search anime name and get it's id"
     html = requests.get(animnefillerurl).text
     soup = bs4.BeautifulSoup(html, "html.parser")
     div = soup.findAll("div", attrs={"class": "Group"})
