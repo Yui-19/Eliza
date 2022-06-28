@@ -102,21 +102,21 @@ def user_input():
         parser.add_argument(
             "-kf",
             "--keywords_from_file",
-            help="extract list of keywords from a text file",
+            help="Extract list of keywords from a text file",
             type=str,
             required=False,
         )
         parser.add_argument(
             "-sk",
             "--suffix_keywords",
-            help="comma separated additional words added after to main keyword",
+            help="Comma separated additional words added after to main keyword",
             type=str,
             required=False,
         )
         parser.add_argument(
             "-pk",
             "--prefix_keywords",
-            help="comma separated additional words added before main keyword",
+            help="Comma separated additional words added before main keyword",
             type=str,
             required=False,
         )
@@ -126,7 +126,7 @@ def user_input():
         parser.add_argument(
             "-f",
             "--format",
-            help="download images with specific format",
+            help="Download images with specific format",
             type=str,
             required=False,
             choices=["jpg", "gif", "png", "bmp", "svg", "webp", "ico"],
@@ -137,21 +137,21 @@ def user_input():
         parser.add_argument(
             "-x",
             "--single_image",
-            help="downloading a single image from URL",
+            help="Downloading a single image from URL",
             type=str,
             required=False,
         )
         parser.add_argument(
             "-o",
             "--output_directory",
-            help="download images in a specific main directory",
+            help="Download images in a specific main directory",
             type=str,
             required=False,
         )
         parser.add_argument(
             "-i",
             "--image_directory",
-            help="download images in a specific sub-directory",
+            help="Download images in a specific sub-directory",
             type=str,
             required=False,
         )
@@ -159,20 +159,20 @@ def user_input():
             "-n",
             "--no_directory",
             default=False,
-            help="download images in the main directory but no sub-directory",
+            help="Download images in the main directory but no sub-directory",
             action="store_true",
         )
         parser.add_argument(
             "-d",
             "--delay",
-            help="delay in seconds to wait between downloading two images",
+            help="Delay in seconds to wait between downloading two images",
             type=int,
             required=False,
         )
         parser.add_argument(
             "-co",
             "--color",
-            help="filter on color",
+            help="Filter on color",
             type=str,
             required=False,
             choices=[
@@ -193,7 +193,7 @@ def user_input():
         parser.add_argument(
             "-ct",
             "--color_type",
-            help="filter on color",
+            help="Filter on color",
             type=str,
             required=False,
             choices=["full-color", "black-and-white", "transparent"],
@@ -201,7 +201,7 @@ def user_input():
         parser.add_argument(
             "-r",
             "--usage_rights",
-            help="usage rights",
+            help="Usage rights",
             type=str,
             required=False,
             choices=[
@@ -214,7 +214,7 @@ def user_input():
         parser.add_argument(
             "-s",
             "--size",
-            help="image size",
+            help="Image size",
             type=str,
             required=False,
             choices=[
@@ -240,14 +240,14 @@ def user_input():
         parser.add_argument(
             "-es",
             "--exact_size",
-            help='exact image resolution "WIDTH,HEIGHT"',
+            help='Exact image resolution "WIDTH,HEIGHT"',
             type=str,
             required=False,
         )
         parser.add_argument(
             "-t",
             "--type",
-            help="image type",
+            help="Image type",
             type=str,
             required=False,
             choices=["face", "photo", "clipart", "line-drawing", "animated"],
@@ -255,7 +255,7 @@ def user_input():
         parser.add_argument(
             "-w",
             "--time",
-            help="image age",
+            help="Image age",
             type=str,
             required=False,
             choices=["past-24-hours", "past-7-days", "past-month", "past-year"],
@@ -263,14 +263,14 @@ def user_input():
         parser.add_argument(
             "-wr",
             "--time_range",
-            help='time range for the age of the image. should be in the format {"time_min":"YYYY-MM-DD","time_max":"YYYY-MM-DD"}',
+            help='Time range for the age of the image. should be in the format {"time_min":"YYYY-MM-DD","time_max":"YYYY-MM-DD"}',
             type=str,
             required=False,
         )
         parser.add_argument(
             "-a",
             "--aspect_ratio",
-            help="comma separated additional words added to keywords",
+            help="Comma separated additional words added to keywords",
             type=str,
             required=False,
             choices=["tall", "square", "wide", "panoramic"],
@@ -278,14 +278,14 @@ def user_input():
         parser.add_argument(
             "-si",
             "--similar_images",
-            help="downloads images very similar to the image URL you provide",
+            help="Downloads images very similar to the image URL you provide",
             type=str,
             required=False,
         )
         parser.add_argument(
             "-ss",
             "--specific_site",
-            help="downloads images that are indexed from a specific website",
+            help="Downloads images that are indexed from a specific website",
             type=str,
             required=False,
         )
@@ -349,7 +349,7 @@ def user_input():
             "-la",
             "--language",
             default=False,
-            help="Defines the language filter , the search results are authomatically returned in that language",
+            help="Defines the language filter the search results are authomatically returned in that language",
             type=str,
             required=False,
             choices=[
@@ -505,8 +505,8 @@ class googleimagesdownload:
             respData = str(resp.read())
         except:
             print(
-                "Could not open url please check your internet connection or ssl settings \n"
-                "If you are using proxy , make sure your proxy settings is configured correctly"
+                "Could not open url please check your internet connection or ssl settings\n"
+                "If you are using proxy make sure your proxy settings is configured correctly"
             )
             sys.exit()
         try:
@@ -528,9 +528,9 @@ class googleimagesdownload:
             browser = webdriver.Chrome(chromedriver, chrome_options=options)
         except Exception as e:
             print(
-                "Looks like we cannot locate the path the 'chromedriver' (use the '--chromedriver' "
-                "argument to specify the path to the executable.) or google chrome browser is not "
-                "installed on your machine (exception: %s)" % e
+                "Looks like we cannot locate the path the 'chromedriver' ( use the '--chromedriver'"
+                "argument to specify the path to the executable ) or google chrome browser is not"
+                "installed on your machine ( exception : %s )" % e
             )
             sys.exit()
         browser.set_window_size(1024, 768)
@@ -568,7 +568,7 @@ class googleimagesdownload:
         )
 
         time.sleep(1)
-        print("Getting you a lot of images ! This may take a few moments...")
+        print("Getting you a lot of images\n\nThis may take a few moments...")
 
         element = browser.find_element_by_tag_name("body")
         # Scroll down
@@ -969,8 +969,8 @@ class googleimagesdownload:
 
             else:
                 print(
-                    "Invalid file type: Valid file types are either .txt or .csv \n"
-                    "exiting..."
+                    "Invalid file type : valid file types are either .txt or .csv\n"
+                    "Exiting..."
                 )
                 sys.exit()
         return search_keyword
@@ -1014,7 +1014,7 @@ class googleimagesdownload:
         ignore_urls,
     ):
         if print_urls or no_download:
-            print(f"Image URL: {image_url}")
+            print(f"Image url : {image_url}")
         if no_download:
             return "Success", "Printed url without downloading"
         try:
@@ -1050,13 +1050,13 @@ class googleimagesdownload:
                 except OSError as e:
                     download_status = "fail"
                     download_message = (
-                        "OSError on an image...trying next one..." + " Error : " + str(e)
+                        "Os error on an image...trying next one..." + " Error : " + str(e)
                     )
 
                 except IOError as e:
                     download_status = "fail"
                     download_message = (
-                        "IOError on an image...trying next one..." + " Error : " + str(e)
+                        "Io error on an image...trying next one..." + " Error : " + str(e)
                     )
 
                 download_status = "success"
@@ -1077,13 +1077,13 @@ class googleimagesdownload:
         except HTTPError as e:
             download_status = "fail"
             download_message = (
-                "HTTP error on an image...trying next one..." + " Error : " + str(e)
+                "Http error on an image...trying next one..." + " Error : " + str(e)
             )
 
         except URLError as e:
             download_status = "fail"
             download_message = (
-                "URL error on an image...trying next one..." + " Error : " + str(e)
+                "Url error on an image...trying next one..." + " Error : " + str(e)
             )
 
         except ssl.CertificateError as e:
@@ -1095,7 +1095,7 @@ class googleimagesdownload:
         except IOError as e:
             download_status = "fail"
             download_message = (
-                "IOError on an image...trying next one..." + " Error : " + str(e)
+                "Io error on an image...trying next one..." + " Error : " + str(e)
             )
 
         return download_status, download_message
@@ -1237,7 +1237,7 @@ class googleimagesdownload:
                 except OSError as e:
                     download_status = "fail"
                     download_message = (
-                        "OSError on an image...trying next one..." + " Error : " + str(e)
+                        "Os error on an image...trying next one..." + " Error : " + str(e)
                     )
                     return_image_name = ""
                     absolute_path = ""
@@ -1245,7 +1245,7 @@ class googleimagesdownload:
                 # return image name back to calling method to use it for thumbnail downloads
                 download_status = "success"
                 download_message = (
-                    "Completed image ====> " + prefix + str(count) + "." + image_name
+                    "Completed image => " + prefix + str(count) + "." + image_name
                 )
                 return_image_name = prefix + str(count) + "." + image_name
 
@@ -1267,7 +1267,7 @@ class googleimagesdownload:
             except URLError as e:
                 download_status = "fail"
                 download_message = (
-                    "URL error on an image...trying next one..." + " Error : " + str(e)
+                    "Url error on an image...trying next one..." + " Error : " + str(e)
                 )
                 return_image_name = ""
                 absolute_path = ""
@@ -1285,7 +1285,7 @@ class googleimagesdownload:
         except HTTPError as e:  # If there is any HTTPError
             download_status = "fail"
             download_message = (
-                "HTTP error on an image...trying next one..." + " Error : " + str(e)
+                "Http error on an image...trying next one..." + " Error : " + str(e)
             )
             return_image_name = ""
             absolute_path = ""
@@ -1293,7 +1293,7 @@ class googleimagesdownload:
         except URLError as e:
             download_status = "fail"
             download_message = (
-                "URL error on an image...trying next one..." + " Error : " + str(e)
+                "Url error on an image...trying next one..." + " Error : " + str(e)
             )
             return_image_name = ""
             absolute_path = ""
@@ -1415,9 +1415,9 @@ class googleimagesdownload:
             print(
                 "\n\nUnfortunately all "
                 + str(limit)
-                + " could not be downloaded because some images were not downloadable "
+                + "could not be downloaded because some images were not downloadable"
                 + str(count - 1)
-                + " is all we got for this search filter"
+                + "is all we got for this search filter"
             )
         return items, errorCount, abs_path
 
@@ -1473,19 +1473,19 @@ class googleimagesdownload:
         # both time and time range should not be allowed in the same query
         if arguments["time"] and arguments["time_range"]:
             raise ValueError(
-                "Either time or time range should be used in a query , both cannot be used at the same time"
+                "Either time or time range should be used in a query both cannot be used at the same time"
             )
 
         # both time and time range should not be allowed in the same query
         if arguments["size"] and arguments["exact_size"]:
             raise ValueError(
-                'Either "size" or "exact_size" should be used in a query , both cannot be used at the same time'
+                'Either "size" or "exact_size" should be used in a query both cannot be used at the same time'
             )
 
         # both image directory and no image directory should not be allowed in the same query
         if arguments["image_directory"] and arguments["no_directory"]:
             raise ValueError(
-                "You can either specify image directory or specify no image directory , not both"
+                "You can either specify image directory or specify no image directory not both"
             )
 
         # Additional words added to keywords
@@ -1524,10 +1524,10 @@ class googleimagesdownload:
         ):
             print(
                 "-------------------------------\n"
-                "Huh oh ! Keywords is a required argument \n\n"
-                "Please refer to the documentation on guide to writing queries \n"
+                "Huh oh keywords is a required argument\n\n"
+                "Please refer to the documentation on guide to writing queries\n"
                 "https://github.com/hardikvasa/google-images-download#examples"
-                "\n\nexiting!\n"
+                "\n\nExiting!\n"
                 "-------------------------------"
             )
             sys.exit()
@@ -1689,9 +1689,9 @@ def main():
             t1 - t0
         )  # Calculating the total time required to crawl, find and download all the links of 60,000 images
         if not arguments["silent_mode"]:
-            print("\nEverything downloaded !")
-            print("Total errors: " + str(total_errors))
-            print("Total time taken: " + str(total_time) + " Seconds")
+            print("\nEverything downloaded")
+            print("Total errors : " + str(total_errors))
+            print("Total time taken : " + str(total_time) + " Seconds")
 
 
 if __name__ == "__main__":
