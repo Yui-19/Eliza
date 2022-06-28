@@ -312,7 +312,7 @@ class ParallelTransferrer:
         part_size = (part_size_kb or utils.get_appropriated_part_size(file_size)) * 1024
         part_count = math.ceil(file_size / part_size)
         log.debug(
-            "Starting parallel download: "
+            "Starting parallel download :"
             f"{connection_count} {part_size} {part_count} {file!s}"
         )
         await self._init_download(connection_count, file, part_count, part_size)
@@ -328,7 +328,7 @@ class ParallelTransferrer:
                 part += 1
                 log.debug(f"Part {part} downloaded")
 
-        log.debug("Parallel download finished, cleaning up connections")
+        log.debug("Parallel download finished\n\nCleaning up connections")
         await self._cleanup()
 
 
