@@ -1,4 +1,4 @@
-# By @yuki
+# By @Yui
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.functions.phone import CreateGroupCallRequest
 from telethon.tl.functions.phone import DiscardGroupCallRequest
@@ -32,7 +32,7 @@ async def _(deep):
     "Start voice chat"
     try:
         await deep.client(CreateGroupCallRequest(deep.chat_id))
-        await deep.edit("`Voice chat started successfully`")
+        await deep.edit("`Voice chat has started successfully`")
     except Exception as e:
         await deep.edit( f"`{str(e)}`")
 
@@ -50,6 +50,6 @@ async def _(deep):
     "End voice chat"
     try:
         await bot(DiscardGroupCallRequest(await getvc(deep)))
-        await deep.edit("`Voice chat ended successfully`")
+        await deep.edit("`Voice chat has ended successfully`")
     except Exception as e:
         await deep.edit( f"`{str(e)}`")
