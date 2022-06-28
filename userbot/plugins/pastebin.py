@@ -104,7 +104,7 @@ async def paste_img(event):
     command=("paste", plugin_category),
     info={
         "header": "To paste text to a paste bin",
-        "description": "Uploads the given text to website so that you can share text/code with others easily ! If no flag is used then it will use p as default",
+        "description": "Uploads the given text to website so that you can share text or code with others easily ! If no flag is used then it will use p as default",
         "flags": {
             "d": "Will paste text to dog.bin",
             "p": "Will paste text to pasty.lus.pm",
@@ -116,7 +116,7 @@ async def paste_img(event):
         ],
         "examples": [
             "{tr}spaste <reply/text>",
-            "{tr}ppaste -py await event.client.send_message(chat,'Hello! testing123 123')",
+            "{tr}ppaste -py await event.client.send_message(chat,'hello! testing123 123')",
         ],
     },
 )
@@ -159,15 +159,15 @@ async def paste_bin(event):
         if "error" in response:
             return await edit_delete(
                 catevent,
-                "**Error while pasting text :**\n`Unable to process your request may be pastebins are down`",
+                "**Error while pasting text :**\n\n`Unable to process your request may be pastebins are down`",
             )
 
         result = ""
         if pastebins[response["bin"]] != pastetype:
-            result += f"<b>{get_key(pastetype)} is down, So </b>"
+            result += f"<b>{get_key(pastetype)} is down , so </b>"
         result += f"<b>Pasted to : <a href={response['url']}>{response['bin']}</a></b>"
         if response["raw"] != "":
-            result += f"\n<b>Raw link: <a href={response['raw']}>Raw</a></b>"
+            result += f"\n<b>Raw link : <a href={response['raw']}>Raw</a></b>"
         await catevent.edit(result, link_preview=False, parse_mode="html")
     except Exception as e:
         await edit_delete(catevent, f"**Error while pasting text :**\n`{e}`")
@@ -181,7 +181,7 @@ async def paste_bin(event):
         "usage": ["{tr}neko <reply/text>", "{tr}neko {extension} <reply/text>"],
         "examples": [
             "{tr}neko <reply/text>",
-            "{tr}neko -py await event.client.send_message(chat,'Hello! testing123 123')",
+            "{tr}neko -py await event.client.send_message(chat,'hello! testing123 123')",
         ],
     },
 )
@@ -241,14 +241,14 @@ async def get_dogbin_content(event):
             f"**Request returned an unsuccessful status code**\n\n{str(HTTPErr)}"
         )
     except requests.exceptions.Timeout as TimeoutErr:
-        return await catevent.edit(f"**Request timed out.**__{str(TimeoutErr)}__")
+        return await catevent.edit(f"**Request timed out** {str(TimeoutErr)}")
     except requests.exceptions.TooManyRedirects as RedirectsErr:
         return await catevent.edit(
             (
-                f"**Request exceeded the configured number of maximum redirections**{str(RedirectsErr)}"
+                f"**Request exceeded the configured number of maximum redirections** {str(RedirectsErr)}"
             )
         )
-    reply_text = f"**Fetched dogbin url content successfully !**\n\n**Content :** \n```{resp.text}```"
+    reply_text = f"**Fetched dogbin url content successfully**\n\n**Content :**\n```{resp.text}```"
     await edit_or_reply(catevent, reply_text)
 
 
@@ -286,7 +286,7 @@ async def _(event):
         if "error" in response:
             return await edit_delete(
                 catevent,
-                "**Error while pasting text :**\n`Unable to process your request may be pastebins are down`",
+                "**Error while pasting text :**\n\n`Unable to process your request may be pastebins are down`",
             )
 
     except Exception as e:
