@@ -108,7 +108,7 @@ async def _(event):  # sourcery no-metrics
             "{tr}savepwel <welcome message>",
             "reply {tr}savepwel to text message or supported media with text as media caption",
         ],
-        "examples": "{tr}savepwel Hi {mention}, Welcome to {title} chat",
+        "examples": "{tr}savepwel hi {mention} , welcome to {title} chat",
     },
 )
 async def save_welcome(event):
@@ -120,9 +120,9 @@ async def save_welcome(event):
         if BOTLOG_CHATID:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"WELCOME_NOTE\
-                \nCHAT ID : {event.chat_id}\
-                \nThe following message is saved as the welcome note for the {get_display_name(await event.get_chat())}, dont delete this message !",
+                f"WELCOME NOTE\
+                \n\nHAT ID : {event.chat_id}\
+                \n\nThe following message is saved as the welcome note for the {get_display_name(await event.get_chat())}, dont delete this message",
             )
             msg_o = await event.client.forward_messages(
                 entity=BOTLOG_CHATID, messages=msg, from_peer=event.chat_id, silent=True
