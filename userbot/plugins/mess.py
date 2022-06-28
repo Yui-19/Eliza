@@ -1,5 +1,3 @@
-# Created by @Jisan7509
-
 import base64
 import logging
 import random
@@ -107,7 +105,7 @@ async def some(event):
     },
 )
 async def some(event):
-    """Its useless for single like you ! Get a lover first"""
+    """It's useless for single like you ! Get a lover first"""
     inpt = event.pattern_match.group(1)
     reply_to_id = await reply_id(event)
     count = 1 if not inpt else int(inpt)
@@ -136,7 +134,7 @@ async def some(event):
                 ),
             )
         )
-    catevent = await edit_or_reply(event, "`Wait babe...`😘")
+    catevent = await edit_or_reply(event, "Wait babes... 😘")
     maxmsg = await event.client.get_messages(chat)
     start = random.randint(31, maxmsg.total)
     start = min(start, maxmsg.total - 40)
