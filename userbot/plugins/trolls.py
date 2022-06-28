@@ -1,6 +1,3 @@
-# credits to @mrconfused and @sandy1709
-#    Copyright (C) 2020  sandeep.n(π.$)
-
 import os
 
 from telegraph import exceptions, upload_file
@@ -58,12 +55,12 @@ async def catbot(event):
     pattern="threats$",
     command=("threats", plugin_category),
     info={
-        "header": "Reply to image/sticker to get meme on that image",
+        "header": "Reply to image or sticker to get meme on that image",
         "usage": "{tr}threats",
     },
 )
 async def catbot(event):
-    "image meme creator"
+    "Image meme creator"
     replied = await event.get_reply_message()
     catid = await reply_id(event)
     if not replied:
@@ -85,7 +82,7 @@ async def catbot(event):
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
         os.remove(download_location)
-        return await output[0].edit(f"**Error : **\n`{exc}`")
+        return await output[0].edit(f"**Error :**\n`{exc}`")
     cat = f"https://telegra.ph{response[0]}"
     cat = await threats(cat)
     await output[0].delete()
@@ -97,7 +94,7 @@ async def catbot(event):
     pattern="trap(?:\s|$)([\s\S]*)",
     command=("trap", plugin_category),
     info={
-        "header": "Reply to image/sticker to get meme on that image",
+        "header": "Reply to image or sticker to get meme on that image",
         "Description": "creates a trap card",
         "usage": "{tr}trap (name of the person to trap) ; (trapper name)",
     },
@@ -134,7 +131,7 @@ async def catbot(event):
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
         os.remove(download_location)
-        return await output[0].edit(f"**Error: **\n`{exc}`")
+        return await output[0].edit(f"**Error:**\n`{exc}`")
     cat = f"https://telegra.ph{response[0]}"
     cat = await trap(text1, text2, cat)
     await output[0].delete()
@@ -146,7 +143,7 @@ async def catbot(event):
     pattern="phub(?:\s|$)([\s\S]*)",
     command=("phub", plugin_category),
     info={
-        "header": "Reply to image/sticker to get meme on that image",
+        "header": "Reply to image or sticker to get meme on that image",
         "description": "pornhub comment creator",
         "usage": "{tr}phub (username);(text in comment)",
     },
@@ -184,7 +181,7 @@ async def catbot(event):
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
         os.remove(download_location)
-        return await output[0].edit(f"**Error : **\n`{exc}`")
+        return await output[0].edit(f"**Error :**\n`{exc}`")
     cat = f"https://telegra.ph{response[0]}"
     cat = await phcomment(cat, text, username)
     await output[0].delete()
