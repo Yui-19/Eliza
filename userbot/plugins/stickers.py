@@ -42,7 +42,7 @@ combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
 EMOJI_SEN = [
     "Можно отправить несколько смайлов в одном сообщении , однако мы рекомендуем использовать не больше одного или двух на каждый стикер",
-    "You can list several emoji in one message , but I recommend using no more than two per sticker",
+    "You can list several emoji in one message but I recommend using no more than two per sticker",
     "Du kannst auch mehrere Emoji eingeben , ich empfehle dir aber nicht mehr als zwei pro Sticker zu benutzen",
     "Você pode listar vários emojis em uma mensagem , mas recomendo não usar mais do que dois por cada sticker",
     "Puoi elencare diverse emoji in un singolo messaggio , ma ti consiglio di non usarne più di due per sticker",
@@ -54,12 +54,12 @@ KANGING_STR = [
     "Plagiarising lol...",
     "Inviting this sticker over to my pack...",
     "Kanging this sticker...",
-    "Hey that's a nice sticker !\nMind if I kang ?",
-    "He he he he I  steel ur stiker\nImao",
-    "Ay look over there\nWhile I kang this...",
-    "Roses are red violets are blue , kanging this sticker so my pacc looks cool",
+    "Hey that's a nice sticker\n\nMind if I kang ?",
+    "He he he he I steal your stiker\n\nImao",
+    "Ay look over there\n\nWhile I kang this...",
+    "Roses are red violets are blue kanging this sticker so my pack looks cool",
     "Imprisoning this sticker...",
-    "Mrs.steal your sticker is stealing this sticker... ",
+    "Mrs steal your sticker is stealing this sticker... ",
 ]
 
 
@@ -170,7 +170,7 @@ async def newpacksticker(
     rsp = await conv.get_response()
     if not verify_cond(EMOJI_SEN, rsp.text):
         await catevent.edit(
-            f"Failed to add sticker , use @Stickers bot to add the sticker manually\n**Error :**{rsp.text}"
+            f"Failed to add sticker , use @Stickers bot to add the sticker manually\n\n**Error :**{rsp.text}"
         )
         if not pkang:
             return None, None, None
@@ -269,7 +269,7 @@ async def add_to_pack(
         rsp = await conv.get_response()
     if not verify_cond(EMOJI_SEN, rsp.message):
         await catevent.edit(
-            f"Failed to add sticker , use @Stickers bot to add the sticker manually\n**Error :**{rsp.message}"
+            f"Failed to add sticker , use @Stickers bot to add the sticker manually\n\n**Error :**{rsp.message}"
         )
         if not pkang:
             return None, None
@@ -349,7 +349,7 @@ async def kang(args):  # sourcery no-metrics
                     if isinstance(attribute, DocumentAttributeSticker):
                         if message.media.document.size / 1024 > 255:
                             catevent = await edit_or_reply(
-                                args, "⌛ File size big\nDownloading..."
+                                args, "File size is large\n\nDownloading..."
                             )
                             sticker = await animator(message, args, catevent)
                             await edit_or_reply(
@@ -365,11 +365,11 @@ async def kang(args):  # sourcery no-metrics
                         emoji = attribute.alt
                         emojibypass = True
             else:
-                catevent = await edit_or_reply(args, "⌛ Downloading...")
+                catevent = await edit_or_reply(args, "Downloading...")
                 sticker = await animator(message, args, catevent)
                 await edit_or_reply(catevent, f"`{random.choice(KANGING_STR)}`")
         else:
-            await edit_delete(args, "`Unsupported File!`")
+            await edit_delete(args, "`Unsupported file !`")
             return
     else:
         await edit_delete(args, "`I can't kang that...`")
@@ -411,7 +411,7 @@ async def kang(args):  # sourcery no-metrics
         )
         htmlstr = response.read().decode("utf8").split("\n")
         if (
-            "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>"
+            "  A <strong>telegram</strong> user has created the <strong>sticker&nbsp;set</strong>"
             not in htmlstr
         ):
             async with args.client.conversation("@Stickers") as conv:
@@ -434,7 +434,7 @@ async def kang(args):  # sourcery no-metrics
             await edit_delete(
                 catevent,
                 f"`Sticker kanged successfully\
-                    \nYour pack is` [here](t.me/addstickers/{packname}) `and emoji for the kanged sticker is {emoji}`",
+                    \n\nYour pack is `[here](t.me/addstickers/{packname})` and emoji for the kanged sticker is {emoji}`",
                 parse_mode="md",
                 time=10,
             )
@@ -461,8 +461,8 @@ async def kang(args):  # sourcery no-metrics
             if otherpack:
                 await edit_delete(
                     catevent,
-                    f"`Sticker kanged to a different pack !\
-                    \nAnd newly created pack is` [here](t.me/addstickers/{packname}) `and emoji for the kanged sticker is {emoji}`",
+                    f"`Sticker kanged to a different pack\
+                    \n\nAnd newly created pack is `[here](t.me/addstickers/{packname})` and emoji for the kanged sticker is {emoji}`",
                     parse_mode="md",
                     time=10,
                 )
@@ -470,7 +470,7 @@ async def kang(args):  # sourcery no-metrics
                 await edit_delete(
                     catevent,
                     f"`Sticker kanged successfully\
-                    \nYour pack is` [here](t.me/addstickers/{packname}) `and emoji for the kanged sticker is {emoji}`",
+                    \n\nYour pack is `[here](t.me/addstickers/{packname})` and emoji for the kanged sticker is {emoji}`",
                     parse_mode="md",
                     time=10,
                 )
@@ -529,7 +529,7 @@ async def pack_kang(event):  # sourcery no-metrics
     except Exception:
         return await edit_delete(
             catevent,
-            "`I guess this sticker is not part of any pack ! So , i cant kang this sticker pack try kang for this sticker`",
+            "`I guess this sticker is not part of any pack ! So , I cant kang this sticker pack try kang for this sticker`",
         )
     kangst = 1
     reqd_sticker_set = await event.client(
@@ -621,7 +621,7 @@ async def pack_kang(event):  # sourcery no-metrics
             )
             htmlstr = response.read().decode("utf8").split("\n")
             if (
-                "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>"
+                "  A <strong>telegram</strong> user has created the <strong>sticker&nbsp;set</strong>"
                 in htmlstr
             ):
                 async with event.client.conversation("@Stickers") as conv:
@@ -666,7 +666,7 @@ async def pack_kang(event):  # sourcery no-metrics
     result = "`This sticker pack is kanged into the following your sticker pack(s) :`\n"
     for i in enumerate(blablapacks):
         result += (
-            f"  •  [pack {blablapacknames[i[0]]}](t.me/addstickers/{blablapacks[i[0]]})"
+            f"  • [pack {blablapacknames[i[0]]}](t.me/addstickers/{blablapacks[i[0]]})"
         )
     await catevent.edit(result)
 
@@ -677,7 +677,7 @@ async def pack_kang(event):  # sourcery no-metrics
     info={
         "header": "Converts video or gif to animated sticker",
         "description": "Converts video or gif to .webm file and send a temporary animated sticker of that file",
-        "usage": "{tr}vas <Reply to Video/Gif>",
+        "usage": "{tr}vas <reply to video/gif>",
     },
 )
 async def pussycat(args):
@@ -687,7 +687,7 @@ async def pussycat(args):
     userid = user.id
     if message and message.media:
         if "video/mp4" in message.media.document.mime_type:
-            catevent = await edit_or_reply(args, "⌛ Downloading..")
+            catevent = await edit_or_reply(args, "Downloading..")
             sticker = await animator(message, args, catevent)
             await edit_or_reply(catevent, f"`{random.choice(KANGING_STR)}`")
         else:
@@ -702,7 +702,7 @@ async def pussycat(args):
     )
     htmlstr = response.read().decode("utf8").split("\n")
     if (
-        "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>"
+        "  A <strong>telegram</strong> user has created the <strong>sticker&nbsp;set</strong>"
         not in htmlstr
     ):
         async with args.client.conversation("@Stickers") as xconv:
@@ -734,7 +734,7 @@ async def pussycat(args):
         args.chat_id,
         sticker,
         force_document=True,
-        caption=f"**[Sticker preview](t.me/addstickers/{packname})**\n*It will remove automatically on your next convert",
+        caption=f"**[Sticker preview](t.me/addstickers/{packname})**\n\nIt will remove automatically on your next convert",
         reply_to=message,
     )
     if os.path.exists(sticker):
@@ -751,10 +751,10 @@ async def pussycat(args):
         },
         "usage": [
             "{tr}gridpack <packname>",
-            "{tr}gridpack -e✌🏻 <packname>",
+            "{tr}gridpack -e💜 <packname>",
         ],
         "examples": [
-            "{tr}gridpack -e✌🏻 CatUserbot",
+            "{tr}gridpack -e💜 cat userbot",
         ],
     },
 )
@@ -767,14 +767,14 @@ async def pic2packcmd(event):
     if mediatype == "Sticker" and reply.document.mime_type == "application/x-tgsticker":
         return await edit_delete(
             event,
-            "Reply to photo or sticker to make pack ! Animated sticker is not supported",
+            "Reply to photo or sticker to make pack\n\nAnimated sticker is not supported",
         )
     args = event.pattern_match.group(1)
     if not args:
         return await edit_delete(
             event, "What's your packname ? Pass along with command"
         )
-    catevent = await edit_or_reply(event, "Cropping and adjusting the image... 🔪")
+    catevent = await edit_or_reply(event, "Cropping and adjusting the image... 🗡️")
     try:
         emoji = (re.findall(r"-e[\U00010000-\U0010ffff]+", args))[0]
         args = args.replace(emoji, "")
@@ -782,7 +782,7 @@ async def pic2packcmd(event):
     except Exception:
         emoji = "▫️"
     chat = "@Stickers"
-    name = "CatUserbot_" + "".join(
+    name = "CatUserbot" + "".join(
         random.choice(list(string.ascii_lowercase + string.ascii_uppercase))
         for _ in range(16)
     )
@@ -802,7 +802,7 @@ async def pic2packcmd(event):
     images = await crop_and_divide(img)
     newimg.save(new_img)
     new_img.seek(0)
-    catevent = await event.edit("__Making the pack.__")
+    catevent = await event.edit("Making the pack")
     async with event.client.conversation(chat) as conv:
         i = 0
         try:
@@ -826,7 +826,7 @@ async def pic2packcmd(event):
             await event.client.send_read_acknowledge(conv.chat_id)
             await asyncio.sleep(1)
             i += 1
-            await catevent.edit(f"__Making the pack.\nProgress: {i}/{len(images)}__")
+            await catevent.edit(f"Making the pack\n\nProgress : {i}/{len(images)}")
         await event.client.send_message(chat, "/publish")
         await conv.wait_event(events.NewMessage(incoming=True, from_users=chat))
         await event.client.send_file(chat, new_img, force_document=True)
