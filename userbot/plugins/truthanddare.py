@@ -1,4 +1,4 @@
-# By @yuki
+# By @Yui
 
 import requests as r
 from bs4 import BeautifulSoup as bs
@@ -20,12 +20,12 @@ link = "https://fungenerators.com/random/truth-or-dare?option="
     },
 )
 async def gtruth(deep):
-    m = await edit_or_reply(deep, "Generating a truth statement.. ")
+    m = await edit_or_reply(deep, "Generating a truth statement..")
     nl = link + "truth"
     ct = r.get(nl).content
     bsc = bs(ct, "html.parser", from_encoding="utf-8")
     cm = bsc.find_all("h2")[0].text
-    await m.edit(f"#TruthTask\n\n{cm}")
+    await m.edit(f"TruthTtask\n\n{cm}")
 
 
 @catub.cat_cmd(
@@ -42,4 +42,4 @@ async def gtruth(deep):
     ct = r.get(nl).content
     bsc = bs(ct, "html.parser", from_encoding="utf-8")
     cm = bsc.find_all("h2")[0].text
-    await m.edit(f"#DareTask\n\n{cm}")
+    await m.edit(f"Dare task\n\n{cm}")
