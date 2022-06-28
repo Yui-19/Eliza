@@ -1,4 +1,4 @@
-# Made by @yuki
+# Made by @Yui
 
 import os
 import random
@@ -14,9 +14,9 @@ plugin_category = "tools"
 
 # =========Some integrated custom vars============
 # Pre text i.e. before calculation ping
-PING_TEXT = os.environ.get("PING_TEXT") or "Starting the game !"
+PING_TEXT = os.environ.get("PING_TEXT") or "Starting the game"
 # Post text i.e. the final message
-PONG_TEXT = os.environ.get("PONG_TEXT") or "Now lets the game begin !"
+PONG_TEXT = os.environ.get("PONG_TEXT") or "Now let's the game begin !"
 # Custom mention line
 PING_MENTION = os.environ.get("PING_MENTION") or "Rules by :"
 # Text after the ping value
@@ -45,8 +45,8 @@ pingfont = [
     pattern="mping$",
     command=("mping", plugin_category),
     info={
-        "header": "Checks the latency of userbot from the server , with a media",
-        "option": "Vars to customize the texts of mping\nPING_PICS add mutiple telegraph media link separated by spaces ( in database )\nPING_TEXT Pre text i.e. before calculation ping\nPONG_TEXT Post text i.e. the final message\nPING_MENTION Custom mention line\nPING_PARTNER Text after ping ( that random number )\nAVG_TEXT Custom header in `{tr}ping -a`",
+        "header": "Checks the latency of userbot from the server with a media",
+        "option": "Vars to customize the texts of mping\n\nPING_PICS add mutiple telegraph media link separated by spaces ( in database )\n\nPING_TEXT pre text i.e. before calculation ping\nPONG_TEXT Post text i.e. the final message\nPING_MENTION Custom mention line\nPING_PARTNER Text after ping ( that random number )\nAVG_TEXT Custom header in `{tr}ping -a`",
         "usage": "{tr}mping",
     },
 )
