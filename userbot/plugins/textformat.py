@@ -10,7 +10,7 @@ plugin_category = "Extra"
     command=("upper", plugin_category),
     info={
         "header": "Text operation change to upper text",
-        "usage": "{tr}upper <input text / reply to text>",
+        "usage": "{tr}upper <input text or reply to text>",
         "examples": "{tr}upper reply to valid text or give valid text as input",
     },
 )
@@ -22,7 +22,7 @@ async def some(event):
         intxt = reply.text
     if not intxt:
         return await edit_delete(
-            event, "**Reply to valid text or give text as input ! You moron !**"
+            event, "Reply to valid text or give text as input\n\nYou moron"
         )
     mystring = intxt.upper()
     await edit_or_reply(event, mystring)
@@ -33,7 +33,7 @@ async def some(event):
     command=("lower", plugin_category),
     info={
         "header": "Text operation change to lower text",
-        "usage": "{tr}lower <input text / reply to text>",
+        "usage": "{tr}lower <input text or reply to text>",
         "examples": "{tr}lower reply to valid text or give valid text as input",
     },
 )
@@ -45,7 +45,7 @@ async def good(event):
         intxt = reply.text
     if not intxt:
         return await edit_delete(
-            event, "**Reply to valid text or give text as input ! You moron !**"
+            event, "Reply to valid text or give text as input\n\nYou moron"
         )
     mystring = intxt.lower()
     await edit_or_reply(event, mystring)
@@ -56,8 +56,8 @@ async def good(event):
     command=("title", plugin_category),
     info={
         "header": "Text operation change to title text",
-        "usage": "{tr}title<input text / reply to text>",
-        "examples": "{tr}title Reply to valid text or give valid text as input",
+        "usage": "{tr}title<input text or reply to text>",
+        "examples": "{tr}title reply to valid text or give valid text as input",
     },
 )
 async def stuff(event):
@@ -68,7 +68,7 @@ async def stuff(event):
         intxt = reply.text
     if not intxt:
         return await edit_delete(
-            event, "**Reply to valid text or give text as input ! You moron !**"
+            event, "Reply to valid text or give text as input\n\nYou moron"
         )
     mystring = intxt.title()
     await edit_or_reply(event, mystring)
@@ -80,8 +80,8 @@ async def stuff(event):
     info={
         "header": "Text operation change to camel text",
         "usage": [
-            "{tr}camel <input text / reply to text>",
-            "{tr}rcamel <input text / reply to text>",
+            "{tr}camel <input text or reply to text>",
+            "{tr}rcamel <input text or reply to text>",
         ],
         "examples": [
             "{tr}camel reply to valid text or give valid text as input",
@@ -98,7 +98,7 @@ async def here(event):
         intxt = reply.text
     if not intxt:
         return await edit_delete(
-            event, "**Reply to valid text or give text as input ! You moron !**"
+            event, "Reply to valid text or give text as input\n\nYou moron"
         )
     if cmd == "r":
         bad = list(intxt.lower())[::2]
