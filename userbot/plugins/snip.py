@@ -1,5 +1,3 @@
-# ported from paperplaneExtended by avinashreddy3108 for media support
-
 from userbot import catub
 
 from ..core.managers import edit_delete, edit_or_reply
@@ -56,7 +54,7 @@ async def incom_note(event):
     },
 )
 async def add_snip(event):
-    "To save notes to bot."
+    "To save notes to bot"
     if not BOTLOG:
         return await edit_delete(
             event, "`To save snip or notes you need to set PRIVATE_GROUP_BOT_API_ID`"
@@ -70,7 +68,7 @@ async def add_snip(event):
         await event.client.send_message(
             BOTLOG_CHATID,
             f"NOTE\
-            \n**Keyword :** `#{keyword}`\
+            \n\n**Keyword :** `#{keyword}`\
             \n\nThe following message is saved as the snip in your bot , do not delete it",
         )
         msg_o = await event.client.forward_messages(
@@ -87,15 +85,15 @@ async def add_snip(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"NOTE\
-            \n**Keyword :** `#{keyword}`\
-            \n\nThe following message is saved as the snip in your bot , do not delete it",
+            \n\n**Keyword :** `#{keyword}`\
+            \n\nThe following message is saved as the snip in your bot , don't delete it",
             )
             msg_o = await event.client.send_message(BOTLOG_CHATID, string)
             msg_id = msg_o.id
             string = None
         else:
-            return await edit_delete(event, "`What should i save for your snip ?`")
-    success = "Note {} is successfully {} ! Use` #{} `to get it"
+            return await edit_delete(event, "`What should I save for your snip ?`")
+    success = "Note {} is successfully {} !\n\nUse` #{} `to get it"
     if add_note(keyword, string, msg_id) is False:
         rm_note(keyword)
         if add_note(keyword, string, msg_id) is False:
