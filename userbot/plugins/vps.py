@@ -1,8 +1,3 @@
-# \\ Created by-@Jisan7509 -- Github.com/Jisan09 //
-#  \\   https://github.com/TgCatUB/catuserbot   //
-#   \\       Plugin for @catuserbot            //
-#    ```````````````````````````````````````````
-
 import asyncio
 import glob
 import os
@@ -74,7 +69,7 @@ async def variable(event):  # sourcery no-metrics
                 _, val = i.split("= ")
                 return await cat.edit("**Config vars** :" f"\n\n`{variable}` = `{val}`")
         await cat.edit(
-            "**Config vars** :" f"\n\nError :\n-> `{variable}` doesn't exists"
+            "**Config vars** :" f"\n\nError :\n\n-> `{variable}` doesn't exists"
         )
     elif cmd == "set":
         variable = "".join(event.text.split(maxsplit=2)[2:])
@@ -95,11 +90,11 @@ async def variable(event):  # sourcery no-metrics
             else:
                 string += f"{i}"
         if match:
-            await cat.edit(f"`{variable}` **Successfully changed to  ->  **`{value}`")
+            await cat.edit(f"`{variable}` **Successfully changed to -> **`{value}`")
         else:
             string += f"    {variable} = {value}\n"
             await cat.edit(
-                f"`{variable}`**  Successfully added with value  ->  **`{value}`"
+                f"`{variable}`**  Successfully added with value -> **`{value}`"
             )
         with open(config, "w") as f1:
             f1.write(string)
@@ -121,7 +116,7 @@ async def variable(event):  # sourcery no-metrics
             await cat.edit(f"`{variable}` **Successfully deleted**")
         else:
             await cat.edit(
-                "**Config vars** :" f"\n\nError :\n-> `{variable}` doesn't exists"
+                "**Config vars** :" f"\n\nError :\n\n-> `{variable}` doesn't exists"
             )
         await event.client.reload(cat)
 
