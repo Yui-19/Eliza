@@ -93,9 +93,9 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
             USER_BOT_WARN_ZERO = f"**You were spamming my master** {my_mention}**'s inbox , henceforth you have been blocked**"
         msg = await event.reply(USER_BOT_WARN_ZERO)
         await event.client(functions.contacts.BlockRequest(chat.id))
-        the_message = f"#BLOCKED_PM\
-                            \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                            \n**Message count :** {PM_WARNS[str(chat.id)]}"
+        the_message = f"BLOCKED PM\
+                            \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
+                            \n\n**Message count :** {PM_WARNS[str(chat.id)]}"
         del PM_WARNS[str(chat.id)]
         sql.del_collection("pmwarns")
         sql.del_collection("pmmessagecache")
@@ -214,9 +214,9 @@ async def do_pm_options_action(event, chat):
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
-    the_message = f"BLOCKED_PM\
-                            \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                            \n**Reason :** He or she didn't opt for any provided options and kept on messaging"
+    the_message = f"BLOCKED PM\
+                            \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
+                            \n\n**Reason :** He or she didn't opt for any provided options and kept on messaging"
     sqllist.rm_from_list("pmoptions", chat.id)
     try:
         return await event.client.send_message(
@@ -263,9 +263,9 @@ __My master will respond when he/she comes online, if he/she wants to.__
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
-    the_message = f"#BLOCKED_PM\
-                \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n**Reason:** __He/She opted for enquire option but didn't wait after being told also and kept on messaging so blocked.__"
+    the_message = f"BLOCKED PM\
+                \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
+                \n\n**Reason:** He or she opted for enquire option but didn't wait after being told also and kept on messaging so blocked"
     sqllist.rm_from_list("pmenquire", chat.id)
     try:
         return await event.client.send_message(
@@ -312,9 +312,9 @@ __My master will respond when he/she comes back online, if he/she wants to.__
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
-    the_message = f"#BLOCKED_PM\
-                \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n**Reason:** __He/She opted for the request option but didn't wait after being told also so blocked.__"
+    the_message = f"BLOCKED PM\
+                \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
+                \n\n**Reason :** He or she opted for the request option but didn't wait after being told also so blocked"
     sqllist.rm_from_list("pmrequest", chat.id)
     try:
         return await event.client.send_message(
@@ -361,9 +361,9 @@ __My master will respond when he/she comes back online, if he/she wants to.__
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
-    the_message = f"#BLOCKED_PM\
-                \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n**Reason:** __He/She select opted for the chat option but didn't wait after being told also so blocked.__"
+    the_message = f"BLOCKED PM\
+                \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
+                \n\n**Reason :** He or she select opted for the chat option but didn't wait after being told also so blocked"
     sqllist.rm_from_list("pmchat", chat.id)
     try:
         return await event.client.send_message(
@@ -389,9 +389,9 @@ async def do_pm_spam_action(event, chat):
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
-    the_message = f"#BLOCKED_PM\
-                            \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                            \n**Reason:** he opted for spam option and messaged again."
+    the_message = f"BLOCKED PM\
+                            \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
+                            \n\n**Reason :** He or she opted for spam option and messaged again"
     sqllist.rm_from_list("pmspam", chat.id)
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
     try:
@@ -520,7 +520,7 @@ async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
         text = "Idoit this options for user who messages you not for you"
         return await event.answer(text, cache_time=0, alert=True)
-    text = """Okay your request has been registered ! Please don't spam my master's inbox now\n\nMy master is busy right now , when she comes online she will check your message and ping you then we can extend this conversation more but not right now"""
+    text = """Okay your request has been registered please don't spam my master's inbox now\n\nMy master is busy right now , when she comes online she will check your message and ping you then we can extend this conversation more but not right now"""
     sqllist.add_to_list("pmenquire", event.query.user_id)
     try:
         PM_WARNS = sql.get_collection("pmwarns").json
@@ -558,7 +558,7 @@ async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
         text = "Idoit these options are for users who message you not for you"
         return await event.answer(text, cache_time=0, alert=True)
-    text = """Ya sure we can have a friendly chat but not right now we can have this some other time\n\nRight now I am little busy when I come online or if I am free I will ping you , this is damm sure"""
+    text = """Ya sure we can have a friendly chat but not right now we can have this some other time\n\nRight now I am little busy when I come online or if I am free I will ping you this is damm sure"""
     sqllist.add_to_list("pmchat", event.query.user_id)
     try:
         PM_WARNS = sql.get_collection("pmwarns").json
@@ -577,21 +577,8 @@ async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
         text = "Idoit these options are for users who message you not for you"
         return await event.answer(text, cache_time=0, alert=True)
-    text = "`███████▄▄███████████▄\
-         \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\
-         \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\
-         \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\
-         \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\
-         \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\
-         \n▓▓▓▓▓▓███░░░░░░░░░░░░█\
-         \n██████▀▀▀█░░░░██████▀ \
-         \n░░░░░░░░░█░░░░█\
-         \n░░░░░░░░░░█░░░█\
-         \n░░░░░░░░░░░█░░█\
-         \n░░░░░░░░░░░█░░█\
-         \n░░░░░░░░░░░░▀▀`\
-         \n**So uncool , this is not your home ! Go bother somewhere else\
-         \n\nThis is your last warning if you send one more message you will be blocked automatically**"
+    text = "So uncool this is not your home ! Go bother somewhere else\
+         \n\nThis is your last warning if you send one more message you will be blocked automatically"
     sqllist.add_to_list("pmspam", event.query.user_id)
     try:
         PM_WARNS = sql.get_collection("pmspam").json
@@ -610,11 +597,11 @@ async def on_plug_in_callback_query_handler(event):
     command=("pmguard", plugin_category),
     info={
         "header": "To turn on or turn off pmpermit",
-        "usage": "{tr}pmguard on/off",
+        "usage": "{tr}pmguard on or off",
     },
 )
 async def pmpermit_on(event):
-    "Turn on/off pmpermit"
+    "Turn on or off pmpermit"
     input_str = event.pattern_match.group(1)
     if input_str == "on":
         if gvarstatus("pmpermit") is None:
@@ -638,7 +625,7 @@ async def pmpermit_on(event):
     command=("pmmenu", plugin_category),
     info={
         "header": "To turn on or turn off pmmenu",
-        "usage": "{tr}pmmenu on/off",
+        "usage": "{tr}pmmenu on or off",
     },
 )
 async def pmpermit_on(event):
@@ -717,7 +704,7 @@ async def approve_p_m(event):  # sourcery no-metrics
             sqllist.rm_from_list("pmoptions", chat.id)
         await edit_delete(
             event,
-            f"__Approved to pm__ [{user.first_name}](tg://user?id={user.id})\n**Reason :** __{reason}__",
+            f"[{user.first_name}](tg://user?id={user.id}) is approved to personal message me\n\n**Reason :** {reason}",
         )
         try:
             PMMESSAGE_CACHE = sql.get_collection("pmmessagecache").json
@@ -793,7 +780,7 @@ async def tapprove_pm(event):  # sourcery no-metrics
             sqllist.rm_from_list("pmoptions", chat.id)
         await edit_delete(
             event,
-            f"[{user.first_name}](tg://user?id={user.id}) is temporarily approved to pm\n**Reason :** {reason}",
+            f"[{user.first_name}](tg://user?id={user.id}) is temporarily approved to personal message me\n\n**Reason :** {reason}",
         )
         try:
             PMMESSAGE_CACHE = sql.get_collection("pmmessagecache").json
@@ -833,7 +820,7 @@ async def tapprove_pm(event):  # sourcery no-metrics
         "usage": [
             "{tr}da/disapprove <username/reply> in group",
             "{tr}da/disapprove in pm",
-            "{tr}da/disapprove all - To disapprove all users",
+            "{tr}da/disapprove all - to disapprove all users",
         ],
     },
 )
@@ -865,13 +852,13 @@ async def disapprove_p_m(event):
         pmpermit_sql.disapprove(user.id)
         await edit_or_reply(
             event,
-            f"[{user.first_name}](tg://user?id={user.id}) is disapproved to personal message me\n**Reason :** {reason}",
+            f"[{user.first_name}](tg://user?id={user.id}) is disapproved to personal message me\n\n**Reason :** {reason}",
         )
     elif user.id in PMPERMIT_.TEMPAPPROVED:
         PMPERMIT_.TEMPAPPROVED.remove(user.id)
         await edit_or_reply(
             event,
-            f"[{user.first_name}](tg://user?id={user.id}) is disapproved to personal message me\n**Reason :** {reason}",
+            f"[{user.first_name}](tg://user?id={user.id}) is disapproved to personal message me\n\n**Reason :** {reason}",
         )
     else:
         await edit_delete(
@@ -927,7 +914,7 @@ async def block_p_m(event):
     await event.client(functions.contacts.BlockRequest(user.id))
     await edit_or_reply(
         event,
-        f"[{user.first_name}](tg://user?id={user.id}) is blocked , he or she can no longer personal message you\n**Reason :** {reason}",
+        f"[{user.first_name}](tg://user?id={user.id}) is blocked he or she can no longer personal message you\n\n**Reason :** {reason}",
     )
 
 
@@ -956,7 +943,7 @@ async def unblock_pm(event):
     await event.client(functions.contacts.UnblockRequest(user.id))
     await edit_or_reply(
         event,
-        f"[{user.first_name}](tg://user?id={user.id}) is unblocked he or she can personal message you from now on\n**Reason :** {reason}",
+        f"[{user.first_name}](tg://user?id={user.id}) is unblocked he or she can personal message you from now on\n\n**Reason :** {reason}",
     )
 
 
