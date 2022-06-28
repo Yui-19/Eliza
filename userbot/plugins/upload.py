@@ -90,7 +90,7 @@ async def upload(path, event, udir_event, catflag=None):  # sourcery no-metrics
     catflag = catflag or False
     reply_to_id = await reply_id(event)
     if os.path.isdir(path):
-        await event.client.send_message(event.chat_id, f"**Folder : **`{path}`")
+        await event.client.send_message(event.chat_id, f"**Folder :**`{path}`")
         Files = os.listdir(path)
         Files = sortthings(Files, path)
         for file in Files:
@@ -106,7 +106,7 @@ async def upload(path, event, udir_event, catflag=None):  # sourcery no-metrics
         uploaded = await event.client.fast_upload_file(
             file=ul,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, event, c_time, "trying to upload", file_name=fname)
+                progress(d, t, event, c_time, "Trying to upload", file_name=fname)
             ),
         )
         ul.close()
@@ -120,7 +120,7 @@ async def upload(path, event, udir_event, catflag=None):  # sourcery no-metrics
         await event.client.send_file(
             event.chat_id,
             file=media,
-            caption=f"**File Name : **`{fname}`",
+            caption=f"**File name :**`{fname}`",
             reply_to=reply_to_id,
         )
 
@@ -161,7 +161,7 @@ async def uploadir(event):
         ms = (end - start).seconds
         await edit_delete(
             udir_event,
-            f"`Uploaded {UPLOAD_.uploaded} files successfully in {ms} seconds `",
+            f"`Uploaded {UPLOAD_.uploaded} files successfully in {ms} seconds`",
         )
     else:
         await edit_or_reply(udir_event, "`Uploading file...`")
@@ -171,5 +171,5 @@ async def uploadir(event):
         ms = (end - start).seconds
         await edit_delete(
             udir_event,
-            f"`Uploaded file {path} successfully in {ms} seconds `",
+            f"`Uploaded file {path} successfully in {ms} seconds`",
         )
