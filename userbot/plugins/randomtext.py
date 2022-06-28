@@ -1,12 +1,12 @@
 """
 inspired from @Deonnn @Mayur_Karaniya
 from ..helpers.utils import _format
-Quotes credits: Being Biblical Channel : @BeingBiblical
-AlenPaulVarghese(@STARKTM1)[hp]
-Sing credits :By @PhycoNinja13b
-No Logic Pligon for @PepeBot
-\nCoding by Legend @NeoMatrix90
-\nType .logic to see many logical fact
+quotes credits : being biblical channel : @BeingBiblical
+alenPaulVarghese(@STARKTM1)[hp]
+sing credits : by @PhycoNinja13b
+no logic pligon for @PepeBot
+coding by legend @NeoMatrix90
+type .logic to see many logical fact
 """
 
 import random
@@ -174,7 +174,7 @@ async def _(event):
 )
 async def _(event):  # sourcery no-metrics
     "To get random harry potter spells"
-    event = await edit_or_reply(event, "`.....`")
+    event = await edit_or_reply(event, "`...`")
     await sleep(2)
     x = random.randrange(1, 40)
     if x == 1:
@@ -301,25 +301,25 @@ async def _(event):  # sourcery no-metrics
             '`"I grew up with soldiers ! I learned how to die a long time ago"`'
         )
     if x == 10:
-        await event.edit('`"What do we say to the lord of death ?\nNot today !"`')
+        await event.edit('`"What do we say to the lord of death ?\n\nNot today !"`')
     if x == 11:
         await event.edit('`"Every flight begins with a fall"`')
     if x == 12:
         await event.edit('`"Different roads sometimes lead to the same castle"`')
     if x == 13:
         await event.edit(
-            '`"Never forget what you are ! The rest of the world will not ! Wear it like armour , and it can never be used to hurt you"`'
+            '`"Never forget what you are ! The rest of the world will not ! Wear it like armor and it can never be used to hurt you"`'
         )
     if x == 14:
         await event.edit(
-            '`"The day will come when you think you are safe and happy , and your joy will turn to ashes in your mouth"`'
+            '`"The day will come when you think you are safe and happy and your joy will turn to ashes in your mouth"`'
         )
     if x == 15:
         await event.edit('`"The night is dark and full of terrors"`')
     if x == 16:
         await event.edit('`"You know nothing , jon snow"`')
     if x == 17:
-        await event.edit('`"Night gathers , and now my watch begins !"`')
+        await event.edit('`"Night gathers and now my watch begins !"`')
     if x == 18:
         await event.edit('`"A lannister always pays his debts"`')
     if x == 19:
@@ -334,7 +334,7 @@ async def _(event):  # sourcery no-metrics
         await event.edit('`"That\'s what I do : I drink and I know things"`')
     if x == 24:
         await event.edit(
-            '`"I am the dragon\'s daughter , and I swear to you that those who would harm you will die screaming"`'
+            '`"I am the dragon\'s daughter and I swear to you that those who would harm you will die screaming"`'
         )
     if x == 25:
         await event.edit(
@@ -384,10 +384,10 @@ async def _(event):  # sourcery no-metrics
         await event.edit('`"I wish I was the monster you think I am !"`')
     if x == 41:
         await event.edit(
-            "Never forget what you are ! The rest of the world will not ! Wear it like armor ,\n and it can never be used to hurt you"
+            "Never forget what you are ! The rest of the world will not ! Wear it like armor and it can never be used to hurt you"
         )
     if x == 42:
-        await event.edit("There is only one thing we say to death : **Not today**")
+        await event.edit("There is only one thing we say to death : Not today")
     if x == 43:
         await event.edit(
             "If you think this has a happy ending , you haven’t been **paying attention**"
@@ -410,7 +410,7 @@ async def _(event):  # sourcery no-metrics
         )
     if x == 50:
         await event.edit(
-            "When the snows fall and the white winds blow ,\n the lone wolf dies , but the pack **survives**"
+            "When the snows fall and the white winds blow , the lone wolf dies , but the pack **survives**"
         )
 
 
@@ -424,7 +424,7 @@ async def _(event):  # sourcery no-metrics
 )
 async def _(event):
     "To get random game of thrones memes"
-    event = await edit_or_reply(event, "Thinking... 🤔")
+    event = await edit_or_reply(event, "Thinking...")
     await sleep(2)
     x = random.randrange(1, 30)
     if x == 1:
@@ -459,7 +459,7 @@ async def _(event):
         )
     if x == 7:
         await event.edit(
-            "[ When your friend asks about the food he / she just cooked and you don't want to break his / her heart...](https://telegra.ph/file/702df36088f5c26fef931.jpg)",
+            "[When your friend asks about the food he / she just cooked and you don't want to break his / her heart...](https://telegra.ph/file/702df36088f5c26fef931.jpg)",
             link_preview=True,
         )
     if x == 8:
@@ -700,7 +700,7 @@ async def _(event):  # sourcery no-metrics
         )
     if x == 29:
         await event.edit(
-            "`\"Some people think they're better than you because they grew up richer ! Some people think they're better than you because they grew up poorer\"`"
+            "`\"Some people think they're better than you because they grew up richer ! Some people think they're better than you because they grew up poorer"`\"
         )
     if x == 30:
         await event.edit(
@@ -748,7 +748,7 @@ async def _(event):  # sourcery no-metrics
         )
     if x == 41:
         await event.edit(
-            '`"Sleep is the trial version of death , It even comes with ads based on your activity"`'
+            '`"Sleep is the trial version of death , it even comes with ads based on your activity"`'
         )
     if x == 42:
         await event.edit(
@@ -760,7 +760,7 @@ async def _(event):  # sourcery no-metrics
         )
     if x == 44:
         await event.edit(
-            '`"Silent people seem smarter than loud people , because they keep their stupid thoughts to themselves"`'
+            '`"Silent people seem smarter than loud people because they keep their stupid thoughts to themselves"`'
         )
     if x == 45:
         await event.edit('`"If greenland actually turns green , we\'re all screwed"`')
@@ -794,11 +794,11 @@ async def _(event):  # sourcery no-metrics
         await event.edit('`"Raising a child is training your replacement"`')
     if x == 54:
         await event.edit(
-            "`\"'O'pen starts with a closed circle , and 'C'lose starts with an open circle\"`"
+            "`\"'O'pen starts with a closed circle and 'C'lose starts with an open circle\"`"
         )
     if x == 55:
         await event.edit(
-            '`"There\'s always someone who hated you for no reason , and still does"`'
+            '`"There\'s always someone who hated you for no reason and still does"`'
         )
     if x == 56:
         await event.edit(
@@ -980,7 +980,7 @@ async def _(event):  # sourcery no-metrics
 )
 async def _(event):  # sourcery no-metrics
     "To get random life tips"
-    await edit_or_reply(event, "Well , let me give you a life-pro tip... 😉")
+    await edit_or_reply(event, "Well , let me give you a life-pro tip...")
     await sleep(2)
     x = random.randrange(1, 87)
     if x == 1:
