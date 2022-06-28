@@ -1,7 +1,7 @@
 """
-`Credits` @amnd33p
+credits @amnd33p
 from ..helpers.utils import _format
-Modified by @mrconfused
+modified by @mrconfused
 """
 
 import io
@@ -34,7 +34,7 @@ async def _(event):
     "To take a screenshot of a website"
     if Config.CHROME_BIN is None:
         return await edit_or_reply(
-            event, "Need to install google chrome ! Module stopping"
+            event, "Need to install google chrome\n\nModule stopping"
         )
     catevent = await edit_or_reply(event, "`Processing...`")
     start = datetime.now()
@@ -74,12 +74,12 @@ async def _(event):
         # for good measure to make the scroll bars disappear
         im_png = driver.get_screenshot_as_png()
         # saves screenshot of entire page
-        await catevent.edit("`Stoppping Chrome Bin`")
+        await catevent.edit("`Stoppping chrome bin`")
         driver.close()
         message_id = await reply_id(event)
         end = datetime.now()
         ms = (end - start).seconds
-        hmm = f"**Url : **{input_str} \n**Time :** `{ms} seconds`"
+        hmm = f"**Url : **{input_str}\n\n**Time :** `{ms} seconds`"
         await catevent.delete()
         with io.BytesIO(im_png) as out_file:
             out_file.name = f"{input_str}.PNG"
@@ -134,7 +134,7 @@ async def _(event):
     contentType = response_api.headers["content-type"]
     end = datetime.now()
     ms = (end - start).seconds
-    hmm = f"**Url : **{input_str} \n**Time :** `{ms} seconds`"
+    hmm = f"**Url : **{input_str}\n\n**Time :** `{ms} seconds`"
     if "image" in contentType:
         with io.BytesIO(response_api.content) as screenshot_image:
             screenshot_image.name = "screencapture.png"
