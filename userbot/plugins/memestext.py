@@ -26,12 +26,12 @@ async def _(e):
     pattern="shg$",
     command=("shg", plugin_category),
     info={
-        "header": "Shrug at it !",
+        "header": "Shrug at it",
         "usage": "{tr}shg",
     },
 )
 async def shrugger(e):
-    "Shrug at it !"
+    "Shrug at it"
     txt = random.choice(catmemes.SHGS)
     await edit_or_reply(e, txt)
 
@@ -40,12 +40,12 @@ async def shrugger(e):
     pattern="runs$",
     command=("runs", plugin_category),
     info={
-        "header": "Run , run , runnnn !",
+        "header": "Run , run , run",
         "usage": "{tr}runs",
     },
 )
 async def runner_lol(e):
-    "Run , run , runnnn !"
+    "Run , run , run"
     txt = random.choice(catmemes.RUNSREACTS)
     await edit_or_reply(e, txt)
 
@@ -161,7 +161,7 @@ async def _(e):
     },
 )
 async def iqless(e):
-    "You retard !"
+    "You retard"
     await edit_or_reply(e, "♿")
 
 
@@ -169,30 +169,30 @@ async def iqless(e):
     pattern="fp$",
     command=("fp", plugin_category),
     info={
-        "header": "Send you face pam emoji !",
+        "header": "Send you face pam emoji",
         "usage": "{tr}fp",
     },
 )
 async def facepalm(e):
-    "send you face pam emoji !"
-    await edit_or_reply(e, "🤦‍♂")
+    "Send you face pam emoji"
+    await edit_or_reply(e, "🙇🏻‍♀️")
 
 
 @catub.cat_cmd(
     pattern="bt$",
     command=("bt", plugin_category),
     info={
-        "header": "Believe me , you will find this useful",
+        "header": "Believe me you will find this useful",
         "usage": "{tr}bt",
     },
     groups_only=True,
 )
 async def bluetext(e):
-    """Believe me , you will find this useful"""
+    """Believe me you will find this useful"""
     await edit_or_reply(
         e,
-        "/BLUETEXT /MUST /CLICK\n"
-        "/ARE /YOU /A /STUPID /ANIMAL /WHICH /IS /ATTRACTED /TO /COLOURS ?",
+        "BLUETEXT MUST CLICK\n\n"
+        "ARE YOU A STUPID ANIMAL WHICH IS ATTRACTED TO COLOURS ?",
     )
 
 
@@ -206,5 +206,5 @@ async def bluetext(e):
 )
 async def _(event):
     "Telethon session error code ( fun )"
-    mentions = "**Telethon.errors.rpcerrorlist.authkeyduplicatederror : The authorization key ( session file ) was used under two different ip addresses simultaneously , and can no longer be used ! Use the same session exclusively , or use different sessions ( caused by getmessagesrequest )**"
+    mentions = "**Telethon.errors.rpcerrorlist.authkeyduplicatederror : The authorization key ( session file ) was used under two different ip addresses simultaneously and can no longer be used ! Use the same session exclusively or use different sessions ( caused by getmessagesrequest )**"
     await edit_or_reply(event, mentions)
