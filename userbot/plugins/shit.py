@@ -1,4 +1,4 @@
-# By @yuki
+# By @Yui
 
 from userbot import catub
 from ..core.managers import edit_or_reply
@@ -21,9 +21,9 @@ async def anim(shit):
     a = 1
 
     if a == 1 :
-        sh = await edit_or_reply(shit,"Err 🤞🏻...")
+        sh = await edit_or_reply(shit,"Esh 🤞🏻...")
         time.sleep(3)
-        shiti = await sh.edit(f"Err ✌🏻...")
+        shiti = await sh.edit(f"Esh ✌🏻...")
         time.sleep(9)
         await shiti.edit(f"You're fucking piece of shit 🙄")
     else:
