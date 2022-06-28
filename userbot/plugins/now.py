@@ -15,7 +15,7 @@ plugin_category = "extra"
     },
 )
 async def current(event):
-    "Sends Muzik via @nowplaybot"
+    "Sends music via @nowplaybot"
     reply_to_id = await reply_id(event)
     if event.fwd_from:
         return
