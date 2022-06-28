@@ -49,13 +49,13 @@ async def check_bot_started_users(user, event):
     if check is None:
         start_date = str(datetime.now().strftime("%B %d, %Y"))
         notification = f"{_format.mentionuser(user.first_name , user.id)} has started me\
-                \n**Id : **`{user.id}`\
-                \n**Name : **{get_display_name(user)}"
+                \n\n**Id :**`{user.id}`\
+                \n\n**Name :**{get_display_name(user)}"
     else:
         start_date = check.date
-        notification = f"{_format.mentionuser(user.first_name , user.id)} has restarted me.\
-                \n**Id : **`{user.id}`\
-                \n**Name : **{get_display_name(user)}"
+        notification = f"{_format.mentionuser(user.first_name , user.id)} has restarted me\
+                \n\n**Id :**`{user.id}`\
+                \n\n**Name :**{get_display_name(user)}"
     try:
         add_starter_to_db(user.id, get_display_name(user), start_date, user.username)
     except Exception as e:
@@ -107,7 +107,7 @@ async def bot_start(event):
             start_msg = f"Hey {mention} ,\
                         \nI am {my_mention}'s assistant bot\
                         \nYou can contact to my master from here\
-                        \n\nPowered by [Catuserbot](https://t.me/catuserbot)"
+                        \n\nPowered by [catuserbot](https://t.me/catuserbot)"
         buttons = [
             (
                 Button.url("Repo", "https://github.com/TgCatUB/catuserbot"),
@@ -118,7 +118,7 @@ async def bot_start(event):
             )
         ]
     else:
-        start_msg = "Hey master !\
+        start_msg = "Hey master\
             \n\nHow can I help you ?"
         buttons = None
     try:
@@ -143,7 +143,7 @@ async def bot_start(event):
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"**Error :**\nThere was a error while user starting your bot\\\x1f                \n`{e}`",
+                f"**Error :**\n\nThere was a error while user starting your bot\n`{e}`",
             )
 
     else:
@@ -233,7 +233,7 @@ async def bot_pms_edit(event):  # sourcery no-metrics
                 if BOTLOG:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f"**Error :**\nWhile storing messages details in database\n`{e}`",
+                        f"**Error :**\n\nWhile storing messages details in database\n`{e}`",
                     )
 
     else:
@@ -316,7 +316,7 @@ async def bot_start(event):
     users = get_user_id(reply_to)
     if users is None:
         return await info_msg.edit(
-            "**ERROR :** \n`Sorry ! Can't find this user in my database`"
+            "**ERROR :**\n\n`Sorry can't find this user in my database`"
         )
     for usr in users:
         user_id = int(usr.chat_id)
@@ -324,11 +324,11 @@ async def bot_start(event):
         break
     if user_id is None:
         return await info_msg.edit(
-            "**ERROR :** \n`Sorry ! Can't find this user in my database`"
+            "**ERROR :**\n\n`Sorry can't find this user in my database`"
         )
     uinfo = f"This message was sent by {_format.mentionuser(user_name , user_id)}\
-            \n**First name :** {user_name}\
-            \n**User id :** `{user_id}`"
+            \n\n**First name :** {user_name}\
+            \n\n**User id :** `{user_id}`"
     await info_msg.edit(uinfo)
 
 
@@ -355,7 +355,7 @@ async def send_flood_alert(user_) -> None:
             if BOTLOG:
                 await catub.tgbot.send_message(
                     BOTLOG_CHATID,
-                    f"**Error :**\nWhile updating flood count\n`{e}`",
+                    f"**Error :**\n\nWhile updating flood count\n`{e}`",
                 )
 
         flood_count = FloodConfig.ALERT[user_.id]["count"]
@@ -363,21 +363,21 @@ async def send_flood_alert(user_) -> None:
         flood_count = FloodConfig.ALERT[user_.id]["count"] = 1
 
     flood_msg = (
-        r"**Flood_Warning**"
+        r"**Flood warning**"
         "\n\n"
         f"  Id : `{user_.id}`\n"
         f"  Name : {get_display_name(user_)}\n"
         f"  User : {_format.mentionuser(get_display_name(user_), user_.id)}"
-        f"\n\n**Is spamming your bot** ->  [ Flood rate ({flood_count}) ]\n"
-        "Quick Action : Ignored from bot for a while"
+        f"\n\n**Is spamming your bot** -> [Flood rate ({flood_count})]\n"
+        "Quick action : Ignored from bot for a while"
     )
 
     if found:
         if flood_count >= FloodConfig.AUTOBAN:
             if user_.id in Config.SUDO_USERS:
                 sudo_spam = (
-                    f"**Sudo user** {_format.mentionuser(user_.first_name , user_.id)}:\n  ID: {user_.id}\n\n"
-                    "Is Flooding your bot ! Check `.help delsudo` to remove the user from sudo"
+                    f"Sudo user {_format.mentionuser(user_.first_name , user_.id)}:\nId : {user_.id}\n\n"
+                    "Is flooding your bot check `.help delsudo` to remove the user from sudo"
                 )
                 if BOTLOG:
                     await catub.tgbot.send_message(BOTLOG_CHATID, sudo_spam)
@@ -411,11 +411,11 @@ async def send_flood_alert(user_) -> None:
             chat = await catub.tgbot.get_entity(BOTLOG_CHATID)
             await catub.tgbot.send_message(
                 Config.OWNER_ID,
-                f"**[Bot flood warning !](https://t.me/c/{chat.id}/{fa_msg.id})**",
+                f"**[Bot flood warning](https://t.me/c/{chat.id}/{fa_msg.id})**",
             )
         except UserIsBlockedError:
             if BOTLOG:
-                await catub.tgbot.send_message(BOTLOG_CHATID, "**Unblock your bot !**")
+                await catub.tgbot.send_message(BOTLOG_CHATID, "**Unblock your bot**")
     if FloodConfig.ALERT[user_.id].get("fa_id") is None and fa_msg:
         FloodConfig.ALERT[user_.id]["fa_id"] = fa_msg.id
 
@@ -429,9 +429,9 @@ async def bot_pm_ban_cb(c_q: CallbackQuery):
     except Exception as e:
         await c_q.answer(f"Error:\n{e}")
     else:
-        await c_q.answer(f"Banning UserID -> {user_id} ...", alert=False)
+        await c_q.answer(f"Banning user id -> {user_id}...", alert=False)
         await ban_user_from_bot(user, "Spamming bot")
-        await c_q.edit(f"**Successfully banned**  User id : {user_id}")
+        await c_q.edit(f"**Successfully banned**\n\nUser id : {user_id}")
 
 
 def time_now() -> Union[float, int]:
