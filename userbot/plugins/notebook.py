@@ -1,8 +1,3 @@
-# \\ Created by-@Jisan7509 -- Github.com/Jisan09 //
-#  \\   https://github.com/TgCatUB/catuserbot   //
-#   \\       Plugin for @catuserbot            //
-#    ```````````````````````````````````````````
-
 import os
 import urllib
 
@@ -234,7 +229,7 @@ async def write_page(event):
     if cmd == "notebook":
         text = (
             (await catub(GetFullUserRequest(catub.uid))).full_user
-        ).about or "This is just a sample text\n              - by catuserbot"
+        ).about or "This is just a sample text\n\n              - by cat userbot"
         cap = f"**Notebook configs :-**\n\n**Font :** `{font}`\n**Page :** `{list(Pages.keys())[list(Pages.values()).index(page)]}`\n**Color :** `{foreground.title()}`\n**Log :**  `{log}`"
     reply_to_id = await reply_id(event)
     text = deEmojify(text)
@@ -274,7 +269,7 @@ async def write_page(event):
     await catevent.delete()
     if log == "On" and cmd != "notebook" and BOTLOG_CHATID != event.chat_id:
         await event.client.send_file(
-            BOTLOG_CHATID, image, caption=f"#NOTE_BOOK\n\n{cap}"
+            BOTLOG_CHATID, image, caption=f"NOTE BOOK\n\n{cap}"
         )
     for i in image:
         os.remove(i)
@@ -290,7 +285,7 @@ async def write_page(event):
     },
 )
 async def notebook(event):
-    """Shows your notebook configs."""
+    """Shows your notebook configs"""
 
 
 @catub.cat_cmd(
@@ -333,7 +328,7 @@ async def notebook_conf(event):
             if os.path.exists("temp/nbpage.jpg"):
                 os.remove("temp/nbpage.jpg")
             return await edit_delete(
-                event, f"**Notebook page successfully changed to : **`{input_str}`", 20
+                event, f"**Notebook page successfully changed to :**`{input_str}`", 20
             )
         temp_page = "Pages"
     elif cmd == "font":
@@ -345,7 +340,7 @@ async def notebook_conf(event):
             if os.path.exists("temp/nbfont.ttf"):
                 os.remove("temp/nbfont.ttf")
             return await edit_delete(
-                event, f"**Notebook font successfully changed to : **`{input_str}`", 20
+                event, f"**Notebook font successfully changed to :**`{input_str}`", 20
             )
         temp_page = "Fonts"
     elif cmd == "pen":
@@ -358,7 +353,7 @@ async def notebook_conf(event):
                 os.remove("temp/nbfont.ttf")
             return await edit_delete(
                 event,
-                f"**Notebook pen color successfully changed to : **`{input_str}`",
+                f"**Notebook pen color successfully changed to :**`{input_str}`",
                 20,
             )
         temp_page = "Colors"
@@ -367,12 +362,12 @@ async def notebook_conf(event):
             return await edit_delete(
                 event, "You need to set `PRIVATE_GROUP_BOT_API_ID` in your config", 20
             )
-        cap = "**Available log option are :-**\n\n1. `On`\n2. `Off`"
+        cap = "**Available log option are :-**\n\n1. On\n2. Off"
         if input_str and input_str in ["On", "Off"]:
             addgvar("NOTEBOOK_LOG", input_str)
             return await edit_delete(
                 event,
-                f"**Notebook pen color successfully changed to : **`{input_str}`",
+                f"**Notebook pen color successfully changed to :**`{input_str}`",
                 50,
             )
         return await edit_delete(event, cap)
