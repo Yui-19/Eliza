@@ -27,13 +27,13 @@ plugin_category = "utils"
     },
 )
 async def _(event):  # sourcery no-metrics
-    "To get name/username history"
+    "To get name or username history"
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     reply_message = await event.get_reply_message()
     if not input_str and not reply_message:
         await edit_delete(
             event,
-            "`reply to  user's text message to get name/username history or give userid/username`",
+            "`Reply to  user's text message to get name or username history or give userid or username`",
         )
     user, rank = await get_user_from_event(event, secondgroup=True)
     if not user:
@@ -45,7 +45,7 @@ async def _(event):  # sourcery no-metrics
         try:
             await conv.send_message(f"/search_id {uid}")
         except YouBlockedUserError:
-            await edit_delete(catevent, "`unblock @Sangmatainfo_bot and then try`")
+            await edit_delete(catevent, "`Unblock @Sangmatainfo_bot and then try`")
         responses = []
         while True:
             try:
@@ -55,7 +55,7 @@ async def _(event):  # sourcery no-metrics
             responses.append(response.text)
         await event.client.send_read_acknowledge(conv.chat_id)
     if not responses:
-        await edit_delete(catevent, "`bot can't fetch results`")
+        await edit_delete(catevent, "`Bot can't fetch results`")
     if "No records found" in responses:
         await edit_delete(catevent, "`The user doesn't have any record`")
     names, usernames = await sanga_seperator(responses)
