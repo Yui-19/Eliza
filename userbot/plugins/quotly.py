@@ -1,7 +1,7 @@
 """
 imported from nicegrill
 modified by @mrconfused
-QuotLy: Avaible commands: .qbot
+quotly : avaible commands : .qbot
 """
 
 import io
@@ -41,7 +41,7 @@ def get_warp_length(width):
             "-s": "To output file as sticker",
         },
         "usage": "{tr}qpic <flag> <input/reply to text msg>",
-        "examples": ["{tr}qpic CatUserbot", "{tr}qpic -b CatUserbot"],
+        "examples": ["{tr}qpic CatUserbot", "{tr}qpic -b cat userbot"],
     },
 )
 async def q_pic(event):  # sourcery no-metrics
@@ -261,7 +261,7 @@ async def _(event):
                 )
             response = await response
         except YouBlockedUserError:
-            return await catevent.edit("```Please unblock me ( @QuotLyBot ) you nigga```")
+            return await catevent.edit("```Please unblock me ( @QuotLyBot ) you lovely bird```")
         await event.client.send_read_acknowledge(conv.chat_id)
         await catevent.delete()
         await event.client.send_message(
