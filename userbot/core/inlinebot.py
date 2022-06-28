@@ -30,7 +30,7 @@ from .logger import logging
 LOGS = logging.getLogger(__name__)
 
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
-CATLOGO = "https://telegra.ph/file/493268c1f5ebedc967eba.jpg"
+CATLOGO = "https://telegra.ph/file/e5f368529684937bf9a61.jpg"
 tr = Config.COMMAND_HAND_LER
 
 
@@ -54,26 +54,29 @@ def ibuild_keyboard(buttons):
 
 def main_menu():
     text = f"𝗖𝗮𝘁 𝗨𝘀𝗲𝗿𝗯𝗼𝘁 𝗛𝗲𝗹𝗽𝗲𝗿\
-        \n𝗣𝗿𝗼𝘃𝗶𝗱𝗲𝗱 𝗯𝘆 {mention}"
+        \n\n𝗣𝗿𝗼𝘃𝗶𝗱𝗲𝗱 𝗯𝘆 {mention}"
     buttons = [
-        (Button.inline("ℹ️ Info", data="check"),),
+        (Button.inline("Info", data="check"),),
         (
             Button.inline(f" 👮🏻‍♀️ Admin ({len(GRP_INFO['admin'])})", data="admin_menu"),
-            Button.inline(f" 💖 Bot ({len(GRP_INFO['bot'])})", data="bot_menu"),
+            Button.inline(f" 🗡️ Bot ({len(GRP_INFO['bot'])})", data="bot_menu"),
         ),
         (
             Button.inline(f" 🪄 Fun ({len(GRP_INFO['fun'])})", data="fun_menu"),
-            Button.inline(f" 🔮 Misc ({len(GRP_INFO['misc'])})", data="misc_menu"),
+            Button.inline(f" 🤣 Misc ({len(GRP_INFO['misc'])})", data="misc_menu"),
         ),
         (
-            Button.inline(f" 🕸️ Tools ({len(GRP_INFO['tools'])})", data="tools_menu"),
-            Button.inline(f" 🍻 Utils ({len(GRP_INFO['utils'])})", data="utils_menu"),
+            Button.inline(f" 🎯 Tools ({len(GRP_INFO['tools'])})", data="tools_menu"),
+            Button.inline(f" 💫 Utils ({len(GRP_INFO['utils'])})", data="utils_menu"),
         ),
         (
-            Button.inline(f" 🕯️ Extra ({len(GRP_INFO['extra'])})", data="extra_menu"),
-            Button.inline("  🥺 Close Menu", data="close"),
-        ),
-    ]
+            Button.inline(f" 🥲 Extra ({len(GRP_INFO['extra'])})", data="extra_menu"),
+            Button.inline(
+                    f"🗑️ Useless ({len(GRP_INFO['useless'])})", data="useless_menu"
+                ),
+            ),
+            (Button.inline("😴 Close", data="close"),),
+        ]
 
     return text, buttons
 
@@ -182,7 +185,7 @@ def paginate_help(
                     data=f"{prefix}_prev({modulo_page})_command_{category_plugins}_{category_pgno}",
                 ),
                 Button.inline(
-                    "⬅️ Back ",
+                    "⬅Back ",
                     data=f"back_plugin_{category_plugins}_{category_pgno}",
                 ),
                 Button.inline(
@@ -197,7 +200,7 @@ def paginate_help(
         pairs = pairs + [
             (
                 Button.inline(
-                    "⬅️ Back ",
+                    "⬅Back ",
                     data=f"back_plugin_{category_plugins}_{category_pgno}",
                 ),
             )
@@ -332,10 +335,10 @@ async def inline_handler(event):  # sourcery no-metrics
             timestamp = int(time.time() * 2)
             newtroll = {str(timestamp): {"userid": u, "text": txct}}
 
-            buttons = [Button.inline("Show message 🔐", data=f"troll_{timestamp}")]
+            buttons = [Button.inline("Show message", data=f"troll_{timestamp}")]
             result = builder.article(
                 title="Troll message",
-                text=f"Only {sandy} cannot access this message !",
+                text=f"Only {sandy} cannot access this message",
                 buttons=buttons,
             )
             await event.answer([result] if result else None)
@@ -382,10 +385,10 @@ async def inline_handler(event):  # sourcery no-metrics
             timestamp = int(time.time() * 2)
             newsecret = {str(timestamp): {"userid": u, "text": txct}}
 
-            buttons = [Button.inline("Show message 🔐", data=f"secret_{timestamp}")]
+            buttons = [Button.inline("Show message", data=f"secret_{timestamp}")]
             result = builder.article(
                 title="secret message",
-                text=f"A whisper message to {sandy} , only he or she can open it",
+                text=f"A whisper message to {sandy} only he or she can open it",
                 buttons=buttons,
             )
             await event.answer([result] if result else None)
@@ -557,7 +560,7 @@ async def inline_handler(event):  # sourcery no-metrics
     else:
         buttons = [
             (
-                Button.url("Source code", "https://github.com/Dark-team-11/Kitty"),
+                Button.url("Source code", "https://github.com/yui-19/Eliza"),
                 Button.url(
                     "Deploy",
                     "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack&template=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack",
@@ -569,14 +572,14 @@ async def inline_handler(event):  # sourcery no-metrics
             url=CATLOGO, size=0, mime_type="image/jpeg", attributes=[]
         )
         text, msg_entities = await event.client._parse_message_text(
-            "𝗗𝗲𝗽𝗹𝗼𝘆 𝘆𝗼𝘂𝗿 𝗼𝘄𝗻 𝗖𝗮𝘁 𝗨𝘀𝗲𝗿𝗯𝗼𝘁", "md"
+            "ᴅᴇᴘʟᴏʏ ʏᴏᴜʀ ᴏᴡɴ ᴄᴀᴛ ᴜꜱᴇʀʙᴏᴛ", "md"
         )
         result = types.InputBotInlineResult(
             id=str(uuid4()),
             type="photo",
             title="𝘾𝙖𝙩 𝙐𝙨𝙚𝙧𝙗𝙤𝙩",
             description="Deploy yourself",
-            url="https://github.com/Dark-team-11/Kitty",
+            url="https://github.com/Yui-19/Eliza",
             thumb=photo,
             content=photo,
             send_message=types.InputBotInlineMessageMediaAuto(
@@ -590,9 +593,9 @@ async def inline_handler(event):  # sourcery no-metrics
 @check_owner
 async def on_plug_in_callback_query_handler(event):
     buttons = [
-        (Button.inline("Open Menu", data="mainmenu"),),
+        (Button.inline("Open menu", data="mainmenu"),),
     ]
-    await event.edit("Menu Closed", buttons=buttons)
+    await event.edit("Menu closed", buttons=buttons)
 
 
 @catub.tgbot.on(CallbackQuery(data=re.compile(b"check")))
@@ -730,10 +733,10 @@ async def on_plug_in_callback_query_handler(event):
     buttons = [
         (
             Button.inline(
-                "⬅️ Back ",
+                "⬅Back ",
                 data=f"back_command_{category}_{pgno}_{category_plugins}_{category_pgno}",
             ),
-            Button.inline("⚙️ Main Menu", data="mainmenu"),
+            Button.inline("⚙️ Main menu", data="mainmenu"),
         )
     ]
     text = f"Command : `{tr}{cmd}`\
