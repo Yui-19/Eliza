@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
     },
 )
 async def tgscmd(message):
-    """Tg killer"""
+    """Telegram killer"""
     reply = await message.get_reply_message()
     if not reply:
         await edit_delete(message, "`Reply to an animated sticker`", 3)
@@ -58,7 +58,7 @@ async def tgscmd(message):
     command=("doti", plugin_category),
     info={
         "header": "Image to colorful dots",
-        "description": "The bigger , the slower and bugger ! Recommended not more than 1000",
+        "description": "The bigger , the slower and bugger ( recommended not more than 1000 )",
         "usage": [
             "{tr}doti <reply to image> [deafult is 100]",
             "{tr}doti <count> <reply to image>",
@@ -78,7 +78,7 @@ async def dotifycmd(message):
     command=("doty", plugin_category),
     info={
         "header": "Image to bw dots",
-        "description": "The bigger , the slower and bugger ! Recommended not more than 1000",
+        "description": "The bigger , the slower and bugger ( recommended not more than 1000 )",
         "usage": [
             "{tr}doty <reply to image> [deafult is 100]",
             "{tr}doty <count> <reply to image>",
@@ -161,8 +161,8 @@ async def dotify(message, reply, pix, mode):
             "{tr}hpay <text/reply to msg>",
         ],
         "examples": [
-            "{tr}pay Czyneko",
-            "{tr}hpay Vinu",
+            "{tr}pay czyneko",
+            "{tr}hpay vinu",
         ],
     },
 )
@@ -189,7 +189,7 @@ async def pay(event):
         "https://telegra.ph/file/847a028fbf453f1c83fc8.jpg", temp_name
     )
     text = deEmojify(text)
-    await cozyneko.edit("Processed transferring ! Waiting for confirmation...")
+    await cozyneko.edit("Processed transferring\n\nWaiting for confirmation...")
     await asyncio.sleep(1.2)
     font, wrap = (65, 1) if len(text) < 90 else (65, 1)
     bg, fg, alpha, ls = (
@@ -209,7 +209,7 @@ async def pay(event):
         transparency=alpha,
     )
     realnub = convert_tosticker(file_name)
-    await cozyneko.edit("Transfered successfully , uploading receipt...")
+    await cozyneko.edit("Transfered successfully\n\nUploading receipt...")
     await asyncio.sleep(1.2)
     await event.client.send_file(
         event.chat_id, realnub, reply_to=czyneko, force_document=False
@@ -225,7 +225,7 @@ async def pay(event):
     info={
         "header": "To write given text or replied message on paper",
         "usage": "{tr}write <message/reply>",
-        "examples": "{tr}write Hello World",
+        "examples": "{tr}write hello world",
     },
 )
 
