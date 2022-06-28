@@ -1,4 +1,4 @@
-# By @sakku
+# By @Yui
 from .. import catub
 from ..core.managers import edit_or_reply
 
