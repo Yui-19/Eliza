@@ -1,4 +1,3 @@
-# credits: @Mr_Hops
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
@@ -28,7 +27,7 @@ async def _(event):
     chat = "@Rekognition_Bot"
     if reply_message.sender.bot:
         return await event.edit("Reply to actual users message")
-    cat = await edit_or_reply(event, "recognizeing this media")
+    cat = await edit_or_reply(event, "Recognizeing this media")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -37,7 +36,7 @@ async def _(event):
             await event.client.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await cat.edit("unblock @Rekognition_Bot and try again")
+            await cat.edit("Unblock @Rekognition_Bot and try again")
             return
         if response.text.startswith("See next message"):
             response = conv.wait_event(
