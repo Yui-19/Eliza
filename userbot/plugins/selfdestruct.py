@@ -33,7 +33,7 @@ async def selfdestruct(destroy):
     command=("selfdm", plugin_category),
     info={
         "header": "To self destruct the message after paticualr time and in message will show the time",
-        "description": "Suppose if you use .sdm 10 hi then message will be immediately will send new message as hi and then after 10 sec this message will auto delete",
+        "description": "Suppose if you use .sdm 10 hi then message will be immediately will send new message as hi and then after 10 seconds this message will auto delete",
         "usage": "{tr}selfdm [number] [text]",
         "examples": "{tr}selfdm 10 hi",
     },
