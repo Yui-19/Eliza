@@ -18,8 +18,8 @@ plugin_category = "extra"
     info={
         "header": "To create a poll",
         "description": "If you doesn't give any input it sends a default poll",
-        "usage": ["{tr}poll", "{tr}poll question ; option 1; option2"],
-        "examples": "{tr}poll Are you an early bird or a night owl ; Early bird ; Night owl",
+        "usage": ["{tr}poll", "{tr}poll question ; option 1 ; option2"],
+        "examples": "{tr}poll Are you an early bird or a night owl ; early bird ; night owl",
     },
 )
 async def pollcreator(catpoll):
@@ -27,7 +27,7 @@ async def pollcreator(catpoll):
     reply_to_id = await reply_id(catpoll)
     string = "".join(catpoll.text.split(maxsplit=1)[1:])
     if not string:
-        options = Build_Poll(["Yeah sure ✌🏻", "Nah 😏", "Whatever die sir 🙄"])
+        options = Build_Poll(["Yeah sure ✌🏻", "Nope 😏", "Whatever die sir 🙄"])
         try:
             await catpoll.client.send_message(
                 catpoll.chat_id,
