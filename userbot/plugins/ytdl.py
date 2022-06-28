@@ -148,7 +148,7 @@ async def fix_attributes(
     command=("yta", plugin_category),
     info={
         "header": "To download audio from many sites like youtube , facebook , instagram , etc",
-        "description": "Downloads the audio from the given link ([Supported Sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md))",
+        "description": "Downloads the audio from the given link ([supported sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md))",
         "examples": ["{tr}yta <reply to link>", "{tr}yta <link>"],
     },
 )
@@ -234,7 +234,7 @@ async def download_audio(event):
     command=("ytv", plugin_category),
     info={
         "header": "To download video from many sites like youtube , facebook , instagram",
-        "description": "Downloads the video from the given link ([Supported Sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md))",
+        "description": "Downloads the video from the given link ([supported sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md))",
         "examples": [
             "{tr}ytv <reply to link>",
             "{tr}ytv <link>",
@@ -242,7 +242,7 @@ async def download_audio(event):
     },
 )
 async def download_video(event):
-    """To download video from YouTube and many other sites"""
+    """To download video from youtube and many other sites"""
     msg = event.pattern_match.group(1)
     rmsg = await event.get_reply_message()
     if not msg and rmsg:
@@ -266,7 +266,7 @@ async def download_video(event):
                 catthumb = None
             await catevent.edit(
                 f"`Preparing to upload video :`\
-                \n**{ytdl_data['title']}**"
+                \n\n**{ytdl_data['title']}**"
             )
             ul = io.open(f, "rb")
             c_time = time()
@@ -388,14 +388,14 @@ async def insta_dl(event):
                     error = checker.splitlines()[2]
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f"**V1_ERROR :-**\n\nCurrently we using @instasave_bot for v1 , that need users to join this chat : {error}\n\nIf you know any good bot which does'nt need join channel , inform us here : @catuserbot_support",
+                        f"**V1 ERROR :-**\n\nCurrently we using @instasave_bot for v1 that need users to join this chat : {error}\n\nIf you know any good bot which does'nt need join channel inform us here : @catuserbot_support",
                     )
                 await catevent.delete()
                 await event.client.send_file(event.chat_id, media)
             else:
                 await edit_delete(
                     catevent,
-                    f"**#ERROR\nv1 :** {checker}\n\n**v2 :** {media.text}",
+                    f"**ERROR\n\nV1 :** {checker}\n\n**V2 :** {media.text}",
                     40,
                 )
             await delete_conv(event, v2, v2_flag)
@@ -435,5 +435,5 @@ async def yt_search(event):
         full_response = await ytsearch(query, limit=lim)
     except Exception as e:
         return await edit_delete(video_q, str(e), time=10, parse_mode=_format.parse_pre)
-    reply_text = f"**•  Search query :**\n`{query}`\n\n**•  Results :**\n{full_response}"
+    reply_text = f"**•  Search query :**\n`{query}`\n\n**• Results :**\n{full_response}"
     await edit_or_reply(video_q, reply_text)
