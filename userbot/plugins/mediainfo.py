@@ -1,5 +1,3 @@
-# plugin by @deleteduser420
-# ported to telethon by @mrconfused (@sandy1709)
 import os
 
 from userbot import catub
@@ -17,36 +15,36 @@ LOGS = logging.getLogger(__name__)
 async def file_data(reply):
     hmm = ""
     if reply.file.name:
-        hmm += f"Name :  {reply.file.name}<br>"
+        hmm += f"Name : {reply.file.name}<br>"
     if reply.file.mime_type:
-        hmm += f"Mime type :  {reply.file.mime_type}<br>"
+        hmm += f"Mime type : {reply.file.mime_type}<br>"
     if reply.file.size:
-        hmm += f"Size :  {humanbytes(reply.file.size)}<br>"
+        hmm += f"Size : {humanbytes(reply.file.size)}<br>"
     if reply.date:
-        hmm += f"Date :  {_format.yaml_format(reply.date)}<br>"
+        hmm += f"Date : {_format.yaml_format(reply.date)}<br>"
     if reply.file.id:
-        hmm += f"Id :  {reply.file.id}<br>"
+        hmm += f"Id : {reply.file.id}<br>"
     if reply.file.ext:
-        hmm += f"Extension :  '{reply.file.ext}'<br>"
+        hmm += f"Extension : '{reply.file.ext}'<br>"
     if reply.file.emoji:
-        hmm += f"Emoji :  {reply.file.emoji}<br>"
+        hmm += f"Emoji : {reply.file.emoji}<br>"
     if reply.file.title:
-        hmm += f"Title :  {reply.file.title}<br>"
+        hmm += f"Title : {reply.file.title}<br>"
     if reply.file.performer:
-        hmm += f"Performer :  {reply.file.performer}<br>"
+        hmm += f"Performer : {reply.file.performer}<br>"
     if reply.file.duration:
-        hmm += f"Duration :  {reply.file.duration} seconds<br>"
+        hmm += f"Duration : {reply.file.duration} seconds<br>"
     if reply.file.height:
-        hmm += f"Height :  {reply.file.height}<br>"
+        hmm += f"Height : {reply.file.height}<br>"
     if reply.file.width:
-        hmm += f"Width :  {reply.file.width}<br>"
+        hmm += f"Width : {reply.file.width}<br>"
     if reply.file.sticker_set:
         hmm += f"Sticker set :\
-            \n {_format.yaml_format(reply.file.sticker_set)}<br>"
+            \n\n{_format.yaml_format(reply.file.sticker_set)}<br>"
     try:
         if reply.media.document.thumbs:
             hmm += f"Thumb :\
-                \n {_format.yaml_format(reply.media.document.thumbs[-1])}<br>"
+                \n\n{_format.yaml_format(reply.media.document.thumbs[-1])}<br>"
     except Exception as e:
         LOGS.info(str(e))
     return hmm
@@ -91,7 +89,7 @@ async def mediainfo(event):
 </code>"""
     link = await post_to_telegraph(f"{X_MEDIA}", body_text)
     await catevent.edit(
-        f"ℹ️  <b>MEDIA INFO :  <a href ='{link}' > {X_MEDIA}</a></b>",
+        f"<b>MEDIA INFO :  <a href ='{link}' > {X_MEDIA}</a></b>",
         parse_mode="HTML",
         link_preview=True,
     )
