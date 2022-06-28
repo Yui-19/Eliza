@@ -1,7 +1,7 @@
-""" Google Text to Speech
-Available Commands:
-.tts LanguageCode as reply to a message
-.tts LangaugeCode | text to speak"""
+""" google text to speech
+available commands :
+.tts language code as reply to a message
+.tts langauge code | text to speak"""
 
 import os
 import subprocess
@@ -42,7 +42,7 @@ async def _(event):
         lan = input_str or "en"
     else:
         if not input_str:
-            return await edit_or_reply(event, "Invalid syntax ! Module stopping")
+            return await edit_or_reply(event, "Invalid syntax\n\nModule stopping")
         text = input_str
         lan = "en"
     catevent = await edit_or_reply(event, "`Recording...`")
@@ -92,7 +92,7 @@ async def _(event):
         os.remove(required_file_name)
         await edit_delete(
             catevent,
-            "`Processed text {} into voice in {} seconds !`".format(text[:20], ms),
+            "`Processed text {} into voice in {} seconds`".format(text[:20], ms),
         )
 
     except Exception as e:
