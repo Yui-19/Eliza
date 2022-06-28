@@ -25,6 +25,6 @@ async def anim(massreport):
         time.sleep(3)
         reporti = await msrt.edit(f"`Mass reporting the user...`")
         time.sleep(11)
-        await reporti.edit(f"Successfully mass reported the user\n\nYour account will be deleted soon\n\nReason : Toxic kid")
+        await reporti.edit(f"Successfully mass reported the user\n\nYour account will be deleted soon\n\nReason : Toxic , pm spammer , scammer , adding spambots , illegal , crimes against girls , blackmailer , ban evasion , raid participant etc\n\nRest in peace kid")
     else:
     	await edit_or_reply(f"Seems like something's wrong")
