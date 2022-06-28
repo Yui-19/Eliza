@@ -1,10 +1,3 @@
-# Random RGB Sticklet by @PhycoNinja13b
-# modified by @UniBorg
-# imported from ppe-remix by @heyworld & @DeletedUser420
-# modified by @mrconfused
-# pengin & gandhi Yato
-
-# RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 import io
 import os
 import random
@@ -147,7 +140,7 @@ async def sticklet(event):
     info={
         "header": "Make honk say anything",
         "usage": "{tr}honk <text/reply to msg>",
-        "examples": "{tr}honk How you doing?",
+        "examples": "{tr}honk how you doing ?",
     },
 )
 async def honk(event):
@@ -173,7 +166,7 @@ async def honk(event):
     info={
         "header": "Make a cool tweet of your account",
         "usage": "{tr}twt <text/reply to msg>",
-        "examples": "{tr}twt Catuserbot",
+        "examples": "{tr}twt catuserbot",
     },
 )
 async def twt(event):
