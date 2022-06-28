@@ -1,6 +1,3 @@
-# Ultroid - UserBot ==> ported to cat by @feelded
-# Copyright (C) 2020 TeamUltroid
-
 import asyncio
 import random
 from ..core.managers import edit_or_reply
@@ -33,7 +30,7 @@ async def _(event):
         "`Installing... 52%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
         "`Installing... 84%\n█████████████████████▒▒▒▒ `",
         "`Installing... 100%\n████████Installed██████████ `",
-        "`Target files uploading...\n\nDirecting to remote  server to hack...`",
+        "`Target files uploading...\n\nDirecting to remote server to hack...`",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -127,6 +124,6 @@ async def _(event):
     ]
     ME = sub + LINKS[random.randrange(0, len(LINKS))]
     MSG = "`Pdf created click link below to download data\n\n"
-    MSG += " Don't worry only I can open this , if u don't"
+    MSG += " Don't worry only I can open this , if you don't"
     MSG += f" Believe me , try to download` 🙃\n\n{ME}"
     await xx.edit(MSG)
