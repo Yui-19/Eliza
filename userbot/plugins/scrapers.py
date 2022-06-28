@@ -53,7 +53,7 @@ async def wiki(event):
             )
         except PageError:
             return await edit_delete(
-                event, f"**Sorry I can't find any results for **`{match}`"
+                event, f"**Sorry I can't find any results for**`{match}`"
             )
     await edit_or_reply(
         event, "**Search :**\n`" + match + "`\n\n**Result :**\n" + f"{result}"
@@ -97,7 +97,7 @@ async def imdb_query(event):  # sourcery no-metrics
             mov_airdate = movie["year"]
         else:
             mov_airdate = ""
-        mov_genres = ", ".join(movie["genres"]) if "genres" in moviekeys else "Not Data"
+        mov_genres = ", ".join(movie["genres"]) if "genres" in moviekeys else "Not data"
         mov_rating = str(movie["rating"]) if "rating" in moviekeys else "Not Data"
         mov_rating += (
             " (by " + str(movie["votes"]) + ")"
@@ -105,13 +105,13 @@ async def imdb_query(event):  # sourcery no-metrics
             else ""
         )
         mov_countries = (
-            ", ".join(movie["countries"]) if "countries" in moviekeys else "Not Data"
+            ", ".join(movie["countries"]) if "countries" in moviekeys else "Not data"
         )
         mov_languages = (
-            ", ".join(movie["languages"]) if "languages" in moviekeys else "Not Data"
+            ", ".join(movie["languages"]) if "languages" in moviekeys else "Not data"
         )
         mov_plot = (
-            str(movie["plot outline"]) if "plot outline" in moviekeys else "Not Data"
+            str(movie["plot outline"]) if "plot outline" in moviekeys else "Not data"
         )
         mov_director = await get_cast("director", movie)
         mov_composers = await get_cast("composers", movie)
@@ -141,7 +141,7 @@ async def imdb_query(event):  # sourcery no-metrics
         if len(rtext) > 1024:
             extralimit = len(rtext) - 1024
             climit = len(resulttext) - extralimit - 20
-            resulttext = resulttext[:climit] + "...........</i>"
+            resulttext = resulttext[:climit] + "...</i>"
         if imageurl:
             downloader = SmartDL(imageurl, moviepath, progress_bar=False)
             downloader.start(blocking=False)
@@ -165,4 +165,4 @@ async def imdb_query(event):  # sourcery no-metrics
     except IndexError:
         await catevent.edit(f"No movie found with name {movie_name}")
     except Exception as e:
-        await catevent.edit(f"**Error :**\n__{e}__")
+        await catevent.edit(f"**Error :**\n{e}")
