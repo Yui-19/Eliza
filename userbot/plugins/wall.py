@@ -52,7 +52,7 @@ async def noods(event):  # sourcery no-metrics
         query, limit = query.split(";")
     if int(limit) > 10:
         return await edit_delete(event, "`Wallpaper search limit is 1-10`", 10)
-    catevent = await edit_or_reply(event, "`Searching... 🔍`")
+    catevent = await edit_or_reply(event, "`Searching...`")
     r = requests.get(
         f"https://wall.alphacoders.com/search.php?search={query.replace(' ','+')}"
     )
@@ -66,7 +66,7 @@ async def noods(event):  # sourcery no-metrics
     piclist = []
     piclinks = []
     captionlist = []
-    await edit_or_reply(catevent, "`Processing... ⏳`")
+    await edit_or_reply(catevent, "`Processing...`")
     url2 = "https://api.alphacoders.com/content/get-download-link"
     for x in walls:
         wall = random.choice(walls)["src"][8:-4]
@@ -81,7 +81,7 @@ async def noods(event):  # sourcery no-metrics
         res = requests.post(url2, data=data)
         a = res.json()["link"]
         if "We are sorry," not in requests.get(a).text and a not in piclinks:
-            await edit_or_reply(catevent, "** Downloading... 📥**")
+            await edit_or_reply(catevent, "**Downloading...**")
             pic = await wall_download(a, query)
             if pic is None:
                 return await edit_delete(
@@ -95,7 +95,7 @@ async def noods(event):  # sourcery no-metrics
         else:
             i += 1
         await edit_or_reply(
-            catevent, f"**Downloaded : {count}/{limit}\n\n❌ Errors : {i}/5**"
+            catevent, f"**Downloaded : {count}/{limit}\n\nErrors : {i}/5**"
         )
         if count == int(limit):
             break
