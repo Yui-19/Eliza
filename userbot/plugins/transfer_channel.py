@@ -1,5 +1,5 @@
-"""Transfer Ownership of Channels
-Available Commands:
+"""transfer ownership of channels
+available commands:
 .otransfer @username"""
 
 import telethon.password as pwd_mod
