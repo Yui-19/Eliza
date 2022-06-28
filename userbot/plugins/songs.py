@@ -1,6 +1,3 @@
-# by  @sandy1709 ( https://t.me/mrconfused  )
-
-# songs finder for catuserbot
 import asyncio
 import base64
 import io
@@ -42,7 +39,7 @@ SONG_SENDING_STRING = "<code>Yeah...! I found something wait... 🥰</code>"
         "header": "To get songs from youtube",
         "description": "Basically this command searches youtube and send the first video as audio file",
         "flags": {
-            "320": "if you use song320 then you get 320k quality else 128k quality",
+            "320": "If you use song320 then you get 320k quality else 128k quality",
         },
         "usage": "{tr}song <song name>",
         "examples": "{tr}song memories song",
