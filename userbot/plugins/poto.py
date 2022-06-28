@@ -1,7 +1,3 @@
-"""
-Thenks goes to Emily ( The creater of poto cmd ) from ftg userbot
-"""
-
 from PIL import Image, ImageFilter, UnidentifiedImageError
 
 from userbot import catub
@@ -44,7 +40,7 @@ async def potocmd(event):
         uid = 1
         if int(uid) > (len(photos)):
             return await edit_delete(
-                event, "`No photo found of this nibba / nibbi , now you die !`"
+                event, "`No photo found of this lovely birds\n\nNow you can die `"
             )
         send_photos = await event.client.download_media(photos[uid - 1])
         await event.client.send_file(event.chat_id, send_photos)
@@ -65,7 +61,7 @@ async def potocmd(event):
             uid = int(uid)
             if uid <= 0:
                 await edit_or_reply(
-                    event, "```Number invalid !``` **Are you comedy me ?**"
+                    event, "Number invalid\n\n**Are you comedy me ?**"
                 )
                 return
         except BaseException:
@@ -73,7 +69,7 @@ async def potocmd(event):
             return
         if int(uid) > (len(photos)):
             return await edit_delete(
-                event, "`No photo found of this nibba / nibbi , now you die !`"
+                event, "`No photo found of this lovely birds\n\nNow you die`"
             )
 
         send_photos = await event.client.download_media(photos[uid - 1])
@@ -88,8 +84,8 @@ async def potocmd(event):
         "header": "To blur picture",
         "description": "Reply to a user to blur his profile picture , or reply to a photo to blur that",
         "usage": [
-            "{tr}blur <number> <reply to a picture / user text>",
-            "{tr}blur <reply to a picture / user text>",
+            "{tr}blur <number> <reply to a picture or user text>",
+            "{tr}blur <reply to a picture or user text>",
         ],
     },
 )
