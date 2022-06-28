@@ -52,7 +52,7 @@ async def _(event):
     },
 )
 async def _(event):
-    "To get lastest Vendor."
+    "To get lastest vendor"
     link = event.pattern_match.group(1)
     vendor = "vendor"
     catevent = await edit_or_reply(event, "```Processing...```")
@@ -112,7 +112,7 @@ async def _(event):
     },
 )
 async def _(event):
-    "To get latest fastboot MIUI."
+    "To get latest fastboot miui"
     link = event.pattern_match.group(1)
     fboot = "fastboot"
     catevent = await edit_or_reply(event, "```Processing...```")
@@ -172,7 +172,7 @@ async def _(event):
     },
 )
 async def _(event):
-    "To get latest PBRP."
+    "To get latest pbrp"
     link = event.pattern_match.group(1)
     pitch = "pb"
     catevent = await edit_or_reply(event, "```Processing...```")
