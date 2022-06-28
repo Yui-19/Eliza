@@ -25,7 +25,7 @@ async def gtruth(deep):
     ct = r.get(nl).content
     bsc = bs(ct, "html.parser", from_encoding="utf-8")
     cm = bsc.find_all("h2")[0].text
-    await m.edit(f"TruthTtask\n\n{cm}")
+    await m.edit(f"Truth task\n\n{cm}")
 
 
 @catub.cat_cmd(
