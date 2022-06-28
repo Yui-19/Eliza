@@ -24,7 +24,7 @@ LOGS = logging.getLogger(__name__)
 
 
 async def get_pip_packages(requirements):
-    """Get a list of all the pacakage's names."""
+    """Get a list of all the pacakage's names"""
     if requirements:
         packages = requirements
     else:
@@ -43,7 +43,7 @@ async def get_pip_packages(requirements):
 
 
 async def install_pip_packages(packages):
-    """Install pip packages."""
+    """Install pip packages"""
     args = ["-m", "pip", "install", "--upgrade", "--user"]
     cmd = await asyncio.create_subprocess_exec(
         sys.executable.replace(" ", "\\ "),
@@ -57,13 +57,13 @@ async def install_pip_packages(packages):
 
 
 def run_async(func: callable):
-    """Run async functions with the right event loop."""
+    """Run async functions with the right event loop"""
     asyncio.get_event_loop()
     return loop.run_until_complete(func)
 
 
 async def restart_script(client: TelegramClient, sandy):
-    """Restart the current script."""
+    """Restart the current script"""
     try:
         ulist = get_collectionlist_items()
         for i in ulist:
