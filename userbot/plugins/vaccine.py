@@ -1,5 +1,3 @@
-# Created by @Jisan
-
 import requests
 
 from ..core.managers import edit_delete, edit_or_reply
@@ -42,16 +40,16 @@ async def cat(event):
                             val = a["centers"][i][items][j][subitem]
                             if "_" in subitem:
                                 subitem = subitem.replace("_", " ")
-                            my_string += f"<b>   • {subitem.title()}  :</b>  <code>{val}</code>\n"
+                            my_string += f"<b> • {subitem.title()} :</b> <code>{val}</code>\n"
                         j += 1
                 else:
                     value = a["centers"][i][items]
                     if "_" in items:
                         items = items.replace("_", " ")
-                    my_string += f"<b>✘ {items.title()}   :</b>  <code>{value}</code>\n"
+                    my_string += f"<b> ✘ {items.title()} :</b> <code>{value}</code>\n"
             i += 1
             if i < len(a["centers"]):
-                my_string += f"\n\n<b>Center no : {i+1}</b>\n\n"
+                my_string += f"\n\n<b> Center no : {i+1}</b>\n\n"
     cat = (
         my_string.replace("',", "\n       ")
         .replace("['", "• ")
