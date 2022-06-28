@@ -20,7 +20,7 @@ plugin_category = "utils"
             "{tr}tl <language code> ; <text>",
             "{tr}tl <language codes>",
         ],
-        "examples": "{tr}tl te ; Catuserbot is one of the popular bot",
+        "examples": "{tr}tl te ; cat userbot is one of the popular bot",
     },
 )
 async def _(event):
@@ -34,7 +34,7 @@ async def _(event):
         lan, text = input_str.split(";")
     else:
         return await edit_delete(
-            event, "`.tl Languagecode` as reply to a message", time=5
+            event, "`.tl languagecode` as reply to a message", time=5
         )
     text = deEmojify(text.strip())
     lan = lan.strip()
@@ -42,7 +42,7 @@ async def _(event):
     try:
         translated = await getTranslate(text, dest=lan)
         after_tr_text = translated.text
-        output_str = f"**TRANSLATED from {LANGUAGES[translated.src].title()} to {LANGUAGES[lan].title()}**\
+        output_str = f"**Translated from {LANGUAGES[translated.src].title()} to {LANGUAGES[lan].title()}**\
                 \n`{after_tr_text}`"
         await edit_or_reply(event, output_str)
     except Exception as exc:
@@ -71,7 +71,7 @@ async def translateme(trans):
         message = textx.text
     else:
         return await edit_or_reply(
-            trans, "`Give a text or reply to a message to translate !`"
+            trans, "`Give a text or reply to a message to translate`"
         )
     TRT_LANG = gvarstatus("TRT_LANG") or "en"
     try:
@@ -94,8 +94,8 @@ async def translateme(trans):
     pattern="lang (ai|trt|tocr) ([\s\S]*)",
     command=("lang", plugin_category),
     info={
-        "header": "To set language for trt/ai command",
-        "description": "Check here [Language codes](https://bit.ly/2SRQ6WU)",
+        "header": "To set language for trt or ai command",
+        "description": "Check here [language codes](https://bit.ly/2SRQ6WU)",
         "options": {
             "trt": "default language for trt command",
             "tocr": "default language for tocr command",
@@ -116,7 +116,7 @@ async def lang(value):
     if arg not in LANGUAGES:
         return await edit_or_reply(
             value,
-            f"`Invalid language code !`\n`Available language codes for TRT` :\n\n`{LANGUAGES}`",
+            f"`Invalid language code`\n\n`Available language codes for trt` :\n\n`{LANGUAGES}`",
         )
     LANG = LANGUAGES[arg]
     if input_str == "trt":
@@ -127,7 +127,7 @@ async def lang(value):
     elif input_str == "tocr":
         addgvar("TOCR_LANG", arg)
         await edit_or_reply(
-            value, f"**Language for translated Ocr changed to :** `{LANG.title()}`"
+            value, f"**Language for translated ocr changed to :** `{LANG.title()}`"
         )
     else:
         addgvar("AI_LANG", arg)
