@@ -44,25 +44,25 @@ async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=Fal
                 if event.is_private:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        "SPAM\n"
+                        "SPAM\n\n"
                         + f"Spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with {counter} times with below message",
                     )
                 else:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        "SPAM\n"
+                        "SPAM\n\n"
                         + f"Spam was executed successfully in {get_display_name(await event.get_chat())}(`{event.chat_id}`) with {counter} times with below message",
                     )
             elif event.is_private:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    "DELAYSPAM\n"
+                    "DELAY SPAM\n\n"
                     + f"Delay spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with {counter} times with below message with delay {sleeptimet} seconds",
                 )
             else:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    "DELAYSPAM\n"
+                    "DELAY SPAM\n\n"
                     + f"Delay spam was executed successfully in {get_display_name(await event.get_chat())}(`{event.chat_id}`) with {counter} times with below message with delay {sleeptimet} seconds",
                 )
 
@@ -83,30 +83,30 @@ async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=Fal
             if event.is_private:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    "SPAM\n"
-                    + f"Spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with {counter} messages of \n"
+                    "SPAM\n\n"
+                    + f"Spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with {counter} messages of\n\n"
                     + f"`{spam_message}`",
                 )
             else:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    "SPAM\n"
-                    + f"Spam was executed successfully in {get_display_name(await event.get_chat())}(`{event.chat_id}`) chat  with {counter} messages of \n"
+                    "SPAM\n\n"
+                    + f"Spam was executed successfully in {get_display_name(await event.get_chat())}(`{event.chat_id}`) chat  with {counter} messages of\n\n"
                     + f"`{spam_message}`",
                 )
     elif BOTLOG:
         if event.is_private:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "DELAYSPAM\n"
-                + f"Delay Spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with delay {sleeptimet} seconds and with {counter} messages of \n"
+                "DELAY SPAM\n\n"
+                + f"Delay spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with delay {sleeptimet} seconds and with {counter} messages of\n\n"
                 + f"`{spam_message}`",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "DELAYSPAM\n"
-                + f"Delay spam was executed successfully in {get_display_name(await event.get_chat())}(`{event.chat_id}`) chat with delay {sleeptimet} seconds and with {counter} messages of \n"
+                "DELAY SPAM\n\n"
+                + f"Delay spam was executed successfully in {get_display_name(await event.get_chat())}(`{event.chat_id}`) chat with delay {sleeptimet} seconds and with {counter} messages of\n\n"
                 + f"`{spam_message}`",
             )
 
@@ -130,7 +130,7 @@ async def spammer(event):
         counter = int(cat[0])
     except Exception:
         return await edit_delete(
-            event, "Use proper syntax to spam ! For syntax refer help menu"
+            event, "Use proper syntax to spam\n\nFor syntax refer help menu"
         )
     if counter > 50:
         sleeptimet = 0.5
@@ -207,13 +207,13 @@ async def stickerpack_spam(event):
         if event.is_private:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "SPSPAM\n"
+                "SP SPAM\n\n"
                 + f"Sticker pack spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with pack ",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "SPSPAM\n"
+                "SP SPAM\n\n"
                 + f"Sticker pack spam was executed successfully in {get_display_name(await event.get_chat())}(`{event.chat_id}`) chat with pack",
             )
         await event.client.send_file(BOTLOG_CHATID, reqd_sticker_set.documents[0])
@@ -243,13 +243,13 @@ async def tmeme(event):
         if event.is_private:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "CSPAM\n"
+                "C SPAM\n\n"
                 + f"Letter spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with : `{message}`",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "CSPAM\n"
+                "C SPAM\n\n"
                 + f"Letter spam was executed successfully in {get_display_name(await event.get_chat())}(`{event.chat_id}`) chat with : `{message}`",
             )
 
@@ -278,13 +278,13 @@ async def tmeme(event):
         if event.is_private:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "WSPAM\n"
+                "W SPAM\n\n"
                 + f"Word spam was executed successfully in [User](tg://user?id={event.chat_id}) chat with : `{message}`",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "WSPAM\n"
+                "W SPAM\n\n"
                 + f"Word spam was executed successfully in {get_display_name(await event.get_chat())}(`{event.chat_id}`) chat with : `{message}`",
             )
 
@@ -310,14 +310,14 @@ async def spammer(event):
         sleeptimet = sleeptimem = float(input_str[0])
     except Exception:
         return await edit_delete(
-            event, "Use proper syntax to spam ! For syntax refer help menu"
+            event, "Use proper syntax to spam\n\nFor syntax refer help menu"
         )
     cat = input_str[1:]
     try:
         int(cat[0])
     except Exception:
         return await edit_delete(
-            event, "Use proper syntax for delay spam ! For syntax refer help menu"
+            event, "Use proper syntax for delay spam\n\nFor syntax refer help menu"
         )
     await event.delete()
     addgvar("spamwork", True)
