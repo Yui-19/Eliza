@@ -37,14 +37,14 @@ UPSTREAM_REPO_BRANCH = Config.UPSTREAM_REPO_BRANCH
 
 REPO_REMOTE_NAME = "Temponame"
 IFFUCI_ACTIVE_BRANCH_NAME = "Master"
-NO_HEROKU_APP_CFGD = "No heroku application found , but a key given ?"
-HEROKU_GIT_REF_SPEC = "HEAD : refs / heads / master"
-RESTARTING_APP = "Re-starting heroku application"
+NO_HEROKU_APP_CFGD = "No heroku application found but a key given ?"
+HEROKU_GIT_REF_SPEC = "HEAD : refs or heads or master"
+RESTARTING_APP = "Restarting heroku application"
 IS_SELECTED_DIFFERENT_BRANCH = (
     "Looks like a custom branch {branch_name} "
     "is being used :\n"
-    "in this case , updater is unable to identify the branch to be updated"
-    "please check out to an official branch , and re-start the updater"
+    "in this case updater is unable to identify the branch to be updated"
+    "please check out to an official branch and restart the updater"
 )
 
 
@@ -67,10 +67,10 @@ async def gen_chlog(repo, diff):
 
 async def print_changelogs(event, ac_br, changelog):
     changelog_str = (
-        f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`"
+        f"**New update available for [{ac_br}]:\n\nChange log :**\n`{changelog}`"
     )
     if len(changelog_str) > 4096:
-        await event.edit("`Changelog is too big , view the file to see it`")
+        await event.edit("`Change log is too large view the file to see it`")
         with open("output.txt", "w+") as file:
             file.write(changelog_str)
         await event.client.send_file(
@@ -109,14 +109,14 @@ async def update_bot(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     sandy = await event.edit(
-        "`Successfully Updated\n" "Bot is restarting... Wait for a minute !`"
+        "`Successfully updated\n\nBot is restarting...\n\nWait for a minute`"
     )
     await event.client.reload(sandy)
 
 
 async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_API_KEY is None:
-        return await event.edit("`Please set up`  **HEROKU_API_KEY**  ` var...`")
+        return await event.edit("`Please set up `**HEROKU_API_KEY**` var...`")
     heroku = heroku3.from_key(HEROKU_API_KEY)
     heroku_applications = heroku.apps()
     if HEROKU_APP_NAME is None:
@@ -137,7 +137,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         )
         return repo.__del__()
     sandy = await event.edit(
-        "`Userbot dyno build in progress , please wait until the process finishes it usually takes 4 to 5 minutes`"
+        "`Userbot dyno build in progress please wait until the process finishes it usually takes 4 to 5 minutes`"
     )
     try:
         ulist = get_collectionlist_items()
@@ -169,7 +169,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     build_status = heroku_app.builds(order_by="created_at", sort="desc")[0]
     if build_status.status == "failed":
         return await edit_delete(
-            event, "`Build failed\n" "Cancelled or there were some errors...`"
+            event, "`Build failed\nCancelled or there were some errors...`"
         )
     try:
         remote.push("master:main", force=True)
@@ -212,8 +212,8 @@ async def upstream(event):
         )
     try:
         txt = (
-            "`Oops.. Updater cannot continue due to "
-            + "some problems occured`\n\nLogtrace :\n"
+            "`Oops.. Updater cannot continue due to"
+            + "some problems occured`\n\nLog trace :\n"
         )
 
         repo = Repo()
@@ -221,12 +221,12 @@ async def upstream(event):
         await event.edit(f"{txt}\n`directory {error} is not found`")
         return repo.__del__()
     except GitCommandError as error:
-        await event.edit(f"{txt}\n`Early failure ! {error}`")
+        await event.edit(f"{txt}\n`Early failure {error}`")
         return repo.__del__()
     except InvalidGitRepositoryError as error:
         if conf is None:
             return await event.edit(
-                f"`Unfortunately , the directory {error} does not seem to be a git repository\nBut we can fix that by force updating the userbot using .update now`"
+                f"`Unfortunately the directory {error} does not seem to be a git repository\n\nBut we can fix that by force updating the userbot using .update now`"
             )
 
         repo = Repo.init()
@@ -240,9 +240,9 @@ async def upstream(event):
     if ac_br != UPSTREAM_REPO_BRANCH:
         await event.edit(
             "**[UPDATER] :**\n"
-            f"`Looks like you are using your own custom branch ({ac_br}). "
-            "in that case , updater is unable to identify "
-            "which branch is to be merged "
+            f"`Looks like you are using your own custom branch ({ac_br})"
+            "in that case , updater is unable to identify"
+            "which branch is to be merged"
             "please checkout to any official branch`"
         )
         return repo.__del__()
@@ -254,7 +254,7 @@ async def upstream(event):
     # Special case for deploy
     if changelog == "" and not force_update:
         await event.edit(
-            "\n`Catuserbot is up-to-date with`"
+            "\n\n`Cat userbot is up-to-date with`"
             f"**{UPSTREAM_REPO_BRANCH}**\n"
         )
         return repo.__del__()
@@ -262,12 +262,12 @@ async def upstream(event):
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond(
-            f"Do `{cmdhd}update deploy` to update the catuserbot"
+            f"Do `{cmdhd}update deploy` to update the cat userbot"
         )
 
     if force_update:
         await event.edit(
-            "`Force-syncing to latest stable userbot code , please wait...`"
+            "`Force syncing to latest stable userbot code , please wait...`"
         )
     if conf == "now":
         await event.edit("`Updating userbot , please wait...`")
@@ -287,15 +287,15 @@ async def upstream(event):
     elif os.path.exists("config.py"):
         return await edit_delete(
             event,
-            f"I guess you are on selfhost ! For self host you need to use `{cmdhd}update now`",
+            f"I guess you are on selfhost\n\nFor self host you need to use `{cmdhd}update now`",
         )
-    event = await edit_or_reply(event, "`Pulling the nekopack repo wait a second...`")
-    off_repo = "https://github.com/TgCatUB/nekopack"
+    event = await edit_or_reply(event, "`Pulling the repo wait a second...`")
+    off_repo = "https://github.com/Yui-19/Eliza"
     os.chdir("/app")
     try:
         txt = (
             "`Oops.. Updater cannot continue due to "
-            + "some problems occured`\n\n**LOGTRACE :**\n"
+            + "some problems occured`\n\n**Log trace :**\n"
         )
 
         repo = Repo()
@@ -303,7 +303,7 @@ async def upstream(event):
         await event.edit(f"{txt}\n`directory {error} is not found`")
         return repo.__del__()
     except GitCommandError as error:
-        await event.edit(f"{txt}\n`Early failure ! {error}`")
+        await event.edit(f"{txt}\n`Early failure {error}`")
         return repo.__del__()
     except InvalidGitRepositoryError:
         repo = Repo.init()
@@ -325,7 +325,7 @@ async def upstream(event):
     pattern="(good|bad)cat$",
     command=("switch", plugin_category),
     info={
-        "header": "To switch between goodcat & badcat ( For extra nsfw and gali )",
+        "header": "To switch between goodcat and badcat ( for extra nsfw and gaali )",
         "usage": [
             "{tr}goodcat",
             "{tr}badcat",
@@ -351,10 +351,10 @@ async def variable(event):
                 )
                 del heroku_var[switch]
                 return
-            await edit_delete(event, "`You already using Goodcat`", 6)
+            await edit_delete(event, "`You already using goodcat`", 6)
         else:
             if BADCAT:
-                return await edit_delete(event, "`You already using Badcat`", 6)
+                return await edit_delete(event, "`You already using badcat`", 6)
             await edit_or_reply(
                 event, "`Changing goodcat to badcat wait for 2-3 minutes`"
             )
@@ -379,10 +379,10 @@ async def variable(event):
                     f1.close()
                 await _catutils.runcmd("rm -rf badcatext")
                 return await event.client.reload(cat)
-            await edit_delete(event, "`You already using goodcat`")
+            await edit_delete(event, "`You are already using goodcat`")
         elif cmd == "bad":
             if match and BADCAT:
-                return await edit_or_reply(event, "`You already using badcat`")
+                return await edit_or_reply(event, "`You are already using badcat`")
             string += f'    {switch} = "True"\n'
             cat = await edit_or_reply(
                 event, "`Changing goodcat to badcat wait for 2-3 minutes`"
@@ -392,4 +392,4 @@ async def variable(event):
                 f1.close()
             await event.client.reload(cat)
     else:
-        await edit_delete(event, "`There no config file , you can't use this plugin`")
+        await edit_delete(event, "`There is no config file you can't use this plugin`")
