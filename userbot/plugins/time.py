@@ -30,7 +30,7 @@ async def get_tz(con):
         con = con.replace(" Of ", " of ")
     if "(Western)" in con:
         con = con.replace("(Western)", "(western)")
-    if "Minor Outlying Islands" in con:
+    if "Minor oOutlying Islands" in con:
         con = con.replace("Minor Outlying Islands", "minor outlying islands")
     if "Nl" in con:
         con = con.replace("Nl", "NL")
@@ -59,7 +59,7 @@ async def time_func(tdata):
     con = tdata.pattern_match.group(1).title()
     tz_num = tdata.pattern_match.group(2)
     t_form = "%H:%M"
-    d_form = "%d/%m/%y - %A"
+    d_form = "%d/%m/%y-%A"
     c_name = ""
     if len(con) > 4:
         try:
@@ -74,7 +74,7 @@ async def time_func(tdata):
     else:
         return await edit_or_reply(
             tdata,
-            f"`It's`  **{dt.now().strftime(t_form)}**` on `**{dt.now().strftime(d_form)}** `here.`",
+            f"`It's `**{dt.now().strftime(t_form)}**` on `**{dt.now().strftime(d_form)}**` here`",
         )
     if not timezones:
         return await edit_or_reply(tdata, "`Invaild country`")
@@ -101,12 +101,12 @@ async def time_func(tdata):
     if c_name != Config.COUNTRY:
         await edit_or_reply(
             tdata,
-            f"`It's`  **{dtnow1}**` on `**{dtnow2}**  `in {c_name} ({time_zone} timezone)`",
+            f"`It's `**{dtnow1}**` on `**{dtnow2}**` in {c_name} ({time_zone} timezone)`",
         )
     if Config.COUNTRY:
         await edit_or_reply(
             tdata,
-            f"`It's`  **{dtnow1}**` on `**{dtnow2}**  `here , in {Config.COUNTRY}"
+            f"`It's `**{dtnow1}**` on `**{dtnow2}**` here in {Config.COUNTRY}"
             f"({time_zone} timezone)`",
         )
 
@@ -116,7 +116,7 @@ async def time_func(tdata):
     command=("stime", plugin_category),
     info={
         "header": "To show current time",
-        "description": "Shows current default time you can change by changing TZ in heroku vars",
+        "description": "Shows current default time you can change by changing timezone in heroku vars",
         "usage": "{tr}stime",
     },
 )
