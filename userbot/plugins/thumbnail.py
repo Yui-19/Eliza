@@ -48,7 +48,7 @@ async def _(event):
     # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#create-thumbnails
     os.remove(downloaded_file_name)
     await catevent.edit(
-        "Custom video or file thumbnail saved ! This image will be used in the upload , till `.clearthumb`"
+        "Custom video or file thumbnail saved\n\nThis image will be used in the upload till `.clearthumb`"
     )
 
 
@@ -118,7 +118,7 @@ CMD_HELP.update(
     \n\n**Syntax :** `.savethumb`\
     \n**Usage : **Reply to file or video to save it as temporary thumbimage\
     \n\n**Syntax : **`.clearthumb`\
-    \n**Usage : **To clear Thumbnail no longer you uploads uses custom thumbanail\
+    \n**Usage : **To clear thumbnail no longer you uploads uses custom thumbanail\
     \n\n**Syntax : **`.getthumb`\
     \n**Usage : **To get thumbnail of given video or gives your present thumbnail\
     "
