@@ -22,7 +22,7 @@ plugin_category = "fun"
 
 
 async def get_user(event):
-    # Get the user from argument or replied message.
+    # Get the user from argument or replied message
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         replied_user = await event.client(
@@ -49,7 +49,7 @@ async def get_user(event):
             replied_user = await event.client(GetFullUserRequest(user_object.id))
 
         except (TypeError, ValueError):
-            await event.edit("`I don't slap aliens , they ugly af !`")
+            await event.edit("`I don't slap aliens , they are ugly af`")
             return None
     return replied_user
 
@@ -150,24 +150,24 @@ async def _(event):
     if r % 2 == 1:
         if input_str == "heads":
             await edit_or_reply(
-                event, "The coin landed on : **Heads** \n You were correct"
+                event, "The coin landed on : **Heads**\n\nYou were correct"
             )
         elif input_str == "tails":
             await edit_or_reply(
                 event,
-                "The coin landed on : **Heads** \n You weren't correct , try again...",
+                "The coin landed on : **Heads**\n\nYou weren't correct , try again...",
             )
         else:
             await edit_or_reply(event, "The coin landed on : **Heads**")
     elif r % 2 == 0:
         if input_str == "tails":
             await edit_or_reply(
-                event, "The coin landed on : **Tails** \n You were correct"
+                event, "The coin landed on : **Tails**\n\nYou were correct"
             )
         elif input_str == "heads":
             await edit_or_reply(
                 event,
-                "The coin landed on : **Tails** \n You weren't correct , try again...",
+                "The coin landed on : **Tails**\n\nYou weren't correct , try again...",
             )
         else:
             await edit_or_reply(event, "The coin landed on : **Tails**")
@@ -179,12 +179,12 @@ async def _(event):
     pattern="slap(?:\s|$)([\s\S]*)",
     command=("slap", plugin_category),
     info={
-        "header": "To slap a person with random objects !",
+        "header": "To slap a person with random objects",
         "usage": "{tr}slap reply/username>",
     },
 )
 async def who(event):
-    "To slap a person with random objects !"
+    "To slap a person with random objects"
     replied_user = await get_user(event)
     if replied_user is None:
         return
@@ -193,7 +193,7 @@ async def who(event):
         await edit_or_reply(event, caption)
     except BaseException:
         await edit_or_reply(
-            event, "`Can't slap this person , need to fetch some sticks and stones !`"
+            event, "`Can't slap this person , need to fetch some sticks and stones`"
         )
 
 
@@ -275,7 +275,7 @@ async def faces(owo):
     elif textx:
         message = textx.text
     else:
-        return await edit_or_reply(owo, "` OoO no text given ! `")
+        return await edit_or_reply(owo, "`No text given`")
     reply_text = re.sub(r"(r|l)", "w", message)
     reply_text = re.sub(r"(R|L)", "W", reply_text)
     reply_text = re.sub(r"n([aeiou])", r"ny\1", reply_text)
@@ -304,7 +304,7 @@ async def claptext(event):
     elif textx.message:
         query = textx.message
     else:
-        return await edit_or_reply(event, "`Hah , I don't clap pointlessly !`")
+        return await edit_or_reply(event, "`Ha ha I don't clap pointlessly !`")
     reply_text = "👏🏻 "
     reply_text += query.replace(" ", " 👏🏻 ")
     reply_text += " 👏🏻"
@@ -368,45 +368,19 @@ async def payf(event):
     )
     await edit_or_reply(event, pay)
 
-
-@catub.cat_cmd(
-    pattern="wish(?:\s|$)([\s\S]*)",
-    command=("wish", plugin_category),
-    info={
-        "header": "Shows the chance of your success",
-        "usage": [
-            "{tr}wish <reply>",
-            "{tr}wish <your wish>",
-        ],
-    },
-)
-async def wish_check(event):
-    "Shows the chance of your success"
-    wishtxt = event.pattern_match.group(1)
-    chance = random.randint(0, 100)
-    if wishtxt:
-        reslt = f"**Your wish **{wishtxt}**has been cast** ✨\
-              \n\nChance of success : **{chance}%**"
-    elif event.is_reply:
-        reslt = f"**Your wish has been cast **✨\
-                  \n\nChance of success : **{chance}%**"
-    else:
-        reslt = "What's your wish ? Should I consider you as idiot by default ? 😝"
-    await edit_or_reply(event, reslt)
-
-
+    
 @catub.cat_cmd(
     pattern="lfy(?:\s|$)([\s\S]*)",
     command=("lfy", plugin_category),
     info={
-        "header": "Let me google that for you real quick !",
+        "header": "Let me google that for you real quick",
         "usage": [
             "{tr}lfy <query>",
         ],
     },
 )
 async def _(event):
-    "Let me google that for you real quick !"
+    "Let me google that for you real quick"
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     if not input_str and reply:
@@ -419,7 +393,7 @@ async def _(event):
     response_api = requests.get(sample_url).text
     if response_api:
         await edit_or_reply(
-            event, f"[{input_str}]({response_api.rstrip()})\n`Thank me later 🙃` "
+            event, f"[{input_str}]({response_api.rstrip()})\n\n`Thank me later 🙃` "
         )
     else:
         return await edit_delete(
@@ -428,7 +402,7 @@ async def _(event):
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"LMGTFY query `{input_str}` was executed successfully",
+            f"Let me google that for you query `{input_str}` was executed successfully",
         )
 
 
@@ -436,16 +410,16 @@ async def _(event):
     pattern="gbun(?:\s|$)([\s\S]*)",
     command=("gbun", plugin_category),
     info={
-        "header": "Fake gban action !",
+        "header": "Fake gban action",
         "usage": ["{tr}gbun <reason>", "{tr}gbun"],
     },
 )
 async def gbun(event):
-    "Fake gban action !"
+    "Fake gban action"
     gbunVar = event.text
     gbunVar = gbunVar[6:]
-    mentions = "`Warning ! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 by admin...\n`"
-    catevent = await edit_or_reply(event, "**Summoning out le gungnir ☠️**")
+    mentions = "`Warning\n\nUser gbanned by admin...\n`"
+    catevent = await edit_or_reply(event, "Summoning out le gungnir ☠️")
     await asyncio.sleep(3.5)
     chat = await event.get_input_chat()
     async for _ in event.client.iter_participants(
@@ -462,28 +436,28 @@ async def gbun(event):
         # make meself invulnerable cuz why not xD
         if idd == 1035034432:
             await catevent.edit(
-                "`Wait a second , This is my master !`\n**How dare you threaten to ban my master nigger !**\n\n__Your account has been hacked ! Pay 1000$ to my master [π.$](tg://user?id=1035034432) to release your account 😏"
+                "`Wait a second , this is my mistress`\n\nHow dare you threaten to ban my mistress ?\n\nYour account has been hacked ! Pay 1000$ to my mistress [π.$](tg://user?id=1035034432) to release your account 😏"
             )
         else:
             jnl = (
-                "`Warning ! `"
+                "`Warning`"
                 "[{}](tg://user?id={})"
-                "` 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 by admin...\n\n`"
+                "`gbanned by admin...\n\n`"
                 "**User's name : ** {}\n"
                 "**Id : ** `{}`\n"
             ).format(firstname, idd, firstname, idd)
             if usname is None:
-                jnl += "**Victim nigga's username : ** `Doesn't own a username !`\n"
+                jnl += "**Victim nigga's username : ** `Doesn't own a username`\n"
             else:
                 jnl += "**Victim nigga's username** : @{}\n".format(usname)
             if len(gbunVar) > 0:
                 gbunm = "`{}`".format(gbunVar)
-                gbunr = "**Reason : **" + gbunm
+                gbunr = "**Reason :**" + gbunm
                 jnl += gbunr
             else:
                 no_reason = "Reason : Potential spammer"
                 jnl += no_reason
             await catevent.edit(jnl)
     else:
-        mention = "`Warning ! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 by admin...\nReason : Potential spammer `"
+        mention = "`Warning\n\nUser gbanned by admin...\n\nReason : Potential spammer `"
         await catevent.edit(mention)
