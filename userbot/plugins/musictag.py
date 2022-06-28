@@ -1,4 +1,4 @@
-# By https://t.me/feelded
+# By @Yui
 import os
 from telethon.tl.types import DocumentAttributeAudio
 from ..helpers.utils import reply_id
@@ -13,7 +13,7 @@ plugin_category = "useless"
     command=("mt", plugin_category),
     info={
         "header": "Changes musics tag",
-        "examples": "{tr}mt Loser : Neoni <reply>",
+        "examples": "{tr}mt loser : neoni <reply>",
         "usage": [
             "{tr}mt <song title>:<artist> <reply audio>",
         ],
