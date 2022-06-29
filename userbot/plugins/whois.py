@@ -55,17 +55,17 @@ async def fetch_info(replied_user, event):
     username = "@{}".format(username) if username else ("This user has no username")
     user_bio = "This user has no about" if not user_bio else user_bio
     caption = "<b><i>User info from durov's database :</i></b>\n\n"
-    caption += f"<b>👤 Name :</b> {full_name}\n"
-    caption += f"<b>🤵 Username :</b> {username}\n"
-    caption += f"<b>🔖 Id :</b> <code>{user_id}</code>\n"
-    caption += f"<b>🌏 Data centre id :</b> {dc_id}\n"
-    caption += f"<b>🖼 Number of profile pics :</b> {replied_user_profile_photos_count}\n"
-    caption += f"<b>🤖 Is bot :</b> {is_bot}\n"
-    caption += f"<b>🔏 Is restricted :</b> {restricted}\n"
-    caption += f"<b>🌐 Is verified by telegram :</b> {verified}\n\n"
-    caption += f"<b>✍️ Bio :</b> \n<code>{user_bio}</code>\n\n"
-    caption += f"<b>👥 Common chats with this user :</b> {common_chat}\n"
-    caption += "<b>🔗 Permanent link to profile :</b> "
+    caption += f"Name : {full_name}\n"
+    caption += f"Username : {username}\n"
+    caption += f"Id : <code>{user_id}</code>\n"
+    caption += f"Data centre id : {dc_id}\n"
+    caption += f"Number of profile pics : {replied_user_profile_photos_count}\n"
+    caption += f"Is bot : {is_bot}\n"
+    caption += f"Is restricted : {restricted}\n"
+    caption += f"Is verified by telegram : {verified}\n\n"
+    caption += f"Bio : \n<code>{user_bio}</code>\n\n"
+    caption += f"Common chats with this user : {common_chat}\n"
+    caption += "Permanent link to profile :"
     caption += f'<a href="tg://user?id={user_id}">{first_name}</a>'
     return photo, caption
 
@@ -103,11 +103,11 @@ async def _(event):
         dc_id = "Can't get dc id"
     if spamwatch:
         if ban := spamwatch.get_ban(user_id):
-            sw = f"**Spamwatch banned :** `True`\n\n**Reason : **`{ban.reason}`"
+            sw = f"Spamwatch banned : `True`\n\n**Reason : **`{ban.reason}`"
         else:
-            sw = "**Spamwatch banned :**`False`"
+            sw = "Spamwatch banned :`False`"
     else:
-        sw = "**Spamwatch banned :**`Not connected`"
+        sw = "Spamwatch banned :`Not connected`"
     try:
         casurl = "https://api.cas.chat/check?user_id={}".format(user_id)
         data = get(casurl).json()
@@ -116,18 +116,18 @@ async def _(event):
         data = None
     if data:
         if data["ok"]:
-            cas = "**Antispam ( cas ) banned :** `True`"
+            cas = "Antispam ( cas ) banned : `True`"
         else:
-            cas = "**Antispam ( cas ) banned :** `False`"
+            cas = "Antispam ( cas ) banned : `False`"
     else:
-        cas = "**Antispam ( cas ) banned :** `Couldn't fetch`"
-    caption = """**Info of [{}](tg://user?id={}):
-   -🌻 Id : **`{}`
-   **-**🎋** Groups in common : **`{}`
-   **-**🌏** Data centre number : **`{}`
-   **-**🔏** Restricted by telegram : **`{}`
-   **-**🦅{}
-   **-**👮🏻‍♀️{}
+        cas = "Antispam ( cas ) banned : `Couldn't fetch`"
+    caption = """Info of [{}](tg://user?id={}) :\n\n
+   - Id : `{}`
+   - Groups in common : `{}`
+   - Data centre number : `{}`
+   - Restricted by telegram : `{}`
+   - {}
+   - {}
 """.format(
         first_name,
         user_id,
