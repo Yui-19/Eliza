@@ -16,7 +16,7 @@ hemojis = {
     "bot": "🗡️",
     "fun": "🤣",
     "misc": "🪄",
-    "tools": "💉",
+    "tools": "👀",
     "utils": "💫",
     "extra": "💖",
     "useless": "🥰",
