@@ -58,22 +58,22 @@ def main_menu():
     buttons = [
         (Button.inline("Info", data="check"),),
         (
-            Button.inline(f" 👮🏻‍♀️ Admin ({len(GRP_INFO['admin'])})", data="admin_menu"),
-            Button.inline(f" 🗡️ Bot ({len(GRP_INFO['bot'])})", data="bot_menu"),
+            Button.inline(f"👮🏻‍♀️ Admin ({len(GRP_INFO['admin'])})", data="admin_menu"),
+            Button.inline(f"🗡️ Bot ({len(GRP_INFO['bot'])})", data="bot_menu"),
         ),
         (
-            Button.inline(f" 🤣 Fun ({len(GRP_INFO['fun'])})", data="fun_menu"),
-            Button.inline(f" 🪄 Misc ({len(GRP_INFO['misc'])})", data="misc_menu"),
+            Button.inline(f"🤣 Fun ({len(GRP_INFO['fun'])})", data="fun_menu"),
+            Button.inline(f"🪄 Misc ({len(GRP_INFO['misc'])})", data="misc_menu"),
         ),
         (
-            Button.inline(f" 👀 Tools ({len(GRP_INFO['tools'])})", data="tools_menu"),
-            Button.inline(f" 💫 Utils ({len(GRP_INFO['utils'])})", data="utils_menu"),
+            Button.inline(f"👀 Tools ({len(GRP_INFO['tools'])})", data="tools_menu"),
+            Button.inline(f"💫 Utils ({len(GRP_INFO['utils'])})", data="utils_menu"),
         ),
         (
-            Button.inline(f" 💖 Extra ({len(GRP_INFO['extra'])})", data="extra_menu"),
-            Button.inline(f" 🥰 Useless ({len(GRP_INFO['useless'])})", data="useless_menu"),
+            Button.inline(f"💖 Extra ({len(GRP_INFO['extra'])})", data="extra_menu"),
+            Button.inline(f"🙄 Useless ({len(GRP_INFO['useless'])})", data="useless_menu"),
         ),
-            (Button.inline(" 🥲 Close", data="close"),),
+            (Button.inline("🥲 Close", data="close"),),
         ]
 
     return text, buttons
