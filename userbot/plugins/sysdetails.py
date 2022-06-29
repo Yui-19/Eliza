@@ -113,4 +113,4 @@ async def sysdetails(sysd):
                     --cpu_speed on --cpu_cores physical --kernel_shorthand off --stdout"
     a, b, c, d = await _catutils.runcmd(neo)
     result = str(a) + str(b)
-    await edit_or_reply(catevent, f"**Neofetch result :** `{result}`")
+    await edit_or_reply(catevent, f"Neofetch result : `{result}`")
