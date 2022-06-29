@@ -55,17 +55,17 @@ async def fetch_info(replied_user, event):
     username = "@{}".format(username) if username else ("This user has no username")
     user_bio = "This user has no about" if not user_bio else user_bio
     caption = "<b><i>User info from durov's database :</i></b>\n\n"
-    caption += f"Name : {full_name}\n"
-    caption += f"Username : {username}\n"
-    caption += f"Id : <code>{user_id}</code>\n"
-    caption += f"Data centre id : {dc_id}\n"
-    caption += f"Number of profile pics : {replied_user_profile_photos_count}\n"
-    caption += f"Is bot : {is_bot}\n"
-    caption += f"Is restricted : {restricted}\n"
+    caption += f"Name : {full_name}\n\n"
+    caption += f"Username : {username}\n\n"
+    caption += f"Id : <code>{user_id}</code>\n\n"
+    caption += f"Data centre id : {dc_id}\n\n"
+    caption += f"Number of profile pics : {replied_user_profile_photos_count}\n\n"
+    caption += f"Is bot : {is_bot}\n\n"
+    caption += f"Is restricted : {restricted}\n\n"
     caption += f"Is verified by telegram : {verified}\n\n"
-    caption += f"Bio : \n<code>{user_bio}</code>\n\n"
-    caption += f"Common chats with this user : {common_chat}\n"
-    caption += "Permanent link to profile :"
+    caption += f"Bio : <code>{user_bio}</code>\n\n"
+    caption += f"Common chats with this user : {common_chat}\n\n"
+    caption += "Permanent link to profile : "
     caption += f'<a href="tg://user?id={user_id}">{first_name}</a>'
     return photo, caption
 
@@ -121,13 +121,13 @@ async def _(event):
             cas = "Antispam ( cas ) banned : `False`"
     else:
         cas = "Antispam ( cas ) banned : `Couldn't fetch`"
-    caption = """Info of [{}](tg://user?id={}) :\n\n
+    caption = """Info of [{}](tg://user?id={}) :
    - Id : `{}`
-   - Groups in common : `{}`
-   - Data centre number : `{}`
-   - Restricted by telegram : `{}`
-   - {}
-   - {}
+   **-** Groups in common : `{}`
+   **-** Data centre number : `{}`
+   **-** Restricted by telegram : `{}`
+   **-** {}
+   **-** {}
 """.format(
         first_name,
         user_id,
@@ -157,7 +157,7 @@ async def who(event):
     replied_user, reason = await get_user_from_event(event)
     if not replied_user:
         return
-    cat = await edit_or_reply(event, "`Fetching userinfo wait....`")
+    cat = await edit_or_reply(event, "`Fetching userinfo wait...`")
     try:
         photo, caption = await fetch_info(replied_user, event)
     except AttributeError:
