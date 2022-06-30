@@ -43,7 +43,7 @@ async def catbot(event):
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
         os.remove(download_location)
-        return await output[0].edit(f"**Error : **\n`{exc}`")
+        return await output[0].edit(f"Error :\n`{exc}`")
     cat = f"https://telegra.ph{response[0]}"
     cat = await trash(cat)
     os.remove(download_location)
@@ -95,7 +95,7 @@ async def catbot(event):
     command=("trap", plugin_category),
     info={
         "header": "Reply to image or sticker to get meme on that image",
-        "Description": "creates a trap card",
+        "Description": "Creates a trap card",
         "usage": "{tr}trap (name of the person to trap) ; (trapper name)",
     },
 )
@@ -108,7 +108,7 @@ async def catbot(event):
     else:
         return await edit_or_reply(
             event,
-            "**Syntax :** Reply to image or sticker with `.trap (name of the person to trap);(trapper name)`",
+            "Syntax : Reply to image or sticker with `.trap ( name of the person to trap ) ; ( trapper name )`",
         )
     replied = await event.get_reply_message()
     catid = await reply_id(event)
@@ -131,7 +131,7 @@ async def catbot(event):
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
         os.remove(download_location)
-        return await output[0].edit(f"**Error:**\n`{exc}`")
+        return await output[0].edit(f"Error :\n`{exc}`")
     cat = f"https://telegra.ph{response[0]}"
     cat = await trap(text1, text2, cat)
     await output[0].delete()
@@ -157,7 +157,7 @@ async def catbot(event):
     else:
         return await edit_or_reply(
             event,
-            "**Syntax :** Reply to image or sticker with `.phub (username);(text in comment)`",
+            "Syntax : Reply to image or sticker with `.phub ( username ) ; ( text in comment )`",
         )
     replied = await event.get_reply_message()
     catid = await reply_id(event)
@@ -181,7 +181,7 @@ async def catbot(event):
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
         os.remove(download_location)
-        return await output[0].edit(f"**Error :**\n`{exc}`")
+        return await output[0].edit(f"Error :\n`{exc}`")
     cat = f"https://telegra.ph{response[0]}"
     cat = await phcomment(cat, text, username)
     await output[0].delete()
