@@ -20,7 +20,7 @@ async def current(event):
     if event.fwd_from:
         return
     bot = "@nowplaybot"
-    results = await event.client.inline_query(bot, "current link")
+    results = await event.client.inline_query(bot, "Current link")
     await results[0].click(
         event.chat_id,
         reply_to=reply_to_id,
