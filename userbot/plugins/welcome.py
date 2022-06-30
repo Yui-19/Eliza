@@ -126,7 +126,7 @@ async def save_welcome(event):
                 BOTLOG_CHATID,
                 f"WELCOME NOTE\
                 \n\nCHAT ID : {event.chat_id}\
-                \n\nThe following message is saved as the welcome note for the {get_display_name(await event.get_chat())} , don't delete this message",
+                \n\nThe following message is saved as the welcome note for the {get_display_name(await event.get_chat())} don't delete this message",
             )
             msg_o = await event.client.forward_messages(
                 entity=BOTLOG_CHATID, messages=msg, from_peer=event.chat_id, silent=True
