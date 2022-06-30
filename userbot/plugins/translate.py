@@ -42,11 +42,11 @@ async def _(event):
     try:
         translated = await getTranslate(text, dest=lan)
         after_tr_text = translated.text
-        output_str = f"**Translated from {LANGUAGES[translated.src].title()} to {LANGUAGES[lan].title()}**\
+        output_str = f"Translated from {LANGUAGES[translated.src].title()} to {LANGUAGES[lan].title()}\
                 \n`{after_tr_text}`"
         await edit_or_reply(event, output_str)
     except Exception as exc:
-        await edit_delete(event, f"**Error:**\n`{exc}`", time=5)
+        await edit_delete(event, f"Error :\n`{exc}`", time=5)
 
 
 @catub.cat_cmd(
@@ -80,7 +80,7 @@ async def translateme(trans):
         return await edit_delete(trans, "`Invalid destination language`", time=5)
     source_lan = LANGUAGES[f"{reply_text.src.lower()}"]
     transl_lan = LANGUAGES[f"{reply_text.dest.lower()}"]
-    reply_text = f"**From {source_lan.title()}({reply_text.src.lower()}) to {transl_lan.title()}({reply_text.dest.lower()}) :**\n`{reply_text.text}`"
+    reply_text = f"From {source_lan.title()}({reply_text.src.lower()}) to {transl_lan.title()}({reply_text.dest.lower()}) :\n`{reply_text.text}`"
 
     await edit_or_reply(trans, reply_text)
     if BOTLOG:
@@ -122,32 +122,32 @@ async def lang(value):
     if input_str == "trt":
         addgvar("TRT_LANG", arg)
         await edit_or_reply(
-            value, f"**Language for translator changed to :** `{LANG.title()}`"
+            value, f"Language for translator changed to : `{LANG.title()}`"
         )
     elif input_str == "tocr":
         addgvar("TOCR_LANG", arg)
         await edit_or_reply(
-            value, f"**Language for translated ocr changed to :** `{LANG.title()}`"
+            value, f"Language for translated ocr changed to : `{LANG.title()}`"
         )
     else:
         addgvar("AI_LANG", arg)
         await edit_or_reply(
-            value, f"**Language for chatbot is changed to :** `{LANG.title()}`"
+            value, f"Language for chatbot is changed to : `{LANG.title()}`"
         )
     LANG = LANGUAGES[arg]
 
     if BOTLOG and input_str == "trt":
         await value.client.send_message(
-            BOTLOG_CHATID, f"**Language for translator changed to :** `{LANG.title()}`"
+            BOTLOG_CHATID, f"Language for translator changed to : `{LANG.title()}`"
         )
     if BOTLOG:
         if input_str == "tocr":
             await value.client.send_message(
                 BOTLOG_CHATID,
-                f"**Language for translated ocr changed to :** `{LANG.title()}`",
+                f"Language for translated ocr changed to : `{LANG.title()}`",
             )
         if input_str == "ai":
             await value.client.send_message(
                 BOTLOG_CHATID,
-                f"**Language for chatbot is changed to :** `{LANG.title()}`",
+                f"Language for chatbot is changed to : `{LANG.title()}`",
             )
