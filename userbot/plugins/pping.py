@@ -21,7 +21,7 @@ PING_PIC = os.environ.get("PING_PIC")  # or Config.PING_PIC
 
 PING_TEXT = (
     os.environ.get("CUSTOM_PING_TEXT", None)
-    or "⚡<b><i>Be fast or be last...</b></i>⚡"
+    or "<i>Be fast or be last</i>"
 )
 
 
@@ -46,7 +46,7 @@ async def _(event):
 
     start = datetime.now()
 
-    cat = await edit_or_reply(event, "<b><i>☞ Pong!</b></i>", "html")
+    cat = await edit_or_reply(event, "<i>Pong</i>", "html")
 
     end = datetime.now()
    
@@ -55,7 +55,7 @@ async def _(event):
 
     if PING_PIC:
 
-        caption = f"<b><i>{PING_TEXT}<i><b>\n\n<b><i>➤ Pong !</b></i>\n⚡ {ms} <b><i>ms<b/></i>\n<b><i>➤ Boss : {hmention}</b></i>"
+        caption = f"<i>{PING_TEXT}<i>\n\n<i>➤ Pong</i>\n{ms} <i>ms</i>\n<i>➤ Boss : {hmention}</i>"
 
         await event.client.send_file(
             event.chat_id,
@@ -69,7 +69,7 @@ async def _(event):
 
     else:
 
-        await edit_or_reply(event, "<code>Add PING_PIC first nubh.<code>", "html")
+        await edit_or_reply(event, "<code>Add PING_PIC first<code>", "html")
 
 
 # ======================================================================================================================================
