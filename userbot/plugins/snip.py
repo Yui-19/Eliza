@@ -68,7 +68,7 @@ async def add_snip(event):
         await event.client.send_message(
             BOTLOG_CHATID,
             f"NOTE\
-            \n\n**Keyword :** `#{keyword}`\
+            \n\nKeyword : `#{keyword}`\
             \n\nThe following message is saved as the snip in your bot , do not delete it",
         )
         msg_o = await event.client.forward_messages(
@@ -85,7 +85,7 @@ async def add_snip(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"NOTE\
-            \n\n**Keyword :** `#{keyword}`\
+            \n\nKeyword : `#{keyword}`\
             \n\nThe following message is saved as the snip in your bot , don't delete it",
             )
             msg_o = await event.client.send_message(BOTLOG_CHATID, string)
@@ -123,7 +123,7 @@ async def on_snip_list(event):
     for note in notes:
         if message == "You haven't saved any notes or snip":
             message = "Notes saved in your bot are :\n\n"
-        message += f"🎐 `#{note.keyword}`"
+        message += f"`#{note.keyword}`"
         if note.f_mesg_id:
             msglink = await get_message_link(BOTLOG_CHATID, note.f_mesg_id)
             message += f"  [preview]({msglink})\n"
