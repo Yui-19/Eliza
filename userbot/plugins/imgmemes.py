@@ -77,7 +77,7 @@ async def nekobot(cat):
         if cat.is_reply and not reply.media:
             text = reply.message
         else:
-            return await edit_delete(cat, "**Trump : **`What should I tweet ?`", 5)
+            return await edit_delete(cat, "Trump : `What should I tweet ?`", 5)
     cate = await edit_or_reply(cat, "`Requesting trump to tweet...`")
     text = deEmojify(text)
     await asyncio.sleep(2)
@@ -108,7 +108,7 @@ async def nekobot(cat):
         if cat.is_reply and not reply.media:
             text = reply.message
         else:
-            return await edit_delete(cat, "**Modi : **`What should I tweet ?`", 5)
+            return await edit_delete(cat, "Modi : `What should I tweet ?`", 5)
     cate = await edit_or_reply(cat, "Requesting modi to tweet...")
     text = deEmojify(text)
     await asyncio.sleep(2)
@@ -169,7 +169,7 @@ async def nekobot(cat):
         if cat.is_reply and not reply.media:
             text = reply.message
         else:
-            return await edit_delete(cat, "**Kanna : **`What should I show you ?`", 5)
+            return await edit_delete(cat, "Kanna : `What should I show you ?`", 5)
     cate = await edit_or_reply(cat, "`Kanna is writing your text...`")
     text = deEmojify(text)
     await asyncio.sleep(2)
