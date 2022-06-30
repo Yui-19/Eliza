@@ -115,7 +115,7 @@ async def gsearch(q_event):
             try:
                 gresults = await ysearch.async_search(*search_args)
             except Exception as e:
-                return await edit_delete(catevent, f"**Error :**\n`{e}`", time=10)
+                return await edit_delete(catevent, f"Error :\n`{e}`", time=10)
     msg = ""
     for i in range(lim):
         if i > len(gresults["links"]):
@@ -129,10 +129,10 @@ async def gsearch(q_event):
             break
     await edit_or_reply(
         catevent,
-        "**Search query :**\n`" + match + "`\n\n**Results :**\n" + msg,
+        "Search query :\n`" + match + "`\n\nResults :\n" + msg,
         link_preview=False,
         aslink=True,
-        linktext=f"**The search results for the query ** {match} **are** :",
+        linktext=f"The search results for the query {match} are :",
     )
     if BOTLOG:
         await q_event.client.send_message(
@@ -205,8 +205,8 @@ async def _(event):
         end = datetime.now()
         ms = (end - start).seconds
         OUTPUT_STR = """{img_size}
-<b>Possible related search : </b> <a href="{prs_url}">{prs_text}</a> 
-<b>More info : </b> Open this <a href="{the_location}">Link</a> 
+Possible related search : <a href="{prs_url}">{prs_text}</a> 
+More info : Open this <a href="{the_location}">Link</a> 
 <i>Fetched in {ms} seconds</i>""".format(
             **locals()
         )
