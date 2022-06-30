@@ -127,7 +127,7 @@ async def _(event):
     require_admin=True,
 )
 async def _(event):
-    "To ban everyone from group."
+    "To ban everyone from group"
     result = await event.client.get_permissions(event.chat_id, event.client.uid)
     if not result:
         return await edit_or_reply(
@@ -209,7 +209,7 @@ async def _(event):
             except MessageNotModifiedError:
                 pass
     await catevent.edit(
-        f"**Unbanned :**{succ}/{total} in the chat {get_display_name(await event.get_chat())}"
+        f"Unbanned : {succ}/{total} in the chat {get_display_name(await event.get_chat())}"
     )
 
 
@@ -245,7 +245,7 @@ async def rm_deletedacc(show):  # sourcery no-metrics
                 if user.deleted:
                     del_u += 1
             if del_u > 0:
-                del_status = f"Found **{del_u}** ghost or deleted or zombie account (s) in this group ,\
+                del_status = f"Found {del_u} ghost or deleted or zombie account (s) in this group ,\
                             \nclean them by using`.zombies clean`"
         else:
             catadmin = await is_admin(show.client, show.chat_id, show.client.uid)
@@ -266,7 +266,7 @@ async def rm_deletedacc(show):  # sourcery no-metrics
                 if user.deleted:
                     del_u += 1
             if del_u > 0:
-                del_status = f"Found **{del_u}** ghost or deleted or zombie account (s) in this group who are restricted or banned ,\
+                del_status = f"Found {del_u} ghost or deleted or zombie account (s) in this group who are restricted or banned ,\
                             \nclean them by using `.zombies -r clean`"
         await event.edit(del_status)
         return
@@ -307,11 +307,11 @@ async def rm_deletedacc(show):  # sourcery no-metrics
                     LOGS.error(str(e))
         if del_u > 0:
             del_status = (
-                f"Successfully cleaned **{del_u}** deleted account(s) in the group"
+                f"Successfully cleaned {del_u} deleted account(s) in the group"
             )
         if del_a > 0:
-            del_status = f"Successfully cleaned **{del_u}** deleted account(s) in the group\
-            \n\n**{del_a}** Deleted admin accounts are not removed"
+            del_status = f"Successfully cleaned {del_u} deleted account(s) in the group\
+            \n\n{del_a} deleted admin accounts are not removed"
     else:
         catadmin = await is_admin(show.client, show.chat_id, show.client.uid)
         if not catadmin:
@@ -366,8 +366,8 @@ async def rm_deletedacc(show):  # sourcery no-metrics
         if del_u > 0:
             del_status = f"`Successfully cleaned {del_u} deleted account(s) in the group who are banned or restricted`"
         if del_a > 0:
-            del_status = f"`Successfully cleaned `**{del_u}**` deleted account(s) in the group who are banned or restricted\
-            \n\nFailed to kick `**{del_a}**` accounts`"
+            del_status = f"`Successfully cleaned `{del_u}` deleted account(s) in the group who are banned or restricted\
+            \n\nFailed to kick `{del_a}` accounts`"
     await edit_delete(event, del_status, 15)
     if BOTLOG:
         await show.client.send_message(
@@ -508,11 +508,11 @@ User status offline : {}
 User status online : {}
 User status recently : {}
 Bots : {}
-None : {}"""
+None : {} """
         await et.edit(required_string.format(c, p, d, y, m, w, o, q, r, b, n))
         await sleep(5)
     await et.edit(
-        """Total: {} users
+        """Total : {} users
 Deleted accounts : {}
 User status empty : {}
 User status last month : {}
@@ -521,7 +521,7 @@ User status offline : {}
 User status online : {}
 User status recently : {}
 Bots : {}
-None : {}""".format(
+None : {} """.format(
             p, d, y, m, w, o, q, r, b, n
         )
     )
