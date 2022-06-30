@@ -60,7 +60,7 @@ async def get_moviecollections(movie):
     result = ""
     if "box office" in movie.keys():
         for i in movie["box office"].keys():
-            result += f"\n•  <b>{i}:</b> <code>{movie['box office'][i]}</code>"
+            result += f"\n• {i} : <code>{movie['box office'][i]}</code>"
     else:
         result = "<code>No data</code>"
     return result
