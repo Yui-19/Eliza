@@ -74,18 +74,18 @@ async def _(event):
     animation_ttl = range(12)
     event = await edit_or_reply(event, "`Deploying...`")
     animation_chars = [
-        "**Heroku connecting to latest github build**",
-        f"**Build started by user** {mention}",
-        f"**Deploy** `535a74f0` **by user** {mention}",
-        "**Restarting heroku server...**",
-        "**State changed from up to starting**",
-        "**Stopping all processes with sigterm**",
-        "**Process exited with** `status 143`",
-        "**Starting process with command** `python3 -m userbot`",
-        "**State changed from starting to up**",
+        "Heroku connecting to latest github build",
+        f"Build started by user {mention}",
+        f"Deploy `535a74f0` by user {mention}",
+        "Restarting heroku server...",
+        "State changed from up to starting",
+        "Stopping all processes with sigterm",
+        "Process exited with `status 143`",
+        "Starting process with command `python3 -m userbot`",
+        "State changed from starting to up",
         "Info : Userbot : Logged in as 557667062",
         "Info : Userbot : Successfully loaded all plugins",
-        "**Build succeeded**",
+        "Build succeeded",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
