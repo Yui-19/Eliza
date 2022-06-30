@@ -40,7 +40,7 @@ async def reddit_fetch(event):
             await event.client.send_message(
                 BOTLOG_CHATID, f"**Error code : {code}**\n`{code_message}`"
             )
-            await edit_delete(event, f"**Error code : {code}**\n`{code_message}`")
+            await edit_delete(event, f"Error code : {code}\n`{code_message}`")
     else:
         if "url" not in r:
             return await edit_delete(
@@ -57,9 +57,9 @@ async def reddit_fetch(event):
         captionx += f"`Posted by you/{author}`\n"
         captionx += f"↕️ `{upvote}`\n"
         if r["spoiler"]:
-            captionx += "Post marked as spoiler ⚠️\n"
+            captionx += "Post marked as spoiler\n"
         if r["nsfw"]:
-            captionx += "Post marked adult 🔞\n"
+            captionx += "Post marked adult\n"
 
             if await age_verification(event, reply_to):
                 return
