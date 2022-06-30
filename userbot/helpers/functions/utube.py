@@ -61,10 +61,10 @@ async def ytsearch(query, limit):
     for v in videolinks.result()["result"]:
         textresult = f"[{v['title']}](https://www.youtube.com/watch?v={v['id']})\n"
         try:
-            textresult += f"**Description :**`{v['descriptionSnippet'][-1]['text']}`\n"
+            textresult += f"Description :`{v['descriptionSnippet'][-1]['text']}`\n"
         except Exception:
-            textresult += "**Description :**`None`\n"
-        textresult += f"**Duration : **{v['duration']}\n\n**Views : **{v['viewCount']['short']}\n"
+            textresult += "Description : `None`\n"
+        textresult += f"Duration : {v['duration']}\n\nViews : {v['viewCount']['short']}\n"
         result += f"{textresult}\n"
     return result
 
@@ -159,12 +159,12 @@ async def result_formatter(results: list):
             out += "<code>{}</code>\n\n".format(
                 "".join(x.get("text") for x in r.get("descriptionSnippet"))
             )
-        out += f'<b>❯  Duration:</b> {r.get("accessibility").get("duration")}\n'
-        views = f'<b>❯  Views:</b> {r.get("viewCount").get("short")}\n'
+        out += f'❯ Duration : {r.get("accessibility").get("duration")}\n'
+        views = f'❯ Views : {r.get("viewCount").get("short")}\n'
         out += views
-        out += f'<b>❯  Upload date:</b> {r.get("publishedTime")}\n'
+        out += f'❯ Upload date : {r.get("publishedTime")}\n'
         if upld:
-            out += "<b>❯  Uploader:</b> "
+            out += "❯ Uploader : "
             out += f'<a href={upld.get("link")}>{upld.get("name")}</a>'
 
         output[index] = dict(
@@ -219,7 +219,7 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
         [
             Button.inline("BEST-MKV", data=f"ytdl_download_{vid}_mkv_v"),
             Button.inline(
-                "💫 BEST - 📹 WebM/MP4",
+                "BEST-WebM-MP4",
                 data=f"ytdl_download_{vid}_mp4_v",
             ),
         ]
@@ -243,14 +243,14 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
                 if bitrrate != 0:
                     audio_dict[
                         bitrrate
-                    ] = f"🎵 {bitrrate}Kbps ({humanbytes(fr_size) or 'N/A'})"
+                    ] = f"{bitrrate} kbps ({humanbytes(fr_size) or 'Na'})"
 
     video_btns = []
     for frmt in qual_list:
         frmt_dict = qual_dict[frmt]
         if len(frmt_dict) != 0:
             frmt_id = sorted(list(frmt_dict))[-1]
-            frmt_size = humanbytes(frmt_dict.get(frmt_id)) or "N/A"
+            frmt_size = humanbytes(frmt_dict.get(frmt_id)) or "Na"
             video_btns.append(
                 Button.inline(
                     f"{frmt} ({frmt_size})",
