@@ -64,7 +64,7 @@ async def add_chatbot(event):
     try:
         addai(chat_id, user_id, chat_name, user_name, user_username, chat_type)
     except Exception as e:
-        await edit_delete(catevent, f"**Error :**\n`{e}`")
+        await edit_delete(catevent, f"Error :\n`{e}`")
     else:
         await edit_or_reply(catevent, "Hi")
 
@@ -122,7 +122,7 @@ async def delete_chatbot(event):
         try:
             remove_all_users()
         except Exception as e:
-            await edit_delete(event, f"**Error :**\n`{str(e)}`", 10)
+            await edit_delete(event, f"Error :\n`{str(e)}`", 10)
         else:
             await edit_or_reply(event, "Deleted ai for all enabled users in all chats")
     else:
@@ -134,7 +134,7 @@ async def delete_chatbot(event):
         try:
             remove_users(event.chat_id)
         except Exception as e:
-            await edit_delete(event, f"**Error :**\n`{e}`", 10)
+            await edit_delete(event, f"Error :\n`{e}`", 10)
         else:
             await edit_or_reply(event, "Deleted ai for all enabled users in this chat")
 
@@ -157,7 +157,7 @@ async def list_chatbot(event):  # sourcery no-metrics
     "To list all users on who you enabled ai"
     input_str = event.pattern_match.group(1)
     private_chats = ""
-    output_str = "**Ai enabled users :**\n\n"
+    output_str = "Ai enabled users :\n\n"
     if input_str:
         lsts = get_all_users()
         group_chats = ""
@@ -179,9 +179,9 @@ async def list_chatbot(event):  # sourcery no-metrics
                 group_chats += f"[{echos.user_name}](tg://user?id={echos.user_id}) in chat {echos.chat_name} of chat id `{echos.chat_id}`\n"
 
         if private_chats != "":
-            output_str += "**Private chats**\n" + private_chats + "\n\n"
+            output_str += "Private chats\n" + private_chats + "\n\n"
         if group_chats != "":
-            output_str += "**Group chats**\n" + group_chats
+            output_str += "Group chats\n" + group_chats
     else:
         lsts = get_users(event.chat_id)
         if len(lsts) <= 0:
@@ -197,7 +197,7 @@ async def list_chatbot(event):  # sourcery no-metrics
                 private_chats += (
                     f"[{echos.user_name}](tg://user?id={echos.user_id})\n"
                 )
-        output_str = "**Ai enabled users in this chat are :**\n\n" + private_chats
+        output_str = "Ai enabled users in this chat are :\n\n" + private_chats
     await edit_or_reply(event, output_str)
 
 
