@@ -44,7 +44,7 @@ plugin_category = "utils"
 )
 async def _(event):
     "To get list of admins"
-    mentions = "**Admins in this group** :\n"
+    mentions = "Admins in this group :\n"
     reply_message = await reply_id(event)
     input_str = event.pattern_match.group(1)
     to_write_chat = await event.get_input_chat()
@@ -98,7 +98,7 @@ async def _(event):
 )
 async def _(event):
     "To get list of bots"
-    mentions = "**Bots in this group** : \n"
+    mentions = "Bots in this group : \n"
     input_str = event.pattern_match.group(1)
     if not input_str:
         chat = await event.get_input_chat()
@@ -140,7 +140,7 @@ async def _(event):
 )
 async def get_users(show):
     "To get list of users"
-    mentions = "**Users in this group** :\n"
+    mentions = "Users in this group :\n"
     await reply_id(show)
     input_str = show.pattern_match.group(1)
     if input_str:
@@ -199,7 +199,7 @@ async def info(event):
     except Exception as e:
         if BOTLOG:
             await event.client.send_message(
-                BOTLOG_CHATID, f"**Error in chatinfo : **\n`{e}`"
+                BOTLOG_CHATID, f"Error in chatinfo :\n`{e}`"
             )
 
         await catevent.edit("`An unexpected error has occurred`")
@@ -238,7 +238,7 @@ async def get_chatinfo(event, catevent):
             return None
         except (TypeError, ValueError) as err:
             LOGS.info(err)
-            await edit_delete(catevent, "**Error :**\n\nCan't fetch the chat")
+            await edit_delete(catevent, "Error :\n\nCan't fetch the chat")
             return None
     return chat_info
 
@@ -387,7 +387,7 @@ async def fetch_info(chat, event):  # sourcery no-metrics
         for _ in bots_list:
             bots += 1
 
-    caption = "<b>CHAT INFO :</b>\n"
+    caption = "CHAT INFO :\n"
     caption += f"Id : <code>{chat_obj_info.id}</code>\n"
     if chat_title is not None:
         caption += f"{chat_type} Name : {chat_title}\n"
