@@ -33,10 +33,10 @@ async def wiki(event):
     except DisambiguationError as error:
         error = str(error).split("\n")
         result = "".join(
-            f"`{i}`\n" if lineno > 1 else f"**{i}**\n"
+            f"`{i}`\n" if lineno > 1 else f"{i}\n"
             for lineno, i in enumerate(error, start=1)
         )
-        return await edit_or_reply(event, f"**Disambiguated page found**\n\n{result}")
+        return await edit_or_reply(event, f"Disambiguated page found\n\n{result}")
     except PageError:
         pass
     if not result:
@@ -45,18 +45,18 @@ async def wiki(event):
         except DisambiguationError as error:
             error = str(error).split("\n")
             result = "".join(
-                f"`{i}`\n" if lineno > 1 else f"**{i}**\n"
+                f"`{i}`\n" if lineno > 1 else f"{i}\n"
                 for lineno, i in enumerate(error, start=1)
             )
             return await edit_or_reply(
-                event, f"**Disambiguated page found**\n\n{result}"
+                event, f"Disambiguated page found\n\n{result}"
             )
         except PageError:
             return await edit_delete(
-                event, f"**Sorry I can't find any results for**`{match}`"
+                event, f"Sorry I can't find any results for`{match}`"
             )
     await edit_or_reply(
-        event, "**Search :**\n`" + match + "`\n\n**Result :**\n" + f"{result}"
+        event, "Search :\n`" + match + "`\n\nResult :\n" + f"{result}"
     )
     if BOTLOG:
         await event.client.send_message(
@@ -119,19 +119,19 @@ async def imdb_query(event):  # sourcery no-metrics
         mov_cast = await get_cast("cast", movie)
         mov_box = await get_moviecollections(movie)
         resulttext = f"""
-<b>Title : </b><code>{mov_title}</code>
-<b>Imdb url : </b><a href='https://www.imdb.com/title/tt{movieid}'>{mov_ltitle}</a>
-<b>Info : </b><code>{mov_runtime} | {mov_airdate}</code>
-<b>Genres : </b><code>{mov_genres}</code>
-<b>Rating : </b><code>{mov_rating}</code>
-<b>Country : </b><code>{mov_countries}</code>
-<b>Language : </b><code>{mov_languages}</code>
-<b>Director : </b><code>{mov_director}</code>
-<b>Music director : </b><code>{mov_composers}</code>
-<b>Writer : </b><code>{mov_writer}</code>
-<b>Stars : </b><code>{mov_cast}</code>
-<b>Box office : </b>{mov_box}
-<b>Story outline : </b><i>{mov_plot}</i>"""
+Title : <code>{mov_title}</code>
+Imdb url : <a href='https://www.imdb.com/title/tt{movieid}'>{mov_ltitle}</a>
+Info : <code>{mov_runtime} | {mov_airdate}</code>
+Genres : <code>{mov_genres}</code>
+Rating : <code>{mov_rating}</code>
+Country : <code>{mov_countries}</code>
+Language : <code>{mov_languages}</code>
+Director : <code>{mov_director}</code>
+Music director : <code>{mov_composers}</code>
+Writer : <code>{mov_writer}</code>
+Stars : <code>{mov_cast}</code>
+Box office : {mov_box}
+Story outline : <i>{mov_plot}</i>"""
         if "full-size cover url" in moviekeys:
             imageurl = movie["full-size cover url"]
         else:
@@ -165,4 +165,4 @@ async def imdb_query(event):  # sourcery no-metrics
     except IndexError:
         await catevent.edit(f"No movie found with name {movie_name}")
     except Exception as e:
-        await catevent.edit(f"**Error :**\n{e}")
+        await catevent.edit(f"Error :\n{e}")
