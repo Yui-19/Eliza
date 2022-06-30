@@ -30,10 +30,10 @@ plugin_category = "tools"
 async def _(event):
     "Restarts the bot"
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "RESTART \n" "Bot restarted")
+        await event.client.send_message(BOTLOG_CHATID, "RESTART\nBot restarted")
     sandy = await edit_or_reply(
         event,
-        "Restarted\n\n`.ping` me or `.help` to check if I am online actually it takes 1-2 min for restarting",
+        "Restarted\n\n`.ping` me or `.help` to check if I am online actually it takes 1-2 minutes for restarting",
     )
     try:
         ulist = get_collectionlist_items()
