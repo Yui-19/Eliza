@@ -236,7 +236,7 @@ async def _(event):
         "`Loading hackintosh... 69%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
         "`Loading hackintosh... 89%\n█████████████████████▒▒▒▒ `",
         "`Loading hackintosh... 100%\n█████████████████████████ `",
-        "`Welcome...\n\nStock OS : Symbian OS\nCurrent OS : hackintosh`\n\n**My PC Specs :**\n\n **CPU :** __2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)__\n\n**Graphics :** __Nvidia GeForce GTX 1080 OC (8GB GDDR5X)__\n\n**RAM :** __32GB DDR4 (2,666MHz)__\n\n**Screen :** __17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync__\n\n**Storage :** __512GB PCIe SSD, 1TB HDD (7,200 rpm)__\n\n**Ports :** __2 x USB 3.0, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), HDMI, mini DisplayPort, Ethernet, headphone jack, microphone jack__\n\n**Connectivity :** __Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0__\n\n**Camera :** __Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello__\n\n**Size :** __16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)__",
+        "`Welcome...\n\nStock OS : Symbian OS\nCurrent OS : hackintosh`\n\nMy PC Specs :\n\n CPU : 2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)\n\nGraphics : Nvidia GeForce GTX 1080 OC (8GB GDDR5X)\n\nRAM : 32GB DDR4 (2,666MHz)\n\nScreen : 17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync\n\nStorage : 512GB PCIe SSD, 1TB HDD (7,200 rpm)\n\nPorts : 2 x USB 3.0, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), HDMI, mini DisplayPort, Ethernet, headphone jack, microphone jack\n\nConnectivity : Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0\n\nCamera : Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello\n\nSize : 16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -267,7 +267,7 @@ async def _(event):
         "`Loading windows 11... 69%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
         "`Loading windows 11... 89%\n█████████████████████▒▒▒▒ `",
         "`Loading windows 11... 100%\n█████████████████████████ `",
-        "`Welcome...\n\nStock OS : Symbian OS\nCurrent OS : Windows 11`\n\n**My PC Specs :**\n\n **CPU :** __3.4GHz ryzen 9 5950x (16-core,32 threads 64MB cache, up to 4.9GHz)__\n\n**Graphics :** __Nvidia GeForce RTX 3090 OC (24GB GDDR6X)__\n\n**RAM :** __64GB DDR4 (4000MHz)__\n\n**Screen :** __17.3-inch, UHD (3840 x 2160) 144Hz Hdr G-Sync__\n\n**Storage :** __512GB nvme gen 4 SSD, 5 TB HDD (7,200 rpm)__\n\n**Ports :** __2 x USB 3.1, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), 2 HDMI2.0, mini DisplayPort, Ethernet, headphone jack, microphone jack__\n\n**Connectivity :** __Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0__\n\n**Camera :** __Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello__\n\n**Size :** __16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)__",
+        "`Welcome...\n\nStock OS : Symbian OS\nCurrent OS : Windows 11`\n\nMy PC Specs :\n\nCPU : 3.4GHz ryzen 9 5950x (16-core,32 threads 64MB cache, up to 4.9GHz)\n\nGraphics : Nvidia GeForce RTX 3090 OC (24GB GDDR6X)\n\nRAM : 64GB DDR4 (4000MHz)\n\nScreen : 17.3-inch, UHD (3840 x 2160) 144Hz Hdr G-Sync\n\nStorage : 512GB nvme gen 4 SSD, 5 TB HDD (7,200 rpm)\n\nPorts : 2 x USB 3.1, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), 2 HDMI2.0, mini DisplayPort, Ethernet, headphone jack, microphone jack\n\nConnectivity : Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0\n\nCamera : Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello\n\nSize : 16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -298,7 +298,7 @@ async def _(event):
         "`Loading linux... 69%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
         "`Loading linux... 89%\n█████████████████████▒▒▒▒ `",
         "`Loading linux... 100%\n█████████████████████████ `",
-        "`Welcome...\n\nStock OS : Symbian OS\nCurrent OS : Linux`\n\n**My PC Specs :**\n\n **CPU :** __2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)__\n\n**Graphics :** __Nvidia GeForce GTX 1080 OC (8GB GDDR5X)__\n\n**RAM :** __32GB DDR4 (2,666MHz)__\n\n**Screen :** __17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync__\n\n**Storage :** __512GB PCIe SSD, 1TB HDD (7,200 rpm)__\n\n**Ports :** __2 x USB 3.0, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), HDMI, mini DisplayPort, Ethernet, headphone jack, microphone jack__\n\n**Connectivity :** __Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0__\n\n**Camera :** __Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello__\n\n**Size :** __16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)__",
+        "`Welcome...\n\nStock OS : Symbian OS\nCurrent OS : Linux`\n\nMy PC Specs :\n\nCPU : 2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)\n\nGraphics : Nvidia GeForce GTX 1080 OC (8GB GDDR5X)\n\nRAM : 32GB DDR4 (2,666MHz)\n\nScreen : 17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync\n\nStorage : 512GB PCIe SSD, 1TB HDD (7,200 rpm)\n\nPorts : 2 x USB 3.0, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), HDMI, mini DisplayPort, Ethernet, headphone jack, microphone jack\n\nConnectivity : Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0\n\nCamera : Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello\n\nSize : 16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -329,7 +329,7 @@ async def _(event):
         "`Loading symbian OS... 69%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
         "`Loading symbian OS... 89%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
         "`Loading symbian OS... 100%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-        "`Welcome...\n\nStock OS : Symbian OS\nCurrent OS : Symbian OS`\n\n**My PC Specs :**\n\n **CPU :** __2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)__\n\n**Graphics :** __Nvidia GeForce GTX 1080 OC (8GB GDDR5X)__\n\n**RAM :** __32GB DDR4 (2,666MHz)__\n\n**Screen :** __17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync__\n\n**Storage :** __512GB PCIe SSD, 1TB HDD (7,200 rpm)__\n\n**Ports :** __2 x USB 3.0, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), HDMI, mini DisplayPort, Ethernet, headphone jack, microphone jack__\n\n**Connectivity :** __Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0__\n\n**Camera :** __Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello__\n\n**Size :** __16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)__",
+        "`Welcome...\n\nStock OS : Symbian OS\nCurrent OS : Symbian OS`\n\nMy PC Specs :\n\nCPU : 2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)\n\nGraphics : Nvidia GeForce GTX 1080 OC (8GB GDDR5X)\n\nRAM : 32GB DDR4 (2,666MHz)\n\nScreen : 17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync\n\nStorage : 512GB PCIe SSD, 1TB HDD (7,200 rpm)\n\nPorts : 2 x USB 3.0, 1 x USB-C 3.0, 1 x USB-C (Thunderbolt 3), HDMI, mini DisplayPort, Ethernet, headphone jack, microphone jack\n\nConnectivity : Killer 1550 802.11ac Wi-Fi, Bluetooth 5.0\n\nCamera : Alienware FHD camera, Tobii IR Eye-tracking with Windows Hello\n\nSize : 16.7 x 13.1 x 1.18 inches (42.4 x 33.2 x 2.99cm; W x D x H)",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
