@@ -41,5 +41,5 @@ async def cmt(odi):
             await odi.delete()
             os.remove(audio)
     except Exception as e:
-         await edit_delete(odi, f"**Error :**\n`{e}`", 7)
+         await edit_delete(odi, f"Error :\n`{e}`", 7)
          os.remove(audio)
