@@ -53,7 +53,7 @@ async def subprocess_run(megadl, cmd):
     exitCode = subproc.returncode
     if exitCode != 0:
         await megadl.edit(
-            "**An error was detected while running subprocess**\n"
+            "An error was detected while running subprocess\n"
             f"exitcode : `{exitCode}`\n"
             f"stdout : `{stdout.decode().strip()}`\n"
             f"stderr : `{stderr.decode().strip()}`"
@@ -83,7 +83,7 @@ async def mega_downloader(megadl):  # sourcery no-metrics
     elif msg_link:
         link = msg_link.text
     else:
-        return await catevent.edit("Usage : `.mega` **<MEGA.nz link>**")
+        return await catevent.edit("Usage : `.mega` <MEGA.nz link>")
     try:
         link = re.findall(r"\bhttps?://.*mega.*\.nz\S+", link)[0]
         # - Mega changed their URL again -
@@ -100,7 +100,7 @@ async def mega_downloader(megadl):  # sourcery no-metrics
     try:
         data = json.loads(result[0])
     except json.JSONDecodeError:
-        await catevent.edit("**Json decode error** : `Failed to extract link...`")
+        await catevent.edit("Json decode error : `Failed to extract link...`")
         return None
     except (IndexError, TypeError):
         return
@@ -122,7 +122,7 @@ async def mega_downloader(megadl):  # sourcery no-metrics
     try:
         downloader.start(blocking=False)
     except HTTPError as e:
-        await catevent.edit(f"**Http error** : `{str(e)}`")
+        await catevent.edit(f"Http error : `{str(e)}`")
         return None
     start = time.time()
     while not downloader.isFinished():
@@ -142,13 +142,13 @@ async def mega_downloader(megadl):  # sourcery no-metrics
         diff = time.time() - start
         try:
             current_message = (
-                f"**➥ File name : **`{file_name}`\n\n"
-                "**➥ Status :**\n"
+                f"➥ File name : `{file_name}`\n\n"
+                "➥ Status :\n"
                 f"{progress_str}\n"
                 f"`{humanbytes(downloaded)}` of `{humanbytes(total_length)}`"
                 f" @ `{speed}`\n"
-                f"**➥ Duration -> **`{time_formatter(round(diff))}`"
-                f"**➥ Eta -> **`{time_formatter(estimated_total_time)}`\n"
+                f"➥ Duration -> `{time_formatter(round(diff))}`"
+                f"➥ Eta -> `{time_formatter(estimated_total_time)}`\n"
             )
             if round(diff % 15.00) == 0 and (
                 display_message != current_message or total_length == downloaded
@@ -178,9 +178,9 @@ async def mega_downloader(megadl):  # sourcery no-metrics
             return None
         else:
             await catevent.edit(
-                f"**➥ File name : **`{file_name}`\n\n"
-                f"**➥ Successfully downloaded in : ** `{file_path}`.\n"
-                f"**➥ Download took :** {time_formatter(download_time)}."
+                f"➥ File name : `{file_name}`\n\n"
+                f"➥ Successfully downloaded in :  `{file_path}`.\n"
+                f"➥ Download took : {time_formatter(download_time)}."
             )
             return None
     else:
