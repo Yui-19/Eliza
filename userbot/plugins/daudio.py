@@ -51,7 +51,7 @@ async def kill_mp3(event):
     await event.client.send_file(
         event.chat_id,
         file=ded_file,
-        caption=f"**| Successfully destroyed |**",
+        caption=f"| Successfully destroyed |",
         reply_to=reply_to_id,
     )
     await event.delete()
