@@ -26,7 +26,7 @@ async def cat(event):
     res = requests.get(url)
     a = res.json()
     i = 0
-    my_string = "<b>Center no : 1 </b>\n\n"
+    my_string = "Center no : 1\n\n"
     if (not "centers" in a) or (not a["centers"]):
         return await edit_delete(event, "Can't find any deatils for this pin code")
     else:
@@ -40,16 +40,16 @@ async def cat(event):
                             val = a["centers"][i][items][j][subitem]
                             if "_" in subitem:
                                 subitem = subitem.replace("_", " ")
-                            my_string += f"<b> • {subitem.title()} :</b> <code>{val}</code>\n"
+                            my_string += f"• {subitem.title()} : <code>{val}</code>\n"
                         j += 1
                 else:
                     value = a["centers"][i][items]
                     if "_" in items:
                         items = items.replace("_", " ")
-                    my_string += f"<b> ✘ {items.title()} :</b> <code>{value}</code>\n"
+                    my_string += f" ✘ {items.title()} : <code>{value}</code>\n"
             i += 1
             if i < len(a["centers"]):
-                my_string += f"\n\n<b> Center no : {i+1}</b>\n\n"
+                my_string += f"\n\nCenter no : {i+1}\n\n"
     cat = (
         my_string.replace("',", "\n       ")
         .replace("['", "• ")
