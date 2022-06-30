@@ -31,7 +31,7 @@ async def gps(event):
         await event.client.send_file(
             event.chat_id,
             file=types.InputMediaGeoPoint(types.InputGeoPoint(lat, lon)),
-            caption=f"**Location : **`{input_str}`",
+            caption=f"Location : `{input_str}`",
             reply_to=reply_to_id,
         )
         await catevent.delete()
