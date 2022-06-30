@@ -170,7 +170,7 @@ async def newpacksticker(
     rsp = await conv.get_response()
     if not verify_cond(EMOJI_SEN, rsp.text):
         await catevent.edit(
-            f"Failed to add sticker , use @Stickers bot to add the sticker manually\n\n**Error :**{rsp.text}"
+            f"Failed to add sticker use @Stickers bot to add the sticker manually\n\nError : {rsp.text}"
         )
         if not pkang:
             return None, None, None
@@ -269,7 +269,7 @@ async def add_to_pack(
         rsp = await conv.get_response()
     if not verify_cond(EMOJI_SEN, rsp.message):
         await catevent.edit(
-            f"Failed to add sticker , use @Stickers bot to add the sticker manually\n\n**Error :**{rsp.message}"
+            f"Failed to add sticker use @Stickers bot to add the sticker manually\n\nError : {rsp.message}"
         )
         if not pkang:
             return None, None
@@ -381,14 +381,14 @@ async def kang(args):  # sourcery no-metrics
         if len(splat) == 2:
             if char_is_emoji(splat[0][0]):
                 if char_is_emoji(splat[1][0]):
-                    return await catevent.edit("check `.info stickers`")
+                    return await catevent.edit("Check `.info stickers`")
                 pack = splat[1]  # User sent both
                 emoji = splat[0]
             elif char_is_emoji(splat[1][0]):
                 pack = splat[0]  # User sent both
                 emoji = splat[1]
             else:
-                return await catevent.edit("check `.info stickers`")
+                return await catevent.edit("Check `.info stickers`")
         elif len(splat) == 1:
             if char_is_emoji(splat[0][0]):
                 emoji = splat[0]
@@ -774,7 +774,7 @@ async def pic2packcmd(event):
         return await edit_delete(
             event, "What's your packname ? Pass along with command"
         )
-    catevent = await edit_or_reply(event, "Cropping and adjusting the image... 🗡️")
+    catevent = await edit_or_reply(event, "Cropping and adjusting the image...")
     try:
         emoji = (re.findall(r"-e[\U00010000-\U0010ffff]+", args))[0]
         args = args.replace(emoji, "")
@@ -890,12 +890,12 @@ async def get_pack_info(event):
         if document_sticker.emoticon not in pack_emojis:
             pack_emojis.append(document_sticker.emoticon)
     OUTPUT = (
-        f"**Sticker title :** `{get_stickerset.set.title}\n`"
-        f"**Sticker short name :** `{get_stickerset.set.short_name}`\n"
-        f"**Official :** `{get_stickerset.set.official}`\n"
-        f"**Archived :** `{get_stickerset.set.archived}`\n"
-        f"**Stickers in pack :** `{get_stickerset.set.count}`\n"
-        f"**Emojis in pack :**\n{' '.join(pack_emojis)}"
+        f"Sticker title : `{get_stickerset.set.title}\n\n`"
+        f"Sticker short name : `{get_stickerset.set.short_name}`\n\n"
+        f"Official : `{get_stickerset.set.official}`\n\n"
+        f"Archived : `{get_stickerset.set.archived}`\n\n"
+        f"Stickers in pack : `{get_stickerset.set.count}`\n\n"
+        f"Emojis in pack : {' '.join(pack_emojis)}"
     )
     await catevent.edit(OUTPUT)
 
@@ -920,12 +920,12 @@ async def cb_sticker(event):
     soup = bs(text, "lxml")
     results = soup.find_all("div", {"class": "sticker-pack__header"})
     if not results:
-        return await edit_delete(catevent, "`No results found :(.`", 5)
-    reply = f"**Sticker packs found for {split} are :**"
+        return await edit_delete(catevent, "`No results found`", 5)
+    reply = f"Sticker packs found for {split} are :"
     for pack in results:
         if pack.button:
             packtitle = (pack.find("div", "sticker-pack__title")).get_text()
             packlink = (pack.a).get("href")
             packid = (pack.button).get("data-popup")
-            reply += f"\n **• Id : **`{packid}`\n [{packtitle}]({packlink})"
+            reply += f"\n• Id : `{packid}`\n [{packtitle}]({packlink})"
     await catevent.edit(reply)
