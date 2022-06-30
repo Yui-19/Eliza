@@ -134,7 +134,7 @@ async def _(event):
     contentType = response_api.headers["content-type"]
     end = datetime.now()
     ms = (end - start).seconds
-    hmm = f"**Url : **{input_str}\n\n**Time :** `{ms} seconds`"
+    hmm = f"Url : {input_str}\n\nTime : `{ms} seconds`"
     if "image" in contentType:
         with io.BytesIO(response_api.content) as screenshot_image:
             screenshot_image.name = "screencapture.png"
