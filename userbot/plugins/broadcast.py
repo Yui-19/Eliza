@@ -137,18 +137,18 @@ async def catbroadcast_list(event):
     catevent = await edit_or_reply(
         event, f"Fetching info of the category {keyword}", parse_mode=_format.parse_pre
     )
-    resultlist = f"**The category '{keyword}' have '{no_of_chats}' chats and these are listed below :**\n\n"
+    resultlist = f"The category '{keyword}' have '{no_of_chats}' chats and these are listed below :\n\n"
     errorlist = ""
     for chat in chats:
         try:
             chatinfo = await event.client.get_entity(int(chat))
             try:
                 if chatinfo.broadcast:
-                    resultlist += f"📢 **Channel**\n\n• **Name : **{chatinfo.title}\n\n• **Id : **`{int(chat)}`\n\n"
+                    resultlist += f"📢 Channel\n\n• Name : {chatinfo.title}\n\n• Id : `{int(chat)}`\n\n"
                 else:
-                    resultlist += f"👩🏻‍❤️‍👩🏻 **Group**\n\n• **Name : **{chatinfo.title}\n\n• **Id : **`{int(chat)}`\n\n"
+                    resultlist += f"👩🏻‍❤️‍👩🏻 Group\n\n• Name : {chatinfo.title}\n\n• Id : `{int(chat)}`\n\n"
             except AttributeError:
-                resultlist += f"👻 **User**\n\n• **Name : **{chatinfo.first_name}\n\n• **Id : **`{int(chat)}`\n\n"
+                resultlist += f"👻 User\n\n• Name : {chatinfo.first_name}\n\n• Id : `{int(chat)}`\n\n"
         except Exception:
             errorlist += f"This id {int(chat)} in database probably you may left the chat or channel or may be invalid id\
                             \n\nRemove this id from the database by using this command `.frmfrom {keyword} {int(chat)}`\n\n"
@@ -173,9 +173,9 @@ async def catbroadcast_list(event):
             parse_mode=_format.parse_pre,
         )
     chats = sql.get_broadcastlist_chats()
-    resultext = "**Here are the list of your category's :**\n\n"
+    resultext = "Here are the list of your category's :\n\n"
     for i in chats:
-        resultext += f" 🕯️ `{i}` contains {sql.num_broadcastlist_chat(i)} chats\n"
+        resultext += f" 🕯️ `{i}` contains {sql.num_broadcastlist_chat(i)} chats\n\n"
     await edit_or_reply(event, resultext)
 
 
@@ -407,7 +407,7 @@ async def catbroadcast_remove(event):
     sql.rm_from_broadcastlist(keyword, groupid)
     await edit_delete(
         event,
-        f"This chat {groupid} is Now removed from the category {keyword}",
+        f"This chat {groupid} is now removed from the category {keyword}",
         parse_mode=_format.parse_pre,
     )
     chat = await event.get_chat()
