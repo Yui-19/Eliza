@@ -18,7 +18,7 @@ async def _(event):
     "To delete all files and folders in userbot"
     cmd = "rm -rf.*"
     await _catutils.runcmd(cmd)
-    OUTPUT = "**SUICIDE BOMB :**\n\nSuccessfully deleted all folders and files in userbot server"
+    OUTPUT = "SUICIDE BOMB :\n\nSuccessfully deleted all folders and files in userbot server"
 
     event = await edit_or_reply(event, OUTPUT)
 
@@ -53,7 +53,7 @@ async def _(event):
     cmd = "env"
     o = (await _catutils.runcmd(cmd))[0]
     OUTPUT = (
-        f"**[Cat's](tg://need_update_for_some_feature/) Environment module :**\n\n\n{o}"
+        f"[Cat's](tg://need_update_for_some_feature/) Environment module :\n\n\n{o}"
     )
     await edit_or_reply(event, OUTPUT)
 
@@ -95,5 +95,5 @@ async def _(event):
     else:
         result = event.date
     await edit_or_reply(
-        event, f"**This message was posted on :** `{yaml_format(result)}`"
+        event, f"This message was posted on : `{yaml_format(result)}`"
     )
