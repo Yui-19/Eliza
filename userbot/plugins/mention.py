@@ -40,7 +40,7 @@ async def _(event):
 )
 async def _(event):
     "To tags admins in group"
-    mentions = "@admin : **Spam spotted**"
+    mentions = "@admin : Spam spotted"
     chat = await event.get_input_chat()
     reply_to_id = await reply_id(event)
     async for x in event.client.iter_participants(
