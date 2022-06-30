@@ -20,8 +20,8 @@ async def LEGENDBOT(event):
     LEGENDX = event.pattern_match.group(1)
     PROBOY = random.randint(0, 100)
     if LEGENDX:
-        reslt = f"""🦋 ʏᴏᴜʀ ᴡɪꜱʜ ʜᴀꜱ ʙᴇᴇɴ ᴄᴀꜱᴛᴇᴅ 🦋\n\n\nYour wish ➪ **`{LEGENDX}`** 
-              \n\n𝐂𝐇𝐀𝐍𝐂𝐄 𝐎𝐅 𝐒𝐔𝐂𝐂𝐄𝐒𝐒 : **{PROBOY}%**"""
+        reslt = f"""🦋 ʏᴏᴜʀ ᴡɪꜱʜ ʜᴀꜱ ʙᴇᴇɴ ᴄᴀꜱᴛᴇᴅ 🦋\n\n\nYour wish ➪ `{LEGENDX}` 
+              \n\n𝐂𝐇𝐀𝐍𝐂𝐄 𝐎𝐅 𝐒𝐔𝐂𝐂𝐄𝐒𝐒 : {PROBOY}%"""
     else:
         if event.is_reply:
             reslt = f"🦋 ʏᴏᴜʀ ᴡɪꜱʜ ʜᴀꜱ ʙᴇᴇɴ ᴄᴀꜱᴛᴇᴅ 🦋\
