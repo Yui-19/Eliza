@@ -27,7 +27,7 @@ async def kakashi(event):
         "⦁ **Beta**": magisk_repo + "master/beta.json",
         "⦁ **Canary**": magisk_repo + "master/canary.json",
     }
-    releases = "**Latest magisk releases**\n\n"
+    releases = "Latest magisk releases\n\n"
     for name, release_url in magisk_dict.items():
         data = get(release_url).json()
         releases += (
@@ -63,12 +63,12 @@ async def device_info(event):
     )
     results = data.get(codename)
     if results:
-        reply = f"**Search results for {codename}** :\n\n"
+        reply = f"Search results for {codename} :\n\n"
         for item in results:
             reply += (
-                f"**Brand** : {item['brand']}\n"
-                f"**Name** : {item['name']}\n"
-                f"**Model** : {item['model']}\n\n"
+                f"Brand : {item['brand']}\n"
+                f"Name : {item['name']}\n"
+                f"Model : {item['model']}\n\n"
             )
     else:
         reply = f"`Couldn't find info about {codename}!`\n"
@@ -118,9 +118,9 @@ async def codename_info(event):
             results = results[:8]
         for item in results:
             reply += (
-                f"**Device** : {item['device']}\n"
-                f"**Name** : {item['name']}\n"
-                f"**Model** : {item['model']}\n\n"
+                f"Device : {item['device']}\n"
+                f"Name : {item['name']}\n"
+                f"Model : {item['model']}\n\n"
             )
     else:
         reply = f"`Couldn't find {device} codename`\n"
@@ -204,7 +204,7 @@ async def devices_specifications(event):
     },
 )
 async def twrp(event):
-    "get android device twrp"
+    "Get android device twrp"
     textx = await event.get_reply_message()
     device = event.pattern_match.group(1)
     if device:
@@ -224,8 +224,8 @@ async def twrp(event):
     size = page.find("span", {"class": "filesize"}).text
     date = page.find("em").text.strip()
     reply = (
-        f"**Latest twrp for {device} :**\n"
-        f"[{dl_file}]({dl_link}) - {size}\n"
-        f"**Updated :** {date}\n"
+        f"Latest twrp for {device} :\n\n"
+        f"[{dl_file}]({dl_link}) - {size}\n\n"
+        f"Updated : {date}\n"
     )
     await edit_or_reply(event, reply)
