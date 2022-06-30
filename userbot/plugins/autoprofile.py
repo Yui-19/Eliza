@@ -73,7 +73,7 @@ async def autopicloop():
         if BOTLOG:
             return await catub.send_message(
                 BOTLOG_CHATID,
-                "**Error**\n\n`For functing of autopic you need to set DEFAULT_PIC var in heroku vars`",
+                "Error\n\n`For functing of autopic you need to set DEFAULT_PIC var in heroku vars`",
             )
         return
     if gvarstatus("autopic") is not None:
@@ -176,7 +176,7 @@ async def bloom_pfploop():
         if BOTLOG:
             return await catub.send_message(
                 BOTLOG_CHATID,
-                "**Error**\n\n`For functing of bloom you need to set DEFAULT_PIC var in heroku vars`",
+                "Error\n\n`For functing of bloom you need to set DEFAULT_PIC var in heroku vars`",
             )
         return
     while BLOOMSTART:
@@ -351,7 +351,7 @@ async def _(event):
     if Config.DEFAULT_PIC is None:
         return await edit_delete(
             event,
-            "**Error**\n\nFor functing of autopic you need to set DEFAULT_PIC var in heroku vars",
+            "Error\n\nFor functing of autopic you need to set DEFAULT_PIC var in heroku vars",
             parse_mode=_format.parse_pre,
         )
     downloader = SmartDL(Config.DEFAULT_PIC, autopic_path, progress_bar=False)
@@ -416,7 +416,7 @@ async def _(event):
     if Config.DEFAULT_PIC is None:
         return await edit_delete(
             event,
-            "**Error**\n\nFor functing of bloom you need to set DEFAULT_PIC var in heroku vars",
+            "Error\n\nFor functing of bloom you need to set DEFAULT_PIC var in heroku vars",
             parse_mode=_format.parse_pre,
         )
     downloader = SmartDL(Config.DEFAULT_PIC, autopic_path, progress_bar=True)
@@ -462,7 +462,7 @@ async def useless(event):  # sourcery no-metrics
         if gvarstatus("CUSTOM_PFP") is not None and gvarstatus("CUSTOM_PFP") == "true":
             return await edit_delete(event, "`Custom pfp is already enabled`")
         if not list_link:
-            return await edit_delete(event, "**There no links for custom pfp...**")
+            return await edit_delete(event, "There no links for custom pfp...")
         addgvar("CUSTOM_PFP", True)
         await edit_delete(event, "`Starting custom pfp...`")
         await custompfploop()
@@ -470,11 +470,11 @@ async def useless(event):  # sourcery no-metrics
     if flag == "l":
         if not list_link:
             return await edit_delete(
-                event, "**There are no links set for custom pfp...**"
+                event, "There are no links set for custom pfp..."
             )
-        links = "**Available links for custom pfp are here :- **\n\n"
+        links = "Available links for custom pfp are here :- \n\n"
         for i, each in enumerate(list_link, start=1):
-            links += f"**{i}.**  {each}\n"
+            links += f"{i}. {each}\n"
         await edit_delete(event, links, 60)
         return
     if flag == "s":
@@ -492,27 +492,27 @@ async def useless(event):  # sourcery no-metrics
         input_str = reply.text
     if not input_str:
         return await edit_delete(
-            event, "**Reply to valid link or give valid link url as input...**"
+            event, "Reply to valid link or give valid link url as input..."
         )
     extractor = URLExtract()
     plink = extractor.find_urls(input_str)
     if len(plink) == 0:
         return await edit_delete(
-            event, "**Reply to valid link or give valid link url as input...**"
+            event, "Reply to valid link or give valid link url as input..."
         )
     if flag == "a":
         for i in plink:
             if not is_in_list("CUSTOM_PFP_LINKS", i):
                 add_to_list("CUSTOM_PFP_LINKS", i)
         await edit_delete(
-            event, f"**{len(plink)} pictures sucessfully added to custom pfps**"
+            event, f"{len(plink)} pictures sucessfully added to custom pfps"
         )
     elif flag == "r":
         for i in plink:
             if is_in_list("CUSTOM_PFP_LINKS", i):
                 rm_from_list("CUSTOM_PFP_LINKS", i)
         await edit_delete(
-            event, f"**{len(plink)} pictures sucessfully removed from custom pfps**"
+            event, f"{len(plink)} pictures sucessfully removed from custom pfps"
         )
 
 
