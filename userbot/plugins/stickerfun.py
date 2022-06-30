@@ -95,7 +95,7 @@ async def sticklet(event):
         if event.reply_to_msg_id:
             sticktext = reply_message.message
         else:
-            return await edit_or_reply(event, "need something, hmm")
+            return await edit_or_reply(event, "Need something umm")
     # delete the userbot command,
     # i don't know why this is required
     await event.delete()
