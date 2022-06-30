@@ -77,7 +77,7 @@ async def _(event):
         # await catevent.edit(f"**Error1 :** `{stderr}`")
         catname, stderr = (await _catutils.runcmd(name_cmd))[:2]
         if stderr:
-            return await catevent.edit(f"**Error :** `{stderr}`")
+            return await catevent.edit(f"Error : `{stderr}`")
         catname = os.path.splitext(catname)[0]
         song_file = Path(f"{catname}.mp3")
     except:
@@ -86,7 +86,7 @@ async def _(event):
         return await catevent.edit(
             f"Sorry ! I can't find any related video or audio for `{query}`"
         )
-    await catevent.edit("`Yeah...! I found something wait... 🥰`")
+    await catevent.edit("`Yeah...! I found something wait...`")
     catthumb = Path(f"{catname}.jpg")
     if not os.path.exists(catthumb):
         catthumb = Path(f"{catname}.webp")
@@ -97,7 +97,7 @@ async def _(event):
         event.chat_id,
         song_file,
         force_document=False,
-        caption=f"**Title :** `{title}`",
+        caption=f"Title : `{title}`",
         thumb=catthumb,
         supports_streaming=True,
         reply_to=reply_to_id,
@@ -148,7 +148,7 @@ async def _(event):
         # return await catevent.edit(f"**Error :** `{stderr}`")
         catname, stderr = (await _catutils.runcmd(name_cmd))[:2]
         if stderr:
-            return await catevent.edit(f"**Error :** `{stderr}`")
+            return await catevent.edit(f"Error : `{stderr}`")
         catname = os.path.splitext(catname)[0]
         vsong_file = Path(f"{catname}.mp4")
     except:
@@ -159,7 +159,7 @@ async def _(event):
         return await catevent.edit(
             f"Sorry ! I can't find any related video or audio for `{query}`"
         )
-    await catevent.edit("`Yeah...! I found something wait... 🥰`")
+    await catevent.edit("`Yeah...! I found something wait...`")
     catthumb = Path(f"{catname}.jpg")
     if not os.path.exists(catthumb):
         catthumb = Path(f"{catname}.webp")
@@ -169,7 +169,7 @@ async def _(event):
     await event.client.send_file(
         event.chat_id,
         vsong_file,
-        caption=f"**Title :** `{title}`",
+        caption=f"Title : `{title}`",
         thumb=catthumb,
         supports_streaming=True,
         reply_to=reply_to_id,
@@ -218,13 +218,13 @@ async def shazamcmd(event):
     except Exception as e:
         LOGS.error(e)
         return await edit_delete(
-            catevent, f"**Error while reverse searching song :**\n{e}"
+            catevent, f"Error while reverse searching song :\n{e}"
         )
 
     image = track["images"]["background"]
     song = track["share"]["subject"]
     await event.client.send_file(
-        event.chat_id, image, caption=f"**Song :** `{song}`", reply_to=reply
+        event.chat_id, image, caption=f"Song : `{song}`", reply_to=reply
     )
     await catevent.delete()
 
@@ -250,7 +250,7 @@ async def _(event):
             purgeflag = await conv.send_message("/start")
         except YouBlockedUserError:
             await edit_or_reply(
-                catevent, "**Error :** Trying to unblock & retry , wait a second..."
+                catevent, "Error : Trying to unblock & retry , wait a second..."
             )
             await catub(unblock("songdl_bot"))
             purgeflag = await conv.send_message("/start")
@@ -277,7 +277,7 @@ async def _(event):
         await event.client.send_file(
             event.chat_id,
             music,
-            caption=f"<b>Title :- <code>{song}</code></b>",
+            caption=f"Title :- <code>{song}</code>",
             parse_mode="html",
             reply_to=reply_id_,
         )
