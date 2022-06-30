@@ -54,7 +54,7 @@ async def monito_p_m_s(event):  # sourcery no-metrics
                     LOG_CHATS_.COUNT = 0
                 LOG_CHATS_.NEWPM = await event.client.send_message(
                     Config.PM_LOGGER_GROUP_ID,
-                    f"👤{_format.mentionuser(sender.first_name , sender.id)} has sent a new message\n\nId : `{chat.id}`",
+                    f"{_format.mentionuser(sender.first_name , sender.id)} has sent a new message\n\nId : `{chat.id}`",
                 )
             try:
                 if event.message:
@@ -86,16 +86,16 @@ async def log_tagged_messages(event):
     except Exception as e:
         LOGS.info(str(e))
     messaget = media_type(event)
-    resalt = f"TAGS\n\n<b>Group : </b><code>{hmm.title}</code>"
+    resalt = f"TAGS\n\nGroup : <code>{hmm.title}</code>"
     if full is not None:
         resalt += (
-            f"\n<b>From : </b> {_format.htmlmentionuser(full.first_name , full.id)}"
+            f"\nFrom : {_format.htmlmentionuser(full.first_name , full.id)}"
         )
     if messaget is not None:
-        resalt += f"\n<b>Message type : </b><code>{messaget}</code>"
+        resalt += f"\nMessage type : <code>{messaget}</code>"
     else:
-        resalt += f"\n<b>Message : </b>{event.message.message}"
-    resalt += f"\n<b>Message link : </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>"
+        resalt += f"\nMessage : {event.message.message}"
+    resalt += f"\nMessage link : <a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>"
     if not event.is_private:
         await event.client.send_message(
             Config.PM_LOGGER_GROUP_ID,
