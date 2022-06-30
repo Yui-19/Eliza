@@ -143,7 +143,7 @@ async def bot_start(event):
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"**Error :**\n\nThere was a error while user starting your bot\n`{e}`",
+                f"Error :\n\nThere was a error while user starting your bot\n`{e}`",
             )
 
     else:
@@ -164,7 +164,7 @@ async def bot_pms(event):  # sourcery no-metrics
             if BOTLOG:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    f"**Error :**\nWhile storing messages details in database\n`{str(e)}`",
+                    f"Error :\nWhile storing messages details in database\n`{str(e)}`",
                 )
     else:
         if event.text.startswith("/"):
@@ -193,7 +193,7 @@ async def bot_pms(event):  # sourcery no-metrics
             except UserIsBlockedError:
                 return await event.reply("𝗧𝗵𝗶𝘀 𝗯𝗼𝘁 𝘄𝗮𝘀 𝗯𝗹𝗼𝗰𝗸𝗲𝗱 𝗯𝘆 𝘁𝗵𝗲 𝘂𝘀𝗲𝗿")
             except Exception as e:
-                return await event.reply(f"**Error :**\n`{e}`")
+                return await event.reply(f"Error :\n`{e}`")
             try:
                 add_user_to_db(
                     reply_to, user_name, user_id, reply_msg, event.id, msg.id
@@ -203,7 +203,7 @@ async def bot_pms(event):  # sourcery no-metrics
                 if BOTLOG:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f"**Error :**\nWhile storing messages details in database\n`{e}`",
+                        f"Error :\nWhile storing messages details in database\n`{e}`",
                     )
 
 
@@ -222,7 +222,7 @@ async def bot_pms_edit(event):  # sourcery no-metrics
         ):
             await event.client.send_message(
                 Config.OWNER_ID,
-                f"**This message was edited by the user** {_format.mentionuser(get_display_name(chat) , chat.id)} as :",
+                f"This message was edited by the user {_format.mentionuser(get_display_name(chat) , chat.id)} as :",
                 reply_to=reply_msg,
             )
             msg = await event.forward_to(Config.OWNER_ID)
@@ -233,7 +233,7 @@ async def bot_pms_edit(event):  # sourcery no-metrics
                 if BOTLOG:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f"**Error :**\n\nWhile storing messages details in database\n`{e}`",
+                        f"Error :\n\nWhile storing messages details in database\n`{e}`",
                     )
 
     else:
@@ -296,7 +296,7 @@ async def handler(event):
                         return
                     await event.client.send_message(
                         Config.OWNER_ID,
-                        f"**This message was deleted by the user** {_format.mentionuser(user_name , user_id)}.",
+                        f"This message was deleted by the user {_format.mentionuser(user_name , user_id)}.",
                         reply_to=reply_msg,
                     )
             except Exception as e:
@@ -316,7 +316,7 @@ async def bot_start(event):
     users = get_user_id(reply_to)
     if users is None:
         return await info_msg.edit(
-            "**ERROR :**\n\n`Sorry can't find this user in my database`"
+            "ERROR :\n\n`Sorry can't find this user in my database`"
         )
     for usr in users:
         user_id = int(usr.chat_id)
@@ -324,11 +324,11 @@ async def bot_start(event):
         break
     if user_id is None:
         return await info_msg.edit(
-            "**ERROR :**\n\n`Sorry can't find this user in my database`"
+            "ERROR :\n\n`Sorry can't find this user in my database`"
         )
     uinfo = f"This message was sent by {_format.mentionuser(user_name , user_id)}\
-            \n\n**First name :** {user_name}\
-            \n\n**User id :** `{user_id}`"
+            \n\nFirst name : {user_name}\
+            \n\nUser id : `{user_id}`"
     await info_msg.edit(uinfo)
 
 
@@ -355,7 +355,7 @@ async def send_flood_alert(user_) -> None:
             if BOTLOG:
                 await catub.tgbot.send_message(
                     BOTLOG_CHATID,
-                    f"**Error :**\n\nWhile updating flood count\n`{e}`",
+                    f"Error :\n\nWhile updating flood count\n`{e}`",
                 )
 
         flood_count = FloodConfig.ALERT[user_.id]["count"]
@@ -363,12 +363,12 @@ async def send_flood_alert(user_) -> None:
         flood_count = FloodConfig.ALERT[user_.id]["count"] = 1
 
     flood_msg = (
-        r"**Flood warning**"
+        r"Flood warning"
         "\n\n"
         f"  Id : `{user_.id}`\n"
         f"  Name : {get_display_name(user_)}\n"
         f"  User : {_format.mentionuser(get_display_name(user_), user_.id)}"
-        f"\n\n**Is spamming your bot** -> [Flood rate ({flood_count})]\n"
+        f"\n\nIs spamming your bot -> [Flood rate ({flood_count})]\n"
         "Quick action : Ignored from bot for a while"
     )
 
@@ -415,7 +415,7 @@ async def send_flood_alert(user_) -> None:
             )
         except UserIsBlockedError:
             if BOTLOG:
-                await catub.tgbot.send_message(BOTLOG_CHATID, "**Unblock your bot**")
+                await catub.tgbot.send_message(BOTLOG_CHATID, "Unblock your bot")
     if FloodConfig.ALERT[user_.id].get("fa_id") is None and fa_msg:
         FloodConfig.ALERT[user_.id]["fa_id"] = fa_msg.id
 
@@ -431,7 +431,7 @@ async def bot_pm_ban_cb(c_q: CallbackQuery):
     else:
         await c_q.answer(f"Banning user id -> {user_id}...", alert=False)
         await ban_user_from_bot(user, "Spamming bot")
-        await c_q.edit(f"**Successfully banned**\n\nUser id : {user_id}")
+        await c_q.edit(f"Successfully banned\n\nUser id : {user_id}")
 
 
 def time_now() -> Union[float, int]:
