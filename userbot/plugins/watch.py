@@ -102,7 +102,7 @@ async def _(event):
     try:
         streams = get_stream_data(query)
     except Exception as e:
-        return await et.edit(f"**Error :** `{e}`")
+        return await et.edit(f"Error : `{e}`")
     title = streams["title"]
     thumb_link = streams["movie_thumb"]
     release_year = streams["release_year"]
@@ -121,13 +121,13 @@ async def _(event):
     if release_date is None:
         release_date = release_year
 
-    output_ = f"**Movie :**\n`{title}`\n**Release date :**\n`{release_date}`"
+    output_ = f"Movie :\n`{title}`\nRelease date :\n`{release_date}`"
     if imdb_score:
-        output_ = f"{output_}\n**Imdb : **{imdb_score}"
+        output_ = f"{output_}\nImdb : {imdb_score}"
     if tmdb_score:
-        output_ = f"{output_}\n**Tmdb : **{tmdb_score}"
+        output_ = f"{output_}\nTmdb : {tmdb_score}"
 
-    output_ = output_ + "\n\n**Available on :**\n"
+    output_ = output_ + "\n\nAvailable on :\n"
     for provider, link in stream_providers.items():
         if "sonyliv" in link:
             link = link.replace(" ", "%20")
