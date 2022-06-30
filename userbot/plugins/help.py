@@ -76,7 +76,7 @@ async def plugininfo(input_str, event, flag):
         outstr = await cmdinfo(input_str, event, plugin=True)
         return outstr
     except Exception as e:
-        await edit_delete(event, f"**Error :**\n`{e}`")
+        await edit_delete(event, f"Error :\n`{e}`")
         return None
     if len(cmds) == 1 and (flag is None or (flag and flag != "-p")):
         outstr = await cmdinfo(cmds[0], event, plugin=False)
@@ -232,15 +232,15 @@ async def _(event):
 async def _(event):
     "To get dc of your bot"
     result = await event.client(functions.help.GetNearestDcRequest())
-    result = f"**Dc details of your account :**\
-              \n**Country :** {result.country}\
-              \n**Current dc :** {result.this_dc}\
-              \n**Nearest dc :** {result.nearest_dc}\
-              \n\n**List of telegram data centres :**\
-              \n**Dc 1 : **Miami FL USA\
-              \n**Dc 2 :** Amsterdam NL\
-              \n**Dc 3 :** Miami FL USA\
-              \n**Dc 4 :** Amsterdam NL\
-              \n**Dc 5 : **Singapore SG\
+    result = f"Dc details of your account :\
+              \nCountry : {result.country}\
+              \nCurrent dc : {result.this_dc}\
+              \nNearest dc : {result.nearest_dc}\
+              \n\nList of telegram data centres :\
+              \nDc 1 : Miami FL USA\
+              \nDc 2 : Amsterdam NL\
+              \nDc 3 : Miami FL USA\
+              \nDc 4 : Amsterdam NL\
+              \nDc 5 : Singapore SG\
                 "
     await edit_or_reply(event, result)
