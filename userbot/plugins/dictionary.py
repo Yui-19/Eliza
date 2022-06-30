@@ -30,7 +30,7 @@ async def _(event):
         word = response["list"][0]["word"]
         definition = response["list"][0]["definition"]
         example = response["list"][0]["example"]
-        result = "**Text : {}**\n**Meaning :**\n`{}`\n\n**Example :**\n`{}`".format(
+        result = "Text : {}\nMeaning :\n`{}`\n\nExample :\n`{}`".format(
             _format.replacetext(word),
             _format.replacetext(definition),
             _format.replacetext(example),
@@ -57,10 +57,10 @@ async def _(event):
     word = event.pattern_match.group(1)
     dictionary = PyDictionary()
     cat = dictionary.meaning(word)
-    output = f"**Word :** {word}\n\n"
+    output = f"Word : {word}\n\n"
     try:
         for a, b in cat.items():
-            output += f"**{a}**\n"
+            output += f"{a}\n"
             for i in b:
                 output += f"{i}\n"
         await edit_or_reply(event, output)
