@@ -96,7 +96,7 @@ async def paste_img(event):
         if d_file_name is not None:
             os.remove(d_file_name)
     except Exception as e:
-        await edit_delete(catevent, f"**Error :**\n`{e}`", time=10)
+        await edit_delete(catevent, f"Error :\n`{e}`", time=10)
 
 
 @catub.cat_cmd(
@@ -159,18 +159,18 @@ async def paste_bin(event):
         if "error" in response:
             return await edit_delete(
                 catevent,
-                "**Error while pasting text :**\n\n`Unable to process your request may be pastebins are down`",
+                "Error while pasting text :\n\n`Unable to process your request may be pastebins are down`",
             )
 
         result = ""
         if pastebins[response["bin"]] != pastetype:
-            result += f"<b>{get_key(pastetype)} is down , so </b>"
-        result += f"<b>Pasted to : <a href={response['url']}>{response['bin']}</a></b>"
+            result += f"{get_key(pastetype)} is down , so"
+        result += f"Pasted to : <a href={response['url']}>{response['bin']}</a>"
         if response["raw"] != "":
-            result += f"\n<b>Raw link : <a href={response['raw']}>Raw</a></b>"
+            result += f"\nRaw link : <a href={response['raw']}>Raw</a>"
         await catevent.edit(result, link_preview=False, parse_mode="html")
     except Exception as e:
-        await edit_delete(catevent, f"**Error while pasting text :**\n`{e}`")
+        await edit_delete(catevent, f"Error while pasting text :\n`{e}`")
 
 
 @catub.cat_cmd(
@@ -238,17 +238,17 @@ async def get_dogbin_content(event):
         resp.raise_for_status()
     except requests.exceptions.HTTPError as HTTPErr:
         return await catevent.edit(
-            f"**Request returned an unsuccessful status code**\n\n{str(HTTPErr)}"
+            f"Request returned an unsuccessful status code\n\n{str(HTTPErr)}"
         )
     except requests.exceptions.Timeout as TimeoutErr:
         return await catevent.edit(f"**Request timed out** {str(TimeoutErr)}")
     except requests.exceptions.TooManyRedirects as RedirectsErr:
         return await catevent.edit(
             (
-                f"**Request exceeded the configured number of maximum redirections** {str(RedirectsErr)}"
+                f"Request exceeded the configured number of maximum redirections {str(RedirectsErr)}"
             )
         )
-    reply_text = f"**Fetched dogbin url content successfully**\n\n**Content :**\n```{resp.text}```"
+    reply_text = f"Fetched dogbin url content successfully\n\nContent :\n```{resp.text}```"
     await edit_or_reply(catevent, reply_text)
 
 
@@ -286,11 +286,11 @@ async def _(event):
         if "error" in response:
             return await edit_delete(
                 catevent,
-                "**Error while pasting text :**\n\n`Unable to process your request may be pastebins are down`",
+                "Error while pasting text :\n\n`Unable to process your request may be pastebins are down`",
             )
 
     except Exception as e:
-        return await edit_delete(catevent, f"**Error while pasting text :**\n`{e}`")
+        return await edit_delete(catevent, f"Error while pasting text :\n`{e}`")
     url = response["url"]
     chat = "@CorsaBot"
     await catevent.edit("`Making instant view...`")
