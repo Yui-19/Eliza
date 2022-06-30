@@ -114,13 +114,13 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "thumbnail": "**Plugin :** `thumbnail`\
-    \n\n**Syntax :** `.savethumb`\
-    \n**Usage : **Reply to file or video to save it as temporary thumbimage\
-    \n\n**Syntax : **`.clearthumb`\
-    \n**Usage : **To clear thumbnail no longer you uploads uses custom thumbanail\
-    \n\n**Syntax : **`.getthumb`\
-    \n**Usage : **To get thumbnail of given video or gives your present thumbnail\
+        "thumbnail": "Plugin : `thumbnail`\
+    \n\nSyntax : `.savethumb`\
+    \nUsage : Reply to file or video to save it as temporary thumbimage\
+    \n\nSyntax : `.clearthumb`\
+    \nUsage : To clear thumbnail no longer you uploads uses custom thumbanail\
+    \n\nSyntax : `.getthumb`\
+    \nUsage : To get thumbnail of given video or gives your present thumbnail\
     "
     }
 )
