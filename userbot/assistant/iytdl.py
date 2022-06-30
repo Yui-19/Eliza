@@ -124,7 +124,7 @@ async def ytdl_download_callback(c_q: CallbackQuery):  # sourcery no-metrics
     upload_msg = await c_q.client.send_message(BOTLOG_CHATID, "Uploading...")
     yt_url = BASE_YT_URL + yt_code
     await c_q.edit(
-        f"<b> Downloading {media_type}...</b>\n\n <a href={yt_url}> <b>Link</b></a>\n\n <b>format code</b> : {disp_str}",
+        f"Downloading {media_type}...\n\n <a href={yt_url}>\n\nLink</a>\n\n format code : {disp_str}",
         parse_mode="html",
     )
     if downtype == "v":
@@ -171,12 +171,12 @@ async def ytdl_download_callback(c_q: CallbackQuery):  # sourcery no-metrics
     uploaded_media = await c_q.client.send_file(
         BOTLOG_CHATID,
         file=media,
-        caption=f"<b>File name : </b><code>{os.path.basename(Path(_fpath))}</code>",
+        caption=f"File name : <code>{os.path.basename(Path(_fpath))}</code>",
         parse_mode="html",
     )
     await upload_msg.delete()
     await c_q.edit(
-        text=f"<a href={yt_url}><b>{os.path.basename(Path(_fpath))}</b></a>",
+        text=f"<a href={yt_url}>{os.path.basename(Path(_fpath))}</a>",
         file=uploaded_media.media,
         parse_mode="html",
     )
@@ -278,7 +278,7 @@ async def ytdl_callback(c_q: CallbackQuery):
         )
     else:  # Detailed
         index = 1
-        await c_q.answer("View changed to : detailed", alert=False)
+        await c_q.answer("View changed to : Detailed", alert=False)
         first = search_data.get(str(index))
         await c_q.edit(
             text=first.get("message"),
