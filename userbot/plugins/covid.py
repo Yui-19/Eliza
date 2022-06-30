@@ -30,14 +30,14 @@ async def corona(event):
         hmm1 = country_data["confirmed"] + country_data["new_cases"]
         hmm2 = country_data["deaths"] + country_data["new_deaths"]
         data = ""
-        data += f"\n\n🤧 Confirmed : <code>{hmm1}</code>"
-        data += f"\n\n😓 Active : <code>{country_data['active']}</code>"
-        data += f"\n\n😵 Deaths : <code>{hmm2}</code>"
-        data += f"\n\n🤕 Critical : <code>{country_data['critical']}</code>"
-        data += f"\n\n☺️ Recovered : <code>{country_data['recovered']}</code>"
-        data += f"\n\n💉 Total tests : <code>{country_data['total_tests']}</code>"
-        data += f"\n\n🥺 New cases : <code>{country_data['new_cases']}</code>"
-        data += f"\n\n😖 New deaths : <code>{country_data['new_deaths']}</code>"
+        data += f"\n\nConfirmed : <code>{hmm1}</code>"
+        data += f"\n\nActive : <code>{country_data['active']}</code>"
+        data += f"\n\nDeaths : <code>{hmm2}</code>"
+        data += f"\n\nCritical : <code>{country_data['critical']}</code>"
+        data += f"\n\nRecovered : <code>{country_data['recovered']}</code>"
+        data += f"\n\nTotal tests : <code>{country_data['total_tests']}</code>"
+        data += f"\n\nNew cases : <code>{country_data['new_cases']}</code>"
+        data += f"\n\nNew deaths : <code>{country_data['new_deaths']}</code>"
         await catevent.edit(
             "<b>Corona virus info of {}:\n{}</b>".format(country, data),
             parse_mode="html",
@@ -49,13 +49,13 @@ async def corona(event):
             cat2 = int(data["new_death"]) - int(data["death"])
             cat3 = int(data["new_cured"]) - int(data["cured"])
             result = f"<b>Corona virus info of {data['state_name']}\
-                \n\n🤧 Confirmed : <code>{data['new_positive']}</code>\
-                \n\n😓 Active : <code>{data['new_active']}</code>\
-                \n\n😵 Deaths : <code>{data['new_death']}</code>\
-                \n\n☺️ Recovered : <code>{data['new_cured']}</code>\
-                \n\n🥺 New cases : <code>{cat1}</code>\
-                \n\n😖 New deaths : <code>{cat2}</code>\
-                \n\n😍 New cured : <code>{cat3}</code> </b>"
+                \n\nConfirmed : <code>{data['new_positive']}</code>\
+                \n\nActive : <code>{data['new_active']}</code>\
+                \n\nDeaths : <code>{data['new_death']}</code>\
+                \n\nRecovered : <code>{data['new_cured']}</code>\
+                \n\nNew cases : <code>{cat1}</code>\
+                \n\nNew deaths : <code>{cat2}</code>\
+                \n\nNew cured : <code>{cat3}</code> </b>"
             await catevent.edit(result, parse_mode="html")
         else:
             await edit_delete(
