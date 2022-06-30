@@ -23,7 +23,7 @@ async def anim(fucking):
     if a == 1 :
         idfc = await edit_or_reply(fucking, "Lol... 🤣")
         time.sleep(2)
-        fucki = await idfc.edit(f"Imao... 🤧")
+        fucki = await idfc.edit(f"Imao... 👀")
         time.sleep(7)
         await fucki.edit(f"I don't fucking care 🥰")
     else:
