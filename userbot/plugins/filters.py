@@ -133,7 +133,7 @@ async def add_new_filter(event):
         string = msg.text
     elif not string:
         return await edit_or_reply(event, "What should I do ?")
-    success = "`Filter` **{}** `{} successfully`"
+    success = "`Filter`{}` {} successfully`"
     if add_filter(str(event.chat_id), keyword, string, msg_id) is True:
         return await edit_or_reply(event, success.format(keyword, "added"))
     remove_filter(str(event.chat_id), keyword)
@@ -179,9 +179,9 @@ async def remove_a_filter(event):
     "Stops the specified keyword"
     filt = event.pattern_match.group(1)
     if not remove_filter(event.chat_id, filt):
-        await event.edit("Filter` {} `doesn't exist".format(filt))
+        await event.edit("Filter `{}`doesn't exist".format(filt))
     else:
-        await event.edit("Filter `{} `was deleted successfully".format(filt))
+        await event.edit("Filter `{}` was deleted successfully".format(filt))
 
 
 @catub.cat_cmd(
