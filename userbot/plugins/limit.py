@@ -33,4 +33,4 @@ async def _(event):
             )
             await event.delete()
         except YouBlockedUserError:
-            await event.edit("**Error :**\n\nUnblock @SpamBot and try again")
+            await event.edit("Error :\n\nUnblock @SpamBot and try again")
