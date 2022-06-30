@@ -82,7 +82,7 @@ async def ytdl_down(event, opts, url):
     except ExtractorError:
         await event.edit("`There was an error during info extraction`")
     except Exception as e:
-        await event.edit(f"**Error : **\n{e}")
+        await event.edit(f"Error : \n{e}")
     return ytdl_data
 
 
@@ -185,7 +185,7 @@ async def download_audio(event):
             return await edit_delete(catevent, "Unable to upload file")
         await catevent.edit(
             f"`Preparing to upload video :`\
-            \n**{vid_data['title']}***"
+            \n{vid_data['title']}"
         )
         attributes, mime_type = get_attributes(str(_fpath))
         ul = io.open(pathlib.Path(_fpath), "rb")
@@ -219,7 +219,7 @@ async def download_audio(event):
         await event.client.send_file(
             event.chat_id,
             file=media,
-            caption=f"<b>File name : </b><code>{vid_data.get('title', os.path.basename(pathlib.Path(_fpath)))}</code>",
+            caption=f"File name : <code>{vid_data.get('title', os.path.basename(pathlib.Path(_fpath)))}</code>",
             supports_streaming=True,
             reply_to=reply_to_id,
             parse_mode="html",
@@ -266,7 +266,7 @@ async def download_video(event):
                 catthumb = None
             await catevent.edit(
                 f"`Preparing to upload video :`\
-                \n\n**{ytdl_data['title']}**"
+                \n\n{ytdl_data['title']}"
             )
             ul = io.open(f, "rb")
             c_time = time()
@@ -320,7 +320,7 @@ async def insta_dl(event):
     if not link and reply:
         link = reply.text
     if not link:
-        return await edit_delete(event, "**Give me link to search..**", 10)
+        return await edit_delete(event, "Give me link to search..", 10)
     if "instagram.com" not in link:
         return await edit_delete(
             event, "` I need a instagram link to download it's video...`", 10
@@ -328,20 +328,20 @@ async def insta_dl(event):
     v1 = "@instasave_bot"
     v2 = "@videomaniacbot"
     media_list = []
-    catevent = await edit_or_reply(event, "**Downloading...**")
+    catevent = await edit_or_reply(event, "Downloading...")
     async with event.client.conversation(v1) as conv:
         try:
             v1_flag = await conv.send_message("/start")
         except YouBlockedUserError:
             await edit_or_reply(
-                catevent, "**Error :** Trying to unblock & retry , wait a second..."
+                catevent, "Error : Trying to unblock & retry , wait a second..."
             )
             await catub(unblock("instasave_bot"))
             v1_flag = await conv.send_message("/start")
         response = await conv.get_response()
         checker = response.text
         await event.client.send_read_acknowledge(conv.chat_id)
-        if checker == "Welcome !":
+        if checker == "Welcome":
             await asyncio.sleep(2)
             await conv.send_message(link)
             media = await conv.get_response()
@@ -360,18 +360,18 @@ async def insta_dl(event):
                 await event.client.send_file(
                     event.chat_id,
                     media_list,
-                    caption=f"**{details[0]}**",
+                    caption=f"{details[0]}",
                 )
                 return await delete_conv(event, v1, v1_flag)
             checker = media.message.splitlines()[2]
         await delete_conv(event, v1, v1_flag)
-        await edit_or_reply(catevent, "**Switching v2...**")
+        await edit_or_reply(catevent, "Switching v2...")
         async with event.client.conversation(v2) as conv:
             try:
                 v2_flag = await conv.send_message("/start")
             except YouBlockedUserError:
                 await edit_or_reply(
-                    catevent, "**Error :** Trying to unblock & retry , wait a second..."
+                    catevent, "Error : Trying to unblock & retry , wait a second..."
                 )
                 await catub(unblock("videomaniacbot"))
                 v2_flag = await conv.send_message("/start")
@@ -388,14 +388,14 @@ async def insta_dl(event):
                     error = checker.splitlines()[2]
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f"**V1 ERROR :-**\n\nCurrently we using @instasave_bot for v1 that need users to join this chat : {error}\n\nIf you know any good bot which does'nt need join channel inform us here : @catuserbot_support",
+                        f"V1 ERROR :-\n\nCurrently we using @instasave_bot for v1 that need users to join this chat : {error}\n\nIf you know any good bot which does'nt need join channel inform us here : @catuserbot_support",
                     )
                 await catevent.delete()
                 await event.client.send_file(event.chat_id, media)
             else:
                 await edit_delete(
                     catevent,
-                    f"**ERROR\n\nV1 :** {checker}\n\n**V2 :** {media.text}",
+                    f"ERROR\n\nV1 : {checker}\n\nV2 : {media.text}",
                     40,
                 )
             await delete_conv(event, v2, v2_flag)
@@ -435,5 +435,5 @@ async def yt_search(event):
         full_response = await ytsearch(query, limit=lim)
     except Exception as e:
         return await edit_delete(video_q, str(e), time=10, parse_mode=_format.parse_pre)
-    reply_text = f"**•  Search query :**\n`{query}`\n\n**• Results :**\n{full_response}"
+    reply_text = f"• Search query :\n`{query}`\n\n• Results :\n{full_response}"
     await edit_or_reply(video_q, reply_text)
