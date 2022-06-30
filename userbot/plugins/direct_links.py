@@ -196,7 +196,7 @@ def mega_dl(url: str) -> str:
 
 
 def cm_ru(url: str) -> str:
-    """cloud mail ru direct links generator
+    """Cloud mail ru direct links generator
     Using https://github.com/JrMasterModelBuilder/cmrudl.py"""
     reply = ""
     try:
