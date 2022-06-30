@@ -150,27 +150,27 @@ async def _(event):
     if r % 2 == 1:
         if input_str == "heads":
             await edit_or_reply(
-                event, "The coin landed on : **Heads**\n\nYou were correct"
+                event, "The coin landed on : Heads\n\nYou were correct"
             )
         elif input_str == "tails":
             await edit_or_reply(
                 event,
-                "The coin landed on : **Heads**\n\nYou weren't correct , try again...",
+                "The coin landed on : Heads\n\nYou weren't correct , try again...",
             )
         else:
-            await edit_or_reply(event, "The coin landed on : **Heads**")
+            await edit_or_reply(event, "The coin landed on : Heads")
     elif r % 2 == 0:
         if input_str == "tails":
             await edit_or_reply(
-                event, "The coin landed on : **Tails**\n\nYou were correct"
+                event, "The coin landed on : Tails\n\nYou were correct"
             )
         elif input_str == "heads":
             await edit_or_reply(
                 event,
-                "The coin landed on : **Tails**\n\nYou weren't correct , try again...",
+                "The coin landed on : Tails\n\nYou weren't correct , try again...",
             )
         else:
-            await edit_or_reply(event, "The coin landed on : **Tails**")
+            await edit_or_reply(event, "The coin landed on : Tails")
     else:
         await edit_or_reply(event, r"¯\_(ツ)_/¯")
 
@@ -443,21 +443,21 @@ async def gbun(event):
                 "`Warning`"
                 "[{}](tg://user?id={})"
                 "`gbanned by admin...\n\n`"
-                "**User's name : ** {}\n"
-                "**Id : ** `{}`\n"
+                "User's name : {}\n"
+                "Id : `{}`\n"
             ).format(firstname, idd, firstname, idd)
             if usname is None:
-                jnl += "**Victim nigga's username : ** `Doesn't own a username`\n"
+                jnl += "Victim nigga's username : `Doesn't own a username`\n"
             else:
-                jnl += "**Victim nigga's username** : @{}\n".format(usname)
+                jnl += "Victim nigga's username : @{}\n".format(usname)
             if len(gbunVar) > 0:
                 gbunm = "`{}`".format(gbunVar)
-                gbunr = "**Reason :**" + gbunm
+                gbunr = "Reason :" + gbunm
                 jnl += gbunr
             else:
                 no_reason = "Reason : Potential spammer"
                 jnl += no_reason
             await catevent.edit(jnl)
     else:
-        mention = "`Warning\n\nUser gbanned by admin...\n\nReason : Potential spammer `"
+        mention = "`Warning\n\nUser gbanned by admin...\n\nReason : Potential spammer`"
         await catevent.edit(mention)
