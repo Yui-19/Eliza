@@ -111,6 +111,6 @@ async def fact(message):
         except Exception:
             await eod(message, "```The fact api could not be reached```", 3)
         else:
-            await eor(message, f"**{cmd}**\n\n`{fact_text}`")
+            await eor(message, f"{cmd}\n\n`{fact_text}`")
     else:
         await eod(message, "`Unsupported animal...`", 3)
