@@ -44,7 +44,7 @@ async def get_media(event):
             await event.client.download_media(msg, tempdir)
             i += 1
             await event.edit(
-                f"Downloading media from this channel\n\n**Downloaded : **`{i}`"
+                f"Downloading media from this channel\n\nDownloaded : `{i}`"
             )
     ps = subprocess.Popen(("ls", tempdir), stdout=subprocess.PIPE)
     output = subprocess.check_output(("wc", "-l"), stdin=ps.stdout)
@@ -84,7 +84,7 @@ async def get_media(event):
             await event.client.download_media(msg, tempdir)
             i += 1
             await event.edit(
-                f"Downloading media from this channel\n\n**Downloaded : **`{i}`"
+                f"Downloading media from this channel\n\nDownloaded : `{i}`"
             )
     ps = subprocess.Popen(("ls", tempdir), stdout=subprocess.PIPE)
     output = subprocess.check_output(("wc", "-l"), stdin=ps.stdout)
