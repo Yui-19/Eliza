@@ -90,7 +90,7 @@ async def upload(path, event, udir_event, catflag=None):  # sourcery no-metrics
     catflag = catflag or False
     reply_to_id = await reply_id(event)
     if os.path.isdir(path):
-        await event.client.send_message(event.chat_id, f"**Folder :**`{path}`")
+        await event.client.send_message(event.chat_id, f"Folder :`{path}`")
         Files = os.listdir(path)
         Files = sortthings(Files, path)
         for file in Files:
