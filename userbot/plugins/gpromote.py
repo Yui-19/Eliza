@@ -118,7 +118,7 @@ async def gben(userbot):
     else:
         await dark.edit(f"Reply to a user you stupid kid")
     return await dark.edit(
-        f"Globally promoted {user.first_name}\n\n On chats : {i} "
+        f"Globally promoted {user.first_name}\n\nOn chats : {i} "
     )
 @catub.cat_cmd(
     pattern="gdemote$",
