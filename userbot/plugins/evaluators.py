@@ -41,7 +41,7 @@ async def _(event):
         catevent,
         text=cresult,
         aslink=True,
-        linktext=f"**•  Exec : **\n```{cmd}``` \n\n**• Result : **\n",
+        linktext=f"• Exec :\n```{cmd}```\n\n• Result :\n",
     )
     if BOTLOG:
         await event.client.send_message(
@@ -93,13 +93,13 @@ async def _(event):
     else:
         evaluation = "Success"
     final_output = (
-        f"**• Eval : **\n```{cmd}``` \n\n**• Result : **\n```{evaluation}``` \n"
+        f"• Eval :\n```{cmd}```\n\n• Result :\n```{evaluation}``` \n"
     )
     await edit_or_reply(
         catevent,
         text=final_output,
         aslink=True,
-        linktext=f"**• Eval : **\n```{cmd}``` \n\n**• Result : **\n",
+        linktext=f"• Eval :\n```{cmd}```\n\n• Result :\n",
     )
     if BOTLOG:
         await event.client.send_message(
