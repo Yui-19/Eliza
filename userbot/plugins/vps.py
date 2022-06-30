@@ -53,7 +53,7 @@ async def variable(event):  # sourcery no-metrics
     """
     if not os.path.exists(config):
         return await edit_delete(
-            event, "`There is no config file , you can't use this plugin`"
+            event, "`There is no config file you can't use this plugin`"
         )
     cmd = event.pattern_match.group(1)
     string = ""
@@ -67,21 +67,21 @@ async def variable(event):  # sourcery no-metrics
         for i in configs:
             if variable in i:
                 _, val = i.split("= ")
-                return await cat.edit("**Config vars** :" f"\n\n`{variable}` = `{val}`")
+                return await cat.edit("Config vars :"f"\n\n`{variable}` = `{val}`")
         await cat.edit(
-            "**Config vars** :" f"\n\nError :\n\n-> `{variable}` doesn't exists"
+            "Config vars :"f"\n\nError :\n\n-> `{variable}` doesn't exists"
         )
     elif cmd == "set":
         variable = "".join(event.text.split(maxsplit=2)[2:])
         cat = await edit_or_reply(event, "`Setting information...`")
         if not variable:
-            return await cat.edit("`.set var <ConfigVars-name> <value>`")
+            return await cat.edit("`.set var <configvars-name> <value>`")
         value = "".join(variable.split(maxsplit=1)[1:])
         variable = "".join(variable.split(maxsplit=1)[0])
         if variable not in var_checker:
             value = f"'{value}'"
         if not value:
-            return await cat.edit("`.set var <ConfigVars-name> <value>`")
+            return await cat.edit("`.set var <configvars-name> <value>`")
         await asyncio.sleep(1)
         for i in configs:
             if variable in i:
@@ -90,11 +90,11 @@ async def variable(event):  # sourcery no-metrics
             else:
                 string += f"{i}"
         if match:
-            await cat.edit(f"`{variable}` **Successfully changed to -> **`{value}`")
+            await cat.edit(f"`{variable}` successfully changed to -> `{value}`")
         else:
             string += f"    {variable} = {value}\n"
             await cat.edit(
-                f"`{variable}`**  Successfully added with value -> **`{value}`"
+                f"`{variable}` successfully added with value -> `{value}`"
             )
         with open(config, "w") as f1:
             f1.write(string)
@@ -113,10 +113,10 @@ async def variable(event):  # sourcery no-metrics
             f1.write(string)
             f1.close()
         if match:
-            await cat.edit(f"`{variable}` **Successfully deleted**")
+            await cat.edit(f"`{variable}` successfully deleted")
         else:
             await cat.edit(
-                "**Config vars** :" f"\n\nError :\n\n-> `{variable}` doesn't exists"
+                "Config vars :"f"\n\nError :\n\n-> `{variable}` doesn't exists"
             )
         await event.client.reload(cat)
 
@@ -139,7 +139,7 @@ async def variable(event):  # sourcery no-metrics
 async def _(event):
     "To reload your bot"
     cmd = event.pattern_match.group(1)
-    cat = await edit_or_reply(event, "`Wait 2-3 minutes , reloading...`")
+    cat = await edit_or_reply(event, "`Wait 2-3 minutes\n\nIt's reloading...`")
     if cmd == "clean":
         for file in exts:
             removing = glob.glob(f"./*.{file}")
