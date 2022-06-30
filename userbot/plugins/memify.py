@@ -82,7 +82,7 @@ async def maccmd(event):  # sourcery no-metrics
             )
         image = Image.open(imag[1])
     except Exception as e:
-        return await edit_delete(catevent, f"**Error in identifying image :**\n{e}")
+        return await edit_delete(catevent, f"Error in identifying image :\n{e}")
     wid, hgt = image.size
     img = Image.new("RGBA", (wid, hgt))
     scale = min(wid // 100, hgt // 100)
@@ -210,16 +210,16 @@ async def lang(event):
     "Change the font style use for memify"
     input_str = event.pattern_match.group(1)
     if not input_str:
-        await event.edit(f"**Available fonts names are here :-**\n\n{FONTS}")
+        await event.edit(f"Available fonts names are here :-\n\n{FONTS}")
         return
     if input_str not in font_list:
         catevent = await edit_or_reply(event, "`Give me a correct font name...`")
         await asyncio.sleep(1)
-        await catevent.edit(f"**Available fonts names are here :-**\n\n{FONTS}")
+        await catevent.edit(f"Available fonts names are here :-\n\n{FONTS}")
     else:
         arg = f"userbot/helpers/styles/{input_str}"
         addgvar("CNG_FONTS", arg)
-        await edit_or_reply(event, f"**Fonts for memify changed to :-** `{input_str}`")
+        await edit_or_reply(event, f"Fonts for memify changed to :- `{input_str}`")
 
 
 @catub.cat_cmd(
@@ -583,7 +583,7 @@ async def memes(event):
     try:
         colr = int(colr)
     except Exception as e:
-        return await edit_delete(event, f"**Error :**\n`{e}`")
+        return await edit_delete(event, f"Error :\n`{e}`")
     reply = await event.get_reply_message()
     if not reply:
         return await edit_delete(event, "`Reply to supported media...`")
