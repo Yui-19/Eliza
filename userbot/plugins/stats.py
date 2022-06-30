@@ -98,23 +98,23 @@ async def stats(event):  # sourcery no-metrics
         unread += dialog.unread_count
     stop_time = time.time() - start_time
     full_name = inline_mention(await event.client.get_me())
-    response = f"📌 **Stats for {full_name}**\n\n"
-    response += f"**Private chats :** {private_chats}\n\n"
+    response = f"Stats for {full_name}\n\n"
+    response += f"Private chats : {private_chats}\n\n"
     response += f"   ★ `Users : {private_chats - bots}`\n"
     response += f"   ★ `Bots : {bots}`\n"
-    response += f"**Groups :** {groups}\n\n"
-    response += f"**Channels :** {broadcast_channels}\n\n"
-    response += f"**Admin in groups :** {admin_in_groups}\n\n"
+    response += f"Groups : {groups}\n\n"
+    response += f"Channels : {broadcast_channels}\n\n"
+    response += f"Admin in groups : {admin_in_groups}\n\n"
     response += f"   ★ `Creator : {creator_in_groups}`\n"
     response += f"   ★ `Admin rights : {admin_in_groups - creator_in_groups}`\n"
-    response += f"**Admin in channels :** {admin_in_broadcast_channels}\n\n"
+    response += f"Admin in channels : {admin_in_broadcast_channels}\n\n"
     response += f"   ★ `Creator : {creator_in_channels}`\n"
     response += (
         f"   ★ `Admin rights : {admin_in_broadcast_channels - creator_in_channels}`\n"
     )
-    response += f"**Unread :** {unread}\n\n"
-    response += f"**Unread mentions :** {unread_mentions}\n\n"
-    response += f"📌 It took : {stop_time:.02f}s\n"
+    response += f"Unread : {unread}\n\n"
+    response += f"Unread mentions : {unread_mentions}\n\n"
+    response += f"It took : {stop_time:.02f}s\n"
     await cat.edit(response)
 
 
@@ -158,7 +158,7 @@ async def stats(event):  # sourcery no-metrics
         await event.client(cat)
     except BaseException:
         pass
-    output += f"\n**Time taken :** {stop_time:.02f}s"
+    output += f"\nTime taken : {stop_time:.02f}s"
     try:
         await catevent.edit(output)
     except Exception:
@@ -217,7 +217,7 @@ async def stats(event):  # sourcery no-metrics
         await event.client(cat)
     except BaseException:
         pass
-    output += f"\n**Time taken :** {stop_time:.02f}s"
+    output += f"\nTime taken : {stop_time:.02f}s"
     try:
         await catevent.edit(output)
     except Exception:
