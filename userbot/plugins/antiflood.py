@@ -36,7 +36,7 @@ async def _(event):
     except Exception as e:
         no_admin_privilege_message = await event.client.send_message(
             entity=event.chat_id,
-            message=f"**Err automatic anti flooder**\x1f@admin [User](tg://user?id={event.message.sender_id}) is flooding this chat\x1f`{e}`",
+            message=f"Err automatic anti flooder\x1f@admin [User](tg://user?id={event.message.sender_id}) is flooding this chat\x1f`{e}`",
             reply_to=event.message.id,
         )
 
@@ -47,7 +47,7 @@ async def _(event):
     else:
         await event.client.send_message(
             entity=event.chat_id,
-            message=f"""**Err automatic anti flooder**
+            message=f"""Err automatic anti flooder
 [User](tg://user?id={event.message.sender_id}) has been automatically restricted
 because the user has reached the defined flood limit""",
             reply_to=event.message.id,
