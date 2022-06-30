@@ -67,7 +67,7 @@ async def gen_chlog(repo, diff):
 
 async def print_changelogs(event, ac_br, changelog):
     changelog_str = (
-        f"**New update available for [{ac_br}]:\n\nChange log :**\n`{changelog}`"
+        f"New update available for [{ac_br}] :\n\nChange log :\n`{changelog}`"
     )
     if len(changelog_str) > 4096:
         await event.edit("`Change log is too large view the file to see it`")
@@ -116,7 +116,7 @@ async def update_bot(event, repo, ups_rem, ac_br):
 
 async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_API_KEY is None:
-        return await event.edit("`Please set up `**HEROKU_API_KEY**` var...`")
+        return await event.edit("`Please set up `HEROKU_API_KEY` var...`")
     heroku = heroku3.from_key(HEROKU_API_KEY)
     heroku_applications = heroku.apps()
     if HEROKU_APP_NAME is None:
@@ -169,12 +169,12 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     build_status = heroku_app.builds(order_by="created_at", sort="desc")[0]
     if build_status.status == "failed":
         return await edit_delete(
-            event, "`Build failed\nCancelled or there were some errors...`"
+            event, "`Build failed\n\nCancelled or there were some errors...`"
         )
     try:
         remote.push("master:main", force=True)
     except Exception as error:
-        await event.edit(f"{txt}\n**Here is the error log :**\n`{error}`")
+        await event.edit(f"{txt}\nHere is the error log :\n`{error}`")
         return repo.__del__()
     await event.edit("`Deploy was failed ! So restarting to update`")
     with contextlib.suppress(CancelledError):
@@ -239,7 +239,7 @@ async def upstream(event):
     ac_br = repo.active_branch.name
     if ac_br != UPSTREAM_REPO_BRANCH:
         await event.edit(
-            "**[UPDATER] :**\n"
+            "[UPDATER] :\n"
             f"`Looks like you are using your own custom branch ({ac_br})"
             "in that case , updater is unable to identify"
             "which branch is to be merged"
@@ -254,8 +254,8 @@ async def upstream(event):
     # Special case for deploy
     if changelog == "" and not force_update:
         await event.edit(
-            "\n\n`Cat userbot is up-to-date with`"
-            f"**{UPSTREAM_REPO_BRANCH}**\n"
+            "\n\n`Cat userbot is up to date with`"
+            f"{UPSTREAM_REPO_BRANCH}\n"
         )
         return repo.__del__()
     if conf == "" and not force_update:
@@ -295,7 +295,7 @@ async def upstream(event):
     try:
         txt = (
             "`Oops.. Updater cannot continue due to "
-            + "some problems occured`\n\n**Log trace :**\n"
+            + "some problems occured`\n\nLog trace :\n"
         )
 
         repo = Repo()
