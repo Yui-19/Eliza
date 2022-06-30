@@ -72,7 +72,7 @@ async def bad(event):  # sourcery no-metrics
     vnlist = "".join(f"{i}. `{each}`\n" for i, each in enumerate(vlist, start=1))
     if not vname:
         return await edit_delete(
-            event, f"**Give correct var name from the list :\n\n**{vnlist}", time=60
+            event, f"Give correct var name from the list :\n\n{vnlist}", time=60
         )
     vinfo = None
     if " " in vname:
@@ -88,27 +88,27 @@ async def bad(event):  # sourcery no-metrics
                 return await edit_delete(event, f"Check @cat_alive")
             if not vinfo:
                 return await edit_delete(
-                    event, f"Give some values which you want to save for **{vname}**"
+                    event, f"Give some values which you want to save for {vname}"
                 )
             check = vinfo.split(" ")
             for i in check:
                 if (("PIC" in vname) or ("pic" in vname)) and not url(i):
-                    return await edit_delete(event, "**Give me a correct link...**")
+                    return await edit_delete(event, "Give me a correct link...")
             addgvar(vname, vinfo)
             if BOTLOG_CHATID:
                 await event.client.send_message(
                     BOTLOG_CHATID,
                     f"SET DATAVAR\
-                    \n\n**{vname}** is updated newly in database as below",
+                    \n\n{vname} is updated newly in database as below",
                 )
                 await event.client.send_message(BOTLOG_CHATID, vinfo, silent=True)
             await edit_delete(
-                event, f"Value of **{vname}** is changed to :- `{vinfo}`", time=20
+                event, f"Value of {vname} is changed to :- `{vinfo}`", time=20
             )
         if cmd == "get":
             var_data = gvarstatus(vname)
             await edit_delete(
-                event, f"Value of **{vname}** is  `{var_data}`", time=20
+                event, f"Value of {vname} is  `{var_data}`", time=20
             )
         elif cmd == "del":
             delgvar(vname)
@@ -116,16 +116,16 @@ async def bad(event):  # sourcery no-metrics
                 await event.client.send_message(
                     BOTLOG_CHATID,
                     f"DEL DATAVAR\
-                    \n\n**{vname}** is deleted from database",
+                    \n\n{vname} is deleted from database",
                 )
             await edit_delete(
                 event,
-                f"Value of **{vname}** is now deleted & set to default",
+                f"Value of {vname} is now deleted & set to default",
                 time=20,
             )
     else:
         await edit_delete(
-            event, f"**Give correct var name from the list :\n\n**{vnlist}", time=60
+            event, f"Give correct var name from the list :\n\n{vnlist}", time=60
         )
 
 
@@ -188,7 +188,7 @@ async def custom_catuserbot(event):
         await event.client.send_message(
             BOTLOG_CHATID,
             f"SET DATAVAR\
-                    \n\n**{input_str}** is updated newly in database as below",
+                    \n\n{input_str} is updated newly in database as below",
         )
         await event.client.send_message(BOTLOG_CHATID, text, silent=True)
 
@@ -238,5 +238,5 @@ async def custom_catuserbot(event):
         await event.client.send_message(
             BOTLOG_CHATID,
             f"DEL DATAVAR\
-                    \n\n**{input_str}** is deleted from database",
+                    \n\n{input_str} is deleted from database",
         )
