@@ -60,7 +60,7 @@ async def very(event):
     if not text and reply:
         text = reply.text
     if not text:
-        return await edit_delete(event, "**Give me a text to make logo**")
+        return await edit_delete(event, "Give me a text to make logo")
     reply_to_id = await reply_id(event)
     catevent = await edit_or_reply(event, "`Processing...`")
     LOGO_FONT_SIZE = gvarstatus("LOGO_FONT_SIZE") or 220
@@ -155,7 +155,7 @@ async def bad(event):
     soup = BeautifulSoup(source.text, features="html.parser")
     links = soup.find_all("a", class_="js-navigation-open Link--primary")
     bg_name = []
-    lbg_list = "**Available background names are here :-**\n\n"
+    lbg_list = "Available background names are here :-\n\n"
     for i, each in enumerate(links, start=1):
         cat = os.path.splitext(each.text)[0]
         bg_name.append(cat)
@@ -178,7 +178,7 @@ async def bad(event):
             )
         addgvar("LOGO_BACKGROUND", input_str)
         return await edit_delete(
-            event, f"**Background for logo changed to :-** `{input_str}`"
+            event, f"Background for logo changed to :- `{input_str}`"
         )
     if not input_str:
         return await edit_delete(event, lbg_list, time=60)
@@ -190,7 +190,7 @@ async def bad(event):
         string = f"https://raw.githubusercontent.com/Jisan09/Files/main/backgroud/{input_str}.jpg"
         addgvar("LOGO_BACKGROUND", string)
         await edit_delete(
-            event, f"**Background for logo changed to :-** `{input_str}`", time=10
+            event, f"Background for logo changed to :- `{input_str}`", time=10
         )
 
 
@@ -260,7 +260,7 @@ async def pussy(event):
                 )
             addgvar("LOGO_FONT", string)
             await edit_delete(
-                event, f"**Font for logo changed to :-** `{input_str}`", time=10
+                event, f"Font for logo changed to :- `{input_str}`", time=10
             )
     elif cmd in ["c", "sc"]:
         fg_name = []
@@ -270,7 +270,7 @@ async def pussy(event):
         if not input_str:
             return await edit_delete(
                 event,
-                f"**Available color names are here :-**\n\n{fg_list}",
+                f"Available color names are here :-\n\n{fg_list}",
                 time=80,
             )
         if input_str not in fg_name:
@@ -278,75 +278,75 @@ async def pussy(event):
             await asyncio.sleep(1)
             await edit_delete(
                 catevent,
-                f"**Available color names are here :-**\n\n{fg_list}",
+                f"Available color names are here :-\n\n{fg_list}",
                 time=80,
             )
         elif cmd == "c":
             addgvar("LOGO_FONT_COLOR", input_str)
             await edit_delete(
                 event,
-                f"**Foreground colour for logo changed to :-** `{input_str}`",
+                f"Foreground colour for logo changed to :- `{input_str}`",
                 10,
             )
         else:
             addgvar("LOGO_FONT_STROKE_COLOR", input_str)
             await edit_delete(
-                event, f"**Stroke color for logo changed to :-** `{input_str}`", 10
+                event, f"Stroke color for logo changed to :- `{input_str}`", 10
             )
     else:
         cat = re.compile(r"^\-?[1-9][0-9]*\.?[0-9]*")
         isint = re.match(cat, input_str)
         if not input_str or not isint:
             return await edit_delete(
-                event, f"**Give an integer value to set**", time=10
+                event, f"Give an integer value to set", time=10
             )
         if cmd == "s":
             input_str = int(input_str)
             if input_str > 0 and input_str <= 1000:
                 addgvar("LOGO_FONT_SIZE", input_str)
                 await edit_delete(
-                    event, f"**Font size is changed to :-** `{input_str}`"
+                    event, f"Font size is changed to :- `{input_str}`"
                 )
             else:
                 await edit_delete(
                     event,
-                    f"**Font size is between 0-1000 , you can't set limit to :** `{input_str}`",
+                    f"Font size is between 0-1000 , you can't set limit to : `{input_str}`",
                 )
         elif cmd == "w":
             input_str = float(input_str)
             if input_str > 0 and input_str <= 100:
                 addgvar("LOGO_FONT_WIDTH", input_str)
                 await edit_delete(
-                    event, f"**Font width is changed to :-** `{input_str}`"
+                    event, f"Font width is changed to :- `{input_str}`"
                 )
             else:
                 await edit_delete(
                     event,
-                    f"**Font width is between 0-100 , you can't set limit to {input_str}",
+                    f"Font width is between 0-100 , you can't set limit to {input_str}",
                 )
         elif cmd == "h":
             input_str = float(input_str)
             if input_str > 0 and input_str <= 100:
                 addgvar("LOGO_FONT_HEIGHT", input_str)
                 await edit_delete(
-                    event, f"**Font height is changed to :-** `{input_str}`"
+                    event, f"Font height is changed to :- `{input_str}`"
                 )
             else:
                 await edit_delete(
                     event,
-                    f"**Font height is between 0-100 , you can't set limit to {input_str}",
+                    f"Font height is between 0-100 , you can't set limit to {input_str}",
                 )
         elif cmd == "sw":
             input_str = int(input_str)
             if input_str > 0 and input_str <= 100:
                 addgvar("LOGO_FONT_STROKE_WIDTH", input_str)
                 await edit_delete(
-                    event, f"**Font stroke width is changed to :-** `{input_str}`"
+                    event, f"Font stroke width is changed to :- `{input_str}`"
                 )
             else:
                 await edit_delete(
                     event,
-                    f"**Font stroke width size is between 0-100 , You can't set limit to :** `{input_str}`",
+                    f"Font stroke width size is between 0-100 , You can't set limit to : `{input_str}`",
                 )
 
 
@@ -380,7 +380,7 @@ async def cat(event):
         var = vars_list[input_str]
         if cmd == "g":
             var_data = gvarstatus(var)
-            await edit_delete(event, f"Value of **{var}** is  `{var_data}`", time=60)
+            await edit_delete(event, f"Value of {var} is  `{var_data}`", time=60)
         elif cmd == "d":
             if input_str == "lbg" and os.path.exists("./temp/bg_img.jpg"):
                 os.remove("./temp/bg_img.jpg")
@@ -388,7 +388,7 @@ async def cat(event):
                 os.remove("./temp/logo.ttf")
             delgvar(var)
             await edit_delete(
-                event, f"Value of **{var}** is now deleted & set to default", time=60
+                event, f"Value of {var} is now deleted & set to default", time=60
             )
     elif not input_str and cmd == "r":
         delgvar("LOGO_BACKGROUND")
@@ -411,6 +411,6 @@ async def cat(event):
     else:
         await edit_delete(
             event,
-            f"**Give correct vars name :**\n\nCorrect vars code list is :\n\n1. `lbg` : **LOGO_BACKGROUND**\n2. `lfc` : **LOGO_FONT_COLOR**\n3. `lf` : **LOGO_FONT**\n4. `lfs` : **LOGO_FONT_SIZE**\n5. `lfh` : **LOGO_FONT_HEIGHT**\n6. `lfw` : **LOGO_FONT_WIDTH**",
+            f"Give correct vars name :\n\nCorrect vars code list is :\n\n1. `lbg` : LOGO_BACKGROUND\n2. `lfc` : LOGO_FONT_COLOR\n3. `lf` : LOGO_FONT\n4. `lfs` : LOGO_FONT_SIZE\n5. `lfh` : LOGO_FONT_HEIGHT\n6. `lfw` : LOGO_FONT_WIDTH",
             time=60,
         )
