@@ -60,7 +60,7 @@ async def noods(event):  # sourcery no-metrics
     walls = soup.find_all("img", class_="img-responsive")
     if not walls:
         return await edit_delete(
-            catevent, f"**Can't find anything with** `{query}`", 10
+            catevent, f"Can't find anything with `{query}`", 10
         )
     i = count = 0
     piclist = []
@@ -81,7 +81,7 @@ async def noods(event):  # sourcery no-metrics
         res = requests.post(url2, data=data)
         a = res.json()["link"]
         if "We are sorry," not in requests.get(a).text and a not in piclinks:
-            await edit_or_reply(catevent, "**Downloading...**")
+            await edit_or_reply(catevent, "Downloading...")
             pic = await wall_download(a, query)
             if pic is None:
                 return await edit_delete(
@@ -95,7 +95,7 @@ async def noods(event):  # sourcery no-metrics
         else:
             i += 1
         await edit_or_reply(
-            catevent, f"**Downloaded : {count}/{limit}\n\nErrors : {i}/5**"
+            catevent, f"Downloaded : {count}/{limit}\n\nErrors : {i}/5"
         )
         if count == int(limit):
             break
@@ -103,7 +103,7 @@ async def noods(event):  # sourcery no-metrics
             await edit_or_reply(catevent, "`Max search error limit exceed..`")
     try:
         await edit_or_reply(catevent, "`Sending...`")
-        captionlist[-1] = f"**➥ Query :-** `{query.title()}`"
+        captionlist[-1] = f"➥ Query :- `{query.title()}`"
         await event.client.send_file(
             event.chat_id,
             piclist,
