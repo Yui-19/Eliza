@@ -43,7 +43,7 @@ async def install(event):
                     event, "Error this plugin is already pre-installed", 10
                 )
         except Exception as e:
-            await edit_delete(event, f"**Error :**\n`{e}`", 10)
+            await edit_delete(event, f"Error :\n`{e}`", 10)
             os.remove(downloaded_file_name)
 
 
@@ -97,7 +97,7 @@ async def send(event):
             allow_cache=False,
             reply_to=reply_to_id,
             thumb=thumb,
-            caption=f"**Plugin name :-** `{input_str}`",
+            caption=f"Plugin name :- `{input_str}`",
         )
         await event.delete()
     else:
