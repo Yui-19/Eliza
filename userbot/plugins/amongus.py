@@ -193,7 +193,7 @@ async def _(event):
         event.chat_id, "CAADAQADRwADnjOcH98isYD5RJTwAg"
     )
     text2 = await event.reply(
-        f"**[{ALIVE_NAME}]({USERNAME}) :**I have to call discussion"
+        f"[{ALIVE_NAME}]({USERNAME}) : I have to call discussion"
     )
     await asyncio.sleep(3)
     await stcr1.delete()
@@ -202,7 +202,7 @@ async def _(event):
         event.chat_id, "CAADAQADRgADnjOcH9odHIXtfgmvAg"
     )
     text3 = await event.reply(
-        f"**[{ALIVE_NAME}]({USERNAME}) :**We have to eject the imposter or will lose "
+        f"[{ALIVE_NAME}]({USERNAME}) : We have to eject the imposter or will lose "
     )
     await asyncio.sleep(3)
     await stcr2.delete()
@@ -210,15 +210,15 @@ async def _(event):
     stcr3 = await event.client.send_file(
         event.chat_id, "CAADAQADOwADnjOcH77v3Ap51R7gAg"
     )
-    text4 = await event.reply("**Others :**Where??? ")
+    text4 = await event.reply("Others :Where ? ")
     await asyncio.sleep(2)
-    await text4.edit("**Others :** Who?? ")
+    await text4.edit("Others : Who ? ")
     await asyncio.sleep(2)
     await text4.edit(
-        f"**[{ALIVE_NAME}]({USERNAME}) :** Its {name} , I saw {name} using vent,"
+        f"[{ALIVE_NAME}]({USERNAME}) : Its {name} , I saw {name} using vent,"
     )
     await asyncio.sleep(3)
-    await text4.edit(f"**Others :**Okay.. Vote {name} ")
+    await text4.edit(f"Others : Okay.. Vote {name} ")
     await asyncio.sleep(2)
     await stcr3.delete()
     await text4.delete()
