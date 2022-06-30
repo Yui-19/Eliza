@@ -96,9 +96,9 @@ if Config.ANTISPAMBOT_BAN:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "ANTI SPAMBOT\n\n"
-                f"**User :** [{user.first_name}](tg://user?id={user.id})\n\n"
-                f"**Chat :** {get_display_name(await event.get_chat())} (`{event.chat_id}`)\n\n"
-                f"**Reason :** {hmm.text}",
+                f"User : [{user.first_name}](tg://user?id={user.id})\n\n"
+                f"Chat : {get_display_name(await event.get_chat())} (`{event.chat_id}`)\n\n"
+                f"Reason : {hmm.text}",
             )
 
 
@@ -117,7 +117,7 @@ async def caschecker(event):
     "Searches for cas ( combot antispam service ) banned users in group and shows you the list"
     catevent = await edit_or_reply(
         event,
-        "`checking any cas ( combot antispam service ) banned users here , this may take several minutes too...`",
+        "`Checking any cas ( combot antispam service ) banned users here , this may take several minutes too...`",
     )
     text = ""
     try:
@@ -135,7 +135,7 @@ async def caschecker(event):
                 else:
                     banned_users += f"Deleted account `{user.id}`\n"
             members_count += 1
-        text = "**Warning**\n\nFound `{}` of `{}` users are cas banned :\n".format(
+        text = "Warning\n\nFound `{}` of `{}` users are cas banned :\n".format(
             cas_count, members_count
         )
         text += banned_users
@@ -184,14 +184,14 @@ async def caschecker(event):
                 else:
                     banned_users += f"Deleted account `{user.id}`\n"
             members_count += 1
-        text = "**Warning**\n\nFound `{}` of `{}` users are spamwatch banned :\n".format(
+        text = "Warning\n\nFound `{}` of `{}` users are spamwatch banned :\n".format(
             cas_count, members_count
         )
         text += banned_users
         if not cas_count:
             text = "No spamwatch banned users found !"
     except ChatAdminRequiredError as carerr:
-        await catevent.edit("`Ppamwatch check failed : Admin privileges are required`")
+        await catevent.edit("`Spamwatch check failed : Admin privileges are required`")
         return
     except BaseException as be:
         await catevent.edit("`Spamwatch check failed`")
