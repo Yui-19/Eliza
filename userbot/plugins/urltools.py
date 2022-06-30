@@ -75,7 +75,7 @@ async def _(event):
             event, f"Generated {response_api} for {input_str}", link_preview=False
         )
     else:
-        await edit_or_reply(event, "`Something is wrong , please try again later`")
+        await edit_or_reply(event, "`Something is wrong please try again later`")
 
 
 @catub.cat_cmd(
