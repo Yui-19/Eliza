@@ -59,9 +59,9 @@ async def _(event):
     try:
         pfile = await event.client.upload_file(profile_pic)
     except Exception as e:
-        return await edit_delete(event, f"**Failed to clone due to error :**\n{e}")
+        return await edit_delete(event, f"Failed to clone due to error :\n{e}")
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
-    await edit_delete(event, "**Let us be as one**")
+    await edit_delete(event, "Let us be as one")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
