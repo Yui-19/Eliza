@@ -159,7 +159,7 @@ async def _(event):
         result = ""
         for i in urls:
             if not result:
-                result = "**Uploaded file link or links :**"
+                result = "Uploaded file link or links :"
             result += f"\n{i[0]}"
         await editor.edit(result)
     else:
