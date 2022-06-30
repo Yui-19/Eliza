@@ -73,26 +73,26 @@ async def lyrics(event):  # sourcery no-metrics
         except TypeError:
             songs = None
         if songs is None:
-            return await catevent.edit(f"Song **{artist} - {song}** not found")
-        result = f"**Search query** : \n`{artist} - {song}`\n\n```{songs.lyrics}```"
+            return await catevent.edit(f"Song {artist} - {song} not found")
+        result = f"Search query : \n`{artist} - {song}`\n\n```{songs.lyrics}```"
     else:
         catevent = await edit_or_reply(event, f"`Searching lyrics for {query}...`")
         response = genius.search_songs(query)
-        msg = f"**The songs found for the given query :** `{query}`\n\n"
+        msg = f"The songs found for the given query : `{query}`\n\n"
         if len(response["hits"]) == 0:
             return await edit_or_reply(
-                catevent, f"**I can't find lyrics for the given query :**`{query}`"
+                catevent, f"I can't find lyrics for the given query : `{query}`"
             )
         for i, an in enumerate(response["hits"], start=1):
             msg += f"{i}. `{an['result']['title']}`\n"
         if listview:
             result = msg
         else:
-            result = f"**The song found for the given query :** `{query}`\n\n"
+            result = f"The song found for the given query : `{query}`\n\n"
             if songno > len(response["hits"]):
                 return await edit_or_reply(
                     catevent,
-                    f"**Invalid song selection for the query select proper number**\n{msg}",
+                    f"Invalid song selection for the query select proper number\n{msg}",
                 )
             songtitle = response["hits"][songno - 1]["result"]["title"]
             result += f"`{genius.search_song(songtitle).lyrics}`"
