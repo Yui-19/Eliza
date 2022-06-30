@@ -54,7 +54,7 @@ async def _(event):
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"Created new telegraph account {auth_url} for the current session\n\n**Do not give this url to anyone even if they say they are from telegram**",
+            f"Created new telegraph account {auth_url} for the current session\n\nDo not give this url to anyone even if they say they are from telegram",
         )
     optional_title = event.pattern_match.group(5)
     if not event.reply_to_msg_id:
@@ -75,16 +75,16 @@ async def _(event):
         try:
             media_urls = upload_file(downloaded_file_name)
         except exceptions.TelegraphException as exc:
-            await catevent.edit(f"**Error : **\n`{exc}`")
+            await catevent.edit(f"Error :\n`{exc}`")
             os.remove(downloaded_file_name)
         else:
             end = datetime.now()
             ms = (end - start).seconds
             os.remove(downloaded_file_name)
             await catevent.edit(
-                f"**➥ Uploaded to :-**[telegraph](https://telegra.ph{media_urls[0]})\
-                 \n**➥ Uploaded in {ms} seconds**\
-                 \n**➥ Uploaded by :-** {mention}",
+                f"➥ Uploaded to :- [telegraph](https://telegra.ph{media_urls[0]})\
+                 \n➥ Uploaded in {ms} seconds\
+                 \n➥ Uploaded by :- {mention}",
                 link_preview=True,
             )
     elif input_str in ["text", "t"]:
@@ -120,8 +120,8 @@ async def _(event):
         ms = (end - start).seconds
         cat = f"https://telegra.ph/{response['path']}"
         await catevent.edit(
-            f"**➥ Uploaded to :-** [telegraph]({cat})\
-                 \n**➥ Uploaded in {ms} seconds**\
-                 \n**➥ Uploaded by :-** {mention}",
+            f"**➥ Uploaded to :- [telegraph]({cat})\
+                 \n➥ Uploaded in {ms} seconds\
+                 \n➥ Uploaded by :- {mention}",
             link_preview=True,
         )
