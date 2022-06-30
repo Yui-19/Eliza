@@ -54,14 +54,14 @@ async def chat_blacklist(event):
         text = "Enabled sudo successfully\n"
         if len(sudousers) != 0:
             text += (
-                "**Bot is reloading to apply the changes please wait for a minute**"
+                "Bot is reloading to apply the changes please wait for a minute"
             )
             msg = await edit_or_reply(
                 event,
                 text,
             )
             return await event.client.reload(msg)
-        text += "**You haven't added anyone to your sudo yet**"
+        text += "You haven't added anyone to your sudo yet"
         return await edit_or_reply(
             event,
             text,
@@ -71,14 +71,14 @@ async def chat_blacklist(event):
         text = "Disabled sudo successfully"
         if len(sudousers) != 0:
             text += (
-                "**Bot is reloading to apply the changes please wait for a minute**"
+                "Bot is reloading to apply the changes please wait for a minute"
             )
             msg = await edit_or_reply(
                 event,
                 text,
             )
             return await event.client.reload(msg)
-        text += "**You haven't added any chat to blacklist yet**"
+        text += "You haven't added any chat to blacklist yet"
         return await edit_or_reply(
             event,
             text,
@@ -152,7 +152,7 @@ async def _(event):
     sql.del_collection("sudousers_list")
     sql.add_collection("sudousers_list", sudousers, {})
     output = f"{mentionuser(get_display_name(replied_user),replied_user.id)} is removed from your sudo users\n\n"
-    output += "**Bot is reloading to apply the changes please wait for a minute**"
+    output += "Bot is reloading to apply the changes please wait for a minute"
     msg = await edit_or_reply(event, output)
     await event.client.reload(msg)
 
@@ -176,12 +176,12 @@ async def _(event):
         return await edit_delete(
             event, "There are no sudo users for your cat userbot"
         )
-    result = "**The list of sudo users for your cat userbot are :**\n\n"
+    result = "The list of sudo users for your cat userbot are :\n\n"
     for chat in sudochats:
-        result += f"☞ **Name:** {mentionuser(sudousers[str(chat)]['chat_name'],sudousers[str(chat)]['chat_id'])}\n"
-        result += f"**Chat id :** `{chat}`\n"
+        result += f"Name: {mentionuser(sudousers[str(chat)]['chat_name'],sudousers[str(chat)]['chat_id'])}\n\n"
+        result += f"Chat id : `{chat}`\n\n"
         username = f"@{sudousers[str(chat)]['chat_username']}" or "None"
-        result += f"**Username :** {username}\n"
+        result += f"Username : {username}\n\n"
         result += f"Added on {sudousers[str(chat)]['date']}\n\n"
     await edit_or_reply(event, result)
 
@@ -192,9 +192,9 @@ async def _(event):
     info={
         "header": "To enable cmds for sudo users",
         "flags": {
-            "-all": "Will enable all cmds for sudo users ( except few like eval , exec , profile )",
-            "-full": "Will add all cmds including eval , exec etc compelete sudo",
-            "-p": "Will add all cmds from the given plugin names",
+            "-all": "Will enable all commands for sudo users ( except few like eval , exec , profile )",
+            "-full": "Will add all commands including eval , exec etc compelete sudo",
+            "-p": "Will add all commands from the given plugin names",
         },
         "usage": [
             "{tr}addscmd -all",
@@ -273,10 +273,10 @@ async def _(event):  # sourcery no-metrics
         sqllist.add_to_list("sudo_enabled_cmds", cmd)
     result = f"Successfully enabled `{len(loadcmds)}` for cat userbot sudo\n"
     output = (
-        result + "**Bot is reloading to apply the changes please wait for a minute**\n"
+        result + "Bot is reloading to apply the changes please wait for a minute\n"
     )
     if errors != "":
-        output += "\n**Errors :**\n" + errors
+        output += "\nErrors :\n" + errors
     msg = await edit_or_reply(catevent, output)
     await event.client.reload(msg)
 
@@ -367,10 +367,10 @@ async def _(event):  # sourcery no-metrics
             sqllist.rm_from_list("sudo_enabled_cmds", cmd)
     result = f"Successfully disabled `{count}` for cat userbot sudo\n"
     output = (
-        result + "**Bot is reloading to apply the changes please wait for a minute**\n"
+        result + "Bot is reloading to apply the changes please wait for a minute\n"
     )
     if errors != "":
-        output += "\n**Errors :**\n" + errors
+        output += "\nErrors :\n" + errors
     msg = await edit_or_reply(catevent, output)
     await event.client.reload(msg)
 
@@ -395,8 +395,8 @@ async def _(event):  # sourcery no-metrics
     clist = {}
     error = ""
     if not input_str:
-        text = "**The list of sudo enabled commands are :**"
-        result = "**SUDO ENABLED COMMANDS**"
+        text = "The list of sudo enabled commands are :"
+        result = "SUDO ENABLED COMMANDS"
         if len(sudocmds) > 0:
             for cmd in sudocmds:
                 plugin = get_key(cmd)
@@ -408,8 +408,8 @@ async def _(event):  # sourcery no-metrics
             error += "You haven't enabled any sudo cmd for sudo users"
         count = len(sudocmds)
     else:
-        text = "**The list of sudo disabled commands are :**"
-        result = "**SUDO DISABLED COMMANDS**"
+        text = "The list of sudo disabled commands are :"
+        result = "SUDO DISABLED COMMANDS"
         totalcmds = CMD_INFO.keys()
         cmdlist = list(set(totalcmds) - set(sudocmds))
         if cmdlist:
@@ -435,7 +435,7 @@ async def _(event):  # sourcery no-metrics
         output += "\n\n"
     finalstr = (
         result
-        + f"\n\n**SUDO TRIGGER :** `{Config.SUDO_COMMAND_HAND_LER}`\n\n**Commands :** {count}\n\n"
+        + f"\n\nSUDO TRIGGER : `{Config.SUDO_COMMAND_HAND_LER}`\n\nCommands : {count}\n\n"
         + output
     )
     await edit_or_reply(event, finalstr, aslink=True, linktext=text)
