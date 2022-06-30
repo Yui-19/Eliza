@@ -173,7 +173,7 @@ async def zip_file(event):  # sourcery no-metrics
             )
             dl.close()
         except Exception as e:
-            return await edit_delete(mone, f"**Error :**\n__{e}__")
+            return await edit_delete(mone, f"Error :\n{e}")
         await mone.edit("`Download finished unpacking now`")
         destination = os.path.join(
             Config.TMP_DOWNLOAD_DIRECTORY,
@@ -184,7 +184,7 @@ async def zip_file(event):  # sourcery no-metrics
         end = datetime.now()
         ms = (end - start).seconds
         await mone.edit(
-            f"Unzipped and stored to `{destination}` \n\n**Time taken :** `{ms} seconds`"
+            f"Unzipped and stored to `{destination}` \n\nTime taken : `{ms} seconds`"
         )
         os.remove(filename)
     else:
@@ -230,8 +230,8 @@ async def untar_file(event):  # sourcery no-metrics
             end = datetime.now()
             ms = (end - start).seconds
             await mone.edit(
-                f"**Time taken :** `{ms} seconds`\
-                \nUnpacked the input path `{input_str}` and stored to `{destination}`"
+                f"Time taken : `{ms} seconds`\
+                \n\nUnpacked the input path `{input_str}` and stored to `{destination}`"
             )
         else:
             await edit_delete(event, f"I can't find that path `{input_str}`", 10)
@@ -255,7 +255,7 @@ async def untar_file(event):  # sourcery no-metrics
             )
             dl.close()
         except Exception as e:
-            return await edit_delete(mone, f"**Error :**\n__{e}__")
+            return await edit_delete(mone, f"Error :\n{e}")
         if not is_tarfile(filename):
             return await edit_delete(
                 mone, "`The replied file is not tar file to unpack it recheck it`"
@@ -274,7 +274,7 @@ async def untar_file(event):  # sourcery no-metrics
         end = datetime.now()
         ms = (end - start).seconds
         await mone.edit(
-            f"**Time taken :** `{ms} seconds`\
+            f"Time taken : `{ms} seconds`\
                 \n\nUnpacked the replied file and stored to `{destination}`"
         )
         os.remove(filename)
