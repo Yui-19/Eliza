@@ -115,19 +115,19 @@ async def get_weather(event):  # sourcery no-metrics
     mph = str(wind * 2.237).split(".")
     await edit_or_reply(
         event,
-        f"🤒 **Temperature :** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n\n"
-        + f"🥰 **Human feeling :** `{celsius(feel)}°C | {fahrenheit(feel)}°F`\n\n"
-        + f"🥶 **Min temp :** `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n\n"
-        + f"🥵 **Max temp :** `{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F`\n\n"
-        + f"⚡ **Humidity :** `{humidity}%`\n\n"
-        + f"💉 **Pressure :** `{pressure} hPa`\n\n"
-        + f"🍃 **Wind :** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n\n"
-        + f"👻 **Cloud :** `{cloud} %`\n\n"
-        + f"🌞 **Sunrise :** `{sun(sunrise,ctimezone)}`\n\n"
-        + f"🌝 **Sunset :** `{sun(sunset,ctimezone)}`\n\n\n"
-        + f"**{desc}**\n"
-        + f"`{cityname}, {fullc_n}`\n"
-        + f"`{time}`\n",
+        f"Temperature : `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n\n"
+        + f"Human feeling : `{celsius(feel)}°C | {fahrenheit(feel)}°F`\n\n"
+        + f"Min temp : `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n\n"
+        + f"Max temp : `{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F`\n\n"
+        + f"Humidity : `{humidity}%`\n\n"
+        + f"Pressure : `{pressure} hPa`\n\n"
+        + f"Wind : `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n\n"
+        + f"Cloud : `{cloud} %`\n\n"
+        + f"Sunrise : `{sun(sunrise,ctimezone)}`\n\n"
+        + f"Sunset : `{sun(sunset,ctimezone)}`\n\n\n"
+        + f"{desc}\n\n"
+        + f"`{cityname}, {fullc_n}`\n\n"
+        + f"`{time}`\n\n",
     )
 
 
@@ -225,7 +225,7 @@ async def _(event):
         response_api = await response_api_zero.read()
         with io.BytesIO(response_api) as out_file:
             await event.reply(
-                f"**City : **`{input_str}`", file=out_file, reply_to=reply_to_id
+                f"City : `{input_str}`", file=out_file, reply_to=reply_to_id
             )
     try:
         await event.delete()
