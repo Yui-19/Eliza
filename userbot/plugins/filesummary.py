@@ -58,7 +58,7 @@ async def _(event):  # sourcery no-metrics
     except Exception as e:
         return await edit_delete(
             event,
-            f"<b>Error : </b><code>{e}</code>",
+            f"Error : <code>{e}</code>",
             time=5,
             parse_mode="HTML",
         )
@@ -123,9 +123,9 @@ async def _(event):  # sourcery no-metrics
                     \nRuntime per file :   | {avgruntime}\
                     \n</code>"
     line = "<code>+--------------------+-----------+</code>\n"
-    result = f"<b>Group : {link}</b>\n\n"
+    result = f"Group : {link}\n\n"
     result += f"<code>Total messages : {msg_count}</code>\n"
-    result += "<b>File summary : </b>\n"
+    result += "File summary :\n"
     result += f"<code>{x}</code>\n"
     result += f"{largest}"
     result += line + totalstring + line + runtimestring + line
@@ -174,7 +174,7 @@ async def _(event):  # sourcery no-metrics
         chatdata = await event.client.get_entity(entity)
     except Exception as e:
         return await edit_delete(
-            event, f"<b>Error : </b><code>{e}</code>", 5, parse_mode="HTML"
+            event, f"Error : <code>{e}</code>", 5, parse_mode="HTML"
         )
 
     try:
@@ -182,7 +182,7 @@ async def _(event):  # sourcery no-metrics
     except Exception as e:
         return await edit_delete(
             event,
-            f"<b>Error : </b><code>{e}</code>",
+            f"Error : <code>{e}</code>",
             time=5,
             parse_mode="HTML",
         )
@@ -244,15 +244,15 @@ async def _(event):  # sourcery no-metrics
         str(round((weird_division((endtime - starttime), totalcount)) * 1000, 2))
         + " ms"
     )
-    totalstring = f"<code><b>Total files : </b>       | {totalcount}\\\x1f                  \nTotal file size :    | {humanbytes(totalsize)}\\\x1f                  \nAvg. file size :     | {avghubytes}\\\x1f                  \n</code>"
+    totalstring = f"<code>Total files :        | {totalcount}\\\x1f                  \n\nTotal file size :    | {humanbytes(totalsize)}\\\x1f                  \n\mAvg file size :     | {avghubytes}\\\x1f                  \n</code>"
 
     runtimestring = f"<code>Runtime :            | {runtime}\
                     \nRuntime per file :   | {avgruntime}\
                     \n</code>"
     line = "<code>+--------------------+-----------+</code>\n"
-    result = f"<b>Group : {link}\nUser : {_format.htmlmentionuser(userdata.first_name,userdata.id)}\n\n"
+    result = f"Group : {link}\nUser : {_format.htmlmentionuser(userdata.first_name,userdata.id)}\n\n"
     result += f"<code>Total messages: {msg_count}</code>\n"
-    result += "<b>File Summary : </b>\n"
+    result += "File Summary :\n"
     result += f"<code>{x}</code>\n"
     result += f"{largest}"
     result += line + totalstring + line + runtimestring + line
