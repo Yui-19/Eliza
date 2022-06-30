@@ -82,13 +82,13 @@ async def catgban(event):  # sourcery no-metrics
             achat = await event.client.get_entity(san[i])
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"`You don't have required permission in :`\n**Chat :** {get_display_name(achat)}(`{achat.id}`)\n\n`For banning here`",
+                f"`You don't have required permission in :`\n\nChat : {get_display_name(achat)}(`{achat.id}`)\n\n`For banning here`",
             )
     end = datetime.now()
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {cattaken} seconds`\n\n**Reason :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {cattaken} seconds`\n\nReason : `{reason}`"
         )
     else:
         await cate.edit(
@@ -101,21 +101,21 @@ async def catgban(event):  # sourcery no-metrics
                 BOTLOG_CHATID,
                 f"GBAN\
                 \n\nGlobal ban\
-                \n\n**User : **[{user.first_name}](tg://user?id={user.id})\
-                \n\n**Id : **`{user.id}`\
-                \n\n**Reason :** `{reason}`\
+                \n\nUser : [{user.first_name}](tg://user?id={user.id})\
+                \n\nId : `{user.id}`\
+                \n\nReason : `{reason}`\
                 \n\nBanned in {count} groups\
-                \n\n**Time taken : **`{cattaken} seconds`",
+                \n\nTime taken : `{cattaken} seconds`",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"GBAN\
                 \n\nGlobal ban\
-                \n\n**User : **[{user.first_name}](tg://user?id={user.id})\
-                \n\n**Id : **`{user.id}`\
+                \n\nUser : [{user.first_name}](tg://user?id={user.id})\
+                \n\nId : `{user.id}`\
                 \n\nBanned in {count} groups\
-                \n\n**Time taken : **`{cattaken} seconds`",
+                \n\nTime taken : `{cattaken} seconds`",
             )
         try:
             if reply:
@@ -164,13 +164,13 @@ async def catgban(event):
             achat = await event.client.get_entity(san[i])
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"`You don't have required permission in :`\n\n**Chat :** {get_display_name(achat)}(`{achat.id}`)\n\n`For unbanning here`",
+                f"`You don't have required permission in :`\n\nChat : {get_display_name(achat)}(`{achat.id}`)\n\n`For unbanning here`",
             )
     end = datetime.now()
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}`) was ungbanned in {count} groups in {cattaken} seconds`\n\n**Reason :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}`) was ungbanned in {count} groups in {cattaken} seconds`\n\nReason : `{reason}`"
         )
     else:
         await cate.edit(
@@ -183,21 +183,21 @@ async def catgban(event):
                 BOTLOG_CHATID,
                 f"UNGBAN\
                 \n\nGlobal unban\
-                \n\n**User : **[{user.first_name}](tg://user?id={user.id})\
-                \n\n**Id : **`{user.id}`\
-                \n\n**Reason :** `{reason}`\
+                \n\nUser : [{user.first_name}](tg://user?id={user.id})\
+                \n\nId : `{user.id}`\
+                \n\nReason : `{reason}`\
                 \n\nUnbanned in {count} groups\
-                \n\n**Time taken : **`{cattaken} seconds`",
+                \n\nTime taken : `{cattaken} seconds`",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"UNGBAN\
                 \n\nGlobal unban\
-                \n\n**User : **[{user.first_name}](tg://user?id={user.id})\
-                \n\n**Id : **`{user.id}`\
+                \n\nUser : [{user.first_name}](tg://user?id={user.id})\
+                \n\nId : `{user.id}`\
                 \n\nUnbanned in {count} groups__\
-                \n\n**Time taken : **`{cattaken} seconds`",
+                \n\nTime taken : `{cattaken} seconds`",
             )
 
 
@@ -256,17 +256,17 @@ async def startgmute(event):
     if is_muted(userid, "gmute"):
         return await edit_or_reply(
             event,
-            f"{_format.mentionuser(user.first_name ,user.id)} ` is already gmuted`",
+            f"{_format.mentionuser(user.first_name ,user.id)} `is already gmuted`",
         )
     try:
         mute(userid, "gmute")
     except Exception as e:
-        await edit_or_reply(event, f"**Error :**\n`{e}`")
+        await edit_or_reply(event, f"Error :\n`{e}`")
     else:
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is successfully gmuted`\n\n**Reason :** `{reason}`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `is successfully gmuted`\n\nReason : `{reason}`",
             )
         else:
             await edit_or_reply(
@@ -279,14 +279,14 @@ async def startgmute(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "GMUTE\n\n"
-                f"**User :** {_format.mentionuser(user.first_name ,user.id)}\n\n"
-                f"**Reason :** `{reason}`",
+                f"User : {_format.mentionuser(user.first_name ,user.id)}\n\n"
+                f"Reason : `{reason}`",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "GMUTE\n\n"
-                f"**User :** {_format.mentionuser(user.first_name ,user.id)}\n\n",
+                f"User : {_format.mentionuser(user.first_name ,user.id)}\n\n",
             )
         if reply:
             await reply.forward_to(BOTLOG_CHATID)
@@ -326,12 +326,12 @@ async def endgmute(event):
     try:
         unmute(userid, "gmute")
     except Exception as e:
-        await edit_or_reply(event, f"**Error :**\n`{e}`")
+        await edit_or_reply(event, f"Error :\n`{e}`")
     else:
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is successfully ungmuted`\n\n**Reason :** `{reason}`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `is successfully ungmuted`\n\nReason : `{reason}`",
             )
         else:
             await edit_or_reply(
@@ -343,14 +343,14 @@ async def endgmute(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "UNGMUTE\n\n"
-                f"**User :** {_format.mentionuser(user.first_name ,user.id)}\n\n"
-                f"**Reason :** `{reason}`",
+                f"User : {_format.mentionuser(user.first_name ,user.id)}\n\n"
+                f"Reason : `{reason}`",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "UNGMUTE\n\n"
-                f"**User :** {_format.mentionuser(user.first_name ,user.id)}\n\n",
+                f"User : {_format.mentionuser(user.first_name ,user.id)}\n\n",
             )
 
 
@@ -394,13 +394,13 @@ async def catgkick(event):  # sourcery no-metrics
             achat = await event.client.get_entity(san[i])
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"`You don't have required permission in :`\n\n**Chat :** {get_display_name(achat)}(`{achat.id}`)\n\n`For kicking there`",
+                f"`You don't have required permission in :`\n\nChat : {get_display_name(achat)}(`{achat.id}`)\n\n`For kicking there`",
             )
     end = datetime.now()
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was gkicked in {count} groups in {cattaken} seconds`\n\n**Reason :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}) `was gkicked in {count} groups in {cattaken} seconds`\n\nReason : `{reason}`"
         )
     else:
         await cate.edit(
@@ -414,21 +414,21 @@ async def catgkick(event):  # sourcery no-metrics
                 BOTLOG_CHATID,
                 f"GKICK\
                 \n\nGlobal kick\
-                \n**User : **[{user.first_name}](tg://user?id={user.id})\
-                \n**Id : **`{user.id}`\
-                \n**Reason :** `{reason}`\
+                \nUser : [{user.first_name}](tg://user?id={user.id})\
+                \nId : `{user.id}`\
+                \n**Reason : `{reason}`\
                 \nKicked in {count} groups\
-                \n**Time taken : **`{cattaken} seconds`",
+                \nTime taken : `{cattaken} seconds`",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"GKICK\
                 \n\nGlobal kick\
-                \n**User : **[{user.first_name}](tg://user?id={user.id})\
-                \n**Id : **`{user.id}`\
+                \nUser : [{user.first_name}](tg://user?id={user.id})\
+                \nId : `{user.id}`\
                 \nKicked in {count} groups\
-                \n**Time taken : **`{cattaken} seconds`",
+                \nTime taken : `{cattaken} seconds`",
             )
         if reply:
             await reply.forward_to(BOTLOG_CHATID)
