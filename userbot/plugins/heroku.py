@@ -61,10 +61,10 @@ async def variable(var):  # sourcery no-metrics
             variable = var.pattern_match.group(2).split()[0]
             if variable in heroku_var:
                 return await cat.edit(
-                    "**Config vars** :" f"\n\n`{variable}` = `{heroku_var[variable]}`\n"
+                    "Config vars :" f"\n\n`{variable}` = `{heroku_var[variable]}`\n"
                 )
             await cat.edit(
-                "**Config vars** :" f"\n\nError:\n\n-> `{variable}` don't exists"
+                "Config vars :" f"\n\nError :\n\n-> `{variable}` don't exists"
             )
         except IndexError:
             configs = prettyjson(heroku_var.to_dict(), indent=2)
@@ -105,9 +105,9 @@ async def variable(var):  # sourcery no-metrics
             return await cat.edit("`Please specify config vars you want to delete`")
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-            return await cat.edit(f"`{variable}`**does not exist**")
+            return await cat.edit(f"`{variable}`does not exist")
 
-        await cat.edit(f"`{variable}`**Successfully deleted**")
+        await cat.edit(f"`{variable}`Successfully deleted")
         del heroku_var[variable]
 
 
@@ -170,14 +170,14 @@ async def dyno_usage(dyno):
     AppMinutes = math.floor(AppQuotaUsed % 60)
     await asyncio.sleep(1.5)
     return await dyno.edit(
-        "**Dyno usage**:\n\n"
-        f" -> `Dyno usage for` **{Config.HEROKU_APP_NAME}**:\n"
-        f"     •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
-        f"**|**  [`{AppPercentage}`**%**]"
+        "Dyno usage :\n\n"
+        f" -> `Dyno usage for` {Config.HEROKU_APP_NAME} :\n"
+        f"     • `{AppHours}` h `{AppMinutes}`m  "
+        f"| [`{AppPercentage}`%]"
         "\n\n"
-        " -> `Dyno hours quota remaining this month`:\n"
-        f"     •  `{hours}`**h**  `{minutes}`**m**  "
-        f"**|**  [`{percentage}`**%**]"
+        " -> `Dyno hours quota remaining this month` :\n"
+        f"     •  `{hours}` h `{minutes}`m  "
+        f"| [`{percentage}`%]"
     )
 
 
@@ -205,7 +205,7 @@ async def _(dyno):
         )
     data = app.get_log()
     await edit_or_reply(
-        dyno, data, deflink=True, linktext="**Recent 100 lines of heroku logs : **"
+        dyno, data, deflink=True, linktext="Recent 100 lines of heroku logs : "
     )
 
 
