@@ -241,7 +241,7 @@ async def _(event):
     reply = await event.get_reply_message()
     if not reply.media:
         return await edit_delete(event, "`Reply to a black and white image`")
-    xx = await edit_or_reply(event, "`Coloring image... 🖌️`")
+    xx = await edit_or_reply(event, "`Coloring image...`")
     image = await reply.download_media()
     img = cv2.VideoCapture(image)
     ret, frame = img.read()
