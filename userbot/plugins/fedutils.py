@@ -102,9 +102,9 @@ async def group_fban(event):
         except Exception as e:
             errors.append(str(e))
     success_report = f"{_format.mentionuser(user.first_name ,user.id)} is succesfully banned in {success} feds of {total}\
-        \n**Reason :** {reason}\n"
+        \nReason : {reason}\n"
     if errors != []:
-        success_report += "\n**Error :**"
+        success_report += "\nError :"
         for txt in errors:
             success_report += f"\n{txt}"
     await edit_or_reply(catevent, success_report)
@@ -188,9 +188,9 @@ async def group_unfban(event):
         except Exception as e:
             errors.append(str(e))
     success_report = f"{_format.mentionuser(user.first_name ,user.id)} is succesfully unbanned in {success} feds of {total}\
-        \n**Reason :** {reason}\n"
+        \nReason : {reason}\n"
     if errors != []:
-        success_report += "\n**Error :**"
+        success_report += "\nError :"
         for txt in errors:
             success_report += f"\n{txt}"
     await edit_or_reply(catevent, success_report)
@@ -261,12 +261,12 @@ async def quote_search(event):  # sourcery no-metrics
             except YouBlockedUserError:
                 await edit_delete(
                     catevent,
-                    "**Error while fecthing my feds :**\n\nUnblock @MissRose_Bot and try again",
+                    "Error while fecthing my feds :\n\nUnblock @MissRose_Bot and try again",
                     10,
                 )
             except Exception as e:
                 await edit_delete(
-                    catevent, f"**Error while fecthing my feds :**\n{e}", 10
+                    catevent, f"Error while fecthing my feds :\n{e}", 10
                 )
             await event.client.send_read_acknowledge(conv.chat_id)
             conv.cancel()
@@ -285,7 +285,7 @@ async def quote_search(event):  # sourcery no-metrics
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"ADD FED ID\
-                \n\n**Fed group :** `{fedid}`\
+                \n\nFed group : `{fedid}`\
                 \n\nSuccessfully added all your feds to above database category",
             )
         return
@@ -307,8 +307,8 @@ async def quote_search(event):  # sourcery no-metrics
         await event.client.send_message(
             BOTLOG_CHATID,
             f"ADD FED ID\
-            \n\n**Fed id :** `{fedid}`\
-            \n\n**Fed group :** `{fedgroup}`\
+            \n\nFed id : `{fedid}`\
+            \n\nFed group : `{fedgroup}`\
             \n\nThe above fedid is sucessfully added to that fed category",
         )
 
@@ -350,7 +350,7 @@ async def quote_search(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"REMOVE FED ID\
-            \n\n**Fed group :** `{fedid}`\
+            \n\nFed group : `{fedid}`\
             \n\nDeleted this fed category in your database",
             )
         return
@@ -373,8 +373,8 @@ async def quote_search(event):
         await event.client.send_message(
             BOTLOG_CHATID,
             f"REMOVE FED ID\
-        \n\n**Fed id :** `{fedid}`\
-        \n\n**Fed group :** `{fedgroup}`\
+        \n\nFed id : `{fedid}`\
+        \n\nFed group : `{fedgroup}`\
         \n\nThe above fedid is sucessfully removed that fed category",
         )
 
@@ -400,13 +400,13 @@ async def quote_search(event):
         for fedgrp in feds:
             fedids = feds[fedgrp]
             if fedids != []:
-                output += f"\n• **{fedgrp}:**\n"
+                output += f"\n• {fedgrp} :\n"
                 for fid in fedids:
                     output += f"`{fid}`\n"
     elif fedgroup in feds:
         fedids = feds[fedgroup]
         if fedids != []:
-            output += f"\n• **{fedgroup}:**\n"
+            output += f"\n• {fedgroup} :\n"
             for fid in fedids:
                 output += f"`{fid}`\n"
     else:
@@ -415,10 +415,10 @@ async def quote_search(event):
         )
     if output != "" and fedgroup:
         output = (
-            f"**The list of feds in the category** `{fedgroup}` **are :**\n" + output
+            f"The list of feds in the category `{fedgroup}` are :\n" + output
         )
     elif output != "":
-        output = "**The list of all feds in your database are :**\n" + output
+        output = "The list of all feds in your database are :\n" + output
     else:
         output = (
             "There are no feds in your database try by adding them using addfedto"
@@ -451,12 +451,12 @@ async def fetch_fedinfo(event):
         except YouBlockedUserError:
             await edit_delete(
                 catevent,
-                "**Error while fecthing fedinfo :**\n\nUnblock @MissRose_Bot and try again",
+                "Error while fecthing fedinfo :\n\nUnblock @MissRose_Bot and try again",
                 10,
             )
         except Exception as e:
             await edit_delete(
-                catevent, f"**Error while fecthing fedinfo :**\n{e}", 10
+                catevent, f"Error while fecthing fedinfo :\n{e}", 10
             )
         await event.client.send_read_acknowledge(conv.chat_id)
         conv.cancel()
@@ -484,19 +484,19 @@ async def fetch_fedinfo(event):
             await conv.send_message("/fedadmins " + input_str)
             response = await conv.get_response()
             await catevent.edit(
-                f"**Fed id :** ```{input_str}```\n\n" + response.text
+                f"Fed id :```{input_str}```\n\n" + response.text
                 if input_str
                 else response.text
             )
         except YouBlockedUserError:
             await edit_delete(
                 catevent,
-                "**Error while fecthing fedinfo :**\n\nUnblock @MissRose_Bot and try again",
+                "Error while fecthing fedinfo :\n\nUnblock @MissRose_Bot and try again",
                 10,
             )
         except Exception as e:
             await edit_delete(
-                catevent, f"**Error while fecthing fedinfo :**\n{e}", 10
+                catevent, f"Error while fecthing fedinfo :\n{e}", 10
             )
         await event.client.send_read_acknowledge(conv.chat_id)
         conv.cancel()
@@ -537,12 +537,12 @@ async def myfeds_fedinfo(event):
         except YouBlockedUserError:
             await edit_delete(
                 catevent,
-                "**Error while fecthing my feds :**\n\nUnblock @MissRose_Bot and try again",
+                "Error while fecthing my feds :\n\nUnblock @MissRose_Bot and try again",
                 10,
             )
         except Exception as e:
             await edit_delete(
-                catevent, f"**Error while fecthing my feds :**\n{e}", 10
+                catevent, f"Error while fecthing my feds :\n{e}", 10
             )
         await event.client.send_read_acknowledge(conv.chat_id)
         conv.cancel()
@@ -582,9 +582,9 @@ async def fstat_rose(event):
                 return await edit_delete(catevent, f"__{response.text}__")
             if fedid == "":
                 response = await conv.get_edit()
-                result = f"**List of feds** {_format.mentionuser(user.first_name ,user.id)} **has been banned in are**\n\n"
+                result = f"List of feds {_format.mentionuser(user.first_name ,user.id)} has been banned in are\n\n"
             else:
-                result = f"**Fban info about** {_format.mentionuser(user.first_name ,user.id)} **is**\n\n"
+                result = f"Fban info about {_format.mentionuser(user.first_name ,user.id)} is\n\n"
             if "Looks like" in response.message:
                 await response.click(0)
                 response = await conv.get_response()
@@ -601,12 +601,12 @@ async def fstat_rose(event):
         except YouBlockedUserError:
             await edit_delete(
                 catevent,
-                "**Error while fecthing fedstat :**\n\nUnblock @MissRose_Bot and try again",
+                "Error while fecthing fedstat :\n\nUnblock @MissRose_Bot and try again",
                 10,
             )
         except Exception as e:
             await edit_delete(
-                catevent, f"**Error while fecthing fedstat :**\n{e}", 10
+                catevent, f"Error while fecthing fedstat :\n{e}", 10
             )
         await event.client.send_read_acknowledge(conv.chat_id)
         conv.cancel()
