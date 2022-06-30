@@ -74,7 +74,7 @@ async def time_func(tdata):
     else:
         return await edit_or_reply(
             tdata,
-            f"`It's `**{dt.now().strftime(t_form)}**` on `**{dt.now().strftime(d_form)}**` here`",
+            f"`It's `{dt.now().strftime(t_form)}` on `{dt.now().strftime(d_form)}` here`",
         )
     if not timezones:
         return await edit_or_reply(tdata, "`Invaild country`")
@@ -101,12 +101,12 @@ async def time_func(tdata):
     if c_name != Config.COUNTRY:
         await edit_or_reply(
             tdata,
-            f"`It's `**{dtnow1}**` on `**{dtnow2}**` in {c_name} ({time_zone} timezone)`",
+            f"`It's `{dtnow1}` on `{dtnow2}` in {c_name} ({time_zone} timezone)`",
         )
     if Config.COUNTRY:
         await edit_or_reply(
             tdata,
-            f"`It's `**{dtnow1}**` on `**{dtnow2}**` here in {Config.COUNTRY}"
+            f"`It's `{dtnow1}` on `{dtnow2}` here in {Config.COUNTRY}"
             f"({time_zone} timezone)`",
         )
 
@@ -124,7 +124,7 @@ async def _(event):
     "To show current time"
     reply_msg_id = await reply_id(event)
     current_time = dt.now().strftime(
-        f"⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡\n⚡USERBOT TIMEZONE⚡\n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡\n   {os.path.basename(Config.TZ)}\n  Time : %H:%M:%S \n  Date : %d.%m.%y \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡"
+        f"USERBOT TIMEZONE\n\n{os.path.basename(Config.TZ)}\n\nTime : %H:%M:%S\n\nDate : %d.%m.%y"
     )
     if input_str := event.pattern_match.group(2):
         current_time = input_str
