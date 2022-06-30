@@ -1,4 +1,4 @@
-#By @Yui
+# By @Yui
 import os
 from PIL import Image, ImageEnhance
 from userbot import catub
