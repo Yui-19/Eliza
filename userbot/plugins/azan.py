@@ -32,14 +32,14 @@ async def get_adzan(adzan):
         )
     result = json.loads(request.text)
     catresult = f"<b>Islamic prayer times </b>\
-            \n\n<b>City : </b><i>{result['query']}</i>\
-            \n<b>Country : </b><i>{result['country']}</i>\
-            \n<b>Date : </b><i>{result['items'][0]['date_for']}</i>\
-            \n<b>Fajr : </b><i>{result['items'][0]['fajr']}</i>\
-            \n<b>Shurooq : </b><i>{result['items'][0]['shurooq']}</i>\
-            \n<b>Dhuhr : </b><i>{result['items'][0]['dhuhr']}</i>\
-            \n<b>Asr : </b><i>{result['items'][0]['asr']}</i>\
-            \n<b>Maghrib : </b><i>{result['items'][0]['maghrib']}</i>\
-            \n<b>Isha : </b><i>{result['items'][0]['isha']}</i>\
+            \n\nCity : <i>{result['query']}</i>\
+            \n\nCountry : <i>{result['country']}</i>\
+            \n\nDate : <i>{result['items'][0]['date_for']}</i>\
+            \n\nFajr : <i>{result['items'][0]['fajr']}</i>\
+            \n\nShurooq : <i>{result['items'][0]['shurooq']}</i>\
+            \n\nDhuhr : <i>{result['items'][0]['dhuhr']}</i>\
+            \n\nAsr : <i>{result['items'][0]['asr']}</i>\
+            \n\nMaghrib : <i>{result['items'][0]['maghrib']}</i>\
+            \n\nIsha : <i>{result['items'][0]['isha']}</i>\
     "
     await edit_or_reply(adzan, catresult, "html")
