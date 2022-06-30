@@ -32,19 +32,19 @@ cmhd = Config.COMMAND_HAND_LER
 async def bot_help(event):
     await event.reply(
         f"""The commands in the bot are :
-**Note : **This commands work only in this bot {botusername}
-• **Cmd : **/uinfo <reply to user message>
-• **Info : **You have noticed that forwarded stickers or emoji doesn't have forward tag so you can identify the user who sent thoose messages by this command
-• **Note : **It works for all forwarded messages even for users who's permission forward message nobody
-• **Cmd : **/ban <reason> or /ban <username/userid> <reason>
-• **Info : **Reply to a user message with reason so he will be notified as you banned from the bot and his messages will not be forworded to you further
-• **Note : **Reason is must without reason it won't work
-• **Cmd : **/unban <reason(optional)> or /unban <username/userid>
-• **Info : **Reply to user message or provide username/userid to unban from the bot
-• **Note : **To check banned users list use `{cmhd}bblist`.
-• **Cmd : **/broadcast
-• **Info : **Reply to a message to get broadcasted to every user who started your bot ! To get list of users use `{cmhd}bot_users`
-• **Note : **If user stopped or blocked the bot then he will be removed from your database that is he will erased from the bot_starters list
+Note : This commands work only in this bot {botusername}
+• Cmd : /uinfo <reply to user message>
+• Info : You have noticed that forwarded stickers or emoji doesn't have forward tag so you can identify the user who sent thoose messages by this command
+• Note : It works for all forwarded messages even for users who's permission forward message nobody
+• Cmd : /ban <reason> or /ban <username/userid> <reason>
+• Info : Reply to a user message with reason so he will be notified as you banned from the bot and his messages will not be forworded to you further
+• Note : Reason is must without reason it won't work
+• Cmd : /unban <reason(optional)> or /unban <username/userid>
+• Info : Reply to user message or provide username/userid to unban from the bot
+• Note : To check banned users list use `{cmhd}bblist`.
+• Cmd : /broadcast
+• Info : Reply to a message to get broadcasted to every user who started your bot ! To get list of users use `{cmhd}bot_users`
+• Note : If user stopped or blocked the bot then he will be removed from your database that is he will erased from the bot_starters list
 """
     )
 
@@ -92,8 +92,8 @@ async def bot_broadcast(event):
                             total=bot_users_count,
                             current=count + len(blocked_users),
                         )
-                        + f"\n\n• **Success** :  `{count}`\n\n"
-                        + f"• **Failed** :  `{len(blocked_users)}`"
+                        + f"\n\n• Success : `{count}`\n\n"
+                        + f"• Failed : `{len(blocked_users)}`"
                     )
                     await br_cast.edit(prog_)
                 except FloodWaitError as e:
@@ -101,7 +101,7 @@ async def bot_broadcast(event):
     end_ = datetime.now()
     b_info = f"Successfully broadcasted message to ➜ <b>{count} users.</b>"
     if blocked_users:
-        b_info += f"\n<b>{len(blocked_users)} users</b> blocked your bot recently so have been removed"
+        b_info += f"\n{len(blocked_users)} users blocked your bot recently so have been removed"
     b_info += (
         f"\n<code>Process took : {time_formatter((end_ - start_).seconds)}</code>"
     )
@@ -122,9 +122,9 @@ async def ban_starters(event):
     ulist = get_all_starters()
     if len(ulist) == 0:
         return await edit_delete(event, "`No one started your bot yet`")
-    msg = "**The list of users who started your bot are :\n\n**"
+    msg = "The list of users who started your bot are :\n\n"
     for user in ulist:
-        msg += f"• {_format.mentionuser(user.first_name , user.user_id)}\n\n**Id :** `{user.user_id}`\n\n**Username :** @{user.username}\n\n**Date : **{user.date}\n\n"
+        msg += f"• {_format.mentionuser(user.first_name , user.user_id)}\n\nId : `{user.user_id}`\n\nUsername : @{user.username}\n\nDate : {user.date}\n\n"
     await edit_or_reply(event, msg)
 
 
@@ -144,7 +144,7 @@ async def ban_botpms(event):
         user = await event.client.get_entity(user_id)
         user_id = user.id
     except Exception as e:
-        return await event.reply(f"**Error:**\n`{e}`")
+        return await event.reply(f"Error :\n`{e}`")
     if user_id == Config.OWNER_ID:
         return await event.reply("I can't ban you mistress")
     if check := check_is_black_list(user.id):
@@ -152,8 +152,8 @@ async def ban_botpms(event):
             event.chat_id,
             f"Already banned\
             \n\nUser already exists in my banned users list\
-            \n\n**Reason for bot ban :** `{check.reason}`\
-            \n\n**Date :** `{check.date}`.",
+            \n\nReason for bot ban : `{check.reason}`\
+            \n\nDate : `{check.date}`",
         )
     msg = await ban_user_from_bot(user, reason, reply_to)
     await event.reply(msg)
@@ -171,7 +171,7 @@ async def ban_botpms(event):
         user = await event.client.get_entity(user_id)
         user_id = user.id
     except Exception as e:
-        return await event.reply(f"**Error :**\n`{e}`")
+        return await event.reply(f"Error :\n`{e}`")
     check = check_is_black_list(user.id)
     if not check:
         return await event.client.send_message(
@@ -199,7 +199,7 @@ async def ban_starters(event):
         return await edit_delete(event, "`No one is banned in your bot yet`")
     msg = "**The list of users who are banned in your bot are :\n\n**"
     for user in ulist:
-        msg += f"• {_format.mentionuser(user.first_name , user.chat_id)}\n\n**Id :** `{user.chat_id}`\n\n**Username :** @{user.username}\n\n**Date : **{user.date}\n\n**Reason :** {user.reason}\n\n"
+        msg += f"• {_format.mentionuser(user.first_name , user.chat_id)}\n\nId : `{user.chat_id}`\n\nUsername : @{user.username}\n\nDate : {user.date}\n\nReason : {user.reason}\n\n"
     await edit_or_reply(event, msg)
 
 
