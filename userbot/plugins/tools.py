@@ -79,7 +79,7 @@ async def currency(event):
         output = round(output, 4)
         await edit_or_reply(
             event,
-            f"The currency value of **{symbols[fromcurrency]}{value} {fromcurrency}** in **{tocurrency}** is **{symbols[tocurrency]}{output}**",
+            f"The currency value of {symbols[fromcurrency]}{value} {fromcurrency} in {tocurrency} is {symbols[tocurrency]}{output}",
         )
     except Exception:
         await edit_or_reply(
@@ -111,7 +111,7 @@ async def scan(event):
             flag = await conv.send_message("/start")
         except YouBlockedUserError:
             await edit_or_reply(
-                catevent, "**Error :** Trying to unblock and retry wait a second..."
+                catevent, "Error : Trying to unblock and retry wait a second..."
             )
             await catub(unblock("VS_Robot"))
             flag = await conv.send_message("/start")
@@ -121,7 +121,7 @@ async def scan(event):
         if response1.text:
             await event.client.send_read_acknowledge(conv.chat_id)
             sec = "".join([num for num in response1.text if num.isdigit()])
-            await edit_delete(catevent, f"**Please wait for {sec}s before retry**", 15)
+            await edit_delete(catevent, f"Please wait for {sec}s before retry", 15)
         else:
             await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
@@ -160,12 +160,12 @@ async def parseqr(event):
     soup = BeautifulSoup(t_response, "html.parser")
     try:
         qr_contents = soup.find_all("pre")[0].text
-        await edit_or_reply(catevent, f"**The decoded message is :**\n`{qr_contents}`")
+        await edit_or_reply(catevent, f"The decoded message is :\n`{qr_contents}`")
     except IndexError:
         result = soup.text
-        await edit_or_reply(catevent, f"**Failed to decode :**\n`{result}`")
+        await edit_or_reply(catevent, f"Failed to decode :\n`{result}`")
     except Exception as e:
-        await edit_or_reply(catevent, f"**Error :**\n`{e}`")
+        await edit_or_reply(catevent, f"Error :\n`{e}`")
 
 
 @catub.cat_cmd(
@@ -278,7 +278,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     input_sgra = input_str.split(";")
     if len(input_sgra) != 2:
-        return await edit_delete(event, "**Syntax :**`.cal year ; month `", 5)
+        return await edit_delete(event, "Syntax :`.cal year ; month `", 5)
 
     yyyy = input_sgra[0]
     mm = input_sgra[1]
@@ -286,7 +286,7 @@ async def _(event):
         output_result = calendar.month(int(yyyy.strip()), int(mm.strip()))
         await edit_or_reply(event, f"```{output_result}```")
     except Exception as e:
-        await edit_delete(event, f"**Error :**\n`{e}`", 5)
+        await edit_delete(event, f"Error :\n`{e}`", 5)
 
 
 @catub.cat_cmd(
@@ -306,19 +306,19 @@ async def spy(event):
     "To see details of an ip"
     inpt = event.pattern_match.group(1)
     if not inpt:
-        return await edit_delete(event, "**Give an ip address to lookup...**", 20)
+        return await edit_delete(event, "Give an ip address to lookup...", 20)
     check = "" if inpt == "mine" else inpt
     API = Config.IPDATA_API
     if API is None:
         return await edit_delete(
             event,
-            "**Get an api key from [Ipdata](https://dashboard.ipdata.co/sign-up.html) and set that in heroku var `IPDATA_API`**",
+            "Get an api key from [Ipdata](https://dashboard.ipdata.co/sign-up.html) and set that in heroku var `IPDATA_API`",
             80,
         )
     url = requests.get(f"https://api.ipdata.co/{check}?api-key={API}")
     r = url.json()
     try:
-        return await edit_delete(event, f"**{r['message']}**", 60)
+        return await edit_delete(event, f"{r['message']}", 60)
     except KeyError:
         await edit_or_reply(event, "Searching...")
     ip = r["ip"]
@@ -357,21 +357,21 @@ async def spy(event):
     except IndexError:
         lang2 = ""
 
-    string = f"✘ <b>Lookup for ip : {ip}</b> {emoji_flag}\n\n\
-    <b>• City name :</b>  <code>{city}</code>\n\n\
-    <b>• Region name :</b>  <code>{region}</code> [<code>{region_code}</code>]\n\n\
-    <b>• Country name :</b>  <code>{country}</code> [<code>{country_code}</code>]\n\n\
-    <b>• Continent name :</b>  <code>{continent}</code> [<code>{continent_code}</code>]\n\n\
-    <b>• View on map :  <a href = https://www.google.com/maps/search/?api=1&query={latitude}%2C{longitude}>Google Map</a></b>\n\n\
-    <b>• Postal code :</b> <code>{postal}</code>\n\n\
-    <b>• Caller code :</b>  <code>+{calling_code}</code>\n\n\
-    <b>• Carrier detail :  <a href = https://www.{carriel}>{' '.join(carrier.split()[:2])}</a></b>\n\n\
-    <b>• Language :</b>  {language1} {lang2}\n\n\
-    <b>• Currency :</b>  <code>{currency}</code> [<code>{symbol}{currcode}</code>]\n\n\
-    <b>• Time zone :</b> <code>{time_zone}</code> [<code>{time_z}</code>]\n\n\
-    <b>• Time :</b> <code>{current_time[11:16]}</code>\n\n\
-    <b>• Date :</b> <code>{current_time[:10]}</code>\n\n\
-    <b>• Time offset :</b> <code>{current_time[-6:]}</code>"
+    string = f"✘ Lookup for ip : {ip} {emoji_flag}\n\n\
+    • City name : <code>{city}</code>\n\n\
+    • Region name : <code>{region}</code> [<code>{region_code}</code>]\n\n\
+    • Country name : <code>{country}</code> [<code>{country_code}</code>]\n\n\
+    • Continent name : <code>{continent}</code> [<code>{continent_code}</code>]\n\n\
+    • View on map : <a href = https://www.google.com/maps/search/?api=1&query={latitude}%2C{longitude}>Google map</a>\n\n\
+    • Postal code : <code>{postal}</code>\n\n\
+    • Caller code : <code>+{calling_code}</code>\n\n\
+    • Carrier detail : <a href = https://www.{carriel}>{' '.join(carrier.split()[:2])}</a>\n\n\
+    • Language : {language1} {lang2}\n\n\
+    • Currency : <code>{currency}</code> [<code>{symbol}{currcode}</code>]\n\n\
+    • Time zone : <code>{time_zone}</code> [<code>{time_z}</code>]\n\n\
+    • Time : <code>{current_time[11:16]}</code>\n\n\
+    • Date : <code>{current_time[:10]}</code>\n\n\
+    • Time offset : <code>{current_time[-6:]}</code>"
     await edit_or_reply(event, string, parse_mode="html")
 
 
@@ -413,7 +413,7 @@ async def _(event):
     message_id = await reply_id(event)
     if not input_str.startswith("#"):
         return await edit_or_reply(
-            event, "**Syntax : **`.color <color_code>` example : `.color #ff0000`"
+            event, "Syntax :`.color <color_code>` example : `.color #ff0000`"
         )
     try:
         usercolor = ImageColor.getrgb(input_str)
@@ -474,12 +474,12 @@ async def _(event):
     img = data.get("img")
     data.get("title")
     output_str = """[\u2060]({})**{}**
-[Xkcd]({})
+[Xkcd] ({})
 Title : {}
 Alt : {}
 Day : {}
 Month : {}
-Year : {}""".format(
+Year : {} """.format(
         img, input_str, xkcd_link, safe_title, alt, day, month, year
     )
     await catevent.edit(output_str, link_preview=True)
