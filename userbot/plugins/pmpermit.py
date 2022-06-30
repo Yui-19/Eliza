@@ -90,12 +90,12 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
                 remwarns=remwarns,
             )
         else:
-            USER_BOT_WARN_ZERO = f"**You were spamming my master** {my_mention}**'s inbox , henceforth you have been blocked**"
+            USER_BOT_WARN_ZERO = f"You were spamming my master {my_mention}'s inbox , henceforth you have been blocked"
         msg = await event.reply(USER_BOT_WARN_ZERO)
         await event.client(functions.contacts.BlockRequest(chat.id))
         the_message = f"BLOCKED PM\
                             \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                            \n\n**Message count :** {PM_WARNS[str(chat.id)]}"
+                            \n\nMessage count : {PM_WARNS[str(chat.id)]}"
         del PM_WARNS[str(chat.id)]
         sql.del_collection("pmwarns")
         sql.del_collection("pmmessagecache")
@@ -265,7 +265,7 @@ __My master will respond when he/she comes online, if he/she wants to.__
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"BLOCKED PM\
                 \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n\n**Reason:** He or she opted for enquire option but didn't wait after being told also and kept on messaging so blocked"
+                \n\nReason : He or she opted for enquire option but didn't wait after being told also and kept on messaging so blocked"
     sqllist.rm_from_list("pmenquire", chat.id)
     try:
         return await event.client.send_message(
@@ -314,7 +314,7 @@ __My master will respond when he/she comes back online, if he/she wants to.__
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"BLOCKED PM\
                 \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n\n**Reason :** He or she opted for the request option but didn't wait after being told also so blocked"
+                \n\nReason : He or she opted for the request option but didn't wait after being told also so blocked"
     sqllist.rm_from_list("pmrequest", chat.id)
     try:
         return await event.client.send_message(
@@ -363,7 +363,7 @@ __My master will respond when he/she comes back online, if he/she wants to.__
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"BLOCKED PM\
                 \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n\n**Reason :** He or she select opted for the chat option but didn't wait after being told also so blocked"
+                \n\nReason : He or she select opted for the chat option but didn't wait after being told also so blocked"
     sqllist.rm_from_list("pmchat", chat.id)
     try:
         return await event.client.send_message(
@@ -391,7 +391,7 @@ async def do_pm_spam_action(event, chat):
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"BLOCKED PM\
                             \n\n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                            \n\n**Reason :** He or she opted for spam option and messaged again"
+                            \n\nReason : He or she opted for spam option and messaged again"
     sqllist.rm_from_list("pmspam", chat.id)
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
     try:
@@ -852,13 +852,13 @@ async def disapprove_p_m(event):
         pmpermit_sql.disapprove(user.id)
         await edit_or_reply(
             event,
-            f"[{user.first_name}](tg://user?id={user.id}) is disapproved to personal message me\n\n**Reason :** {reason}",
+            f"[{user.first_name}](tg://user?id={user.id}) is disapproved to personal message me\n\nReason : {reason}",
         )
     elif user.id in PMPERMIT_.TEMPAPPROVED:
         PMPERMIT_.TEMPAPPROVED.remove(user.id)
         await edit_or_reply(
             event,
-            f"[{user.first_name}](tg://user?id={user.id}) is disapproved to personal message me\n\n**Reason :** {reason}",
+            f"[{user.first_name}](tg://user?id={user.id}) is disapproved to personal message me\n\nReason : {reason}",
         )
     else:
         await edit_delete(
@@ -914,7 +914,7 @@ async def block_p_m(event):
     await event.client(functions.contacts.BlockRequest(user.id))
     await edit_or_reply(
         event,
-        f"[{user.first_name}](tg://user?id={user.id}) is blocked he or she can no longer personal message you\n\n**Reason :** {reason}",
+        f"[{user.first_name}](tg://user?id={user.id}) is blocked he or she can no longer personal message you\n\nReason : {reason}",
     )
 
 
@@ -922,7 +922,7 @@ async def block_p_m(event):
     pattern="unblock(?:\s|$)([\s\S]*)",
     command=("unblock", plugin_category),
     info={
-        "header": "To unblock a user.",
+        "header": "To unblock a user",
         "usage": [
             "{tr}unblock <username or reply reason> in group",
             "{tr}unblock <reason> in pm",
@@ -943,7 +943,7 @@ async def unblock_pm(event):
     await event.client(functions.contacts.UnblockRequest(user.id))
     await edit_or_reply(
         event,
-        f"[{user.first_name}](tg://user?id={user.id}) is unblocked he or she can personal message you from now on\n\n**Reason :** {reason}",
+        f"[{user.first_name}](tg://user?id={user.id}) is unblocked he or she can personal message you from now on\n\nReason : {reason}",
     )
 
 
@@ -965,10 +965,10 @@ async def approve_p_m(event):
             f"Turn on pmpermit by doing `{cmdhd}pmguard on` to work this plugin",
         )
     approved_users = pmpermit_sql.get_all_approved()
-    APPROVED_PMs = "**Current approved pms**\n\n"
+    APPROVED_PMs = "Current approved pms\n\n"
     if len(approved_users) > 0:
         for user in approved_users:
-            APPROVED_PMs += f"• {_format.mentionuser(user.first_name , user.user_id)}\n**Id :** `{user.user_id}`\n**Username :** @{user.username}\n**Date : **{user.date}\n**Reason : **{user.reason}\n\n"
+            APPROVED_PMs += f"• {_format.mentionuser(user.first_name , user.user_id)}\nId : `{user.user_id}`\nUsername : @{user.username}\nDate : {user.date}\nReason : {user.reason}\n\n"
     else:
         APPROVED_PMs = "`You haven't approved anyone yet`"
     await edit_or_reply(
