@@ -73,11 +73,11 @@ async def truth_dare_task(event):
     try:
         task = await get_task(taskmode, category)
         if taskmode == "truth":
-            await catevent.edit(f"**The truth task for you is**\n\n`{task}`")
+            await catevent.edit(f"The truth task for you is\n\n`{task}`")
         else:
-            await catevent.edit(f"**The dare task for you is**\n\n`{task}`")
+            await catevent.edit(f"The dare task for you is\n\n`{task}`")
     except Exception as e:
-        await edit_delete(catevent, f"**Error while getting task**\n\n`{e}`", 7)
+        await edit_delete(catevent, f"Error while getting task\n\n`{e}`", 7)
 
 
 @catub.cat_cmd(
@@ -132,24 +132,24 @@ async def igame(event):
     reply_to_id = await reply_id(event)
     input_str = event.pattern_match.group(1)
     game_list = "".join(
-        f"**{i}.** `{item}` :- {game[item]}\n"
+        f"{i}. `{item}` :- {game[item]}\n"
         for i, item in enumerate(game, start=1)
     )
     if not input_str:
         await edit_delete(
-            event, f"**Available game codes & names :-**\n\n{game_list}", time=60
+            event, f"Available game codes & names :-\n\n{game_list}", time=60
         )
         return
     if input_str not in game_code:
         catevent = await edit_or_reply(event, "`Give me a correct game code...`")
         await asyncio.sleep(1)
         await edit_delete(
-            catevent, f"**Available game codes & names :-**\n\n{game_list}", time=60
+            catevent, f"Available game codes & names :-\n\n{game_list}", time=60
         )
     else:
         await edit_or_reply(
             event,
-            f"**Game code `{input_str}` is selected for game :-** {game[input_str]}",
+            f"Game code `{input_str}` is selected for game :- {game[input_str]}",
         )
         await asyncio.sleep(1)
         bot = "@inlinegamesbot"
