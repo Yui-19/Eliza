@@ -49,7 +49,7 @@ async def itachi(event):
     info={
         "header": "Converts your text to big emoji text, with your custom emoji",
         "usage": "{tr}cmoji <emoji> <text>",
-        "examples": ["{tr}cmoji ⚡ catuserbot"],
+        "examples": ["{tr}cmoji 🎌 catuserbot"],
     },
 )
 async def itachi(event):
