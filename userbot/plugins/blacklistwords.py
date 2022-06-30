@@ -111,7 +111,7 @@ async def _(event):
     OUT_STR = "Blacklists in the current chat :\n"
     if len(all_blacklisted) > 0:
         for trigger in all_blacklisted:
-            OUT_STR += f"✨ {trigger}\n"
+            OUT_STR += f"{trigger}\n"
     else:
         OUT_STR = "No blacklists found start saving using `.addblacklist`"
     await edit_or_reply(event, OUT_STR)
