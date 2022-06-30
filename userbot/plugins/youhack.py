@@ -22,14 +22,14 @@ async def _(event):
     animation_chars = [
         "`Installing files to hacked private server...`",
         "`Target selected`",
-        "`Installing... 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-        "`Installing... 4%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-        "`Installing... 8%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-        "`lnstallig... 20%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-        "`Installing... 36%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-        "`Installing... 52%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
-        "`Installing... 84%\n█████████████████████▒▒▒▒ `",
-        "`Installing... 100%\n████████Installed██████████ `",
+        "`Installing... 0%\n\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Installing... 4%\n\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Installing... 8%\n\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`lnstallig... 20%\n\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Installing... 36%\n\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Installing... 52%\n\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Installing... 84%\n\n█████████████████████▒▒▒▒ `",
+        "`Installing... 100%\n\n██████████████████ `",
         "`Target files uploading...\n\nDirecting to remote server to hack...`",
     ]
     for i in animation_ttl:
@@ -112,7 +112,7 @@ async def _(event):
     )
     await asyncio.sleep(0.5)
     await xx.edit(
-        "`100%\n█████████HACKED███████████ `\n\n\n  TERMINAL :\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)\nCollecting Data Package\n  Downloading Telegram-Data-Sniffer-7.1.1-py2.py3-none-any.whl (82 kB)\nBuilding wheel for Tg-Bruteforcing (setup.py): finished with status 'done'\nCreated wheel for telegram: filename=Telegram-Data-Sniffer-0.0.1-py3-none-any.whl size=1306 sha256=cb224caad7fe01a6649188c62303cd4697c1869fa12d280570bb6ac6a88e6b7e\n  Stored in directory : `"
+        "`100%\n████████████████████ `\n\n\n  TERMINAL :\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)\nCollecting Data Package\n  Downloading Telegram-Data-Sniffer-7.1.1-py2.py3-none-any.whl (82 kB)\nBuilding wheel for Tg-Bruteforcing (setup.py): finished with status 'done'\nCreated wheel for telegram: filename=Telegram-Data-Sniffer-0.0.1-py3-none-any.whl size=1306 sha256=cb224caad7fe01a6649188c62303cd4697c1869fa12d280570bb6ac6a88e6b7e\n  Stored in directory : `"
     )
     await asyncio.sleep(2)
     await xx.edit("`Account hacked\n Collecting all data\n Converting data into pdf`")
