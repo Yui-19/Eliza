@@ -80,7 +80,7 @@ async def _(event):
 `Upload : {} (or) {} mbs`
 `Ping : {} ms`
 `Internet service provider : {}`
-`Isp rating : {}`""".format(
+`Isp rating : {}` """.format(
                     ms,
                     convert_from_bytes(download_speed),
                     round(download_speed / 8e6, 2),
@@ -95,7 +95,7 @@ async def _(event):
             await event.client.send_file(
                 event.chat_id,
                 speedtest_image,
-                caption="**Speedtest** completed in {} seconds".format(ms),
+                caption="Speedtest completed in {} seconds".format(ms),
                 force_document=as_document,
                 reply_to=reply_msg_id,
                 allow_cache=False,
@@ -103,13 +103,13 @@ async def _(event):
             await event.delete()
     except Exception as exc:
         await catevent.edit(
-            """**Speedtest** completed in {} seconds
+            """Speedtest completed in {} seconds
 Download : {} (or) {} mbs
 Upload : {} (or) {} mbs
 Ping : {} ms
 
 With the following errors
-{}""".format(
+{} """.format(
                 ms,
                 convert_from_bytes(download_speed),
                 round(download_speed / 8e6, 2),
