@@ -96,7 +96,7 @@ async def dotificmd(message):
 async def parse(message):
     reply = await message.get_reply_message()
     if not reply:
-        await edit_delete(message, "<b>Reply to an image</b>", 3, parse_mode="html")
+        await edit_delete(message, "Reply to an image", 3, parse_mode="html")
         return None, None
     args = message.pattern_match.group(1).split(" ", 1)
     pix = 100
@@ -108,7 +108,7 @@ async def parse(message):
 
 
 async def dotify(message, reply, pix, mode):
-    await edit_or_reply(message, "<b>Putting dots...</b>", parse_mode="html")
+    await edit_or_reply(message, "Putting dots...", parse_mode="html")
     count = 24
     im_ = Image.open(io.BytesIO(await reply.download_media(bytes)))
     if im_.mode == "RGBA":
