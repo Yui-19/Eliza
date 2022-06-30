@@ -167,7 +167,7 @@ async def _(event):  # sourcery no-metrics
             locktype = "everything"
         elif input_str:
             return await edit_delete(
-                event, f"**Invalid lock type :** `{input_str}`", time=5
+                event, f"Invalid lock type : `{input_str}`", time=5
             )
 
         else:
@@ -201,7 +201,7 @@ async def _(event):  # sourcery no-metrics
         except BaseException as e:
             await edit_delete(
                 event,
-                f"`Do I have proper rights for that ?`\n\n**Error :** `{e}`",
+                f"`Do I have proper rights for that ?`\n\nError : `{e}`",
                 time=5,
             )
 
@@ -355,7 +355,7 @@ async def _(event):  # sourcery no-metrics
             locktype = "everything"
         elif input_str:
             return await edit_delete(
-                event, f"**Invalid unlock type :** `{input_str}`", time=5
+                event, f"Invalid unlock type : `{input_str}`", time=5
             )
 
         else:
@@ -389,7 +389,7 @@ async def _(event):  # sourcery no-metrics
         except BaseException as e:
             return await edit_delete(
                 event,
-                f"`Do I have proper rights for that ?`\n\n**Error :** `{e}`",
+                f"`Do I have proper rights for that ?`\n\nError : `{e}`",
                 time=5,
             )
 
@@ -410,17 +410,17 @@ async def _(event):  # sourcery no-metrics
     if not current_db_locks:
         res = "There are no database settings in this chat"
     else:
-        res = "Following are the database permissions in this chat : \n"
+        res = "Following are the database permissions in this chat :\n\n"
         ubots = "❌" if current_db_locks.bots else "Yes"
         ucommands = "❌" if current_db_locks.commands else "Yes"
         uemail = "❌" if current_db_locks.email else "Yes"
         uforward = "❌" if current_db_locks.forward else "Yes"
         uurl = "❌" if current_db_locks.url else "Yes"
-        res += f"`Bots` : `{ubots}`\n"
-        res += f"`Commands` : `{ucommands}`\n"
-        res += f"`Email` : `{uemail}`\n"
-        res += f"`Forward` : `{uforward}`\n"
-        res += f"`Url` : `{uurl}`\n"
+        res += f"`Bots` : `{ubots}`\n\n"
+        res += f"`Commands` : `{ucommands}`\n\n"
+        res += f"`Email` : `{uemail}`\n\n"
+        res += f"`Forward` : `{uforward}`\n\n"
+        res += f"`Url` : `{uurl}`\n\n"
     current_chat = await event.get_chat()
     try:
         chat_per = current_chat.default_banned_rights
@@ -438,18 +438,18 @@ async def _(event):  # sourcery no-metrics
         uadduser = "❌" if chat_per.invite_users else "Yes"
         ucpin = "❌" if chat_per.pin_messages else "Yes"
         uchangeinfo = "❌" if chat_per.change_info else "Yes"
-        res += "\nThis are current permissions of this chat: \n"
-        res += f"`Msg` : `{umsg}`\n"
-        res += f"`Media` : `{umedia}`\n"
-        res += f"`Sticker` : `{usticker}`\n"
-        res += f"`Gif` : `{ugif}`\n"
-        res += f"`Preview` : `{uembed_link}`\n"
-        res += f"`Game` : `{ugamee}`\n"
-        res += f"`Ainline` : `{uainline}`\n"
-        res += f"`Gpoll`: `{ugpoll}`\n"
-        res += f"`Adduser` : `{uadduser}`\n"
-        res += f"`Cpin` : `{ucpin}`\n"
-        res += f"`Changeinfo` : `{uchangeinfo}`\n"
+        res += "\nThis are current permissions of this chat:\n\n"
+        res += f"`Msg` : `{umsg}`\n\n"
+        res += f"`Media` : `{umedia}`\n\n"
+        res += f"`Sticker` : `{usticker}`\n\n"
+        res += f"`Gif` : `{ugif}`\n\n"
+        res += f"`Preview` : `{uembed_link}`\n\n"
+        res += f"`Game` : `{ugamee}`\n\n"
+        res += f"`Ainline` : `{uainline}`\n\n"
+        res += f"`Gpoll`: `{ugpoll}`\n\n"
+        res += f"`Adduser` : `{uadduser}`\n\n"
+        res += f"`Cpin` : `{ucpin}`\n\n"
+        res += f"`Changeinfo` : `{uchangeinfo}`\n\n"
     await edit_or_reply(event, res)
 
 
@@ -663,7 +663,7 @@ async def _(event):  # sourcery no-metrics
         locktype = "everything"
     elif input_str:
         return await edit_delete(
-            event, f"**Invalid lock type :** `{input_str}`", time=5
+            event, f"Invalid lock type : `{input_str}`", time=5
         )
 
     else:
@@ -693,7 +693,7 @@ async def _(event):  # sourcery no-metrics
     except BaseException as e:
         await edit_delete(
             event,
-            f"`Do I have proper rights for that ?`\n\n**Error :** `{e}`",
+            f"`Do I have proper rights for that ?`\n\nError : `{e}`",
             time=5,
         )
 
@@ -864,7 +864,7 @@ async def _(event):  # sourcery no-metrics
         if cpin:
             return await edit_delete(
                 event,
-                "`This Group is locked with pinning messages by users`",
+                "`This group is locked with pinning messages by users`",
             )
         if not ucpin:
             return await edit_delete(
@@ -912,7 +912,7 @@ async def _(event):  # sourcery no-metrics
         locktype = "everything"
     elif input_str:
         return await edit_delete(
-            event, f"**Invalid lock type :** `{input_str}`", time=5
+            event, f"Invalid lock type : `{input_str}`", time=5
         )
 
     else:
@@ -942,7 +942,7 @@ async def _(event):  # sourcery no-metrics
     except BaseException as e:
         await edit_delete(
             event,
-            f"`Do I have proper rights for that ?`\n\n**Error :** `{e}`",
+            f"`Do I have proper rights for that ?`\n\nError : `{e}`",
             time=5,
         )
 
@@ -973,14 +973,14 @@ async def _(event):  # sourcery no-metrics
         pin = "Yes" if result.participant.admin_rights.pin_messages else "❌"
         add_a = "Yes" if result.participant.admin_rights.add_admins else "❌"
         call = "Yes" if result.participant.admin_rights.manage_call else "❌"
-        output += f"**Admin rights of **{_format.mentionuser(user.first_name ,user.id)} **in {get_display_name(await event.get_chat())} chat are **\n\n"
-        output += f"Change info : {c_info}\n"
-        output += f"Delete messages : {del_me}\n"
-        output += f"Ban users : {ban}\n"
-        output += f"Invite users : {invite_u}\n"
-        output += f"Pin messages : {pin}\n"
-        output += f"Add admins : {add_a}\n"
-        output += f"Manage call : {call}\n"
+        output += f"**Admin rights of {_format.mentionuser(user.first_name ,user.id)} in {get_display_name(await event.get_chat())} chat are\n\n"
+        output += f"Change info : {c_info}\n\n"
+        output += f"Delete messages : {del_me}\n\n"
+        output += f"Ban users : {ban}\n\n"
+        output += f"Invite users : {invite_u}\n\n"
+        output += f"Pin messages : {pin}\n\n"
+        output += f"Add admins : {add_a}\n\n"
+        output += f"Manage call : {call}\n\n"
     else:
         chat_per = (await event.get_chat()).default_banned_rights
         try:
@@ -1007,18 +1007,18 @@ async def _(event):  # sourcery no-metrics
             uadduser = "❌" if chat_per.invite_users else "Yes"
             ucpin = "❌" if chat_per.pin_messages else "Yes"
             uchangeinfo = "❌" if chat_per.change_info else "Yes"
-        output += f"{_format.mentionuser(user.first_name ,user.id)} **permissions in {get_display_name(await event.get_chat())} chat are **\n\n"
-        output += f"Send messages : {umsg}\n"
-        output += f"Send media : {umedia}\n"
-        output += f"Send stickers : {usticker}\n"
-        output += f"Send gifs : {ugif}\n"
-        output += f"Send games : {ugamee}\n"
-        output += f"Send inline bots : {uainline}\n"
-        output += f"Send polls : {ugpoll}\n"
-        output += f"Embed links : {uembed_link}\n"
-        output += f"Add users : {uadduser}\n"
-        output += f"Pin messages : {ucpin}\n"
-        output += f"Change chat info : {uchangeinfo}\n"
+        output += f"{_format.mentionuser(user.first_name ,user.id)} permissions in {get_display_name(await event.get_chat())} chat are\n\n"
+        output += f"Send messages : {umsg}\n\n"
+        output += f"Send media : {umedia}\n\n"
+        output += f"Send stickers : {usticker}\n\n"
+        output += f"Send gifs : {ugif}\n\n"
+        output += f"Send games : {ugamee}\n\n"
+        output += f"Send inline bots : {uainline}\n\n"
+        output += f"Send polls : {ugpoll}\n\n"
+        output += f"Embed links : {uembed_link}\n\n"
+        output += f"Add users : {uadduser}\n\n"
+        output += f"Pin messages : {ucpin}\n\n"
+        output += f"Change chat info : {uchangeinfo}\n\n"
     await edit_or_reply(event, output)
 
 
