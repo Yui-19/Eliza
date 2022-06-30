@@ -54,7 +54,7 @@ async def fetch_info(replied_user, event):
     full_name = full_name or first_name
     username = "@{}".format(username) if username else ("This user has no username")
     user_bio = "This user has no about" if not user_bio else user_bio
-    caption = "<b><i>User info from durov's database :</i></b>\n\n"
+    caption = "<i>User info from durov's database :</i>\n\n"
     caption += f"Name : {full_name}\n\n"
     caption += f"Username : {username}\n\n"
     caption += f"Id : <code>{user_id}</code>\n\n"
@@ -103,11 +103,11 @@ async def _(event):
         dc_id = "Can't get dc id"
     if spamwatch:
         if ban := spamwatch.get_ban(user_id):
-            sw = f"Spamwatch banned : `True`\n\n**Reason : **`{ban.reason}`"
+            sw = f"Spamwatch banned : `True`\n\nReason : `{ban.reason}`"
         else:
-            sw = "Spamwatch banned :`False`"
+            sw = "Spamwatch banned : `False`"
     else:
-        sw = "Spamwatch banned :`Not connected`"
+        sw = "Spamwatch banned : `Not connected`"
     try:
         casurl = "https://api.cas.chat/check?user_id={}".format(user_id)
         data = get(casurl).json()
