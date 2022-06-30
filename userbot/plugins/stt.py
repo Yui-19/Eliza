@@ -21,7 +21,7 @@ plugin_category = "utils"
     },
 )
 async def _(event):
-    "speech to text."
+    "Speech to text"
     if Config.IBM_WATSON_CRED_URL is None or Config.IBM_WATSON_CRED_PASSWORD is None:
         return await edit_delete(
             event,
@@ -66,11 +66,11 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).seconds
     if not transcript_response:
-        string_to_show = "**Language :** `{}`\n\n**Time taken :** `{} seconds`\n\n**No results found**".format(
+        string_to_show = "Language : `{}`\n\nTime taken : `{} seconds`\n\nNo results found".format(
             lan, ms
         )
     else:
-        string_to_show = "**Language :** `{}`\n\n**Transcript :**`{}`\n\n**Time taken :**`{} seconds`\n\n**Confidence : ** `{}`".format(
+        string_to_show = "Language : `{}`\n\nTranscript :`{}`\n\nTime taken :`{} seconds`\n\nConfidence : `{}`".format(
             lan, transcript_response, ms, transcript_confidence
         )
     await catevent.edit(string_to_show)
