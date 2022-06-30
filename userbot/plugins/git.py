@@ -74,24 +74,24 @@ async def _(event):
                     limit -= 1
                     if limit == 0:
                         break
-            REPLY = "**Github info for** `{username}`\
-                \n\n👻 **Name :** [{name}]({html_url})\
-                \n\n💰 **Type :** `{type}`\
-                \n\n🏦 **Company :** `{company}`\
-                \n\n🔭 **Blog** : {blog}\
-                \n\n📍 **Location** : `{location}`\
-                \n\n📜 **Bio** : __{bio}__\
-                \n\n💖 **Followers** : `{followers}`\
-                \n\n💜 **Following** : `{following}`\
-                \n\n🏯 **Public repos** : `{public_repos}`\
-                \n\n📃 **Public gists** : `{public_gists}`\
-                \n\n🖋️ **Profile created** : `{created_at}`\
-                \n\n💙 **Profile updated** : `{updated_at}`".format(
+            REPLY = "Github info for `{username}`\
+                \n\nName : [{name}]({html_url})\
+                \n\nType : `{type}`\
+                \n\nCompany : `{company}`\
+                \n\nBlog : {blog}\
+                \n\nLocation : `{location}`\
+                \n\nBio : __{bio}__\
+                \n\nFollowers : `{followers}`\
+                \n\nFollowing : `{following}`\
+                \n\nPublic repos : `{public_repos}`\
+                \n\nPublic gists : `{public_gists}`\
+                \n\nProfile created : `{created_at}`\
+                \n\nProfile updated : `{updated_at}`".format(
                 username=username, **result
             )
 
             if repos:
-                REPLY += "\n👀 **Some repos** : " + " | ".join(repos)
+                REPLY += "\n👀 Some repos : " + " | ".join(repos)
             downloader = SmartDL(photo, ppath, progress_bar=False)
             downloader.start(blocking=False)
             while not downloader.isFinished():
