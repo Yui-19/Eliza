@@ -114,7 +114,7 @@ async def _(event):  # sourcery no-metrics
         end = datetime.now()
         ms = (end - start).seconds
         await mone.edit(
-            f"**• Downloaded in {ms} seconds**\n\n**• Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+            f"• Downloaded in {ms} seconds\n\n• Downloaded to :- `{os.path.relpath(file_name,os.getcwd())}`\n   "
         )
     elif input_str:
         start = datetime.now()
@@ -148,11 +148,11 @@ async def _(event):  # sourcery no-metrics
             )
             estimated_total_time = downloader.get_eta(human=True)
             current_message = f"Downloading the file\
-                                \n\n**Url : **`{url}`\
-                                \n**File name :** `{file_name}`\
+                                \n\nUrl : `{url}`\
+                                \nFile name : `{file_name}`\
                                 \n{progress_str}\
                                 \n`{humanbytes(downloaded)} of {humanbytes(total_length)} @ {humanbytes(dspeed)}`\
-                                \n**Eta : **`{estimated_total_time}`"
+                                \nEta : `{estimated_total_time}`"
             if oldmsg != current_message and delay > 5:
                 await mone.edit(current_message)
                 delay = 0
@@ -163,10 +163,10 @@ async def _(event):  # sourcery no-metrics
         ms = (end - start).seconds
         if downloader.isSuccessful():
             await mone.edit(
-                f"**• Downloaded in {ms} seconds**\n**• Downloaded file location :- ** `{os.path.relpath(downloaded_file_name,os.getcwd())}`"
+                f"• Downloaded in {ms} seconds\n• Downloaded file location :- `{os.path.relpath(downloaded_file_name,os.getcwd())}`"
             )
         else:
-            await mone.edit("Incorrect URL\n {}".format(input_str))
+            await mone.edit("Incorrect url\n {}".format(input_str))
     else:
         await mone.edit("`Reply to a message to download to my local server`")
 
@@ -269,5 +269,5 @@ async def _(event):  # sourcery no-metrics
     end = datetime.now()
     ms = (end - start).seconds
     await mone.edit(
-        f"**• Downloaded in {ms} seconds**\n\n**• Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n"
+        f"• Downloaded in {ms} seconds\n\n• Downloaded to :- `{os.path.relpath(file_name,os.getcwd())}`\n"
     )
