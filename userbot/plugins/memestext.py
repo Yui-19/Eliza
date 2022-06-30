@@ -162,7 +162,7 @@ async def _(e):
 )
 async def iqless(e):
     "You retard"
-    await edit_or_reply(e, "♿")
+    await edit_or_reply(e, "🖋️")
 
 
 @catub.cat_cmd(
@@ -206,5 +206,5 @@ async def bluetext(e):
 )
 async def _(event):
     "Telethon session error code ( fun )"
-    mentions = "**Telethon.errors.rpcerrorlist.authkeyduplicatederror : The authorization key ( session file ) was used under two different ip addresses simultaneously and can no longer be used ! Use the same session exclusively or use different sessions ( caused by getmessagesrequest )**"
+    mentions = "Telethon.errors.rpcerrorlist.authkeyduplicatederror : The authorization key ( session file ) was used under two different ip addresses simultaneously and can no longer be used ! Use the same session exclusively or use different sessions ( caused by getmessagesrequest )"
     await edit_or_reply(event, mentions)
