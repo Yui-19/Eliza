@@ -85,11 +85,11 @@ async def lst(event):  # sourcery no-metrics
         time.ctime(os.path.getctime(path))
         time2 = time.ctime(os.path.getmtime(path))
         time3 = time.ctime(os.path.getatime(path))
-        msg += f"**Location :** `{path}`\n\n"
-        msg += f"**Icon :** `{mode}`\n\n"
-        msg += f"**Size :** `{humanbytes(size)}`\n\n"
-        msg += f"**Last modified time :** `{time2}`\n\n"
-        msg += f"**Last cccessed time :** `{time3}`"
+        msg += f"Location : `{path}`\n\n"
+        msg += f"Icon : `{mode}`\n\n"
+        msg += f"Size : `{humanbytes(size)}`\n\n"
+        msg += f"Last modified time : `{time2}`\n\n"
+        msg += f"Last cccessed time : `{time3}`"
     if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
             out_file.name = "ls.txt"
@@ -131,10 +131,10 @@ async def lst(event):
     catcmd = f"rm -rf {path}"
     if os.path.isdir(path):
         await _catutils.runcmd(catcmd)
-        await edit_or_reply(event, f"successfully removed `{path}` directory")
+        await edit_or_reply(event, f"Successfully removed `{path}` directory")
     else:
         await _catutils.runcmd(catcmd)
-        await edit_or_reply(event, f"successfully removed `{path}` file")
+        await edit_or_reply(event, f"Successfully removed `{path}` file")
 
 
 @catub.cat_cmd(
