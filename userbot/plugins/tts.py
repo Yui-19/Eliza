@@ -96,4 +96,4 @@ async def _(event):
         )
 
     except Exception as e:
-        await edit_or_reply(catevent, f"**Error :**\n`{e}`")
+        await edit_or_reply(catevent, f"Error :\n`{e}`")
