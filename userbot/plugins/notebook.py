@@ -224,16 +224,16 @@ async def write_page(event):
         if not text and rtext:
             text = rtext.message
         if not text:
-            return await edit_delete(event, "**Give me text to write**")
+            return await edit_delete(event, "Give me text to write")
         cap = None
     if cmd == "notebook":
         text = (
             (await catub(GetFullUserRequest(catub.uid))).full_user
         ).about or "This is just a sample text\n\n              - by cat userbot"
-        cap = f"**Notebook configs :-**\n\n**Font :** `{font}`\n**Page :** `{list(Pages.keys())[list(Pages.values()).index(page)]}`\n**Color :** `{foreground.title()}`\n**Log :**  `{log}`"
+        cap = f"Notebook configs :-\n\nFont : `{font}`\nPage : `{list(Pages.keys())[list(Pages.values()).index(page)]}`\nColor : `{foreground.title()}`\nLog :  `{log}`"
     reply_to_id = await reply_id(event)
     text = deEmojify(text)
-    catevent = await edit_or_reply(event, "**Processing...**")
+    catevent = await edit_or_reply(event, "Processing...")
     temp_name = "./temp/nbpage.jpg"
     font_name = "./temp/nbfont.ttf"
     if not os.path.isdir("./temp"):
@@ -304,13 +304,13 @@ async def notebook(event):
             "{tr}nbfont <font name>",
             "{tr}nbpage <page name>",
             "{tr}nbpen <font color>",
-            "{tr}nblog <On/Off>",
+            "{tr}nblog <on/off>",
         ],
         "examples": [
-            "{tr}nbfont Brownbag",
-            "{tr}nbpage Note book",
-            "{tr}nbpen Dark blue",
-            "{tr}nblog On",
+            "{tr}nbfont brownbag",
+            "{tr}nbpage note book",
+            "{tr}nbpen dark blue",
+            "{tr}nblog on",
         ],
     },
 )
@@ -320,40 +320,40 @@ async def notebook_conf(event):
     input_str = event.pattern_match.group(2)
     reply_to_id = await reply_id(event)
     if cmd == "page":
-        cap = "**Available notebook pages are here :-**\n\n"
+        cap = "Available notebook pages are here :-\n\n"
         for i, each in enumerate(Pages.keys(), start=1):
-            cap += f"**{i}.**  `{each}`\n"
+            cap += f"{i}. `{each}`\n"
         if input_str and input_str in Pages.keys():
             addgvar("NOTEBOOK_PAGE", Pages[input_str])
             if os.path.exists("temp/nbpage.jpg"):
                 os.remove("temp/nbpage.jpg")
             return await edit_delete(
-                event, f"**Notebook page successfully changed to :**`{input_str}`", 20
+                event, f"Notebook page successfully changed to :`{input_str}`", 20
             )
         temp_page = "Pages"
     elif cmd == "font":
-        cap = "**Available notebook fonts are here :-**\n\n"
+        cap = "Available notebook fonts are here :-\n\n"
         for i, each in enumerate(Fonts, start=1):
-            cap += f"**{i}.**  `{each}`\n"
+            cap += f"{i}. `{each}`\n"
         if input_str and input_str in Fonts:
             addgvar("NOTEBOOK_FONT", input_str)
             if os.path.exists("temp/nbfont.ttf"):
                 os.remove("temp/nbfont.ttf")
             return await edit_delete(
-                event, f"**Notebook font successfully changed to :**`{input_str}`", 20
+                event, f"Notebook font successfully changed to :`{input_str}`", 20
             )
         temp_page = "Fonts"
     elif cmd == "pen":
-        cap = "**Available Pen Color are here:-**\n\n"
+        cap = "Available pen color are here :-\n\n"
         for i, each in enumerate(Colors, start=1):
-            cap += f"**{i}.**  `{each}`\n"
+            cap += f"{i}.  `{each}`\n"
         if input_str and input_str in Colors:
             addgvar("NOTEBOOK_PEN_COLOR", input_str)
             if os.path.exists("temp/nbfont.ttf"):
                 os.remove("temp/nbfont.ttf")
             return await edit_delete(
                 event,
-                f"**Notebook pen color successfully changed to :**`{input_str}`",
+                f"Notebook pen color successfully changed to :`{input_str}`",
                 20,
             )
         temp_page = "Colors"
@@ -362,12 +362,12 @@ async def notebook_conf(event):
             return await edit_delete(
                 event, "You need to set `PRIVATE_GROUP_BOT_API_ID` in your config", 20
             )
-        cap = "**Available log option are :-**\n\n1. On\n2. Off"
+        cap = "Available log option are :-\n\n1. On\n2. Off"
         if input_str and input_str in ["On", "Off"]:
             addgvar("NOTEBOOK_LOG", input_str)
             return await edit_delete(
                 event,
-                f"**Notebook pen color successfully changed to :**`{input_str}`",
+                f"Notebook pen color successfully changed to :`{input_str}`",
                 50,
             )
         return await edit_delete(event, cap)
