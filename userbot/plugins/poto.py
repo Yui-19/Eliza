@@ -61,7 +61,7 @@ async def potocmd(event):
             uid = int(uid)
             if uid <= 0:
                 await edit_or_reply(
-                    event, "Number invalid\n\n**Are you comedy me ?**"
+                    event, "Number invalid\n\nAre you comedy me ?"
                 )
                 return
         except BaseException:
