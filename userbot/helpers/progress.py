@@ -154,17 +154,17 @@ async def progress(
             f"{progress_str}\n"
             f"`{humanbytes(current)} of {humanbytes(total)}"
             f" @ {humanbytes(speed)}`\n"
-            f"**Eta :**` {time_formatter(eta)}`\n"
-            f"**Duration :** `{time_formatter(elapsed_time)}`"
+            f"Eta :` {time_formatter(eta)}`\n"
+            f"Duration : `{time_formatter(elapsed_time)}`"
         )
         if tmp != oldtmp:
             if file_name:
                 await gdrive.edit(
-                    f"**{prog_type}**\n\n"
-                    f"**File name : **`{file_name}`**\n\nStatus :**\n{tmp}"
+                    f"{prog_type}\n\n"
+                    f"File name : `{file_name}`\n\nStatus :\n{tmp}"
                 )
             else:
-                await gdrive.edit(f"**{prog_type}**\n\n"f"**Status :**\n{tmp}")
+                await gdrive.edit(f"{prog_type}\n\n"f"Status :\n{tmp}")
             oldtmp = tmp
 
 
