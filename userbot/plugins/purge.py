@@ -153,7 +153,7 @@ async def purge_to(event):
             await event.client.delete_messages(chat, msgs)
         await edit_delete(
             event,
-            "`Fast purge complete !\nPurged " + str(count) + " messages`",
+            "`Fast purge complete !\n\nPurged " + str(count) + " messages`",
         )
         if BOTLOG:
             await event.client.send_message(
@@ -161,7 +161,7 @@ async def purge_to(event):
                 "PURGE\n\n`Purge of " + str(count) + " messages done successfully`",
             )
     except Exception as e:
-        await edit_delete(event, f"**Error :**\n`{e}`")
+        await edit_delete(event, f"Error :\n`{e}`")
 
 
 @catub.cat_cmd(
@@ -440,7 +440,7 @@ async def fastpurger(event):  # sourcery no-metrics
     if count > 0:
         result += "Fast purge complete\n\nPurged `" + str(count) + "` messages"
     if error != "":
-        result += f"\n\n**Error :**{error}"
+        result += f"\n\nError : {error}"
     if result == "":
         result += "There are no messages to purge"
     hi = await event.client.send_message(event.chat_id, result)
@@ -499,7 +499,7 @@ async def fast_purger(event):  # sourcery no-metrics
     reply = await event.get_reply_message()
     if not reply or reply.sender_id is None:
         return await edit_delete(
-            event, "**Error :**\n\nThis command works only if you reply to user message"
+            event, "Error :\n\nThis command works only if you reply to user message"
         )
     if not flag:
         if input_str and p_type == "s":
@@ -565,7 +565,7 @@ async def fast_purger(event):  # sourcery no-metrics
     if count > 0:
         result += "Fast purge completed\n\nPurged`" + str(count) + "` messages"
     if error != "":
-        result += f"\n\n**Error :**{error}"
+        result += f"\n\nError : {error}"
     if result == "":
         result += "There are no messages to purge"
     hi = await event.client.send_message(event.chat_id, result)
