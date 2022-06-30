@@ -152,7 +152,7 @@ async def plagiarism(event):
 
     if plagiarism != 0:
 
-        result = f"The content is **{plagiarism}% plagiarised**\n\nYou can use `{tr}rephrase` to rephrase the content to remove plagiarism"
+        result = f"The content is {plagiarism}% plagiarised\n\nYou can use `{tr}rephrase` to rephrase the content to remove plagiarism"
 
     else:
 
