@@ -89,7 +89,7 @@ async def mediainfo(event):
 </code>"""
     link = await post_to_telegraph(f"{X_MEDIA}", body_text)
     await catevent.edit(
-        f"<b>MEDIA INFO :  <a href ='{link}' > {X_MEDIA}</a></b>",
+        f"MEDIA INFO : <a href ='{link}' > {X_MEDIA}</a>",
         parse_mode="HTML",
         link_preview=True,
     )
