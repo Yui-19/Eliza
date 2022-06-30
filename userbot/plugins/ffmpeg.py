@@ -86,7 +86,7 @@ async def ff_mpeg_trim_cmd(event):
                 )
                 dl.close()
             except Exception as e:
-                await catevent.edit(f"**Error :**\n`{e}`")
+                await catevent.edit(f"Error :\n`{e}`")
             else:
                 end = datetime.now()
                 ms = (end - start).seconds
@@ -136,7 +136,7 @@ async def ff_mpeg_trim_cmd(event):
         )
         if o is None:
             return await edit_delete(
-                catevent, f"**Error : **`Can't complete the process`"
+                catevent, f"Error : `Can't complete the process`"
             )
         try:
             c_time = time.time()
@@ -154,14 +154,14 @@ async def ff_mpeg_trim_cmd(event):
             )
             os.remove(o)
         except Exception as e:
-            return await edit_delete(catevent, f"**Error : **`{e}`")
+            return await edit_delete(catevent, f"Error : `{e}`")
     elif len(cmt) == 2:
         # output should be image
         cmd, start_time = cmt
         o = await _cattools.take_screen_shot(FF_MPEG_DOWN_LOAD_MEDIA_PATH, start_time)
         if o is None:
             return await edit_delete(
-                catevent, "**Error : **`Can't complete the process`"
+                catevent, "Error : `Can't complete the process`"
             )
         try:
             c_time = time.time()
@@ -179,7 +179,7 @@ async def ff_mpeg_trim_cmd(event):
             )
             os.remove(o)
         except Exception as e:
-            return await edit_delete(catevent, f"**Error : **`{e}`")
+            return await edit_delete(catevent, f"Error : `{e}`")
     else:
         await edit_delete(catevent, "RTFM")
         return
@@ -203,7 +203,7 @@ async def ff_mpeg_trim_cmd(event):
     if not os.path.exists(FF_MPEG_DOWN_LOAD_MEDIA_PATH):
         return await edit_delete(
             event,
-            f"a media file needs to be download and save to the following path : `{FF_MPEG_DOWN_LOAD_MEDIA_PATH}`",
+            f"A media file needs to be download and save to the following path : `{FF_MPEG_DOWN_LOAD_MEDIA_PATH}`",
         )
     reply_to_id = await reply_id(event)
     catevent = await edit_or_reply(event, "`Triming the media...`")
@@ -226,7 +226,7 @@ async def ff_mpeg_trim_cmd(event):
         )
         if o is None:
             return await edit_delete(
-                catevent, "**Error : **`Can't complete the process`"
+                catevent, "Error : `Can't complete the process`"
             )
         try:
             c_time = time.time()
@@ -244,7 +244,7 @@ async def ff_mpeg_trim_cmd(event):
             )
             os.remove(o)
         except Exception as e:
-            return await edit_delete(catevent, f"**Error : **`{e}`")
+            return await edit_delete(catevent, f"Error : `{e}`")
     else:
         await edit_delete(catevent, "RTFM")
         return
