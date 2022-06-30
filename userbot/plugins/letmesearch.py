@@ -28,7 +28,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **google** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
+            f"Let me google that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -51,7 +51,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **youtube** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
+            f"Let me youtube that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -74,7 +74,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **duckduckgo** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
+            f"Let me duckduckgo that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -99,7 +99,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **altnews** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
+            f"Let me altnews that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -122,7 +122,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **var** that for you:\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
+            f"Let me var that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -145,7 +145,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **log** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
+            f"Let me log that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -198,7 +198,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **Indiankanoon.com:place** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
+            f"Let me indiankanoon.com:place that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
@@ -221,7 +221,7 @@ async def _(event):
     await sleep(2)
     if response_api:
         await event.edit(
-            f"Let me **gem.gov.in** that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
+            f"Let me gem.gov.in that for you :\n\n[{input_str}]({response_api.rstrip()})\n\n`Thank me later 😉` "
         )
     else:
         await edit_delete(event, "`Something went wrong please try again later`", 5)
