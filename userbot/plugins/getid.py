@@ -48,14 +48,14 @@ async def _(event):
             bot_api_file_id = pack_bot_file_id(r_msg.media)
             await edit_or_reply(
                 event,
-                f"**Current chat id : **`{event.chat_id}`\n\n**From user id : **`{r_msg.sender_id}`\n\n**Media file id : **`{bot_api_file_id}`",
+                f"Current chat id : `{event.chat_id}`\n\nFrom user id : `{r_msg.sender_id}`\n\nMedia file id : `{bot_api_file_id}`",
             )
 
         else:
             await edit_or_reply(
                 event,
-                f"**Current chat id : **`{event.chat_id}`\n\n**From user id : **`{r_msg.sender_id}`",
+                f"Current chat id : `{event.chat_id}`\n\nFrom user id : `{r_msg.sender_id}`",
             )
 
     else:
-        await edit_or_reply(event, f"**Current chat id : **`{event.chat_id}`")
+        await edit_or_reply(event, f"Current chat id : `{event.chat_id}`")
