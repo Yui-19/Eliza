@@ -69,7 +69,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
     if not reply:
         return await edit_delete(event, "`Reply to supported media...`")
     media_type(reply)
-    catevent = await edit_or_reply(event, "Making round spin video wait a sec...")
+    catevent = await edit_or_reply(event, "Making round spin video wait a second...")
     output = await _cattools.media_to_pic(event, reply, noedits=True)
     if output[1] is None:
         return await edit_delete(
@@ -82,7 +82,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
     try:
         outframes = await spin_frames(image, w, h, outframes)
     except Exception as e:
-        return await edit_delete(output[0], f"**Error**\n{e}")
+        return await edit_delete(output[0], f"Error\n{e}")
     output = io.BytesIO()
     output.name = "Output.gif"
     outframes[0].save(output, save_all=True, append_images=outframes[1:], duration=1)
@@ -416,14 +416,14 @@ async def get(event):
         except Exception as e:
             if os.path.exists(file_loc):
                 os.remove(file_loc)
-            return await edit_delete(event, f"**Error :**\n{e}")
+            return await edit_delete(event, f"Error :\n{e}")
     await edit_or_reply(
         event,
         file_content,
         parse_mode=parse_pre,
         aslink=True,
         noformat=True,
-        linktext="**Telegram allows only 4096 charcters in a single message but replied file has much more ! So pasting it to pastebin\n\nLink :**",
+        linktext="Telegram allows only 4096 charcters in a single message but replied file has much more ! So pasting it to pastebin\n\nLink :",
     )
     if os.path.exists(file_loc):
         os.remove(file_loc)
@@ -693,7 +693,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
     if mediatype == "Sticker" and reply.document.mime_type == "application/i-tgsticker":
         return await edit_delete(
             event,
-            "Reply to photo or sticker to make it gif , animated sticker is not supported",
+            "Reply to photo or sticker to make it gif animated sticker is not supported",
         )
     args = event.pattern_match.group(1)
     args = "i" if not args else args.replace("-", "")
@@ -720,7 +720,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
         elif args == "i":
             outframes = await invert_frames(image, w, h, outframes)
     except Exception as e:
-        return await edit_delete(catevent, f"**Error :**\n{e}")
+        return await edit_delete(catevent, f"Error :\n{e}")
     output = io.BytesIO()
     output.name = "Output.gif"
     outframes[0].save(output, save_all=True, append_images=outframes[1:], duration=0.7)
