@@ -139,7 +139,7 @@ async def variable(event):  # sourcery no-metrics
 async def _(event):
     "To reload your bot"
     cmd = event.pattern_match.group(1)
-    cat = await edit_or_reply(event, "`Wait 2-3 minutes\n\nIt's reloading...`")
+    cat = await edit_or_reply(event, "`Wait for 2-3 minutes\n\nIt's reloading...`")
     if cmd == "clean":
         for file in exts:
             removing = glob.glob(f"./*.{file}")
